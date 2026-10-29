@@ -69,10 +69,10 @@
     '<img src="img/pago-yape.svg" alt="Yape"><img src="img/pago-plin.svg" alt="Plin"></div></div>' +
     '<a href="soporte.html#contacto-form" class="footer-col claim-col"><img src="img/libro-reclamaciones.svg" alt=""><span>Libro de Reclamaciones</span></a>' +
     '<div class="footer-col brand-col"><img src="img/logo.png" alt="Chapa Tu Técnico"><p>Servicios confiables<br>y al instante</p>' +
-    '<div class="footer-socials"><a href="#" aria-label="YouTube"><img src="img/youtube.png" alt=""></a>' +
-    '<a href="#" aria-label="Facebook"><img src="img/facebook.png" alt=""></a>' +
-    '<a href="#" aria-label="Instagram"><img src="img/instagram.png" alt=""></a>' +
-    '<a href="#" aria-label="TikTok"><img src="img/tik-tok.png" alt=""></a></div></div>' +
+    '<div class="footer-socials"><a href="404.html" aria-label="YouTube"><img src="img/youtube.png" alt=""></a>' +
+    '<a href="404.html" aria-label="Facebook"><img src="img/facebook.png" alt=""></a>' +
+    '<a href="404.html" aria-label="Instagram"><img src="img/instagram.png" alt=""></a>' +
+    '<a href="404.html" aria-label="TikTok"><img src="img/tik-tok.png" alt=""></a></div></div>' +
     '</div><p class="footer-bottom">© 2026 | Empresa peruana innovadora</p></footer>';
 
   s.insertAdjacentHTML('beforebegin', part === 'footer' ? footer : header);

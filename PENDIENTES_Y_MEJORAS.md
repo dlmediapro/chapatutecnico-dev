@@ -65,5 +65,26 @@ Actualmente, las vistas del proyecto cuentan con prototipado dinámico en fronte
 
 ---
 
-*Documento generado el 29 de octubre de 2026 como parte del cierre de integración del repositorio oficial [dlmediapro/chapatutecnico-dev](https://github.com/dlmediapro/chapatutecnico-dev).*
+## 4. 🧭 Vista de Error 404 (Heurísticas de Jakob Nielsen) y Mapeo de Enlaces Temporales
+
+### A. Implementación de `404.html` (Figma Frame `1283:242`)
+Se implementó la página oficial [`404.html`](404.html) siguiendo estrictamente el Frame de Figma y las **Heurísticas de Usabilidad de Jakob Nielsen**:
+1. **Heurística #1 (Visibilidad del estado del sistema):** Chip `"Enlace roto"` (`#53c8f7`) y número decorativo `"404"` de fondo en opacidad reducida.
+2. **Heurística #2 (Relación con el mundo real):** Tono empático y reconfortante (*"Tu cuenta y tus solicitudes siguen a salvo; solo hay que volver a conectar"*) junto con la ilustración del castor técnico reparando el cableado (`img/404-sin%20fondo.webp`).
+3. **Heurísticas #3 y #9 (Salidas de emergencia y recuperación):**
+   - CTA primario: `"Volver al inicio"` (`index.html`).
+   - CTA secundario: `"Ver servicios"` (`servicios.html`).
+   - Accesos directos a especialistas: `Electricista`, `Gasfitero`, `Carpintero` y `Cerrajero`.
+   - Asistencia 24/7 con botón de WhatsApp directo (`wa.me/51998204667`).
+4. **Heurísticas #4 y #8 (Consistencia y estética minimalista):** Mantiene Header y Footer globales vía `layout.js` con `data-page="404"` (sin ninguna pestaña marcada artificialmente como activa).
+5. **SEO y Crawler Safety:** Inclusión de `<meta name="robots" content="noindex, follow">`.
+
+### B. Enlaces Pendientes Redirigidos a `404.html`
+Para evitar enlaces muertos o saltos vacíos (`href="#"`), se enlazaron temporalmente a `404.html`:
+- **Redes Sociales del Footer (`layout.js`):** YouTube, Facebook, Instagram y TikTok.
+- **Botones de Solicitar en la Home (`index.html`):** Gasfitería, Carpintería, Cerrajería, Vidriería e Informática.
+
+---
+
+*Documento actualizado el 29 de octubre de 2026 como parte del cierre de integración del repositorio oficial [dlmediapro/chapatutecnico-dev](https://github.com/dlmediapro/chapatutecnico-dev).*
 
