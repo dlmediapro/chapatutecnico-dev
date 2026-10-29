@@ -473,25 +473,27 @@
   transform: translateX(3px);
 }
 
-/* Leyenda Flotante (Figma: Rectangle 172) */
+/* Leyenda Flotante (Figma: Rectangle 172) - Reubicada en la parte superior para despejar controles de zoom */
 .mapa-leyenda-card {
   position: absolute;
-  bottom: 16px;
+  top: 16px;
   right: 16px;
+  bottom: auto;
   z-index: 10;
-  background: rgba(8, 35, 59, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: rgba(8, 35, 59, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 240, 255, 0.35);
   border-radius: 12px;
   padding: 10px 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   display: flex;
   flex-direction: column;
   gap: 6px;
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
   color: #e2e8f0;
+  pointer-events: none;
 }
 
 .leyenda-item {
@@ -778,8 +780,9 @@
   }
 
   .mapa-leyenda-card {
-    bottom: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
+    bottom: auto;
     padding: 8px 10px;
     font-size: 11px;
   }
