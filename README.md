@@ -37,6 +37,7 @@ npm run figma
 ```text
 chapatutecnico/
 ├── index.html           # Página principal (Home / Inicio dividida por secciones)
+├── nosotros.html        # Página institucional: Historia, Misión, Visión, Valores e Impacto
 ├── servicios.html       # Catálogo y filtro de especialidades técnicas
 ├── electricidad.html    # Ficha de categoría de electricistas
 ├── solicitud.html       # Flujo interactivo de solicitud de servicio técnico

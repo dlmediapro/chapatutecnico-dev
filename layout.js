@@ -21,7 +21,7 @@
     '<nav class="navbar" id="navbar" aria-label="Principal">' +
     '<a href="cuenta.html" class="login">MI<br>CUENTA</a>' +
     link('inicio', 'index.html', 'INICIO') +
-    '<a href="index.html#porque-elegirnos">NOSOTROS</a>' +
+    link('nosotros', 'nosotros.html', 'NOSOTROS') +
     link('servicios', 'servicios.html', 'SERVICIOS') +
     link('solicitud', 'solicitud.html', 'VER SOLICITUD') +
     link('cobertura', '#cobertura', 'COBERTURA') +
@@ -46,7 +46,7 @@
   var footer =
     '<footer class="footer"><div class="container footer-container">' +
     '<div class="footer-col"><h4>Inicio:</h4><ul>' +
-    '<li><a href="index.html#porque-elegirnos">Nosotros</a></li><li><a href="solicitud.html">Ver Solicitud</a></li><li><a href="cuenta.html">Mi Cuenta</a></li>' +
+    '<li><a href="nosotros.html">Nosotros</a></li><li><a href="solicitud.html">Ver Solicitud</a></li><li><a href="cuenta.html">Mi Cuenta</a></li>' +
     '<li><a href="perfil.html">Perfil Técnico</a></li><li><a href="soporte.html">Centro de Ayuda</a></li></ul></div>' +
     '<div class="footer-col"><h4>Categoría:</h4><ul>' +
     '<li><a href="#">Gasfitero</a></li><li><a href="electricidad.html">Electricista</a></li><li><a href="#">Línea Blanca</a></li>' +

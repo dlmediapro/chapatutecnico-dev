@@ -90,3 +90,19 @@ Los tokens están centralizados en `styles.css` para mantener coherencia en toda
 2. **Formato WebP/SVG:** Priorizar recursos vectoriales limpios y WebP con compresión moderna.
 3. **Animaciones a 60fps:** Limitar transiciones CSS a `transform` y `opacity` con curvas de desaceleración `ease-out`.
 
+---
+
+## 5. Anatomía de la Página Nosotros (`nosotros.html`)
+
+Siguiendo el diseño y arquitectura validada en Figma:
+- **Ausencia de Hero Pesado:** Se elimina el banner invasivo superior para iniciar inmediatamente con una experiencia editorial limpia y cómoda.
+- **Header & Footer Unificados:** Inyectados mediante `layout.js` con el enlace `NOSOTROS` activo (`aria-current="page"`).
+- **Estructura de Secciones:**
+  1. *Migas de Pan (Breadcrumb)* para orientación semántica (`Inicio > Nosotros`).
+  2. *Intro Editorial:* Titular Oswald con acentos en amarillo y descripción general.
+  3. *Historia & Propuesta de Valor:* Layout de 2 columnas con imagen optimizada de familia en hogar y puntos de confianza.
+  4. *Misión & Visión:* Tarjetas dobles con acentos de color diferenciales (amarillo marca y verde seguridad).
+  5. *Valores Fundamentales:* Grilla de 4 pilares (Seguridad, Rapidez, Claridad, Garantía).
+  6. *Cifras de Impacto:* Métricas institucionales en formato badge de alto contraste.
+  7. *CTA Final:* Banner de conversión hacia el catálogo de servicios técnicos.
+
