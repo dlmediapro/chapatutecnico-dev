@@ -8,8 +8,11 @@ Thumbs.db
 *.log
 .env
 .env.local
+*.tmp
+*.bak
+*.pyc
+__pycache__/
 
 # Editores
 .vscode/
 .idea/
-
