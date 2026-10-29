@@ -89,3 +89,4 @@ Los tokens están centralizados en `styles.css` para mantener coherencia en toda
 1. **Aspect Ratio Obligatorio:** Toda imagen en tarjeta o banner debe declarar su relación de aspecto (`aspect-ratio: 16/9`, `aspect-square`, etc.) para evitar saltos de página durante la carga.
 2. **Formato WebP/SVG:** Priorizar recursos vectoriales limpios y WebP con compresión moderna.
 3. **Animaciones a 60fps:** Limitar transiciones CSS a `transform` y `opacity` con curvas de desaceleración `ease-out`.
+
