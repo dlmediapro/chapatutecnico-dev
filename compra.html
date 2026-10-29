@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & METADATOS
+         =================================================================== -->
+    <title>Resumen de Compra y Reserva de Servicio | Chapa Tu Técnico</title>
+    <meta name="title" content="Resumen de Compra y Reserva de Servicio | Chapa Tu Técnico">
+    <meta name="description"
+        content="Finaliza tu reserva de servicio técnico o compra de herramientas. Ingresa los datos del cliente, dirección del servicio en Lima y realiza el pago seguro con Yape, Plin o tarjeta.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/compra.html">
+
+    <!-- Favicon & Fuentes -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="views.css">
+</head>
+
+<body data-page="compra">
+
+    <!-- Header institucional compartido -->
+    <script src="layout.js" data-part="header"></script>
+
+    <main class="compra-main">
+        <div class="container">
+            <!-- SECCIÓN 1: RESUMEN DE COMPRA -->
+            <section class="compra-seccion" aria-labelledby="resumen-compra-title">
+                <div class="compra-seccion-head">
+                    <h1 id="resumen-compra-title" class="compra-h1">RESUMEN DE COMPRA</h1>
+                    <p class="compra-lead">Revisa el detalle del servicio y la información del cliente antes de confirmar.</p>
+                </div>
+
+                <div class="resumen-compra-grid">
+                    <!-- Foto Técnico -->
+                    <div class="compra-foto-wrap">
+                        <img src="img/checkout_tecnico.png" 
+                             alt="Técnico profesional listo para atender tu solicitud" 
+                             class="compra-tecnico-img" 
+                             width="428" 
+                             height="356" 
+                             loading="eager">
+                    </div>
+
+                    <!-- 4 Tarjetas de Resumen en Columna -->
+                    <div class="resumen-cards-stack">
+                        <article class="resumen-mini-card">
+                            <h2 class="mini-card-title">Servicio solicitado</h2>
+                            <p class="mini-card-desc">
+                                <strong>Servicio:</strong> <span id="res-servicio">Instalación Eléctrica / Gasfitería</span><br>
+                                <strong>Detalle del servicio:</strong> <span id="res-detalle">Atención técnica a domicilio</span>
+                            </p>
+                        </article>
+
+                        <article class="resumen-mini-card">
+                            <h2 class="mini-card-title">Datos del cliente</h2>
+                            <p class="mini-card-desc" id="res-cliente-preview">
+                                <strong>Nombre y apellidos:</strong> Pendientes<br>
+                                <strong>Tipo y número de documento:</strong> Pendientes<br>
+                                <strong>Correo electrónico:</strong> Pendiente<br>
+                                <strong>Teléfono:</strong> Pendiente
+                            </p>
+                        </article>
+
+                        <article class="resumen-mini-card">
+                            <h2 class="mini-card-title">Dirección del servicio</h2>
+                            <p class="mini-card-desc" id="res-direccion-preview">
+                                <strong>Calle y número:</strong> Pendientes<br>
+                                <strong>Piso / Departamento:</strong> Pendiente<br>
+                                <strong>Ciudad y provincia / estado:</strong> Lima Metropolitana<br>
+                                <strong>Código postal:</strong> Pendiente
+                            </p>
+                        </article>
+
+                        <article class="resumen-mini-card">
+                            <h2 class="mini-card-title">Observaciones o referencias de dirección</h2>
+                            <p class="mini-card-desc" id="res-obs-preview">Sin observaciones registradas.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: FORMULARIO DE DATOS DEL CLIENTE -->
+            <section class="compra-seccion compra-formulario-card" aria-labelledby="datos-cliente-title">
+                <div class="compra-seccion-head">
+                    <h2 id="datos-cliente-title" class="compra-h2">DATOS DEL CLIENTE</h2>
+                    <p class="compra-lead">Completa la información para la facturación y atención del servicio.</p>
+                </div>
+
+                <form class="form-datos-cliente" oninput="window.actualizarResumenEnVivo()">
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-nombre">Nombre *</label>
+                            <input type="text" id="cliente-nombre" class="compra-input" placeholder="Ej. Juan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-apellidos">Apellidos *</label>
+                            <input type="text" id="cliente-apellidos" class="compra-input" placeholder="Ej. Pérez" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-tipodoc">Tipo de documento *</label>
+                            <select id="cliente-tipodoc" class="compra-select">
+                                <option value="DNI">DNI</option>
+                                <option value="CE">Carné de Extranjería</option>
+                                <option value="RUC">RUC</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-numdoc">Número de documento *</label>
+                            <input type="text" id="cliente-numdoc" class="compra-input" placeholder="Ej. 12345678" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-correo">Correo electrónico *</label>
+                            <input type="email" id="cliente-correo" class="compra-input" placeholder="Ej. cliente@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-telefono">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="cliente-telefono" class="compra-input" placeholder="Ej. +51 987 654 321" required>
+                        </div>
+                    </div>
+
+                    <div class="form-subseccion-title">
+                        <h3>Dirección completa del servicio</h3>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-calle">Calle / Avenida *</label>
+                            <input type="text" id="cliente-calle" class="compra-input" placeholder="Ej. Av. Larco" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-numero">Número *</label>
+                            <input type="text" id="cliente-numero" class="compra-input" placeholder="Ej. 456" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-piso">Piso / Departamento</label>
+                            <input type="text" id="cliente-piso" class="compra-input" placeholder="Ej. 4A">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-ciudad">Ciudad *</label>
+                            <input type="text" id="cliente-ciudad" class="compra-input" value="Lima" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="cliente-provincia">Provincia / Estado *</label>
+                            <input type="text" id="cliente-provincia" class="compra-input" value="Lima Metropolitana" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cp">Código postal</label>
+                            <input type="text" id="cliente-cp" class="compra-input" placeholder="Ej. 15074">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cliente-obs">Observaciones o referencias de dirección</label>
+                        <textarea id="cliente-obs" class="compra-textarea" rows="3"
+                            placeholder="Ej. Ingresar por portón lateral, dejar llave en casillero o cualquier indicación adicional."></textarea>
+                    </div>
+                </form>
+            </section>
+
+            <!-- SECCIÓN 3: RESUMEN DE PAGO -->
+            <section class="compra-seccion" aria-labelledby="resumen-pago-title">
+                <div class="compra-seccion-head">
+                    <h2 id="resumen-pago-title" class="compra-h2">RESUMEN DE PAGO</h2>
+                    <p class="compra-lead">Confirma el monto total del servicio y selecciona el método de pago antes de continuar.</p>
+                </div>
+
+                <div class="compra-pago-card">
+                    <div class="pago-aviso-box">
+                        <span class="info-icon" aria-hidden="true">ℹ️</span>
+                        <span>El total se confirma al seleccionar el servicio y coordinar la cotización correspondiente.</span>
+                    </div>
+
+                    <div class="pago-detalle-table">
+                        <div class="pago-table-row">
+                            <span>Servicio solicitado:</span>
+                            <strong>Revisión e Instalación Técnica</strong>
+                        </div>
+                        <div class="pago-table-row">
+                            <span>Detalle del servicio:</span>
+                            <span>Visita presencial + diagnóstico calificado</span>
+                        </div>
+                        <div class="pago-table-row">
+                            <span>Subtotal:</span>
+                            <span>S/ 80.00</span>
+                        </div>
+                        <div class="pago-table-row">
+                            <span>Descuentos y promociones:</span>
+                            <span class="descuento-tag">- S/ 0.00</span>
+                        </div>
+                        <div class="pago-table-row pago-table-total">
+                            <span>Total a pagar:</span>
+                            <strong class="total-monto">S/ 80.00</strong>
+                        </div>
+                    </div>
+                    <p class="pago-aclaracion">El monto final se mostrará en soles (S/.) una vez confirmado el servicio y generada la cotización.</p>
+
+                    <!-- Métodos de Pago (Yape / Plin) -->
+                    <div class="metodos-pago-bloque">
+                        <h3 class="metodos-title">Métodos de pago</h3>
+                        <div class="metodos-radios">
+                            <label class="metodo-radio-item metodo-activo">
+                                <input type="radio" name="metodo-pago" value="yape" checked>
+                                <span class="metodo-badge badge-yape">Y</span>
+                                <div class="metodo-textos">
+                                    <strong>Yape</strong>
+                                    <span>Pago rápido con código QR</span>
+                                </div>
+                            </label>
+
+                            <label class="metodo-radio-item">
+                                <input type="radio" name="metodo-pago" value="plin">
+                                <span class="metodo-badge badge-plin">P</span>
+                                <div class="metodo-textos">
+                                    <strong>Plin</strong>
+                                    <span>Pago rápido con código QR</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Código QR de Pago -->
+                        <div class="codigo-qr-contenedor">
+                            <div class="qr-head-tag">
+                                <span>Código QR de pago</span>
+                                <span class="tag-demo">DEMO</span>
+                            </div>
+                            <div class="qr-box">
+                                <svg class="qr-demo-svg" viewBox="0 0 100 100" width="160" height="160" aria-label="Código QR de demostración">
+                                    <rect width="100" height="100" fill="#ffffff" />
+                                    <rect x="10" y="10" width="25" height="25" fill="#08233b" />
+                                    <rect x="15" y="15" width="15" height="15" fill="#ffffff" />
+                                    <rect x="18" y="18" width="9" height="9" fill="#08233b" />
+                                    <rect x="65" y="10" width="25" height="25" fill="#08233b" />
+                                    <rect x="70" y="15" width="15" height="15" fill="#ffffff" />
+                                    <rect x="73" y="18" width="9" height="9" fill="#08233b" />
+                                    <rect x="10" y="65" width="25" height="25" fill="#08233b" />
+                                    <rect x="15" y="70" width="15" height="15" fill="#ffffff" />
+                                    <rect x="18" y="73" width="9" height="9" fill="#08233b" />
+                                    <rect x="45" y="15" width="10" height="10" fill="#08233b" />
+                                    <rect x="45" y="45" width="12" height="12" fill="#08233b" />
+                                    <rect x="65" y="45" width="8" height="8" fill="#08233b" />
+                                    <rect x="45" y="75" width="15" height="8" fill="#08233b" />
+                                    <rect x="75" y="75" width="15" height="15" fill="#08233b" />
+                                </svg>
+                            </div>
+                            <p class="qr-aviso-demo">Este código QR es solo una muestra demostrativa y no es válido para realizar pagos. Antes de pagar, sustitúyelo por el QR real del destinatario y verifica el monto total del servicio.</p>
+                        </div>
+                    </div>
+
+                    <!-- Botón Confirmar y Reservar -->
+                    <div class="compra-confirmar-wrap">
+                        <button type="button" class="btn-confirmar-reservas" onclick="window.confirmarReserva()">
+                            CONFIRMAR Y RESERVAS
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
+
+    <script>
+    window.actualizarResumenEnVivo = function() {
+        const nom = document.getElementById('cliente-nombre').value.trim();
+        const ape = document.getElementById('cliente-apellidos').value.trim();
+        const tip = document.getElementById('cliente-tipodoc').value;
+        const num = document.getElementById('cliente-numdoc').value.trim();
+        const cor = document.getElementById('cliente-correo').value.trim();
+        const tel = document.getElementById('cliente-telefono').value.trim();
+
+        const cal = document.getElementById('cliente-calle').value.trim();
+        const nro = document.getElementById('cliente-numero').value.trim();
+        const pis = document.getElementById('cliente-piso').value.trim();
+        const cp = document.getElementById('cliente-cp').value.trim();
+        const obs = document.getElementById('cliente-obs').value.trim();
+
+        if (nom || ape) {
+            document.getElementById('res-cliente-preview').innerHTML =
+                `<strong>Nombre y apellidos:</strong> ${nom} ${ape}<br>` +
+                `<strong>Documento:</strong> ${tip} ${num || '...'}<br>` +
+                `<strong>Correo:</strong> ${cor || '...'}<br>` +
+                `<strong>Teléfono:</strong> ${tel || '...'}`;
+        }
+        if (cal || nro) {
+            document.getElementById('res-direccion-preview').innerHTML =
+                `<strong>Dirección:</strong> ${cal} #${nro} ${pis ? 'Dpto ' + pis : ''}<br>` +
+                `<strong>Ciudad:</strong> Lima Metropolitana ${cp ? '(CP: ' + cp + ')' : ''}`;
+        }
+        if (obs) {
+            document.getElementById('res-obs-preview').textContent = obs;
+        }
+    };
+
+    window.confirmarReserva = function() {
+        const nom = document.getElementById('cliente-nombre').value.trim();
+        if (!nom) {
+            alert('Por favor ingresa al menos tu nombre en los datos del cliente para continuar.');
+            document.getElementById('cliente-nombre').focus();
+            return;
+        }
+        alert('¡Solicitud y reserva confirmada con éxito!\nHemos notificado al técnico especialista y recibirás la confirmación a tu WhatsApp.');
+        window.location.href = 'solicitud.html';
+    };
+    </script>
+</body>
+
+</html>

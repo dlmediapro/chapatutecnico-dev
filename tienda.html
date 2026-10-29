@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & METADATOS
+         =================================================================== -->
+    <title>Tienda de Herramientas y Equipos | Chapa Tu Técnico</title>
+    <meta name="title" content="Tienda de Herramientas y Equipos | Chapa Tu Técnico">
+    <meta name="description"
+        content="Compra herramientas profesionales, materiales eléctricos, repuestos y equipos certificados con delivery en Lima. Taladros, tableros, winchas, brocas y más.">
+    <meta name="keywords"
+        content="tienda herramientas lima, comprar taladro lima, tablero electrico adosable, herramientas tecnicas delivery lima">
+    <meta name="author" content="Chapa Tu Técnico">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/tienda.html">
+
+    <!-- Favicon & Fuentes -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="views.css">
+</head>
+
+<body data-page="tienda">
+
+    <!-- Header institucional compartido -->
+    <script src="layout.js" data-part="header"></script>
+
+    <main class="tienda-main">
+        <section class="tienda-section">
+            <div class="container">
+                <!-- Barra superior de búsqueda y categorías de tienda -->
+                <div class="tienda-search-header">
+                    <div class="tienda-cat-btn-wrap">
+                        <button type="button" class="btn-tienda-categorias" aria-haspopup="true">
+                            <span class="hamb-icon" aria-hidden="true">☰</span>
+                            <span>CATEGORÍAS</span>
+                        </button>
+                    </div>
+
+                    <div class="tienda-input-wrap">
+                        <span class="tienda-search-icon" aria-hidden="true">🔍</span>
+                        <input type="text" id="tienda-busqueda" class="tienda-input"
+                            placeholder="¿Qué estás buscando hoy?" aria-label="Buscar en la tienda">
+                        <button type="button" class="tienda-mic-btn" aria-label="Búsqueda por voz">🎤</button>
+                    </div>
+                </div>
+
+                <!-- Filtros secundarios y ordenamiento -->
+                <div class="tienda-filtros-bar">
+                    <div class="tienda-chips-wrap">
+                        <button type="button" class="tienda-chip chip-activo">
+                            <span aria-hidden="true">⚙️</span> Más filtros
+                        </button>
+                        <button type="button" class="tienda-chip">Marcas</button>
+                        <button type="button" class="tienda-chip">Precios</button>
+                    </div>
+
+                    <div class="tienda-sort-wrap">
+                        <label for="select-ordenar" class="sr-only">Ordenar por</label>
+                        <span class="sort-label">Ordenar por:</span>
+                        <select id="select-ordenar" class="tienda-sort-select">
+                            <option value="recomendados">Recomendados ↕</option>
+                            <option value="menor-precio">Menor precio</option>
+                            <option value="mayor-precio">Mayor precio</option>
+                            <option value="en-stock">Disponibles en stock</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Grilla de 9 Productos (3x3) -->
+                <div class="tienda-productos-grid" id="productos-grid">
+                    <!-- 1. Taladro Percutor DWD024K -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_taladro.png" alt="Taladro Percutor DWD024K DeWalt profesional"
+                                width="327" height="327" loading="eager">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Taladro Percutor DWD024K</h2>
+                            <p class="producto-precio">S/ 279.90</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Taladro Percutor DWD024K', 279.90)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 2. Wincha Contra Impactos Truper -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_wincha.png" alt="Wincha Contra Impactos 8m Cinta Negra 25mm Truper"
+                                width="327" height="327" loading="eager">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Wincha Contra Impactos 8m Cinta Negra 25mm Truper</h2>
+                            <p class="producto-precio">S/ 39.99</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Wincha Contra Impactos 8m Truper', 39.99)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 3. Tablero Adosable Plástico -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_tablero.png" alt="Tablero Adosable Plástico 8 Polos para llaves termo-diferenciales"
+                                width="327" height="326" loading="eager">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Tablero Adosable Plástico 8 Polos</h2>
+                            <p class="producto-precio">S/ 284.90</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Tablero Adosable Plástico 8 Polos', 284.90)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 4. Martillo barnizado -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_martillo.png" alt="Martillo barnizado 29mm con mango de madera"
+                                width="309" height="309" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Martillo barnizado 29mm</h2>
+                            <p class="producto-precio">S/ 51.90</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Martillo barnizado 29mm', 51.90)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 5. Arco de acero Montaraz -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_arco_acero.png" alt="Arco de acero para sierra Montaraz reforzado"
+                                width="317" height="337" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Arco de acero Montaraz</h2>
+                            <p class="producto-precio">S/ 79.99</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Arco de acero Montaraz', 79.99)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 6. Sierra Circular Eléctrica -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_sierra.png" alt="Sierra Circular Eléctrica Makita de alta precisión"
+                                width="317" height="337" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Sierra Circular Eléctrica</h2>
+                            <p class="producto-precio">S/ 279.90</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Sierra Circular Eléctrica', 279.90)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 7. Set De Brocas y Puntas 100 Piezas -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_brocas.png" alt="Set De Brocas y Puntas 100 Piezas estuche rígido"
+                                width="318" height="337" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Set De Brocas y Puntas 100 Piezas</h2>
+                            <p class="producto-precio">S/ 99.90</p>
+                            <span class="producto-stock stock-disponible">En stock</span>
+                            <button type="button" class="btn-producto-accion" onclick="window.agregarAlCarrito('Set De Brocas y Puntas 100 Piezas', 99.90)">
+                                Añadir al carrito
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 8. Cinturón de 16 Bolsillos -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_cinturon.png" alt="Cinturón de 16 Bolsillos Para herramientas DeWalt"
+                                width="327" height="327" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Cinturón de 16 Bolsillos Para herramientas</h2>
+                            <p class="producto-precio">S/ 89.90</p>
+                            <span class="producto-stock stock-agotado">Sin Stock :(</span>
+                            <button type="button" class="btn-producto-accion btn-disabled" disabled>
+                                Sin stock
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- 9. Kit de Herramientas Manuales 250 piezas -->
+                    <article class="producto-card">
+                        <div class="producto-img-wrap">
+                            <img src="img/producto_kit_herramientas.png" alt="Kit de Herramientas Manuales 250 piezas maletín"
+                                width="327" height="327" loading="lazy">
+                        </div>
+                        <div class="producto-info">
+                            <h2 class="producto-nombre">Kit de Herramientas Manuales 250 piezas</h2>
+                            <p class="producto-precio">S/ 139.90</p>
+                            <span class="producto-stock stock-agotado">Sin stock :(</span>
+                            <button type="button" class="btn-producto-accion btn-disabled" disabled>
+                                Sin stock
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Botón inferior 'mas...' -->
+                <div class="tienda-pagination-wrap">
+                    <button type="button" class="btn-figma-mas" onclick="alert('Cargando más productos del catálogo...')">mas...</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
+
+    <script>
+    window.agregarAlCarrito = function(nombre, precio) {
+        let carrito = JSON.parse(localStorage.getItem('chapa_carrito') || '[]');
+        carrito.push({ nombre, precio, cantidad: 1 });
+        localStorage.setItem('chapa_carrito', JSON.stringify(carrito));
+        if (confirm('¡' + nombre + ' añadido al carrito!\n¿Deseas ir a tu carrito de compras ahora?')) {
+            window.location.href = 'carrito.html';
+        }
+    };
+    </script>
+</body>
+
+</html>

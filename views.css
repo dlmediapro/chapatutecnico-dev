@@ -1,0 +1,1749 @@
+/* ==========================================================================
+   CHAPA TU TÉCNICO - HOJA DE ESTILOS MODULAR PARA VISTAS FIGMA (views.css)
+   Fidelidad con Sistema de Tokens: #08233b, #e8532b, #288133, #ffffff
+   ========================================================================== */
+
+/* --- 1. BADGES Y NOTIFICACIONES EN HEADER --- */
+.header-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-actions .icon-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-badge-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 9px;
+  height: 9px;
+  background-color: #e8532b;
+  border: 2px solid #08233b;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+.header-cart-count {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background-color: #dd3d22;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #08233b;
+  line-height: 1;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+/* --- 2. VISTA COBERTURA (cobertura.html) --- */
+.cobertura-main {
+  background-color: #08233b;
+  padding: 48px 0 80px;
+  min-height: calc(100vh - 400px);
+}
+
+.cobertura-hero {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 40px;
+}
+
+.cobertura-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background-color: rgba(232, 83, 43, 0.15);
+  border: 1px solid rgba(232, 83, 43, 0.4);
+  color: #ff7250;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.cobertura-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.cobertura-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cfd8dc;
+  margin-bottom: 28px;
+}
+
+.cobertura-search-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cobertura-search-card input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #1e293b;
+  padding: 10px 12px;
+}
+
+.cobertura-search-card button {
+  background: #e8532b;
+  color: #ffffff;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cobertura-search-card button:hover {
+  background-color: #d03d17;
+}
+
+.cobertura-map-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  margin: 40px auto;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.cobertura-map-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.distritos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.distrito-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.distrito-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+}
+
+.distrito-thumb-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.distrito-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.distrito-tag-eta {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(8, 35, 59, 0.9);
+  color: #5fd068;
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.distrito-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.distrito-nombre {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #08233b;
+  margin-bottom: 6px;
+}
+
+.distrito-cobertura-info {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.btn-distrito-solicitar {
+  display: block;
+  text-align: center;
+  background-color: #08233b;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-distrito-solicitar:hover {
+  background-color: #e8532b;
+}
+
+/* --- 3. VISTA TÉCNICOS (tecnicos.html) --- */
+.tecnicos-main {
+  background-color: #08233b;
+  padding: 48px 0 80px;
+  min-height: calc(100vh - 400px);
+}
+
+.tecnicos-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.tecnicos-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(32px, 4.5vw, 46px);
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.tecnicos-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #cfd8dc;
+  line-height: 1.5;
+}
+
+.tecnicos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.tecnico-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tecnico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.tecnico-avatar-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.tecnico-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tecnico-verif-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tecnico-card-body {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.tecnico-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #08233b;
+  margin-bottom: 4px;
+}
+
+.tecnico-spec {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #e8532b;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tecnico-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.tecnico-rating-stars {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.tecnico-pricing {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #08233b;
+  margin-bottom: 16px;
+}
+
+.tecnico-pricing span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.tecnico-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.btn-tecnico-perfil {
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px;
+  border: 1px solid #08233b;
+  color: #08233b;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-tecnico-perfil:hover {
+  background-color: #f1f5f9;
+}
+
+.btn-tecnico-solicitar {
+  flex: 1.2;
+  text-align: center;
+  padding: 10px 8px;
+  background-color: #288133;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-tecnico-solicitar:hover {
+  background-color: #1e6427;
+}
+
+/* --- 4. VISTA TIENDA (tienda.html) --- */
+.tienda-main {
+  background-color: #08233b;
+  padding: 48px 0 80px;
+}
+
+.tienda-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.tienda-title-group h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(30px, 4vw, 42px);
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tienda-title-group p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #cfd8dc;
+}
+
+.tienda-categories-pills {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+  scrollbar-width: thin;
+}
+
+.cat-pill {
+  white-space: nowrap;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cat-pill:hover,
+.cat-pill.active {
+  background-color: #e8532b;
+  border-color: #e8532b;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.producto-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-4px);
+}
+
+.producto-discount-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #dd3d22;
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.producto-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.producto-img-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.producto-info {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.producto-categoria {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.producto-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #08233b;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.producto-stock-hint {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #16a34a;
+  margin-bottom: 12px;
+}
+
+.producto-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.price-current {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #e8532b;
+}
+
+.price-old {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.btn-add-cart {
+  margin-top: auto;
+  width: 100%;
+  padding: 12px;
+  background-color: #08233b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-add-cart:hover {
+  background-color: #e8532b;
+}
+
+/* --- 5. VISTA CARRITO (carrito.html) & COMPRA (compra.html) --- */
+.carrito-main,
+.compra-main {
+  background-color: #08233b;
+  padding: 48px 0 80px;
+  min-height: calc(100vh - 400px);
+}
+
+.checkout-grid-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  margin-top: 28px;
+}
+
+.cart-items-card,
+.checkout-form-card,
+.checkout-summary-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cart-item-row:last-child {
+  border-bottom: none;
+}
+
+.cart-item-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: #08233b;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cart-item-sku {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.quantity-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stepper-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.stepper-val {
+  width: 36px;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cart-item-price {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #e8532b;
+  min-width: 80px;
+  text-align: right;
+}
+
+.btn-remove-item {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+.btn-remove-item:hover {
+  color: #ef4444;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #475569;
+}
+
+.summary-row.total {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #08233b;
+  border-top: 2px dashed #cbd5e1;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.btn-checkout-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: #288133;
+  color: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-checkout-primary:hover {
+  background-color: #1e6427;
+}
+
+/* Formulario de Checkout & QR Yape */
+.checkout-input-group {
+  margin-bottom: 18px;
+}
+
+.checkout-input-group label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.checkout-input-group input,
+.checkout-input-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+
+.payment-method-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.method-radio-box {
+  flex: 1;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.method-radio-box.active {
+  border-color: #7c3aed;
+  background-color: rgba(124, 58, 237, 0.05);
+}
+
+.qr-payment-wrap {
+  text-align: center;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 14px;
+  margin-top: 16px;
+}
+
+.qr-payment-img {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+}
+
+/* --- 6. VISTA MENSAJES / CHAT (mensajes.html) --- */
+.mensajes-main {
+  background-color: #08233b;
+  padding: 40px 0 70px;
+}
+
+.chat-container-box {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  height: 650px;
+}
+
+.chat-inbox-sidebar {
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.inbox-header {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: #08233b;
+  font-weight: 600;
+}
+
+.conversation-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.conversation-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.conversation-item.active,
+.conversation-item:hover {
+  background-color: #e2e8f0;
+}
+
+.conv-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.conv-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.conv-top-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.conv-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  color: #08233b;
+  font-weight: 600;
+}
+
+.conv-time {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.conv-last-msg {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-main-window {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.chat-top-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.chat-stream-body {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #f8fafc;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.chat-bubble.incoming {
+  background: #ffffff;
+  color: #1e293b;
+  align-self: flex-start;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble.outgoing {
+  background: #08233b;
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.chat-input-controls {
+  padding: 16px 20px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.chat-input-controls input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+
+.btn-send-message {
+  background: #e8532b;
+  color: #ffffff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-send-message:hover {
+  background-color: #d03d17;
+}
+
+/* --- 7. VISTA DETALLE DE SOLICITUD (solicitud.html) --- */
+.solicitud-figma-main {
+  background-color: #08233b;
+  padding: 40px 0 80px;
+}
+
+.solicitud-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.solicitud-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.solicitud-back-link:hover {
+  color: #e8532b;
+}
+
+.solicitud-tech-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #cfd8dc;
+}
+
+.solicitud-tech-badge strong {
+  color: #ffffff;
+}
+
+.solicitud-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.solicitud-header-title h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(30px, 4.5vw, 44px);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.solicitud-status-pill {
+  background: #fef08a;
+  color: #854d0e;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.solicitud-grid-container {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
+}
+
+.cliente-card-figma,
+.mensaje-cliente-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cliente-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cliente-avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e2e8f0;
+}
+
+.cliente-nombre {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #08233b;
+  margin-bottom: 4px;
+}
+
+.cliente-distrito {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.cliente-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 20px 0;
+}
+
+.cliente-contact-info .info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.info-label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.info-val {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #08233b;
+  font-weight: 600;
+}
+
+.phone-link {
+  color: #288133;
+  text-decoration: none;
+}
+
+.cliente-evidence-wrap {
+  margin-top: 24px;
+}
+
+.evidence-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: #08233b;
+  margin-bottom: 12px;
+}
+
+.evidence-img-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.evidence-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.evidence-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(221, 61, 34, 0.9);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.evidence-caption {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.mensaje-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.mensaje-header h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: #08233b;
+  flex: 1;
+}
+
+.mensaje-time {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.mensaje-body-text .lead-msg {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #08233b;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.mensaje-body-text .detail-msg {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 28px;
+}
+
+.solicitud-actions-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.btn-solicitud-aceptar {
+  flex: 1.5;
+  background-color: #288133;
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-solicitud-aceptar:hover {
+  background-color: #1e6427;
+}
+
+.btn-solicitud-rechazar {
+  flex: 1;
+  background: transparent;
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-solicitud-rechazar:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-solicitud-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: #f1f5f9;
+  color: #08233b;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-solicitud-chat:hover {
+  background-color: #e2e8f0;
+}
+
+/* --- 8. VISTA SOPORTE (soporte.html - Figma 873:509) --- */
+.soporte-figma-main {
+  background-color: #08233b;
+  padding: 40px 0 80px;
+}
+
+.soporte-hero-figma {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 48px;
+}
+
+.soporte-badge-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(232, 83, 43, 0.15);
+  border: 1px solid rgba(232, 83, 43, 0.4);
+  color: #ff7250;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.soporte-main-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(34px, 5vw, 50px);
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.soporte-main-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #cfd8dc;
+  margin-bottom: 28px;
+}
+
+.soporte-search-box {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.soporte-search-form {
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.soporte-search-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+}
+
+.soporte-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.soporte-card-item {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.25s ease;
+}
+
+.soporte-card-item:hover {
+  transform: translateY(-4px);
+}
+
+.soporte-card-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.bg-green-light { background-color: #dcfce7; color: #16a34a; }
+.bg-blue-light { background-color: #e0f2fe; color: #0284c7; }
+.bg-orange-light { background-color: #ffedd5; color: #ea580c; }
+.bg-gray-light { background-color: #f1f5f9; color: #475569; }
+
+.faq-mark-icon {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.soporte-card-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #08233b;
+  margin-bottom: 6px;
+}
+
+.soporte-card-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.45;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.btn-soporte-action {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-soporte-whatsapp {
+  background: #288133;
+  color: #ffffff;
+}
+.btn-soporte-whatsapp:hover { background: #1e6427; }
+
+.btn-soporte-blue {
+  background: #0284c7;
+  color: #ffffff;
+}
+.btn-soporte-blue:hover { background: #0369a1; }
+
+.btn-soporte-orange {
+  background: #e8532b;
+  color: #ffffff;
+}
+.btn-soporte-orange:hover { background: #d03d17; }
+
+.btn-soporte-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #08233b;
+}
+.btn-soporte-outline:hover { background: #f8fafc; }
+
+/* FAQ Accordion */
+.soporte-faq-container {
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.soporte-faq-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.faq-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.faq-badge {
+  background: #08233b;
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.faq-header-bar h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  color: #08233b;
+}
+
+.faq-accordion-item {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question-btn {
+  width: 100%;
+  padding: 18px 0;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #08233b;
+  cursor: pointer;
+}
+
+.faq-answer-pane {
+  padding-bottom: 18px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* Formulario Soporte */
+.soporte-form-container {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.soporte-form-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.soporte-form-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.soporte-form-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  color: #08233b;
+  margin-bottom: 6px;
+}
+
+.soporte-form-header p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.soporte-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.soporte-field-col.full-width {
+  grid-column: 1 / -1;
+}
+
+.soporte-field-col label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.soporte-field-col input,
+.soporte-field-col select,
+.soporte-field-col textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.soporte-field-col textarea {
+  resize: vertical;
+}
+
+.btn-soporte-submit {
+  background-color: #e8532b;
+  color: #ffffff;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-soporte-submit:hover {
+  background-color: #d03d17;
+}
+
+.soporte-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.soporte-privacy-hint {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.soporte-feedback-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* --- 9. RESPONSIVE DESIGN (MEDIA QUERIES) --- */
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .distritos-grid,
+  .tecnicos-grid,
+  .soporte-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .checkout-grid-layout,
+  .solicitud-grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-container-box {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+/* Móvil (< 768px) */
+@media (max-width: 767px) {
+  .distritos-grid,
+  .tecnicos-grid,
+  .soporte-cards-grid,
+  .productos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soporte-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-container-box {
+    grid-template-columns: 1fr;
+    height: 750px;
+  }
+
+  .chat-inbox-sidebar {
+    max-height: 200px;
+  }
+
+  .cart-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item-price {
+    text-align: left;
+  }
+
+  .solicitud-actions-group {
+    flex-direction: column;
+  }
+
+  .btn-distrito-solicitar,
+  .btn-tecnico-solicitar,
+  .btn-add-cart,
+  .btn-checkout-primary,
+  .btn-soporte-action,
+  .btn-solicitud-aceptar,
+  .btn-solicitud-rechazar,
+  .btn-soporte-carrito {
+    min-height: 44px;
+  }
+}
+
+/* --- BOTÓN FIGMA: CARRITO DE SERVICIO EN SOPORTE (Node 1269:260) --- */
+.soporte-carrito-row {
+  display: flex;
+  justify-content: center;
+  margin: 32px auto 16px;
+  padding: 0 16px;
+}
+
+.btn-soporte-carrito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 365px;
+  min-height: 58px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #0d3861 0%, #08233b 100%);
+  color: #ffffff !important;
+  border: 2px solid #52c8f7;
+  border-radius: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: none;
+  box-shadow: 0 4px 16px rgba(82, 200, 247, 0.25);
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-soporte-carrito svg {
+  color: #52c8f7;
+  transition: transform 0.25s ease;
+}
+
+.btn-soporte-carrito:hover {
+  background: #52c8f7;
+  color: #08233b !important;
+  border-color: #52c8f7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(82, 200, 247, 0.45);
+}
+
+.btn-soporte-carrito:hover svg {
+  color: #08233b;
+  transform: scale(1.1);
+}
+

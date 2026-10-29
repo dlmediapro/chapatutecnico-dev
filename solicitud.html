@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- ===================================================================
          1. METADATOS TÉCNICOS & RENDERIZADO
@@ -14,409 +15,192 @@
     <!-- ===================================================================
          2. SEO ON-PAGE & PRIVACIDAD (ÁREA DE ATENCIÓN DE CLIENTE)
          =================================================================== -->
-    <title>Seguimiento de Solicitud de Servicio Técnico | Chapa Tu Técnico</title>
-    <meta name="title" content="Seguimiento de Solicitud de Servicio Técnico | Chapa Tu Técnico">
+    <title>Detalle de Solicitud | Panel del Técnico | Chapa Tu Técnico</title>
+    <meta name="title" content="Detalle de Solicitud | Panel del Técnico | Chapa Tu Técnico">
     <meta name="description"
-        content="Monitorea en tiempo real el estado de tu solicitud de servicio técnico en Lima Metropolitana. Conoce el tiempo estimado de llegada, los datos del técnico verificado y la cotización transparente.">
-    <meta name="keywords" content="seguimiento solicitud tecnico, orden de servicio, estado tecnico lima, chapa tu tecnico">
+        content="Revisión de solicitud de servicio técnico entrante de Lucía Fernández en Miraflores, Lima. Verificación de dirección, evidencia fotográfica y contacto.">
     <meta name="author" content="Chapa Tu Técnico">
-    <!-- Directiva de privacidad para evitar indexar solicitudes privadas de clientes -->
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://chapatutecnico.pe/solicitud.html">
 
     <!-- ===================================================================
-         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
-         =================================================================== -->
-    <meta name="geo.region" content="PE-LIM">
-    <meta name="geo.placename" content="Lima">
-    <meta name="geo.position" content="-12.046374;-77.042793">
-    <meta name="ICBM" content="-12.046374, -77.042793">
-
-    <!-- ===================================================================
-         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
-         =================================================================== -->
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="es_PE">
-    <meta property="og:site_name" content="Chapa Tu Técnico">
-    <meta property="og:url" content="https://chapatutecnico.pe/solicitud.html">
-    <meta property="og:title" content="Seguimiento de Solicitud | Chapa Tu Técnico">
-    <meta property="og:description"
-        content="Monitoreo de solicitud activa y llegada de tu especialista certificado en Lima.">
-    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
-    <meta property="og:image:alt" content="Chapa Tu Técnico - Seguimiento de Solicitud">
-
-    <!-- ===================================================================
-         5. TWITTER / X CARDS
-         =================================================================== -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://chapatutecnico.pe/solicitud.html">
-    <meta name="twitter:title" content="Seguimiento de Solicitud | Chapa Tu Técnico">
-    <meta name="twitter:description"
-        content="Monitoreo en tiempo real de tu servicio técnico en Lima Metropolitana.">
-    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
-
-    <!-- ===================================================================
-         6. FAVICON & ICONOS DE APLICACIÓN
+         3. FAVICON & FUENTES GOOGLE
          =================================================================== -->
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="apple-touch-icon" href="img/logo.png">
-
-    <!-- ===================================================================
-         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
-         =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- ===================================================================
-         8. HOJA DE ESTILOS PRINCIPAL
+         4. HOJAS DE ESTILOS
          =================================================================== -->
     <link rel="stylesheet" href="styles.css">
-
-    <!-- ===================================================================
-         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
-         =================================================================== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Seguimiento de Solicitud de Servicio Técnico",
-      "description": "Página de visualización de estado y asignación de técnicos en Lima.",
-      "url": "https://chapatutecnico.pe/solicitud.html",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "Chapa Tu Técnico",
-        "url": "https://chapatutecnico.pe/"
-      }
-    }
-    </script>
+    <link rel="stylesheet" href="views.css">
 </head>
+
 <body data-page="solicitud">
 
-<script src="layout.js" data-part="header"></script>
+    <script src="layout.js" data-part="header"></script>
 
-<main id="main-content">
-    <div class="container page-head">
-        <span class="menu-icon" aria-hidden="true"></span>
-        <h1 class="page-title">VER SOLICITUD</h1>
-    </div>
-
-    <!-- Barra de Simulación UX (Ideal para presentación académica) -->
-    <div class="container sim-bar-wrapper">
-        <div class="ux-simulator-bar" role="region" aria-label="Simulador interactivo de estados de solicitud">
-            <span class="sim-label">⚡ PROBAR ESTADOS UX:</span>
-            <div class="sim-buttons-group">
-                <button type="button" class="sim-btn" data-step="1">1. Buscando Técnico</button>
-                <button type="button" class="sim-btn" data-step="2">2. Técnico Asignado</button>
-                <button type="button" class="sim-btn active" data-step="3">3. En Camino (12 min)</button>
-                <button type="button" class="sim-btn" data-step="4">4. En Reparación</button>
-                <button type="button" class="sim-btn" data-step="5">5. Finalizado / Calificar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header Principal de la Solicitud -->
-    <section class="container tracking-header-section">
-        <div class="tracking-top-card">
-            <div class="tracking-top-left">
-                <div class="order-id-group">
-                    <span class="order-id">ORDEN #CT-2026-084</span>
-                    <span class="order-timestamp">Solicitado hoy, 28 Oct 2026 • 10:15 AM</span>
-                </div>
-                <h2 class="tracking-main-status" id="tracking-status-text">
-                    El técnico <span class="highlight-tech">Carlos Rivas</span> está en camino a tu domicilio
-                </h2>
-            </div>
-            <div class="tracking-top-right">
-                <div class="status-badge-live" id="live-status-badge">
-                    <span class="pulsing-dot"></span>
-                    <span id="badge-status-title">EN CAMINO</span>
-                </div>
-                <div class="eta-box" id="eta-box">
-                    <span class="eta-label">TIEMPO ESTIMADO</span>
-                    <span class="eta-time" id="eta-time-val">12 MIN</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stepper / Línea de Tiempo de 4 Pasos -->
-        <div class="stepper-wrapper" aria-label="Progreso de atención de la solicitud">
-            <ol class="stepper-list" id="stepper-list">
-                <li class="step-item step-completed" data-index="1">
-                    <div class="step-circle">✓</div>
-                    <div class="step-info">
-                        <strong>Solicitud Recibida</strong>
-                        <small>10:15 AM</small>
-                    </div>
-                </li>
-                <li class="step-item step-completed" data-index="2">
-                    <div class="step-circle">✓</div>
-                    <div class="step-info">
-                        <strong>Técnico Asignado</strong>
-                        <small>10:18 AM</small>
-                    </div>
-                </li>
-                <li class="step-item step-current" data-index="3">
-                    <div class="step-circle">3</div>
-                    <div class="step-info">
-                        <strong>En Camino</strong>
-                        <small id="step-3-eta">Llegada ~10:35 AM</small>
-                    </div>
-                </li>
-                <li class="step-item" data-index="4">
-                    <div class="step-circle">4</div>
-                    <div class="step-info">
-                        <strong>Servicio & Garantía</strong>
-                        <small>Pendiente</small>
-                    </div>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- Grilla Principal: Técnico & Mapa a la Izquierda, Detalles y Costo a la Derecha -->
-    <section class="container tracking-grid-section">
-        <!-- Columna Izquierda: Técnico y Mapa -->
-        <div class="tracking-col-main">
-            <!-- Tarjeta del Técnico -->
-            <article class="technician-card" id="technician-card">
-                <div class="tech-card-header">
-                    <div class="tech-avatar-wrap">
-                        <img src="img/electricista-1.png" alt="Foto de Carlos Rivas" class="tech-avatar" id="tech-photo">
-                        <span class="tech-online-status" title="En línea y conectado"></span>
-                    </div>
-                    <div class="tech-info-block">
-                        <div class="tech-name-row">
-                            <h3 id="tech-name">Carlos Rivas</h3>
-                            <span class="verified-badge-pill" title="Identidad y antecedentes policiales verificados">
-                                <img src="img/escudo.svg" alt="" width="14" height="14" aria-hidden="true">
-                                Verificado
-                            </span>
-                        </div>
-                        <p class="tech-specialty" id="tech-specialty">⚡ Técnico Electricista Colegiado (Cert. N° EL-4910)</p>
-                        <div class="tech-rating-row">
-                            <span class="tech-stars">⭐⭐⭐⭐⭐</span>
-                            <span class="tech-score"><strong>4.9</strong> (142 servicios)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tech-card-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">🛵</span>
-                        <div>
-                            <strong>Transporte</strong>
-                            <p id="tech-vehicle">Moto Honda CB125F • Placa 4821-3F</p>
-                        </div>
-                    </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🛡️</span>
-                        <div>
-                            <strong>Seguridad Chapa</strong>
-                            <p>Código de visita: <strong class="passcode-highlight">#CT-84</strong></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tech-card-actions">
-                    <a href="tel:+51998204667" class="btn-tech-action btn-call" id="btn-call-tech">
-                        📞 Llamar al Técnico
-                    </a>
-                    <a href="https://wa.me/51998204667?text=Hola%20Carlos,%20te%20escribo%20por%20la%20solicitud%20CT-2026-084" target="_blank" rel="noopener noreferrer" class="btn-tech-action btn-wa" id="btn-whatsapp-tech">
-                        <img src="img/whatsapp.png" alt="" width="20" height="20" aria-hidden="true">
-                        Chat WhatsApp
-                    </a>
-                </div>
-            </article>
-
-            <!-- Simulación de Mapa en Vivo / Live Tracking -->
-            <div class="live-map-card" id="live-map-card">
-                <div class="live-map-header">
-                    <h4>📍 Seguimiento en Ruta en Directo</h4>
-                    <span class="live-pulse-indicator"><span class="pulsing-dot"></span> GPS ACTIVO</span>
-                </div>
-                <div class="live-map-canvas" id="live-map-canvas">
-                    <!-- Mapa vectorial estilizado en CSS -->
-                    <div class="map-grid-overlay"></div>
-                    
-                    <!-- Marcador Técnico -->
-                    <div class="map-marker marker-technician" id="marker-technician" style="top: 38%; left: 32%;">
-                        <div class="marker-pulse"></div>
-                        <div class="marker-bubble">👨‍🔧 Carlos (En camino)</div>
-                        <div class="marker-icon">🛵</div>
-                    </div>
-
-                    <!-- Marcador Destino / Casa del Cliente -->
-                    <div class="map-marker marker-destination" style="top: 62%; left: 74%;">
-                        <div class="marker-bubble dest">🏠 Tu Casa (Miraflores)</div>
-                        <div class="marker-icon dest">📍</div>
-                    </div>
-
-                    <!-- Línea de Ruta -->
-                    <svg class="map-route-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M 32 38 Q 45 42, 54 50 T 74 62" fill="none" stroke="#5fd068" stroke-width="3" stroke-dasharray="6,4" class="animated-route-line" />
+    <main class="solicitud-figma-main">
+        <div class="container">
+            <!-- Barra Superior de Navegación del Técnico -->
+            <div class="solicitud-top-bar">
+                <a href="perfil.html" class="solicitud-back-link">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
                     </svg>
-
-                    <div class="map-floating-eta">
-                        <span>Aproximadamente <strong>12 min</strong> para llegar por Av. Benavides</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Columna Derecha: Detalle de Avería, Costos y Acciones -->
-        <div class="tracking-col-sidebar">
-            <!-- Tarjeta de Detalle del Servicio -->
-            <article class="service-breakdown-card">
-                <h3 class="card-subtitle">Detalle del Servicio</h3>
-                
-                <div class="service-category-tag">
-                    <span class="category-icon">⚡</span>
-                    <div>
-                        <strong>Servicio de Electricidad</strong>
-                        <p>Tablero General, Cortocircuito y Llaves Térmicas</p>
-                    </div>
-                </div>
-
-                <div class="problem-description-box">
-                    <strong>Descripción de la avería:</strong>
-                    <p>"Ocurrió un chispazo en la llave termomagnética de la cocina y se bajó la llave principal del departamento. No hay luz en la mitad de la casa."</p>
-                </div>
-
-                <div class="problem-photos-group">
-                    <strong>Fotos adjuntas por el cliente:</strong>
-                    <div class="photos-thumb-row">
-                        <img src="img/electrico03.jpg" alt="Foto del tablero eléctrico dañado" class="photo-thumb" loading="lazy">
-                        <img src="img/electrico01.jpg" alt="Foto de la llave termomagnética" class="photo-thumb" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="address-summary-box">
-                    <strong>Dirección de Visita:</strong>
-                    <p>📍 Av. Benavides 1240, Dpto 402, Miraflores, Lima</p>
-                    <small>Ref: Frente al parque Reducto (Timbre 402)</small>
-                </div>
-            </article>
-
-            <!-- Cotización Transparente -->
-            <article class="pricing-card">
-                <h3 class="card-subtitle">Cotización Transparente</h3>
-
-                <div class="price-row">
-                    <span>Visita Técnica & Diagnóstico</span>
-                    <span>S/ 35.00</span>
-                </div>
-                <div class="price-row">
-                    <span>Mano de Obra Especializada (Est.)</span>
-                    <span>S/ 55.00</span>
-                </div>
-                <div class="price-row highlight-green">
-                    <span>Garantía Chapa Tu Técnico (30 días)</span>
-                    <span class="badge-free">GRATIS</span>
-                </div>
-                <hr class="price-divider">
-                <div class="price-row total-row">
-                    <strong>Total Estimado:</strong>
-                    <strong class="total-amount">S/ 90.00</strong>
-                </div>
-
-                <div class="payment-chosen-badge">
-                    <span>Método de pago seleccionado:</span>
-                    <strong>📱 Yape contraentrega (al finalizar)</strong>
-                </div>
-                <p class="payment-security-note">
-                    🔒 No pagas nada por adelantado. El pago se realiza únicamente cuando el trabajo ha sido concluido y verificado a tu satisfacción.
-                </p>
-            </article>
-
-            <!-- Botones de Acción / Modales -->
-            <div class="action-buttons-stack">
-                <button type="button" class="btn-cancel-request" id="btn-open-cancel-modal">
-                    ✕ Cancelar Solicitud
-                </button>
-                <button type="button" class="btn-finish-service-demo" id="btn-simulate-finish" style="display: none;">
-                    ⭐ Calificar y Pagar Servicio
-                </button>
-                <a href="soporte.html" class="btn-need-help">
-                    ¿Tienes algún inconveniente? Contactar Soporte
+                    <span>Volver a Solicitudes</span>
                 </a>
+                <div class="solicitud-tech-badge">
+                    <span class="tech-badge-role">Técnico activo:</span>
+                    <strong class="tech-badge-name">Rodrigo Rojas</strong>
+                </div>
+            </div>
+
+            <!-- Título Principal de la Vista (Figma Frame 894:5952) -->
+            <div class="solicitud-header-title">
+                <h1>Detalle de solicitud</h1>
+                <span class="solicitud-status-pill">Solicitud #4829 - Pendiente</span>
+            </div>
+
+            <!-- Contenedor Principal en 2 Columnas -->
+            <div class="solicitud-grid-container">
+                <!-- Columna Izquierda: Información del Cliente y Datos de Contacto -->
+                <div class="solicitud-left-col">
+                    <div class="cliente-card-figma">
+                        <div class="cliente-header-flex">
+                            <div class="cliente-avatar-wrap">
+                                <img src="img/cliente_lucia.png" alt="Lucia Fernandez" class="cliente-avatar-img" width="80" height="80">
+                            </div>
+                            <div class="cliente-data">
+                                <h2 class="cliente-nombre">Lucia Fernandez</h2>
+                                <p class="cliente-distrito">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                    </svg>
+                                    Miraflores, Lima.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="cliente-divider"></div>
+
+                        <!-- Dirección y Teléfono exactos de Figma -->
+                        <div class="cliente-contact-info">
+                            <div class="info-row">
+                                <span class="info-icon">📍</span>
+                                <div class="info-text">
+                                    <span class="info-label">Dirección exacta:</span>
+                                    <strong class="info-val">Av. Larco 456, Miraflores, Lima.</strong>
+                                </div>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-icon">📞</span>
+                                <div class="info-text">
+                                    <span class="info-label">Teléfono de contacto:</span>
+                                    <a href="tel:+51987654321" class="info-val phone-link">+51 987 654 321</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Evidencia fotográfica de la avería -->
+                        <div class="cliente-evidence-wrap">
+                            <h3 class="evidence-title">Evidencia adjunta del servicio</h3>
+                            <div class="evidence-img-container">
+                                <img src="img/tuberia_averiada.png" alt="Tubería averiada con fuga de agua reportada por el cliente" class="evidence-img" width="400" height="260" loading="lazy">
+                                <span class="evidence-tag">Fuga activa en cocina</span>
+                            </div>
+                            <p class="evidence-caption">Foto tomada por el cliente mostrando salida de agua bajo lavadero.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Mensaje del Cliente y Botones de Decisión -->
+                <div class="solicitud-right-col">
+                    <div class="mensaje-cliente-card">
+                        <div class="mensaje-header">
+                            <span class="mensaje-icon">💬</span>
+                            <h3>Mensaje enviado por el cliente</h3>
+                            <span class="mensaje-time">Hoy, 10:15 AM</span>
+                        </div>
+
+                        <div class="mensaje-body-text">
+                            <p class="lead-msg">
+                                "¡Hola! Buenas tardes. Quería hacer una consulta, necesito solicitar un servicio para mi casa y me gustaría saber cuál es el proceso para contratarlo por este medio."
+                            </p>
+                            <p class="detail-msg">
+                                "Requiero una revisión y servicio técnico para mi hogar. Estoy ubicada en Lima. ¿Tienen cobertura en mi zona y disponibilidad para esta semana? Antes de coordinar la cita, ¿cómo manejan el tema de las cotizaciones antes de la visita? Y quisiera saber qué verificación o garantías ofrecen sobre el personal técnico que enviarán. Te envío por aquí mis datos de contacto y la dirección exacta para agendar la visita en el horario acordado. Muchas gracias, nos vemos pronto."
+                            </p>
+                        </div>
+
+                        <!-- Botones de Acción (Figma: ACEPTAR y RECHAZAR) -->
+                        <div class="solicitud-actions-group">
+                            <button type="button" id="btn-aceptar-solicitud" class="btn-solicitud-aceptar">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                ACEPTAR TRABAJO
+                            </button>
+
+                            <button type="button" id="btn-rechazar-solicitud" class="btn-solicitud-rechazar">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                </svg>
+                                RECHAZAR
+                            </button>
+                        </div>
+
+                        <!-- Enlace directo al chat interactivo -->
+                        <div class="solicitud-chat-link-wrap">
+                            <a href="mensajes.html" class="btn-solicitud-chat">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Abrir chat de mensajes con Lucía
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-</main>
+    </main>
 
-<!-- MODAL: Cancelar Solicitud -->
-<dialog id="modal-cancel-request" class="custom-dialog">
-    <div class="dialog-content">
-        <div class="dialog-header">
-            <h3>¿Deseas cancelar esta solicitud?</h3>
-            <button type="button" class="btn-close-dialog" id="btn-close-cancel-modal" aria-label="Cerrar modal">✕</button>
-        </div>
-        <form id="form-cancel-request" class="dialog-body">
-            <p>El técnico Carlos Rivas ya se encuentra en camino. Si cancelas ahora, no se cobrará penalidad si lo haces con más de 10 minutos de anticipación.</p>
-            
-            <div class="form-group" style="margin-top: 16px;">
-                <label for="cancel-reason">Selecciona el motivo de cancelación <span class="required">*</span></label>
-                <select id="cancel-reason" required>
-                    <option value="" disabled selected>Elige un motivo...</option>
-                    <option value="solved">Ya solucioné el problema por mi cuenta</option>
-                    <option value="delay">El técnico demora demasiado</option>
-                    <option value="mistake">Me equivoqué de dirección o de servicio</option>
-                    <option value="emergency">Tuve una emergencia y debo salir</option>
-                    <option value="other">Otro motivo</option>
-                </select>
-            </div>
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
 
-            <div class="form-group">
-                <label for="cancel-comment">Comentarios adicionales</label>
-                <textarea id="cancel-comment" rows="2" placeholder="Cuéntanos brevemente qué sucedió..."></textarea>
-            </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnAceptar = document.getElementById('btn-aceptar-solicitud');
+        const btnRechazar = document.getElementById('btn-rechazar-solicitud');
 
-            <div class="dialog-actions">
-                <button type="button" class="btn-secondary-outline" id="btn-abort-cancel">Volver a la solicitud</button>
-                <button type="submit" class="btn-logout-confirm">Confirmar Cancelación</button>
-            </div>
-        </form>
-    </div>
-</dialog>
+        if (btnAceptar) {
+            btnAceptar.addEventListener('click', function() {
+                btnAceptar.disabled = true;
+                btnAceptar.innerHTML = '✓ ¡TRABAJO ACEPTADO!';
+                btnAceptar.style.backgroundColor = '#16a34a';
+                
+                setTimeout(function() {
+                    if (confirm('Trabajo aceptado con éxito. ¿Deseas abrir la conversación de chat con Lucía Fernández ahora?')) {
+                        window.location.href = 'mensajes.html';
+                    }
+                }, 300);
+            });
+        }
 
-<!-- MODAL: Calificar Servicio (Cuando está Finalizado) -->
-<dialog id="modal-rate-service" class="custom-dialog">
-    <div class="dialog-content text-center">
-        <div class="dialog-header justify-center">
-            <h3>¡Servicio Finalizado con Éxito!</h3>
-        </div>
-        <div class="dialog-body">
-            <p>Por favor califica el trabajo realizado por <strong>Carlos Rivas</strong>:</p>
-            
-            <div class="rating-stars-interactive" id="rating-stars-picker">
-                <button type="button" class="star-btn" data-val="1">★</button>
-                <button type="button" class="star-btn" data-val="2">★</button>
-                <button type="button" class="star-btn" data-val="3">★</button>
-                <button type="button" class="star-btn" data-val="4">★</button>
-                <button type="button" class="star-btn active" data-val="5">★</button>
-            </div>
-            <p class="star-feedback-text">¡Excelente servicio!</p>
-
-            <div class="form-group text-left" style="margin-top: 16px;">
-                <label for="rate-comment">Déjale una opinión pública al técnico:</label>
-                <textarea id="rate-comment" rows="2" placeholder="Excelente trabajo, puntual y muy profesional...">Excelente atención, llegó muy rápido y dejó el tablero impecable.</textarea>
-            </div>
-        </div>
-        <div class="dialog-actions justify-center">
-            <button type="button" class="btn-save-primary" id="btn-submit-rating">Enviar Calificación y Boleta</button>
-        </div>
-    </div>
-</dialog>
-
-<!-- Toast de Notificaciones -->
-<div id="toast-notification" class="toast-notification" aria-live="polite" role="status"></div>
-
-<script src="layout.js" data-part="footer"></script>
-<script src="main.js"></script>
-<script src="solicitud.js"></script>
+        if (btnRechazar) {
+            btnRechazar.addEventListener('click', function() {
+                if (confirm('¿Estás seguro de que deseas rechazar esta solicitud? Volverás al panel de técnico.')) {
+                    window.location.href = 'perfil.html';
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
-

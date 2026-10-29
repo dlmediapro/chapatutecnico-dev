@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & METADATOS
+         =================================================================== -->
+    <title>Mi Carrito de Compras | Chapa Tu Técnico</title>
+    <meta name="title" content="Mi Carrito de Compras | Chapa Tu Técnico">
+    <meta name="description"
+        content="Revisa los productos, herramientas y equipos seleccionados en tu carrito de compras de Chapa Tu Técnico. Descuentos, métodos de entrega y checkout seguro.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/carrito.html">
+
+    <!-- Favicon & Fuentes -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="views.css">
+</head>
+
+<body data-page="carrito">
+
+    <!-- Header institucional compartido -->
+    <script src="layout.js" data-part="header"></script>
+
+    <main class="carrito-main">
+        <section class="carrito-section">
+            <div class="container">
+                <div class="carrito-card-container">
+                    <h1 class="carrito-title">MI CARRITO</h1>
+
+                    <!-- Lista de Productos en el Carrito -->
+                    <div class="carrito-items-list" id="carrito-items">
+                        <!-- Producto 1: Taladro -->
+                        <article class="carrito-item" data-price="280">
+                            <div class="item-img-wrap">
+                                <img src="img/producto_taladro.png" alt="Taladro Percutor DWD024K" width="140" height="140">
+                            </div>
+                            <div class="item-info">
+                                <h2 class="item-nombre">Taladro Percutor DWD024K</h2>
+                                <p class="item-precio">S/ 280.00</p>
+                                <div class="item-stepper">
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, -1)">−</button>
+                                    <span class="stepper-val">1</span>
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, 1)">+</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-eliminar-item" onclick="window.eliminarItem(this)" aria-label="Eliminar Taladro">
+                                🗑️
+                            </button>
+                        </article>
+
+                        <!-- Producto 2: Martillo -->
+                        <article class="carrito-item" data-price="51">
+                            <div class="item-img-wrap">
+                                <img src="img/producto_martillo.png" alt="Martillo barnizado 29mm" width="140" height="140">
+                            </div>
+                            <div class="item-info">
+                                <h2 class="item-nombre">Martillo barnizado 29mm</h2>
+                                <p class="item-precio">S/ 51.00</p>
+                                <div class="item-stepper">
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, -1)">−</button>
+                                    <span class="stepper-val">1</span>
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, 1)">+</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-eliminar-item" onclick="window.eliminarItem(this)" aria-label="Eliminar Martillo">
+                                🗑️
+                            </button>
+                        </article>
+
+                        <!-- Producto 3: Wincha -->
+                        <article class="carrito-item" data-price="40">
+                            <div class="item-img-wrap">
+                                <img src="img/producto_wincha.png" alt="Wincha Contra Impactos 8m Cinta Negra 25mm Truper" width="140" height="140">
+                            </div>
+                            <div class="item-info">
+                                <h2 class="item-nombre">Wincha Contra Impactos 8m Cinta Negra 25mm Truper</h2>
+                                <p class="item-precio">S/ 40.00</p>
+                                <div class="item-stepper">
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, -1)">−</button>
+                                    <span class="stepper-val">1</span>
+                                    <button type="button" class="stepper-btn" onclick="window.cambiarCantidad(this, 1)">+</button>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-eliminar-item" onclick="window.eliminarItem(this)" aria-label="Eliminar Wincha">
+                                🗑️
+                            </button>
+                        </article>
+                    </div>
+
+                    <!-- Cupón de Descuento -->
+                    <div class="cupon-box">
+                        <div class="cupon-header">
+                            <span class="cupon-icon" aria-hidden="true">%</span>
+                            <span class="cupon-title">¿Tienes un cupón de descuento?</span>
+                        </div>
+                        <div class="cupon-form">
+                            <input type="text" id="input-cupon" class="input-cupon" placeholder="Ingresa tu código" aria-label="Código de cupón">
+                            <button type="button" class="btn-cupon-aplicar" onclick="window.aplicarCupon()">APLICAR</button>
+                        </div>
+                    </div>
+
+                    <!-- Resumen de Costos -->
+                    <div class="carrito-totales-box">
+                        <div class="total-row">
+                            <span id="label-subtotal">Subtotal (3 productos)</span>
+                            <strong id="val-subtotal">S/ 371.00</strong>
+                        </div>
+                        <div class="total-row">
+                            <span>Envío</span>
+                            <span class="envio-tag">Por calcular</span>
+                        </div>
+                        <div class="total-row total-destacado">
+                            <span>Total estimado</span>
+                            <strong id="val-total">S/ 371.00</strong>
+                        </div>
+                    </div>
+
+                    <!-- Botón de Finalizar Compra -->
+                    <div class="carrito-checkout-action">
+                        <a href="compra.html" class="btn-finalizar-compra">
+                            <span class="lock-icon" aria-hidden="true">🔒</span>
+                            <span>FINALIZAR COMPRA</span>
+                        </a>
+                    </div>
+
+                    <!-- Información de Método de Entrega -->
+                    <div class="metodo-entrega-box">
+                        <div class="entrega-icon-wrap" aria-hidden="true">
+                            🚚
+                        </div>
+                        <div class="entrega-info">
+                            <h3 class="entrega-title">Método de entrega</h3>
+                            <p class="entrega-tipo">Envío a domicilio</p>
+                            <ol class="entrega-opciones">
+                                <li>1. Envío standard (24 - 48 hrs)</li>
+                                <li>2. Envío Express (Mismo día / Inmediato)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Enlace Seguir Comprando -->
+                    <div class="seguir-comprando-wrap">
+                        <a href="tienda.html" class="link-seguir-comprando">
+                            ‹ Seguir comprando
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
+
+    <script>
+    window.actualizarTotales = function() {
+        const items = document.querySelectorAll('.carrito-item');
+        let total = 0;
+        let count = 0;
+        items.forEach(it => {
+            const price = parseFloat(it.dataset.price);
+            const qty = parseInt(it.querySelector('.stepper-val').textContent);
+            total += price * qty;
+            count += qty;
+        });
+        document.getElementById('label-subtotal').textContent = `Subtotal (${count} productos)`;
+        document.getElementById('val-subtotal').textContent = `S/ ${total.toFixed(2)}`;
+        document.getElementById('val-total').textContent = `S/ ${total.toFixed(2)}`;
+    };
+
+    window.cambiarCantidad = function(btn, delta) {
+        const span = btn.parentElement.querySelector('.stepper-val');
+        let val = parseInt(span.textContent) + delta;
+        if (val < 1) val = 1;
+        span.textContent = val;
+        window.actualizarTotales();
+    };
+
+    window.eliminarItem = function(btn) {
+        const item = btn.closest('.carrito-item');
+        item.style.opacity = '0';
+        setTimeout(() => {
+            item.remove();
+            window.actualizarTotales();
+        }, 200);
+    };
+
+    window.aplicarCupon = function() {
+        const code = document.getElementById('input-cupon').value.trim().toUpperCase();
+        if (code === 'CHAPA20' || code === 'DESCUENTO') {
+            alert('¡Cupón aplicado con éxito! Se descontará el 20% en tu orden final.');
+        } else if (code) {
+            alert('El código ingresado no es válido o ha expirado. Prueba con CHAPA20.');
+        }
+    };
+    </script>
+</body>
+
+</html>

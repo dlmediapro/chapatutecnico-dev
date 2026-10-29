@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & METADATOS
+         =================================================================== -->
+    <title>Centro de Mensajes y Chats con Técnicos | Chapa Tu Técnico</title>
+    <meta name="title" content="Centro de Mensajes y Chats con Técnicos | Chapa Tu Técnico">
+    <meta name="description"
+        content="Comunícate en tiempo real con los técnicos asignados a tus solicitudes de servicio para coordinar visitas, presupuestos y consultas directas en Lima.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/mensajes.html">
+
+    <!-- Favicon & Fuentes -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="views.css">
+</head>
+
+<body data-page="mensajes">
+
+    <!-- Header institucional compartido -->
+    <script src="layout.js" data-part="header"></script>
+
+    <main class="mensajes-main">
+        <div class="container">
+            <div class="mensajes-app-layout">
+                <!-- Columna Izquierda: Lista de Conversaciones -->
+                <aside class="mensajes-sidebar" aria-label="Lista de chats">
+                    <div class="sidebar-header-box">
+                        <div class="todos-chats-pill">
+                            <span class="chat-pill-icon" aria-hidden="true">💬</span>
+                            <span class="chat-pill-title">Todos los chats</span>
+                            <span class="chat-pill-badge">5</span>
+                        </div>
+                        <h2 class="sidebar-sub-title">Mis conversaciones</h2>
+                    </div>
+
+                    <div class="conversaciones-list" role="list">
+                        <!-- Chat 1: Maria González (Activo) -->
+                        <div class="chat-item chat-item-activo" role="listitem" tabindex="0">
+                            <div class="chat-avatar-wrap">
+                                <span class="avatar-circle">👤</span>
+                            </div>
+                            <div class="chat-item-content">
+                                <div class="chat-item-top">
+                                    <h3 class="chat-nombre">Maria González</h3>
+                                    <span class="chat-hora">10:42</span>
+                                </div>
+                                <div class="chat-item-bottom">
+                                    <p class="chat-snippet">Hola, ¿me pueden confirmar si tienen técnica de gasfitería...</p>
+                                    <span class="chat-unread-badge">2</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat 2: Carlos Rojas -->
+                        <div class="chat-item" role="listitem" tabindex="0">
+                            <div class="chat-avatar-wrap">
+                                <span class="avatar-circle">👤</span>
+                            </div>
+                            <div class="chat-item-content">
+                                <div class="chat-item-top">
+                                    <h3 class="chat-nombre">Carlos Rojas</h3>
+                                    <span class="chat-hora">09:15</span>
+                                </div>
+                                <div class="chat-item-bottom">
+                                    <p class="chat-snippet">Quisiera reprogramar mi cita del servicio.</p>
+                                    <span class="chat-unread-badge">1</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat 3: Ana Torres -->
+                        <div class="chat-item" role="listitem" tabindex="0">
+                            <div class="chat-avatar-wrap">
+                                <span class="avatar-circle">👤</span>
+                            </div>
+                            <div class="chat-item-content">
+                                <div class="chat-item-top">
+                                    <h3 class="chat-nombre">Ana Torres</h3>
+                                    <span class="chat-hora">Ayer</span>
+                                </div>
+                                <div class="chat-item-bottom">
+                                    <p class="chat-snippet">¿Cuánto cuesta el servicio de electricidad?</p>
+                                    <span class="chat-check-read">✓✓</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat 4: Sofia Mendazo -->
+                        <div class="chat-item" role="listitem" tabindex="0">
+                            <div class="chat-avatar-wrap">
+                                <span class="avatar-circle">👤</span>
+                            </div>
+                            <div class="chat-item-content">
+                                <div class="chat-item-top">
+                                    <h3 class="chat-nombre">Sofia Mendazo</h3>
+                                    <span class="chat-hora">Lun, 27 oct</span>
+                                </div>
+                                <div class="chat-item-bottom">
+                                    <p class="chat-snippet">Necesito ayuda con un problema en mi lavadora.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Columna Derecha: Hilo de Conversación Activo -->
+                <section class="mensajes-chat-pane" aria-label="Conversación actual">
+                    <!-- Cabecera del Chat -->
+                    <div class="chat-pane-header">
+                        <div class="chat-user-info">
+                            <span class="avatar-header-circle" aria-hidden="true">👤</span>
+                            <div>
+                                <h2 class="chat-header-nombre">Maria González</h2>
+                                <span class="chat-header-status">
+                                    <span class="status-dot-green"></span> En línea
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensajes del Chat -->
+                    <div class="chat-messages-container" id="chat-stream">
+                        <!-- Mensaje 1 (Técnico / Carlos) -->
+                        <div class="mensaje-bubble msg-incoming">
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                            <div class="msg-bubble-content">
+                                <p>Hola, buenos días. Soy Carlos, el técnico asignado a tu solicitud. Te escribo para coordinar la atención de tu servicio de gasfitería.</p>
+                                <span class="msg-time">10:42 <span class="msg-checks">✓✓</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje 2 (Maria) -->
+                        <div class="mensaje-bubble msg-outgoing">
+                            <div class="msg-bubble-content">
+                                <p>Hola, Carlos. Buenos días, gracias por comunicarte conmigo.</p>
+                                <span class="msg-time">10:44 <span class="msg-checks">✓</span></span>
+                            </div>
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                        </div>
+
+                        <!-- Mensaje 3 (Técnico / Carlos) -->
+                        <div class="mensaje-bubble msg-incoming">
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                            <div class="msg-bubble-content">
+                                <p>Con gusto. Ya revisé los detalles de tu solicitud sobre la fuga de agua debajo del lavadero de la cocina. Me encargaré de revisar el problema durante la visita.</p>
+                                <span class="msg-time">10:44 <span class="msg-checks">✓✓</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje 4 (Maria) -->
+                        <div class="mensaje-bubble msg-outgoing">
+                            <div class="msg-bubble-content">
+                                <p>Perfecto, ¿me podrías confirmar a qué hora estarías llegando?</p>
+                                <span class="msg-time">10:46 <span class="msg-checks">✓</span></span>
+                            </div>
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                        </div>
+
+                        <!-- Mensaje 5 (Técnico / Carlos) -->
+                        <div class="mensaje-bubble msg-incoming">
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                            <div class="msg-bubble-content">
+                                <p>Tengo programada tu atención para las 12:00 pm. Te enviaré un mensaje cuando esté cerca de tu domicilio.</p>
+                                <span class="msg-time">10:47 <span class="msg-checks">✓✓</span></span>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje 6 (Maria) -->
+                        <div class="mensaje-bubble msg-outgoing">
+                            <div class="msg-bubble-content">
+                                <p>Está bien, estaré pendiente del mensaje. Muchas gracias.</p>
+                                <span class="msg-time">10:47 <span class="msg-checks">✓</span></span>
+                            </div>
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                        </div>
+
+                        <!-- Mensaje 7 (Técnico / Carlos) -->
+                        <div class="mensaje-bubble msg-incoming">
+                            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+                            <div class="msg-bubble-content">
+                                <p>De nada. Nos vemos pronto. Si tienes alguna consulta antes de mi llegada, puedes escribirme por este chat.</p>
+                                <span class="msg-time">10:49 <span class="msg-checks">✓✓</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Bar inferior -->
+                    <form class="chat-input-bar" onsubmit="event.preventDefault(); window.enviarMensaje();">
+                        <input type="text" id="mensaje-input" class="chat-text-input" placeholder="Escribe un mensaje..."
+                            aria-label="Escribir mensaje" autocomplete="off">
+                        <button type="submit" class="btn-chat-send" aria-label="Enviar mensaje">
+                            ➤
+                        </button>
+                        <button type="button" class="btn-chat-mic" aria-label="Grabar audio de voz" onclick="alert('Grabación de audio iniciada...')">
+                            🎤
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
+
+    <script>
+    window.enviarMensaje = function() {
+        const input = document.getElementById('mensaje-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const stream = document.getElementById('chat-stream');
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        const bubble = document.createElement('div');
+        bubble.className = 'mensaje-bubble msg-outgoing';
+        bubble.innerHTML = `
+            <div class="msg-bubble-content">
+                <p>${text}</p>
+                <span class="msg-time">${timeStr} <span class="msg-checks">✓</span></span>
+            </div>
+            <span class="msg-avatar-mini" aria-hidden="true">👤</span>
+        `;
+        stream.appendChild(bubble);
+        input.value = '';
+        stream.scrollTop = stream.scrollHeight;
+    };
+    </script>
+</body>
+
+</html>
