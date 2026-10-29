@@ -1,0 +1,22 @@
+{
+  "name": "chapatutecnico",
+  "version": "1.0.0",
+  "description": "Plataforma de servicios técnicos para el hogar y empresas",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cela2508/chapatutecnico.git"
+  },
+  "keywords": [
+    "chapatutecnico",
+    "servicios-tecnicos",
+    "lima",
+    "peru"
+  ],
+  "author": "Cela2508",
+  "license": "ISC"
+}
