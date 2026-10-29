@@ -94,8 +94,34 @@
         <section class="cobertura-mapa-section" aria-label="Mapa interactivo de cobertura en Lima">
             <div class="container">
                 <div class="cobertura-mapa-wrapper">
+                    <!-- Selector de Modo de Mapa y Herramientas Rápidas -->
+                    <div class="mapa-header-controls">
+                        <div class="mapa-mode-switch-bar" role="tablist" aria-label="Modo de visualización del mapa">
+                            <button type="button" class="btn-mapa-mode is-active" id="btn-mode-gmaps" data-mode="gmaps">
+                                <span>🌐</span> Google Maps Real (En vivo)
+                            </button>
+                            <button type="button" class="btn-mapa-mode" id="btn-mode-vector" data-mode="vector">
+                                <span>🗺️</span> Vista Vectorial Figma
+                            </button>
+                        </div>
+                        <div class="mapa-quick-tools" id="gmaps-tools-bar">
+                            <button type="button" class="btn-gmap-tool" id="btn-gmap-reset" title="Restablecer centro de Lima Sur">
+                                <span>🎯</span> Centrar
+                            </button>
+                            <button type="button" class="btn-gmap-tool" id="btn-gmap-traffic" title="Ver tráfico de Lima en tiempo real">
+                                <span>🚦</span> Tráfico en vivo
+                            </button>
+                            <button type="button" class="btn-gmap-tool" id="btn-gmap-satellite" title="Alternar vista satelital">
+                                <span>🛰️</span> Satélite
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="mapa-interactivo-container" id="mapa-interactivo-container">
-                        <!-- Imagen Base Nocturna / Cartográfica de Lima -->
+                        <!-- 1. Lienzo de Google Maps Real (Activo por defecto) -->
+                        <div id="google-map-canvas" class="google-map-canvas" aria-label="Mapa interactivo de Google Maps de Lima"></div>
+
+                        <!-- 2. Imagen Base Nocturna / Cartográfica de Lima (Modo Vectorial Figma) -->
                         <img src="img/cobertura_mapa_base.png" 
                              alt="Mapa de distritos de Lima Metropolitana" 
                              class="mapa-img-base"
@@ -103,7 +129,7 @@
                              height="1126" 
                              loading="eager">
 
-                        <!-- Capa Vectorial Interactiva SVG (viewBox 1342x1126) -->
+                        <!-- 3. Capa Vectorial Interactiva SVG (viewBox 1342x1126) -->
                         <svg class="mapa-svg-overlay" viewBox="0 0 1342 1126" preserveAspectRatio="xMidYMid meet" aria-label="Capas vectoriales de distritos con cobertura">
                             <defs>
                                 <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -356,10 +382,17 @@
     <script src="layout.js" data-part="footer"></script>
     <script src="main.js"></script>
 
-    <!-- Lógica Interactiva del Mapa y Búsqueda -->
+    <!-- Google Maps JavaScript API Oficial -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBolcuTaFwFM4fh4y1xsxjoTQvUMD0Tbq8&libraries=geometry" async defer></script>
+
+    <!-- Lógica Unificada del Mapa (Google Maps Real + Modo Vectorial Figma) -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const poligonos = document.querySelectorAll('.mapa-distrito');
+        // Elementos DOM
+        const gmapCanvas = document.getElementById('google-map-canvas');
+        const imgBase = document.querySelector('.mapa-img-base');
+        const svgOverlay = document.querySelector('.mapa-svg-overlay');
+        const poligonosSVG = document.querySelectorAll('.mapa-distrito');
         const tooltip = document.getElementById('mapa-tooltip');
         const tooltipNombre = document.getElementById('tooltip-nombre');
         const tooltipTiempo = document.getElementById('tooltip-tiempo');
@@ -370,15 +403,386 @@
         const clearBtn = document.getElementById('btn-clear-search');
         const feedbackMsg = document.getElementById('search-feedback-msg');
 
-        let activeDistrito = null;
+        // Botones de Modo y Herramientas
+        const btnModeGmaps = document.getElementById('btn-mode-gmaps');
+        const btnModeVector = document.getElementById('btn-mode-vector');
+        const gmapsToolsBar = document.getElementById('gmaps-tools-bar');
+        const btnGmapReset = document.getElementById('btn-gmap-reset');
+        const btnGmapTraffic = document.getElementById('btn-gmap-traffic');
+        const btnGmapSatellite = document.getElementById('btn-gmap-satellite');
 
-        // Función para activar visualmente un distrito
-        function activarDistrito(el, clientX, clientY) {
-            if (!el) return;
-            if (activeDistrito && activeDistrito !== el) {
-                activeDistrito.classList.remove('is-active');
+        let currentMode = 'gmaps'; // 'gmaps' o 'vector'
+        let gmap = null;
+        let trafficLayer = null;
+        let isTrafficOn = false;
+        let isSatelliteOn = false;
+        let activeGMapPolygon = null;
+        let activeSVGDistrito = null;
+
+        // Base de Datos Geográfica de los 10 Distritos (Latitudes y Longitudes reales de Lima)
+        const distritosGeoData = [
+            {
+                key: 'miraflores',
+                nombre: 'Miraflores',
+                tiempo: '25 min',
+                desc: 'Servicio prioritario 24/7 en Larco, Pardo, Benavides y Malecón Armendáriz.',
+                nombresBusqueda: ['miraflores', '15074', 'larco', 'benavides'],
+                center: { lat: -12.1215, lng: -77.0295 },
+                coords: [
+                    { lat: -12.1065, lng: -77.0370 },
+                    { lat: -12.1105, lng: -77.0495 },
+                    { lat: -12.1250, lng: -77.0430 },
+                    { lat: -12.1385, lng: -77.0345 },
+                    { lat: -12.1410, lng: -77.0245 },
+                    { lat: -12.1340, lng: -77.0180 },
+                    { lat: -12.1170, lng: -77.0225 },
+                    { lat: -12.1120, lng: -77.0300 }
+                ]
+            },
+            {
+                key: 'surco',
+                nombre: 'Santiago de Surco',
+                tiempo: '20 min',
+                desc: 'Cobertura en Chacarilla, Monterrico, Benavides y Caminos del Inca.',
+                nombresBusqueda: ['surco', 'santiago de surco', '15038', '15039', 'chacarilla', 'monterrico'],
+                center: { lat: -12.1380, lng: -76.9820 },
+                coords: [
+                    { lat: -12.0830, lng: -76.9740 },
+                    { lat: -12.0960, lng: -76.9530 },
+                    { lat: -12.1190, lng: -76.9580 },
+                    { lat: -12.1460, lng: -76.9720 },
+                    { lat: -12.1640, lng: -76.9870 },
+                    { lat: -12.1580, lng: -77.0040 },
+                    { lat: -12.1370, lng: -77.0060 },
+                    { lat: -12.1180, lng: -76.9930 },
+                    { lat: -12.1050, lng: -76.9830 }
+                ]
+            },
+            {
+                key: 'san-borja',
+                nombre: 'San Borja',
+                tiempo: '15 min',
+                desc: 'Atención express en Javier Prado Este, Aviación y San Borja Sur.',
+                nombresBusqueda: ['san borja', '15036', '15037', 'aviacion'],
+                center: { lat: -12.0985, lng: -76.9995 },
+                coords: [
+                    { lat: -12.0845, lng: -77.0120 },
+                    { lat: -12.0835, lng: -76.9860 },
+                    { lat: -12.0980, lng: -76.9840 },
+                    { lat: -12.1120, lng: -76.9920 },
+                    { lat: -12.1140, lng: -77.0050 },
+                    { lat: -12.1020, lng: -77.0145 }
+                ]
+            },
+            {
+                key: 'surquillo',
+                nombre: 'Surquillo',
+                tiempo: '15 min',
+                desc: 'Atención express en Av. Angamos, Principal, Villarán y Tomás Marsano.',
+                nombresBusqueda: ['surquillo', '15048', 'angamos', 'villaran'],
+                center: { lat: -12.1125, lng: -77.0180 },
+                coords: [
+                    { lat: -12.1050, lng: -77.0230 },
+                    { lat: -12.1065, lng: -77.0130 },
+                    { lat: -12.1175, lng: -77.0120 },
+                    { lat: -12.1235, lng: -77.0220 },
+                    { lat: -12.1165, lng: -77.0250 }
+                ]
+            },
+            {
+                key: 'san-isidro',
+                nombre: 'San Isidro',
+                tiempo: '20 min',
+                desc: 'Servicio corporativo y residencial en Centro Financiero y El Olivar.',
+                nombresBusqueda: ['san isidro', '15073', '15046', 'olivar', 'corpac'],
+                center: { lat: -12.0970, lng: -77.0340 },
+                coords: [
+                    { lat: -12.0870, lng: -77.0510 },
+                    { lat: -12.0840, lng: -77.0320 },
+                    { lat: -12.0960, lng: -77.0195 },
+                    { lat: -12.1065, lng: -77.0370 },
+                    { lat: -12.1080, lng: -77.0520 }
+                ]
+            },
+            {
+                key: 'lince',
+                nombre: 'Lince',
+                tiempo: '20 min',
+                desc: 'Atención inmediata en Av. Arequipa, Arenales, Petit Thouars y Risso.',
+                nombresBusqueda: ['lince', '15079', 'arequipa', 'risso'],
+                center: { lat: -12.0835, lng: -77.0345 },
+                coords: [
+                    { lat: -12.0780, lng: -77.0410 },
+                    { lat: -12.0750, lng: -77.0310 },
+                    { lat: -12.0875, lng: -77.0280 },
+                    { lat: -12.0905, lng: -77.0390 }
+                ]
+            },
+            {
+                key: 'la-victoria',
+                nombre: 'La Victoria',
+                tiempo: '25 min',
+                desc: 'Cobertura en Av. Manco Cápac, Iquitos, México y alrededores.',
+                nombresBusqueda: ['la victoria', '15034', 'manco capac', 'iquitos'],
+                center: { lat: -12.0680, lng: -77.0235 },
+                coords: [
+                    { lat: -12.0540, lng: -77.0330 },
+                    { lat: -12.0560, lng: -77.0120 },
+                    { lat: -12.0790, lng: -77.0140 },
+                    { lat: -12.0820, lng: -77.0310 }
+                ]
+            },
+            {
+                key: 'jesus-maria',
+                nombre: 'Jesús María',
+                tiempo: '20 min',
+                desc: 'Cobertura en Av. Salaverry, San Felipe, Cuba y Plaza Cáceres.',
+                nombresBusqueda: ['jesus maria', 'jesús maría', '15072', 'salaverry', 'san felipe'],
+                center: { lat: -12.0760, lng: -77.0475 },
+                coords: [
+                    { lat: -12.0670, lng: -77.0560 },
+                    { lat: -12.0640, lng: -77.0430 },
+                    { lat: -12.0840, lng: -77.0410 },
+                    { lat: -12.0870, lng: -77.0530 }
+                ]
+            },
+            {
+                key: 'magdalena',
+                nombre: 'Magdalena del Mar',
+                tiempo: '25 min',
+                desc: 'Cobertura en Javier Prado Oeste, Av. Brasil y Malecón Castagnola.',
+                nombresBusqueda: ['magdalena', 'magdalena del mar', '15086', 'brasil'],
+                center: { lat: -12.0915, lng: -77.0695 },
+                coords: [
+                    { lat: -12.0840, lng: -77.0750 },
+                    { lat: -12.0815, lng: -77.0620 },
+                    { lat: -12.0970, lng: -77.0640 },
+                    { lat: -12.1000, lng: -77.0770 }
+                ]
+            },
+            {
+                key: 'chorrillos',
+                nombre: 'Chorrillos',
+                tiempo: '30 min',
+                desc: 'Atención en Av. Huaylas, Matellini, La Campiña y Cedros de Villa.',
+                nombresBusqueda: ['chorrillos', '15067', 'matellini', 'huaylas'],
+                center: { lat: -12.1700, lng: -77.0160 },
+                coords: [
+                    { lat: -12.1430, lng: -77.0260 },
+                    { lat: -12.1520, lng: -77.0010 },
+                    { lat: -12.1920, lng: -77.0030 },
+                    { lat: -12.2040, lng: -77.0280 },
+                    { lat: -12.1620, lng: -77.0330 }
+                ]
             }
-            activeDistrito = el;
+        ];
+
+        // Estilo Cartográfico Nocturno Figma para Google Maps
+        const darkGMapStyles = [
+            { elementType: 'geometry', stylers: [{ color: '#08233b' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#08233b' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#8ec3b9' }] },
+            { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#00ffff' }] },
+            { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#6ba599' }] },
+            { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#0b3252' }] },
+            { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#133e63' }] },
+            { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#08233b' }] },
+            { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#9ca5b3' }] },
+            { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#1b5282' }] },
+            { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#0f3556' }] },
+            { featureType: 'road.highway', elementType: 'labels.text.fill', stylers: [{ color: '#b0d5f5' }] },
+            { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#041424' }] },
+            { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#3d6c8e' }] }
+        ];
+
+        // Diccionario de polígonos instanciados en Google Maps
+        const gmapPolygons = {};
+
+        // Función para inicializar Google Maps
+        function initGoogleMap() {
+            if (typeof google === 'undefined' || !google.maps) {
+                // Si la API no cargó por algún motivo, fallback inmediato a modo vectorial
+                activarModo('vector');
+                return;
+            }
+
+            const initialCenter = { lat: -12.1120, lng: -77.0250 };
+            const isMobile = window.innerWidth <= 768;
+
+            gmap = new google.maps.Map(gmapCanvas, {
+                center: initialCenter,
+                zoom: isMobile ? 12 : 12.8,
+                styles: darkGMapStyles,
+                disableDefaultUI: true,
+                zoomControl: true,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                gestureHandling: 'greedy' // Desplazamiento fluido en móvil
+            });
+
+            trafficLayer = new google.maps.TrafficLayer();
+
+            // Dibujar cada distrito con su polígono vectorial
+            distritosGeoData.forEach(d => {
+                const poly = new google.maps.Polygon({
+                    paths: d.coords,
+                    strokeColor: '#00f0ff',
+                    strokeOpacity: 0.55,
+                    strokeWeight: 2.2,
+                    fillColor: '#00f0ff',
+                    fillOpacity: 0.10,
+                    map: gmap,
+                    zIndex: 10
+                });
+
+                // Eventos Hover en Desktop
+                poly.addListener('mouseover', function(e) {
+                    highlightGMapDistrict(d, poly, e);
+                });
+
+                poly.addListener('mouseout', function() {
+                    resetGMapDistrict(poly);
+                });
+
+                // Evento Clic / Tap
+                poly.addListener('click', function(e) {
+                    highlightGMapDistrict(d, poly, e);
+                    // Doble tap o clic para consultar servicios
+                    window.location.href = 'servicios.html?distrito=' + encodeURIComponent(d.key);
+                });
+
+                gmapPolygons[d.key] = poly;
+            });
+        }
+
+        function highlightGMapDistrict(dist, poly, mouseEvent) {
+            if (activeGMapPolygon && activeGMapPolygon !== poly) {
+                activeGMapPolygon.setOptions({
+                    fillColor: '#00f0ff',
+                    fillOpacity: 0.10,
+                    strokeColor: '#00f0ff',
+                    strokeWeight: 2.2
+                });
+            }
+
+            activeGMapPolygon = poly;
+            poly.setOptions({
+                fillColor: '#00ffff',
+                fillOpacity: 0.45,
+                strokeColor: '#00ffff',
+                strokeWeight: 4
+            });
+
+            // Mostrar tooltip dinámico
+            tooltipNombre.textContent = dist.nombre;
+            tooltipTiempo.textContent = dist.tiempo;
+            tooltipDesc.textContent = dist.desc;
+            tooltipLink.href = 'servicios.html?distrito=' + encodeURIComponent(dist.key);
+
+            if (mouseEvent && mouseEvent.domEvent) {
+                const rect = mapContainer.getBoundingClientRect();
+                const x = Math.max(140, Math.min(rect.width - 140, mouseEvent.domEvent.clientX - rect.left));
+                const y = Math.max(80, mouseEvent.domEvent.clientY - rect.top);
+
+                if (y < 160) {
+                    tooltip.classList.add('tooltip-below');
+                } else {
+                    tooltip.classList.remove('tooltip-below');
+                }
+
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = y + 'px';
+            } else {
+                // Centrado en el contenedor
+                tooltip.classList.remove('tooltip-below');
+                tooltip.style.left = '50%';
+                tooltip.style.top = '40%';
+            }
+
+            tooltip.classList.add('is-visible');
+        }
+
+        function resetGMapDistrict(poly) {
+            if (poly) {
+                poly.setOptions({
+                    fillColor: '#00f0ff',
+                    fillOpacity: 0.10,
+                    strokeColor: '#00f0ff',
+                    strokeWeight: 2.2
+                });
+            }
+            tooltip.classList.remove('is-visible');
+            activeGMapPolygon = null;
+        }
+
+        // Alternancia de Modos (Google Maps vs Vectorial Figma)
+        function activarModo(modo) {
+            currentMode = modo;
+            if (modo === 'gmaps') {
+                btnModeGmaps.classList.add('is-active');
+                btnModeVector.classList.remove('is-active');
+                gmapCanvas.style.display = 'block';
+                imgBase.style.display = 'none';
+                svgOverlay.style.display = 'none';
+                if (gmapsToolsBar) gmapsToolsBar.style.display = 'inline-flex';
+
+                if (!gmap && typeof google !== 'undefined' && google.maps) {
+                    initGoogleMap();
+                }
+            } else {
+                btnModeVector.classList.add('is-active');
+                btnModeGmaps.classList.remove('is-active');
+                gmapCanvas.style.display = 'none';
+                imgBase.style.display = 'block';
+                svgOverlay.style.display = 'block';
+                if (gmapsToolsBar) gmapsToolsBar.style.display = 'none';
+                tooltip.classList.remove('is-visible');
+            }
+        }
+
+        if (btnModeGmaps && btnModeVector) {
+            btnModeGmaps.addEventListener('click', () => activarModo('gmaps'));
+            btnModeVector.addEventListener('click', () => activarModo('vector'));
+        }
+
+        // Herramientas de Google Maps
+        if (btnGmapReset) {
+            btnGmapReset.addEventListener('click', () => {
+                if (gmap) {
+                    gmap.panTo({ lat: -12.1120, lng: -77.0250 });
+                    gmap.setZoom(window.innerWidth <= 768 ? 12 : 12.8);
+                }
+            });
+        }
+
+        if (btnGmapTraffic) {
+            btnGmapTraffic.addEventListener('click', () => {
+                if (!gmap) return;
+                isTrafficOn = !isTrafficOn;
+                trafficLayer.setMap(isTrafficOn ? gmap : null);
+                btnGmapTraffic.classList.toggle('is-active', isTrafficOn);
+            });
+        }
+
+        if (btnGmapSatellite) {
+            btnGmapSatellite.addEventListener('click', () => {
+                if (!gmap) return;
+                isSatelliteOn = !isSatelliteOn;
+                gmap.setMapTypeId(isSatelliteOn ? 'hybrid' : 'roadmap');
+                btnGmapSatellite.classList.toggle('is-active', isSatelliteOn);
+            });
+        }
+
+        // -------------------------------------------------------------
+        // Modo Vectorial Figma (Polígonos SVG originales)
+        // -------------------------------------------------------------
+        function activarDistritoSVG(el, clientX, clientY) {
+            if (!el) return;
+            if (activeSVGDistrito && activeSVGDistrito !== el) {
+                activeSVGDistrito.classList.remove('is-active');
+            }
+            activeSVGDistrito = el;
             el.classList.add('is-active');
 
             const nombre = el.dataset.nombre || 'Distrito';
@@ -391,16 +795,12 @@
             tooltipDesc.textContent = desc;
             tooltipLink.href = 'servicios.html?distrito=' + encodeURIComponent(key);
 
-            // Posicionamiento del tooltip
             if (clientX !== undefined && clientY !== undefined && mapContainer) {
                 const rect = mapContainer.getBoundingClientRect();
                 let x = clientX - rect.left;
                 let y = clientY - rect.top;
 
-                // Mantener tooltip dentro de los límites del contenedor
                 x = Math.max(140, Math.min(rect.width - 140, x));
-
-                // Si está muy cerca del borde superior, mostrar hacia abajo
                 if (y < 160) {
                     tooltip.classList.add('tooltip-below');
                 } else {
@@ -413,26 +813,25 @@
             tooltip.classList.add('is-visible');
         }
 
-        function desactivarDistrito() {
-            if (activeDistrito) {
-                activeDistrito.classList.remove('is-active');
-                activeDistrito = null;
+        function desactivarDistritoSVG() {
+            if (activeSVGDistrito) {
+                activeSVGDistrito.classList.remove('is-active');
+                activeSVGDistrito = null;
             }
             tooltip.classList.remove('is-visible');
         }
 
-        // Eventos de Mouse (Desktop)
-        poligonos.forEach(poly => {
+        poligonosSVG.forEach(poly => {
             poly.addEventListener('mouseenter', function(e) {
-                activarDistrito(this, e.clientX, e.clientY);
+                activarDistritoSVG(this, e.clientX, e.clientY);
             });
             poly.addEventListener('mousemove', function(e) {
-                activarDistrito(this, e.clientX, e.clientY);
+                activarDistritoSVG(this, e.clientX, e.clientY);
             });
             poly.addEventListener('mouseleave', function() {
-                desactivarDistrito();
+                desactivarDistritoSVG();
             });
-            poly.addEventListener('click', function(e) {
+            poly.addEventListener('click', function() {
                 const key = this.dataset.key;
                 if (key) {
                     window.location.href = 'servicios.html?distrito=' + encodeURIComponent(key);
@@ -440,65 +839,59 @@
             });
         });
 
-        // Eventos Táctiles (Mobile & Tablet con soporte multizona y elementsFromPoint)
         if (mapContainer) {
             function handleTouchMoveOrStart(e) {
+                if (currentMode !== 'vector') return;
                 if (e.touches.length === 1) {
                     const touch = e.touches[0];
                     const elements = document.elementsFromPoint ? document.elementsFromPoint(touch.clientX, touch.clientY) : [];
                     const target = elements.find(el => el.classList && el.classList.contains('mapa-distrito'));
                     if (target) {
-                        activarDistrito(target, touch.clientX, touch.clientY);
+                        activarDistritoSVG(target, touch.clientX, touch.clientY);
                     }
                 }
             }
-
             mapContainer.addEventListener('touchstart', handleTouchMoveOrStart, { passive: true });
             mapContainer.addEventListener('touchmove', handleTouchMoveOrStart, { passive: true });
         }
 
-        // Búsqueda interactiva de distritos
+        // -------------------------------------------------------------
+        // Búsqueda Inteligente Unificada (Funciona en ambos modos)
+        // -------------------------------------------------------------
         window.buscarDistrito = function() {
             const query = (inputDistrito.value || '').trim().toLowerCase();
             if (!query) return;
 
-            // Mapeo exhaustivo de distritos y códigos postales
-            const mapaDistritos = [
-                { key: 'miraflores', nombres: ['miraflores', '15074', 'larco'], id: 'dist-miraflores' },
-                { key: 'surco', nombres: ['surco', 'santiago de surco', '15038', '15039', 'chacarilla'], id: 'dist-surco' },
-                { key: 'san-borja', nombres: ['san borja', '15036', '15037'], id: 'dist-san-borja' },
-                { key: 'surquillo', nombres: ['surquillo', '15048'], id: 'dist-surquillo' },
-                { key: 'san-isidro', nombres: ['san isidro', '15073', '15046', 'olivar'], id: 'dist-san-isidro' },
-                { key: 'lince', nombres: ['lince', '15079'], id: 'dist-lince' },
-                { key: 'la-victoria', nombres: ['la victoria', '15034'], id: 'dist-la-victoria' },
-                { key: 'jesus-maria', nombres: ['jesus maria', 'jesús maría', '15072'], id: 'dist-jesus-maria' },
-                { key: 'magdalena', nombres: ['magdalena', 'magdalena del mar', '15086'], id: 'dist-magdalena' },
-                { key: 'chorrillos', nombres: ['chorrillos', '15067', 'matellini'], id: 'dist-chorrillos' }
-            ];
-
-            const encontrado = mapaDistritos.find(d => d.nombres.some(n => query.includes(n) || n.includes(query)));
+            const encontrado = distritosGeoData.find(d => 
+                d.nombresBusqueda.some(n => query.includes(n) || n.includes(query)) ||
+                d.nombre.toLowerCase().includes(query)
+            );
 
             if (encontrado) {
-                const el = document.getElementById(encontrado.id);
-                if (el) {
-                    // Scroll suave hacia el mapa
-                    mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                    // Simular coordenadas centrales del elemento
-                    const bbox = el.getBBox();
-                    const rect = mapContainer.getBoundingClientRect();
-                    const scaleX = rect.width / 1342;
-                    const scaleY = rect.height / 1126;
-                    const cx = rect.left + (bbox.x + bbox.width / 2) * scaleX;
-                    const cy = rect.top + (bbox.y + bbox.height / 2) * scaleY;
-
-                    activarDistrito(el, cx, cy);
-
-                    // Mensaje de éxito
-                    feedbackMsg.style.display = 'block';
-                    feedbackMsg.className = 'search-feedback-box feedback-success';
-                    feedbackMsg.innerHTML = '<strong>&check; ¡Cobertura confirmada en ' + el.dataset.nombre + '!</strong> Tiempo promedio de llegada estimado: ' + el.dataset.tiempo + '.';
+                if (currentMode === 'gmaps' && gmap && gmapPolygons[encontrado.key]) {
+                    // Acción en Google Maps
+                    gmap.panTo(encontrado.center);
+                    gmap.setZoom(13.8);
+                    highlightGMapDistrict(encontrado, gmapPolygons[encontrado.key], null);
+                } else {
+                    // Acción en Modo Vectorial
+                    const el = document.getElementById('dist-' + encontrado.key) || 
+                               document.querySelector('.mapa-distrito[data-key="' + encontrado.key + '"]');
+                    if (el) {
+                        const bbox = el.getBBox();
+                        const rect = mapContainer.getBoundingClientRect();
+                        const scaleX = rect.width / 1342;
+                        const scaleY = rect.height / 1126;
+                        activarDistritoSVG(el, rect.left + (bbox.x + bbox.width / 2) * scaleX, rect.top + (bbox.y + bbox.height / 2) * scaleY);
+                    }
                 }
+
+                // Mensaje de éxito
+                feedbackMsg.style.display = 'block';
+                feedbackMsg.className = 'search-feedback-box feedback-success';
+                feedbackMsg.innerHTML = '<strong>&check; ¡Cobertura confirmada en ' + encontrado.nombre + '!</strong> Tiempo promedio de llegada estimado: ' + encontrado.tiempo + '.';
             } else {
                 feedbackMsg.style.display = 'block';
                 feedbackMsg.className = 'search-feedback-box feedback-warning';
@@ -506,42 +899,68 @@
             }
         };
 
-        // Limpiar búsqueda
         if (inputDistrito && clearBtn) {
             inputDistrito.addEventListener('input', function() {
                 clearBtn.style.display = this.value.trim() ? 'block' : 'none';
                 if (!this.value.trim()) {
                     feedbackMsg.style.display = 'none';
-                    desactivarDistrito();
+                    if (currentMode === 'gmaps' && activeGMapPolygon) {
+                        resetGMapDistrict(activeGMapPolygon);
+                    } else {
+                        desactivarDistritoSVG();
+                    }
                 }
             });
             clearBtn.addEventListener('click', function() {
                 inputDistrito.value = '';
                 clearBtn.style.display = 'none';
                 feedbackMsg.style.display = 'none';
-                desactivarDistrito();
+                if (currentMode === 'gmaps' && activeGMapPolygon) {
+                    resetGMapDistrict(activeGMapPolygon);
+                } else {
+                    desactivarDistritoSVG();
+                }
                 inputDistrito.focus();
             });
         }
 
-        // Conectar botones "CONSULTAR" de las cards inferiores al mapa
+        // Conectar botones "CONSULTAR" de las cards inferiores
         document.querySelectorAll('.btn-distrito-consultar').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const targetKey = this.dataset.targetDistrito;
-                if (targetKey) {
-                    const el = document.querySelector('.mapa-distrito[data-key="' + targetKey + '"]');
-                    if (el) {
-                        e.preventDefault();
-                        mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        const bbox = el.getBBox();
-                        const rect = mapContainer.getBoundingClientRect();
-                        const scaleX = rect.width / 1342;
-                        const scaleY = rect.height / 1126;
-                        activarDistrito(el, rect.left + (bbox.x + bbox.width/2)*scaleX, rect.top + (bbox.y + bbox.height/2)*scaleY);
+                if (!targetKey) return;
+
+                e.preventDefault();
+                mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                const dist = distritosGeoData.find(d => d.key === targetKey);
+                if (dist) {
+                    if (currentMode === 'gmaps' && gmap && gmapPolygons[targetKey]) {
+                        gmap.panTo(dist.center);
+                        gmap.setZoom(13.8);
+                        highlightGMapDistrict(dist, gmapPolygons[targetKey], null);
+                    } else {
+                        const el = document.querySelector('.mapa-distrito[data-key="' + targetKey + '"]');
+                        if (el) {
+                            const bbox = el.getBBox();
+                            const rect = mapContainer.getBoundingClientRect();
+                            const scaleX = rect.width / 1342;
+                            const scaleY = rect.height / 1126;
+                            activarDistritoSVG(el, rect.left + (bbox.x + bbox.width / 2) * scaleX, rect.top + (bbox.y + bbox.height / 2) * scaleY);
+                        }
                     }
                 }
             });
         });
+
+        // Inicializar Google Maps tras cargar la ventana o la API
+        if (typeof google !== 'undefined' && google.maps) {
+            initGoogleMap();
+        } else {
+            window.addEventListener('load', () => {
+                setTimeout(initGoogleMap, 300);
+            });
+        }
     });
     </script>
 </body>
