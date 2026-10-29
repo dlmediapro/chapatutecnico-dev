@@ -1,4 +1,4 @@
-# Chapa Tu Técnico 🛠️⚡
+# Chapa Tu Técnico 🛠️⚡ (Versión de Desarrollo Activo)
 
 Plataforma digital para la contratación rápida, segura y transparente de técnicos verificados (electricidad, gasfitería, carpintería, cerrajería, línea blanca y más) en Lima Metropolitana, con soporte de emergencia 24/7.
 
@@ -6,9 +6,10 @@ Plataforma digital para la contratación rápida, segura y transparente de técn
 
 ## 🔗 Enlaces Clave
 
-- **🌐 Sitio en Vivo (GitHub Pages):** [https://cela2508.github.io/chapatutecnico/](https://cela2508.github.io/chapatutecnico/)
+- **📦 Repositorio Oficial Activo:** [https://github.com/dlmediapro/chapatutecnico-dev](https://github.com/dlmediapro/chapatutecnico-dev)
+- **🌐 Sitio en Vivo (GitHub Pages - V2):** [https://dlmediapro.github.io/chapatutecnico-dev/](https://dlmediapro.github.io/chapatutecnico-dev/)
 - **🎨 Diseño en Figma (Fuente de Diseño):** [CHAPA-TU-TECNICO en Figma](https://www.figma.com/design/qg00MT4SVQUrHSM8c58jFt/CHAPA-TU-TECNICO?m=auto&t=UcRT9b8HSTMI72Ax-1)
-- **📦 Repositorio en GitHub:** [https://github.com/Cela2508/chapatutecnico](https://github.com/Cela2508/chapatutecnico)
+- **🏛️ Repositorio Histórico V1 (Respaldo Congelado):** [https://github.com/Cela2508/chapatutecnico](https://github.com/Cela2508/chapatutecnico)
 - **📐 Arquitectura y Tokens:** Ver [`DESIGN.md`](DESIGN.md)
 
 ---
@@ -55,11 +56,9 @@ chapatutecnico/
 
 ## 🚀 Despliegue en GitHub Pages
 
-Cualquier cambio confirmado en la rama `main` se publica automáticamente en GitHub Pages en 1 a 2 minutos:
+Cualquier cambio confirmado en la rama `main` se sube al nuevo repositorio con:
 
 ```bash
-git checkout main
-git merge feature/integracion-diego   # Si estás integrando mejoras
 git push origin main
 ```
-
+Y se publica en GitHub Pages en 1 a 2 minutos.

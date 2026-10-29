@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cela2508/chapatutecnico.git"
+    "url": "git+https://github.com/dlmediapro/chapatutecnico-dev.git"
   },
   "keywords": [
     "chapatutecnico",
@@ -19,6 +19,6 @@
     "peru",
     "figma"
   ],
-  "author": "Cela2508",
+  "author": "dlmediapro",
   "license": "ISC"
 }
