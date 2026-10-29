@@ -38,8 +38,8 @@ Actualmente, las vistas del proyecto cuentan con prototipado dinámico en fronte
    - Generación dinámica de QR para cobros vía interoperabilidad Yape/Plin.
 
 3. **Geolocalización Dinámica y Mapas Interactivos ([`cobertura.html`](cobertura.html)):**
-   - *Estado actual (Frontend completado):* Se implementó el mapa vectorial interactivo SVG calibrado a 1342x1126 con brillo individual neón (`filter` glow turquesa/cian) para cada uno de los 10 distritos con cobertura, respuesta táctil en tiempo real para móviles/tablets mediante `elementsFromPoint`, tooltip flotante dinámico con tiempos de llegada, buscador por distrito o código postal con scroll suave y cards de servicios más pedidos.
-   - *Fase backend futura:* Integración con Google Maps JavaScript API / Mapbox GL JS para seguimiento en vivo por GPS del técnico en camino y cálculo de rutas en tiempo real.
+   - *Estado actual (Implementado al 100%):* Se integró la **Google Maps JavaScript API oficial** con la API Key del proyecto, configurada con estilo cartográfico oscuro (*Midnight Navy / Cyan*), polígonos de geocercas reales para los 10 distritos cubiertos, capa de tráfico en tiempo real, vista satelital y selector de doble modo para alternar con la vista vectorial original de Figma.
+   - *Fase backend futura:* Conexión con WebSockets para seguimiento GPS en movimiento de la moto/vehículo del técnico hacia el domicilio del cliente.
 
 4. **Persistencia del Carrito de Compras ([`carrito.html`](carrito.html)):**
    - Conexión de los eventos de adición, incremento y eliminación con almacenamiento en base de datos o sincronización con sesión de usuario.
