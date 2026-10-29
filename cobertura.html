@@ -18,22 +18,30 @@
     <title>Cobertura en Lima Metropolitana | Chapa Tu Técnico</title>
     <meta name="title" content="Cobertura en Lima Metropolitana | Chapa Tu Técnico">
     <meta name="description"
-        content="Consulta nuestra zona de cobertura en Lima Metropolitana. Técnicos de gasfitería, electricidad y cerrajería con atención rápida de 15 a 25 minutos en Miraflores, Surco, San Borja, Surquillo y más distritos.">
+        content="Consulta el mapa de distritos con cobertura técnica 24/7 en Lima: Miraflores, Surco, San Borja, San Isidro, Surquillo, Chorrillos, Jesús María, Lince y más. Tiempo promedio de 15 a 30 min.">
     <meta name="keywords"
-        content="cobertura chapa tu tecnico, tecnicos lima surco miraflores san borja, electricista a domicilio lima, gasfitero tiempo de llegada lima">
+        content="cobertura tecnicos lima, mapa servicio tecnico lima, electricista miraflores, gasfitero surco, tecnicos san borja, cobertura lima sur">
     <meta name="author" content="Chapa Tu Técnico">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/cobertura.html">
 
-    <!-- Open Graph -->
+    <!-- ===================================================================
+         3. SEO LOCAL & GEOLOCALIZACIÓN
+         =================================================================== -->
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima Metropolitana">
+    <meta name="geo.position" content="-12.046374;-77.042793">
+    <meta name="ICBM" content="-12.046374, -77.042793">
+
+    <!-- Open Graph & Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
     <meta property="og:site_name" content="Chapa Tu Técnico">
     <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/cobertura.html">
-    <meta property="og:title" content="Cobertura en Lima Metropolitana | Chapa Tu Técnico">
+    <meta property="og:title" content="Mapa Interactivo de Cobertura | Chapa Tu Técnico Lima">
     <meta property="og:description"
-        content="Atención 24/7 y cobertura instantánea en Lima Metropolitana con tiempos de respuesta de 15 a 25 minutos.">
-    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/cobertura_mapa_lima.png">
+        content="Inspecciona en tiempo real nuestros distritos de cobertura instantánea en Lima Metropolitana con atención 24/7.">
+    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/cobertura_mapa_base.png">
 
     <!-- Favicon & Fuentes -->
     <link rel="icon" type="image/png" href="img/logo.png">
@@ -51,95 +59,241 @@
     <!-- Header institucional compartido -->
     <script src="layout.js" data-part="header"></script>
 
-    <main class="cobertura-main">
-        <!-- 1. ENCABEZADO Y BUSCADOR DE COBERTURA -->
+    <main class="cobertura-main" id="main-content">
+        <!-- 1. ENCABEZADO Y BUSCADOR DE COBERTURA (Figma: y: 53 a 195) -->
         <section class="cobertura-hero-section">
             <div class="container">
                 <div class="cobertura-header-box">
                     <h1 class="cobertura-title">COBERTURA</h1>
                     <p class="cobertura-subtitle">Buscar cobertura por distrito o código postal</p>
-                    <form class="cobertura-search-bar" onsubmit="event.preventDefault(); window.buscarDistrito();">
+
+                    <!-- Formulario de Búsqueda -->
+                    <form class="cobertura-search-bar" id="cobertura-search-form" onsubmit="event.preventDefault(); window.buscarDistrito();">
                         <div class="cobertura-input-wrap">
-                            <span class="cobertura-search-icon" aria-hidden="true">🔍</span>
+                            <span class="cobertura-search-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </span>
                             <input type="text" id="input-distrito" class="cobertura-input"
                                 placeholder="Escribe tu distrito (ej. Miraflores, Surco, San Borja, etc.)"
-                                aria-label="Distrito o código postal">
+                                aria-label="Distrito o código postal" autocomplete="off">
+                            <button type="button" id="btn-clear-search" class="btn-clear-search" aria-label="Limpiar búsqueda" style="display:none;">&times;</button>
                         </div>
-                        <button type="submit" class="btn-verificar-cobertura">VERIFICAR COBERTURA</button>
+                        <button type="submit" id="btn-verificar-submit" class="btn-verificar-cobertura">VERIFICAR COBERTURA</button>
                     </form>
+
+                    <!-- Mensaje Dinámico de Retroalimentación -->
+                    <div id="search-feedback-msg" class="search-feedback-box" style="display:none;" role="status" aria-live="polite"></div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. MAPA DE COBERTURA LIMA SUR / METROPOLITANA -->
-        <section class="cobertura-mapa-section" aria-label="Mapa de cobertura en Lima">
+        <!-- 2. MAPA DE COBERTURA LIMA SUR / METROPOLITANA INTERACTIVO (Figma: Rectangle 135) -->
+        <section class="cobertura-mapa-section" aria-label="Mapa interactivo de cobertura en Lima">
             <div class="container">
-                <div class="cobertura-mapa-card">
-                    <img src="img/cobertura_mapa_lima.png" 
-                         alt="Mapa de distritos con cobertura en Lima Metropolitana: Miraflores, Surco, San Borja, San Isidro, Surquillo y Chorrillos" 
-                         class="cobertura-mapa-img"
-                         width="1342" 
-                         height="1126" 
-                         loading="eager">
-                    <div class="cobertura-mapa-overlay">
-                        <div class="mapa-badge">
-                            <span class="dot-instant"></span>
-                            <span>Zona de cobertura instantánea</span>
+                <div class="cobertura-mapa-wrapper">
+                    <div class="mapa-interactivo-container" id="mapa-interactivo-container">
+                        <!-- Imagen Base Nocturna / Cartográfica de Lima -->
+                        <img src="img/cobertura_mapa_base.png" 
+                             alt="Mapa de distritos de Lima Metropolitana" 
+                             class="mapa-img-base"
+                             width="1342" 
+                             height="1126" 
+                             loading="eager">
+
+                        <!-- Capa Vectorial Interactiva SVG (viewBox 1342x1126) -->
+                        <svg class="mapa-svg-overlay" viewBox="0 0 1342 1126" preserveAspectRatio="xMidYMid meet" aria-label="Capas vectoriales de distritos con cobertura">
+                            <defs>
+                                <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="8" result="blur1" />
+                                    <feGaussianBlur stdDeviation="16" result="blur2" />
+                                    <feMerge>
+                                        <feMergeNode in="blur2" />
+                                        <feMergeNode in="blur1" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+
+                            <!-- 1. Magdalena del Mar -->
+                            <polygon id="dist-magdalena" class="mapa-distrito"
+                                data-key="magdalena"
+                                data-nombre="Magdalena del Mar"
+                                data-tiempo="25 min"
+                                data-desc="Cobertura en Javier Prado Oeste, Av. Brasil y Malecón Castagnola."
+                                points="105,168 280,180 245,395 115,385 88,335 92,275">
+                                <title>Magdalena del Mar - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 2. Lince -->
+                            <polygon id="dist-lince" class="mapa-distrito"
+                                data-key="lince"
+                                data-nombre="Lince"
+                                data-tiempo="20 min"
+                                data-desc="Atención inmediata en Av. Arequipa, Arenales, Petit Thouars y Risso."
+                                points="280,180 425,235 460,395 345,415 245,395">
+                                <title>Lince - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 3. La Victoria -->
+                            <polygon id="dist-la-victoria" class="mapa-distrito"
+                                data-key="la-victoria"
+                                data-nombre="La Victoria"
+                                data-tiempo="25 min"
+                                data-desc="Cobertura en Av. Manco Cápac, Iquitos, México y alrededores."
+                                points="545,120 780,105 855,260 730,345 655,365">
+                                <title>La Victoria - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 4. Jesús María -->
+                            <polygon id="dist-jesus-maria" class="mapa-distrito"
+                                data-key="jesus-maria"
+                                data-nombre="Jesús María"
+                                data-tiempo="20 min"
+                                data-desc="Cobertura en Av. Salaverry, San Felipe, Cuba y Plaza Cáceres."
+                                points="425,235 545,120 655,365 730,345 810,480 490,550 460,395">
+                                <title>Jesús María - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 5. San Borja -->
+                            <polygon id="dist-san-borja" class="mapa-distrito"
+                                data-key="san-borja"
+                                data-nombre="San Borja"
+                                data-tiempo="15 min"
+                                data-desc="Atención express en Javier Prado Este, Aviación y San Borja Sur."
+                                points="730,345 855,260 915,345 1025,400 810,500 730,430">
+                                <title>San Borja - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 6. San Isidro -->
+                            <polygon id="dist-san-isidro" class="mapa-distrito"
+                                data-key="san-isidro"
+                                data-nombre="San Isidro"
+                                data-tiempo="20 min"
+                                data-desc="Servicio corporativo y residencial en Centro Financiero y El Olivar."
+                                points="245,395 460,395 490,550 460,645 475,750 345,870 130,700 210,550">
+                                <title>San Isidro - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 7. Surquillo -->
+                            <polygon id="dist-surquillo" class="mapa-distrito"
+                                data-key="surquillo"
+                                data-nombre="Surquillo"
+                                data-tiempo="15 min"
+                                data-desc="Atención express en Av. Angamos, Principal, Villarán y Tomás Marsano."
+                                points="490,550 665,540 700,770 625,845 595,785 535,830 495,795 460,645">
+                                <title>Surquillo - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 8. Miraflores -->
+                            <polygon id="dist-miraflores" class="mapa-distrito"
+                                data-key="miraflores"
+                                data-nombre="Miraflores"
+                                data-tiempo="25 min"
+                                data-desc="Servicio prioritario 24/7 en Larco, Pardo, Benavides y Malecón Armendáriz."
+                                points="130,700 345,870 495,795 535,830 460,1035 400,930 300,860">
+                                <title>Miraflores - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 9. Santiago de Surco -->
+                            <polygon id="dist-surco" class="mapa-distrito"
+                                data-key="surco"
+                                data-nombre="Santiago de Surco"
+                                data-tiempo="20 min"
+                                data-desc="Cobertura en Chacarilla, Monterrico, Benavides y Caminos del Inca."
+                                points="810,500 1025,400 1270,360 1240,580 1190,700 995,780 880,910 700,770 730,430">
+                                <title>Santiago de Surco - Cobertura Activa</title>
+                            </polygon>
+
+                            <!-- 10. Chorrillos -->
+                            <polygon id="dist-chorrillos" class="mapa-distrito"
+                                data-key="chorrillos"
+                                data-nombre="Chorrillos"
+                                data-tiempo="30 min"
+                                data-desc="Atención en Av. Huaylas, Matellini, La Campiña y Cedros de Villa."
+                                points="460,1035 535,830 595,785 625,845 700,770 880,910 820,985 875,1110 710,1115 690,960">
+                                <title>Chorrillos - Cobertura Activa</title>
+                            </polygon>
+                        </svg>
+
+                        <!-- Tooltip Dinámico Flotante -->
+                        <div id="mapa-tooltip" class="mapa-tooltip" aria-hidden="true">
+                            <div class="tooltip-header">
+                                <span class="tooltip-badge">COBERTURA INMEDIATA</span>
+                                <span id="tooltip-tiempo" class="tooltip-tiempo">20 min</span>
+                            </div>
+                            <h4 id="tooltip-nombre" class="tooltip-title">Distrito</h4>
+                            <p id="tooltip-desc" class="tooltip-desc">Técnicos verificados listos para emergencias 24/7.</p>
+                            <a id="tooltip-link" href="servicios.html" class="tooltip-btn">Consultar Servicios &rarr;</a>
+                        </div>
+
+                        <!-- Leyenda Flotante (Figma: Rectangle 172) -->
+                        <div class="mapa-leyenda-card">
+                            <div class="leyenda-item">
+                                <span class="dot-instant"></span>
+                                <span>Zona de cobertura instantánea</span>
+                            </div>
+                            <div class="leyenda-hint">
+                                <span class="hint-icon">&#128070;</span>
+                                <span>Toca o pasa el cursor para inspeccionar distritos</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. DISTRITOS DESTACADOS -->
+        <!-- 3. DISTRITOS DESTACADOS (Figma: y: 1482 a 1995) -->
         <section class="cobertura-destacados-section" aria-labelledby="destacados-title">
             <div class="container">
                 <h2 id="destacados-title" class="cobertura-section-title">Cobertura por distrito destacado</h2>
                 <div class="cobertura-distritos-grid">
                     <!-- Miraflores -->
-                    <article class="distrito-card">
+                    <article class="distrito-card" data-distrito="miraflores">
                         <div class="distrito-map-thumb">
                             <img src="img/distrito_miraflores.png" alt="Mapa Miraflores" width="204" height="210" loading="lazy">
                         </div>
                         <h3 class="distrito-name">Miraflores</h3>
                         <p class="distrito-tiempo">Tiempo promedio de <strong>25 min.</strong></p>
-                        <a href="servicios.html?distrito=miraflores" class="btn-distrito-consultar">CONSULTAR</a>
+                        <a href="servicios.html?distrito=miraflores" class="btn-distrito-consultar" data-target-distrito="miraflores">CONSULTAR</a>
                     </article>
 
                     <!-- Surco -->
-                    <article class="distrito-card">
+                    <article class="distrito-card" data-distrito="surco">
                         <div class="distrito-map-thumb">
                             <img src="img/distrito_surco.png" alt="Mapa Santiago de Surco" width="217" height="221" loading="lazy">
                         </div>
                         <h3 class="distrito-name">Surco</h3>
                         <p class="distrito-tiempo">Tiempo promedio de <strong>20 min.</strong></p>
-                        <a href="servicios.html?distrito=surco" class="btn-distrito-consultar">CONSULTAR</a>
+                        <a href="servicios.html?distrito=surco" class="btn-distrito-consultar" data-target-distrito="surco">CONSULTAR</a>
                     </article>
 
                     <!-- San Borja -->
-                    <article class="distrito-card">
+                    <article class="distrito-card" data-distrito="san-borja">
                         <div class="distrito-map-thumb">
                             <img src="img/distrito_san_borja.png" alt="Mapa San Borja" width="270" height="183" loading="lazy">
                         </div>
                         <h3 class="distrito-name">San Borja</h3>
                         <p class="distrito-tiempo">Tiempo promedio de <strong>15 min.</strong></p>
-                        <a href="servicios.html?distrito=san-borja" class="btn-distrito-consultar">CONSULTAR</a>
+                        <a href="servicios.html?distrito=san-borja" class="btn-distrito-consultar" data-target-distrito="san-borja">CONSULTAR</a>
                     </article>
 
                     <!-- Surquillo -->
-                    <article class="distrito-card">
+                    <article class="distrito-card" data-distrito="surquillo">
                         <div class="distrito-map-thumb">
                             <img src="img/distrito_surquillo.png" alt="Mapa Surquillo" width="276" height="223" loading="lazy">
                         </div>
                         <h3 class="distrito-name">Surquillo</h3>
                         <p class="distrito-tiempo">Tiempo promedio de <strong>15 min.</strong></p>
-                        <a href="servicios.html?distrito=surquillo" class="btn-distrito-consultar">CONSULTAR</a>
+                        <a href="servicios.html?distrito=surquillo" class="btn-distrito-consultar" data-target-distrito="surquillo">CONSULTAR</a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- 4. SERVICIOS MÁS PEDIDOS EN LOS DISTRITOS DE LIMA -->
+        <!-- 4. SERVICIOS MÁS PEDIDOS EN LOS DISTRITOS DE LIMA (Figma: y: 2032 a 2750) -->
         <section class="cobertura-pedidos-section" aria-labelledby="pedidos-title">
             <div class="container">
                 <h2 id="pedidos-title" class="pedidos-section-title">
@@ -202,18 +356,193 @@
     <script src="layout.js" data-part="footer"></script>
     <script src="main.js"></script>
 
+    <!-- Lógica Interactiva del Mapa y Búsqueda -->
     <script>
-    function buscarDistrito() {
-        const query = document.getElementById('input-distrito').value.trim().toLowerCase();
-        if (!query) return;
-        const distritos = ['miraflores', 'surco', 'san borja', 'surquillo', 'lince', 'la victoria', 'chorrillos', 'jesús maría', 'san isidro', 'lima'];
-        const encontrado = distritos.find(d => d.includes(query));
-        if (encontrado) {
-            alert('¡Excelente noticia! Contamos con cobertura activa e inmediata en ' + encontrado.toUpperCase() + ' con técnicos listos para atenderte.');
-        } else {
-            alert('Estamos expandiendo nuestras rutas. Por favor comunícate a nuestro WhatsApp 24/7 (998 204 667) para confirmar disponibilidad en tu zona.');
+    document.addEventListener('DOMContentLoaded', function() {
+        const poligonos = document.querySelectorAll('.mapa-distrito');
+        const tooltip = document.getElementById('mapa-tooltip');
+        const tooltipNombre = document.getElementById('tooltip-nombre');
+        const tooltipTiempo = document.getElementById('tooltip-tiempo');
+        const tooltipDesc = document.getElementById('tooltip-desc');
+        const tooltipLink = document.getElementById('tooltip-link');
+        const mapContainer = document.getElementById('mapa-interactivo-container');
+        const inputDistrito = document.getElementById('input-distrito');
+        const clearBtn = document.getElementById('btn-clear-search');
+        const feedbackMsg = document.getElementById('search-feedback-msg');
+
+        let activeDistrito = null;
+
+        // Función para activar visualmente un distrito
+        function activarDistrito(el, clientX, clientY) {
+            if (!el) return;
+            if (activeDistrito && activeDistrito !== el) {
+                activeDistrito.classList.remove('is-active');
+            }
+            activeDistrito = el;
+            el.classList.add('is-active');
+
+            const nombre = el.dataset.nombre || 'Distrito';
+            const tiempo = el.dataset.tiempo || '20 min';
+            const desc = el.dataset.desc || 'Técnicos verificados con cobertura 24/7.';
+            const key = el.dataset.key || '';
+
+            tooltipNombre.textContent = nombre;
+            tooltipTiempo.textContent = tiempo;
+            tooltipDesc.textContent = desc;
+            tooltipLink.href = 'servicios.html?distrito=' + encodeURIComponent(key);
+
+            // Posicionamiento del tooltip
+            if (clientX !== undefined && clientY !== undefined && mapContainer) {
+                const rect = mapContainer.getBoundingClientRect();
+                let x = clientX - rect.left;
+                let y = clientY - rect.top;
+
+                // Mantener tooltip dentro de los límites del contenedor
+                x = Math.max(140, Math.min(rect.width - 140, x));
+
+                // Si está muy cerca del borde superior, mostrar hacia abajo
+                if (y < 160) {
+                    tooltip.classList.add('tooltip-below');
+                } else {
+                    tooltip.classList.remove('tooltip-below');
+                }
+
+                tooltip.style.left = x + 'px';
+                tooltip.style.top = y + 'px';
+            }
+            tooltip.classList.add('is-visible');
         }
-    }
+
+        function desactivarDistrito() {
+            if (activeDistrito) {
+                activeDistrito.classList.remove('is-active');
+                activeDistrito = null;
+            }
+            tooltip.classList.remove('is-visible');
+        }
+
+        // Eventos de Mouse (Desktop)
+        poligonos.forEach(poly => {
+            poly.addEventListener('mouseenter', function(e) {
+                activarDistrito(this, e.clientX, e.clientY);
+            });
+            poly.addEventListener('mousemove', function(e) {
+                activarDistrito(this, e.clientX, e.clientY);
+            });
+            poly.addEventListener('mouseleave', function() {
+                desactivarDistrito();
+            });
+            poly.addEventListener('click', function(e) {
+                const key = this.dataset.key;
+                if (key) {
+                    window.location.href = 'servicios.html?distrito=' + encodeURIComponent(key);
+                }
+            });
+        });
+
+        // Eventos Táctiles (Mobile & Tablet con soporte multizona y elementsFromPoint)
+        if (mapContainer) {
+            function handleTouchMoveOrStart(e) {
+                if (e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    const elements = document.elementsFromPoint ? document.elementsFromPoint(touch.clientX, touch.clientY) : [];
+                    const target = elements.find(el => el.classList && el.classList.contains('mapa-distrito'));
+                    if (target) {
+                        activarDistrito(target, touch.clientX, touch.clientY);
+                    }
+                }
+            }
+
+            mapContainer.addEventListener('touchstart', handleTouchMoveOrStart, { passive: true });
+            mapContainer.addEventListener('touchmove', handleTouchMoveOrStart, { passive: true });
+        }
+
+        // Búsqueda interactiva de distritos
+        window.buscarDistrito = function() {
+            const query = (inputDistrito.value || '').trim().toLowerCase();
+            if (!query) return;
+
+            // Mapeo exhaustivo de distritos y códigos postales
+            const mapaDistritos = [
+                { key: 'miraflores', nombres: ['miraflores', '15074', 'larco'], id: 'dist-miraflores' },
+                { key: 'surco', nombres: ['surco', 'santiago de surco', '15038', '15039', 'chacarilla'], id: 'dist-surco' },
+                { key: 'san-borja', nombres: ['san borja', '15036', '15037'], id: 'dist-san-borja' },
+                { key: 'surquillo', nombres: ['surquillo', '15048'], id: 'dist-surquillo' },
+                { key: 'san-isidro', nombres: ['san isidro', '15073', '15046', 'olivar'], id: 'dist-san-isidro' },
+                { key: 'lince', nombres: ['lince', '15079'], id: 'dist-lince' },
+                { key: 'la-victoria', nombres: ['la victoria', '15034'], id: 'dist-la-victoria' },
+                { key: 'jesus-maria', nombres: ['jesus maria', 'jesús maría', '15072'], id: 'dist-jesus-maria' },
+                { key: 'magdalena', nombres: ['magdalena', 'magdalena del mar', '15086'], id: 'dist-magdalena' },
+                { key: 'chorrillos', nombres: ['chorrillos', '15067', 'matellini'], id: 'dist-chorrillos' }
+            ];
+
+            const encontrado = mapaDistritos.find(d => d.nombres.some(n => query.includes(n) || n.includes(query)));
+
+            if (encontrado) {
+                const el = document.getElementById(encontrado.id);
+                if (el) {
+                    // Scroll suave hacia el mapa
+                    mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Simular coordenadas centrales del elemento
+                    const bbox = el.getBBox();
+                    const rect = mapContainer.getBoundingClientRect();
+                    const scaleX = rect.width / 1342;
+                    const scaleY = rect.height / 1126;
+                    const cx = rect.left + (bbox.x + bbox.width / 2) * scaleX;
+                    const cy = rect.top + (bbox.y + bbox.height / 2) * scaleY;
+
+                    activarDistrito(el, cx, cy);
+
+                    // Mensaje de éxito
+                    feedbackMsg.style.display = 'block';
+                    feedbackMsg.className = 'search-feedback-box feedback-success';
+                    feedbackMsg.innerHTML = '<strong>&check; ¡Cobertura confirmada en ' + el.dataset.nombre + '!</strong> Tiempo promedio de llegada estimado: ' + el.dataset.tiempo + '.';
+                }
+            } else {
+                feedbackMsg.style.display = 'block';
+                feedbackMsg.className = 'search-feedback-box feedback-warning';
+                feedbackMsg.innerHTML = 'Actualmente no tenemos base inmediata en esa zona, pero estamos expandiéndonos. Contáctanos por WhatsApp al <a href="https://wa.me/51998204667" target="_blank" rel="noopener noreferrer">998 204 667</a> para emergencias.';
+            }
+        };
+
+        // Limpiar búsqueda
+        if (inputDistrito && clearBtn) {
+            inputDistrito.addEventListener('input', function() {
+                clearBtn.style.display = this.value.trim() ? 'block' : 'none';
+                if (!this.value.trim()) {
+                    feedbackMsg.style.display = 'none';
+                    desactivarDistrito();
+                }
+            });
+            clearBtn.addEventListener('click', function() {
+                inputDistrito.value = '';
+                clearBtn.style.display = 'none';
+                feedbackMsg.style.display = 'none';
+                desactivarDistrito();
+                inputDistrito.focus();
+            });
+        }
+
+        // Conectar botones "CONSULTAR" de las cards inferiores al mapa
+        document.querySelectorAll('.btn-distrito-consultar').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const targetKey = this.dataset.targetDistrito;
+                if (targetKey) {
+                    const el = document.querySelector('.mapa-distrito[data-key="' + targetKey + '"]');
+                    if (el) {
+                        e.preventDefault();
+                        mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const bbox = el.getBBox();
+                        const rect = mapContainer.getBoundingClientRect();
+                        const scaleX = rect.width / 1342;
+                        const scaleY = rect.height / 1126;
+                        activarDistrito(el, rect.left + (bbox.x + bbox.width/2)*scaleX, rect.top + (bbox.y + bbox.height/2)*scaleY);
+                    }
+                }
+            });
+        });
+    });
     </script>
 </body>
 

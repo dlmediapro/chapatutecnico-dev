@@ -38,8 +38,8 @@ Actualmente, las vistas del proyecto cuentan con prototipado dinámico en fronte
    - Generación dinámica de QR para cobros vía interoperabilidad Yape/Plin.
 
 3. **Geolocalización Dinámica y Mapas Interactivos ([`cobertura.html`](cobertura.html)):**
-   - Sustituir la imagen estática del mapa por el mapa interactivo de Google Maps JavaScript API o Mapbox GL JS.
-   - Polígonos de geocercas reales para delimitación automática de zonas tarifarias por distrito.
+   - *Estado actual (Frontend completado):* Se implementó el mapa vectorial interactivo SVG calibrado a 1342x1126 con brillo individual neón (`filter` glow turquesa/cian) para cada uno de los 10 distritos con cobertura, respuesta táctil en tiempo real para móviles/tablets mediante `elementsFromPoint`, tooltip flotante dinámico con tiempos de llegada, buscador por distrito o código postal con scroll suave y cards de servicios más pedidos.
+   - *Fase backend futura:* Integración con Google Maps JavaScript API / Mapbox GL JS para seguimiento en vivo por GPS del técnico en camino y cálculo de rutas en tiempo real.
 
 4. **Persistencia del Carrito de Compras ([`carrito.html`](carrito.html)):**
    - Conexión de los eventos de adición, incremento y eliminación con almacenamiento en base de datos o sincronización con sesión de usuario.
@@ -66,3 +66,4 @@ Actualmente, las vistas del proyecto cuentan con prototipado dinámico en fronte
 ---
 
 *Documento generado el 29 de octubre de 2026 como parte del cierre de integración del repositorio oficial [dlmediapro/chapatutecnico-dev](https://github.com/dlmediapro/chapatutecnico-dev).*
+

@@ -57,192 +57,666 @@
 /* --- 2. VISTA COBERTURA (cobertura.html) --- */
 .cobertura-main {
   background-color: #08233b;
-  padding: 48px 0 80px;
-  min-height: calc(100vh - 400px);
+  padding: 40px 0 90px;
+  min-height: calc(100vh - 360px);
+  color: #ffffff;
 }
 
-.cobertura-hero {
+/* 2.1 Hero y Buscador */
+.cobertura-hero-section {
+  padding-bottom: 30px;
+}
+
+.cobertura-header-box {
   text-align: center;
   max-width: 820px;
-  margin: 0 auto 40px;
-}
-
-.cobertura-badge {
-  display: inline-block;
-  padding: 6px 16px;
-  background-color: rgba(232, 83, 43, 0.15);
-  border: 1px solid rgba(232, 83, 43, 0.4);
-  color: #ff7250;
-  font-family: 'Raleway', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 999px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
+  margin: 0 auto;
 }
 
 .cobertura-title {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(32px, 4.5vw, 48px);
+  font-size: clamp(34px, 5vw, 52px);
   font-weight: 700;
   color: #ffffff;
   line-height: 1.15;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
 }
 
 .cobertura-subtitle {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #cfd8dc;
+  font-size: clamp(15px, 2vw, 19px);
+  line-height: 1.5;
+  color: #e2e8f0;
+  font-weight: 400;
   margin-bottom: 28px;
 }
 
-.cobertura-search-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 8px 16px;
+.cobertura-search-bar {
   display: flex;
   align-items: center;
-  max-width: 640px;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 50px;
+  padding: 8px 10px 8px 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  max-width: 660px;
   margin: 0 auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.cobertura-search-card input {
+.cobertura-search-bar:focus-within {
+  border-color: #5fd068;
+  box-shadow: 0 14px 40px rgba(95, 208, 104, 0.25);
+}
+
+.cobertura-input-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+}
+
+.cobertura-search-icon {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cobertura-input {
   flex: 1;
   border: none;
   outline: none;
   font-family: 'Raleway', sans-serif;
   font-size: 15px;
-  color: #1e293b;
-  padding: 10px 12px;
+  color: #08233b;
+  font-weight: 500;
+  background: transparent;
+  width: 100%;
 }
 
-.cobertura-search-card button {
-  background: #e8532b;
-  color: #ffffff;
+.cobertura-input::placeholder {
+  color: #94a3b8;
+}
+
+.btn-clear-search {
+  background: none;
   border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-clear-search:hover {
+  color: #08233b;
+  background: #e2e8f0;
+}
+
+.btn-verificar-cobertura {
+  background: #5fd068;
+  color: #08233b;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 24px;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 14px;
-  padding: 10px 20px;
-  border-radius: 10px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(95, 208, 104, 0.35);
 }
 
-.cobertura-search-card button:hover {
-  background-color: #d03d17;
+.btn-verificar-cobertura:hover {
+  background-color: #4ec257;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(95, 208, 104, 0.45);
 }
 
-.cobertura-map-card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 24px;
-  margin: 40px auto;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-  text-align: center;
+.btn-verificar-cobertura:active {
+  transform: translateY(0);
 }
 
-.cobertura-map-img {
-  width: 100%;
-  max-height: 480px;
-  object-fit: contain;
+/* Feedback Box */
+.search-feedback-box {
+  margin-top: 18px;
+  padding: 12px 20px;
   border-radius: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  animation: fadeInDown 0.3s ease;
 }
 
-.distritos-grid {
+.search-feedback-box.feedback-success {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid #22c55e;
+  color: #86efac;
+}
+
+.search-feedback-box.feedback-warning {
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid #eab308;
+  color: #fde047;
+}
+
+.search-feedback-box.feedback-error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2.2 Mapa Interactivo de Lima */
+.cobertura-mapa-section {
+  padding: 20px 0 50px;
+}
+
+.cobertura-mapa-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.mapa-interactivo-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1342 / 1126;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #08233b;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.mapa-img-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  display: block;
+}
+
+.mapa-svg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: block;
+  z-index: 5;
+}
+
+.mapa-distrito {
+  fill: rgba(0, 240, 255, 0.05);
+  stroke: rgba(0, 245, 255, 0.35);
+  stroke-width: 2.2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  cursor: pointer;
+  pointer-events: all;
+  transition: fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease, filter 0.25s ease;
+}
+
+.mapa-distrito:hover,
+.mapa-distrito.is-active {
+  fill: rgba(0, 245, 255, 0.42);
+  stroke: #00ffff;
+  stroke-width: 4px;
+  filter: drop-shadow(0 0 16px #00ffff) drop-shadow(0 0 32px rgba(0, 255, 255, 0.6));
+}
+
+/* Tooltip Dinámico Flotante */
+.mapa-tooltip {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -100%) scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  background: rgba(8, 35, 59, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid #00f0ff;
+  border-radius: 14px;
+  padding: 14px 18px;
+  min-width: 230px;
+  max-width: 280px;
+  box-shadow: 0 12px 30px rgba(0, 240, 255, 0.25), 0 10px 24px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.mapa-tooltip.is-visible {
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 12px)) scale(1);
+}
+
+.mapa-tooltip.is-visible.tooltip-below {
+  transform: translate(-50%, 18px) scale(1);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tooltip-badge {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #00ffff;
+  text-transform: uppercase;
+}
+
+.tooltip-tiempo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #5fd068;
+  background: rgba(95, 208, 104, 0.15);
+  border: 1px solid rgba(95, 208, 104, 0.35);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.tooltip-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.tooltip-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #cbd5e1;
+  margin: 0 0 10px;
+}
+
+.tooltip-btn {
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #00ffff;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.tooltip-btn:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* Leyenda Flotante (Figma: Rectangle 172) */
+.mapa-leyenda-card {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(8, 35, 59, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #e2e8f0;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.dot-instant {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00ffff;
+  box-shadow: 0 0 8px #00ffff;
+  flex-shrink: 0;
+}
+
+.leyenda-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.hint-icon {
+  font-size: 13px;
+}
+
+/* 2.3 Cobertura por Distrito Destacado */
+.cobertura-destacados-section {
+  padding: 40px 0 60px;
+}
+
+.cobertura-section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cobertura-distritos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 36px;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .distrito-card {
   background: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  padding: 24px 20px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  align-items: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .distrito-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
 }
 
-.distrito-thumb-wrap {
-  position: relative;
+.distrito-map-thumb {
   width: 100%;
-  aspect-ratio: 16/10;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
   overflow: hidden;
 }
 
-.distrito-thumb-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.distrito-map-thumb img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s ease;
 }
 
-.distrito-tag-eta {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(8, 35, 59, 0.9);
-  color: #5fd068;
-  font-family: 'Raleway', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 6px;
-  backdrop-filter: blur(4px);
+.distrito-card:hover .distrito-map-thumb img {
+  transform: scale(1.05);
 }
 
-.distrito-body {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.distrito-nombre {
+.distrito-name {
   font-family: 'Oswald', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 700;
   color: #08233b;
-  margin-bottom: 6px;
+  margin: 0 0 6px;
 }
 
-.distrito-cobertura-info {
+.distrito-tiempo {
   font-family: 'Raleway', sans-serif;
   font-size: 13px;
-  color: #64748b;
-  line-height: 1.4;
-  margin-bottom: 12px;
+  color: #475569;
+  margin: 0 0 18px;
   flex: 1;
 }
 
-.btn-distrito-solicitar {
+.distrito-tiempo strong {
+  color: #08233b;
+  font-weight: 700;
+}
+
+.btn-distrito-consultar {
   display: block;
-  text-align: center;
-  background-color: #08233b;
+  width: 100%;
+  padding: 10px 16px;
+  background: #08233b;
   color: #ffffff;
-  padding: 10px;
   border-radius: 8px;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 13px;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.btn-distrito-solicitar:hover {
-  background-color: #e8532b;
+.btn-distrito-consultar:hover {
+  background: #e8532b;
+  transform: translateY(-1px);
+}
+
+/* 2.4 Servicios Más Pedidos */
+.cobertura-pedidos-section {
+  padding: 40px 0 80px;
+  background: #061b2e;
+}
+
+.pedidos-section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(22px, 3.2vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 40px;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.pedidos-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.pedido-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pedido-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+}
+
+.pedido-mascota-wrap {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascota-img {
+  width: 100%;
+  height: auto;
+  max-height: 230px;
+  object-fit: contain;
+}
+
+.pedido-info {
+  flex: 1;
+}
+
+.pedido-categoria-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #08233b;
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.pedido-sub-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e8532b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0 0 12px;
+}
+
+.pedido-distritos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pedido-distritos-list li {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.btn-pedido-solicitar {
+  display: inline-block;
+  padding: 10px 22px;
+  background: #e8532b;
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(232, 83, 43, 0.3);
+}
+
+.btn-pedido-solicitar:hover {
+  background: #cf3d16;
+  transform: translateY(-1px);
+}
+
+/* Responsividad para Vista Cobertura */
+@media (max-width: 1024px) {
+  .cobertura-distritos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 720px;
+  }
+
+  .pedidos-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cobertura-search-bar {
+    flex-direction: column;
+    padding: 12px 16px;
+    border-radius: 20px;
+  }
+  
+  .cobertura-input-wrap {
+    width: 100%;
+  }
+  
+  .btn-verificar-cobertura {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .pedido-card {
+    padding: 24px;
+  }
+
+  .mapa-leyenda-card {
+    bottom: 8px;
+    right: 8px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cobertura-distritos-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
+  .pedido-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pedido-distritos-list {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .cobertura-main {
+    padding: 24px 0 60px;
+  }
+  
+  .mapa-tooltip {
+    min-width: 200px;
+    padding: 10px 12px;
+  }
 }
 
 /* --- 3. VISTA TÉCNICOS (tecnicos.html) --- */
