@@ -50,7 +50,6 @@ if (carousel) {
   // Movimiento automático tipo pasarela suave
   setInterval(() => {
     if (isHovered || down) return;
-    // Si la pantalla es ancha y el contenido ya cabe centrado, no necesita desplazamiento
     if (carousel.scrollWidth <= carousel.clientWidth + 10) return;
 
     const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 20 : 280;
@@ -60,4 +59,67 @@ if (carousel) {
       carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
     }
   }, 3200);
+}
+
+// Carrusel interactivo de Ofertas del Mes
+const offersWrap = document.querySelector('.offers');
+if (offersWrap) {
+  const prevBtn = offersWrap.querySelector('.carousel-arrow.prev');
+  const nextBtn = offersWrap.querySelector('.carousel-arrow.next');
+  const titleEl = offersWrap.querySelector('.offers-text h3');
+  const percentEl = offersWrap.querySelector('.discount .percent');
+  const descEl = offersWrap.querySelector('.discount .desc');
+
+  const offers = [
+    {
+      title: 'CELEBREMOS<br>JUNTOS LA<br>SEMANA DEL<br>GASFITERO',
+      percent: '50 %',
+      desc: 'DE DESCUENTO'
+    },
+    {
+      title: 'INSTALACIONES<br>ELÉCTRICAS<br>SEGURAS Y CON<br>GARANTÍA',
+      percent: '30 %',
+      desc: 'EN DIAGNÓSTICO'
+    },
+    {
+      title: 'REPARACIÓN DE<br>LÍNEA BLANCA<br>Y REFRIGERACIÓN<br>AL INSTANTE',
+      percent: '25 %',
+      desc: 'DE DESCUENTO'
+    }
+  ];
+
+  let currentOffer = 0;
+
+  function renderOffer(index) {
+    if (!titleEl || !percentEl || !descEl) return;
+    titleEl.style.opacity = '0';
+    percentEl.style.opacity = '0';
+    descEl.style.opacity = '0';
+
+    setTimeout(() => {
+      titleEl.innerHTML = offers[index].title;
+      percentEl.textContent = offers[index].percent;
+      descEl.textContent = offers[index].desc;
+      titleEl.style.transition = 'opacity 0.25s ease-out';
+      percentEl.style.transition = 'opacity 0.25s ease-out';
+      descEl.style.transition = 'opacity 0.25s ease-out';
+      titleEl.style.opacity = '1';
+      percentEl.style.opacity = '1';
+      descEl.style.opacity = '1';
+    }, 150);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      currentOffer = (currentOffer + 1) % offers.length;
+      renderOffer(currentOffer);
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentOffer = (currentOffer - 1 + offers.length) % offers.length;
+      renderOffer(currentOffer);
+    });
+  }
 }

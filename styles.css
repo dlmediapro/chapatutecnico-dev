@@ -9,6 +9,8 @@
   --orange: #e8532b;
   --red: #e5482e;
   --green: #5fd068;
+  --yellow: #fdb913;
+  --min-touch-target: 44px;
   --line: rgba(255, 255, 255, .22);
   --font-title: 'Oswald', sans-serif;
   --font-body: 'Raleway', sans-serif;
@@ -60,7 +62,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 
 /* ---------- Portada (hero) ---------- */
 .hero-wrap { display: flex; flex-direction: column; min-height: clamp(620px, 62vw, 820px);
-  background: linear-gradient(to bottom, rgba(0,0,0,.85) 0, rgba(0,0,0,.35) 90px, rgba(0,0,0,0) 220px), url('img/banner_principal.png') center / cover no-repeat; }
+  background: linear-gradient(to bottom, rgba(0,0,0,.85) 0, rgba(0,0,0,.35) 90px, rgba(0,0,0,0) 220px), url('img/banner_principal.webp') center / cover no-repeat; }
 .hero-wrap .topbar, .hero-wrap .header { background: none; border: 0; }
 
 .hero-banner { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(24px, 5vw, 70px); }
@@ -150,7 +152,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 
 /* ---------- Ofertas ---------- */
 .offers { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: clamp(280px, 32vw, 400px); padding: 40px max(24px, 5vw);
-  background: linear-gradient(90deg, rgba(8,35,59,.55), rgba(8,35,59,0) 60%), url('img/banneroferta.png') center / cover no-repeat; }
+  background: linear-gradient(90deg, rgba(8,35,59,.55), rgba(8,35,59,0) 60%), url('img/banneroferta.webp') center / cover no-repeat; }
 .offers-text { flex: 1; max-width: 520px; }
 .offers-text h3 { font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.2; margin-bottom: 18px; }
 .discount { display: flex; flex-direction: column; color: var(--red); margin-bottom: 20px; line-height: 1.05; }
@@ -158,7 +160,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .discount .desc { font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.5rem); }
 .btn-solicitar-oferta { display: inline-block; background: var(--white); color: var(--bg); font-weight: 800; padding: 7px 34px; border-radius: 999px; transition: background .2s; }
 .btn-solicitar-oferta:hover { background: var(--green); }
-.carousel-arrow { background: none; border: 0; font-size: 30px; opacity: .85; padding: 8px; transition: opacity .2s; }
+.carousel-arrow { background: none; border: 0; font-size: 30px; opacity: .85; padding: 8px; min-width: var(--min-touch-target); min-height: var(--min-touch-target); display: inline-flex; align-items: center; justify-content: center; transition: opacity .2s; cursor: pointer; }
 .carousel-arrow:hover { opacity: 1; }
 
 /* ---------- Servicios (rejilla de tarjetas) ---------- */
@@ -349,7 +351,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   }
   .benefits-container { grid-template-columns: 1fr; }
   .offers { padding-inline: 12px; }
-  .carousel-arrow { font-size: 22px; padding: 4px; }
+  .carousel-arrow { font-size: 22px; min-width: var(--min-touch-target); min-height: var(--min-touch-target); }
   .left-crosses, .right-crosses { display: none; }
   .support-channels-grid { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }

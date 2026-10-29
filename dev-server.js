@@ -100,7 +100,8 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, () => {
   console.log(`\n======================================================`);
   console.log(`  🚀 Chapa Tu Técnico - Servidor Local`);
-  console.log(`  🌐 URL: http://localhost:${PORT}`);
+  console.log(`  🌐 Web Local: http://localhost:${PORT}`);
+  console.log(`  🎨 Diseño Figma: https://www.figma.com/design/qg00MT4SVQUrHSM8c58jFt/CHAPA-TU-TECNICO`);
   console.log(`  🔄 Live Reload: Activado`);
   console.log(`  📁 Raíz: ${ROOT}`);
   console.log(`======================================================\n`);

@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "dev": "node dev-server.js",
-    "start": "node dev-server.js"
+    "start": "node dev-server.js",
+    "figma": "node -e \"const { exec } = require('child_process'); exec('start https://www.figma.com/design/qg00MT4SVQUrHSM8c58jFt/CHAPA-TU-TECNICO?m=auto&t=UcRT9b8HSTMI72Ax-1');\""
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,8 @@
     "chapatutecnico",
     "servicios-tecnicos",
     "lima",
-    "peru"
+    "peru",
+    "figma"
   ],
   "author": "Cela2508",
   "license": "ISC"
