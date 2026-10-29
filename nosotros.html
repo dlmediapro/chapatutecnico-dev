@@ -13,58 +13,38 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- ===================================================================
-         2. SEO ON-PAGE BÁSICO
+         2. SEO ON-PAGE & METADATOS
          =================================================================== -->
-    <title>Sobre Nosotros | Chapa Tu Técnico - Servicios Técnicos Confiables en Lima</title>
-    <meta name="title" content="Sobre Nosotros | Chapa Tu Técnico - Servicios Técnicos Confiables en Lima">
+    <title>Nosotros | Chapa Tu Técnico</title>
+    <meta name="title" content="Nosotros | Chapa Tu Técnico">
     <meta name="description"
-        content="Conoce la historia, misión y valores de Chapa Tu Técnico. Conectamos hogares y empresas de Lima con especialistas verificados, precios transparentes y garantía asegurada.">
+        content="Chapa tu Técnico nació a pedido de nuestros clientes. Conectamos tu hogar con técnicos especialistas de confianza para resolver cada necesidad en Lima Metropolitana.">
     <meta name="keywords"
-        content="sobre nosotros chapa tu tecnico, empresa reparaciones lima, tecnicos confiables lima, mision vision chapa tu tecnico, garantia de servicios lima">
+        content="nosotros chapa tu tecnico, tecnicos lima, servicio a domicilio lima, gasfiteria, electricidad, carpinteria, linea blanca">
     <meta name="author" content="Chapa Tu Técnico">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/nosotros.html">
 
-    <!-- ===================================================================
-         3. SEO LOCAL & GEOLOCALIZACIÓN (LIMA METROPOLITANA, PERÚ)
-         =================================================================== -->
-    <meta name="geo.region" content="PE-LIM">
-    <meta name="geo.placename" content="Lima">
-    <meta name="geo.position" content="-12.046374;-77.042793">
-    <meta name="ICBM" content="-12.046374, -77.042793">
+    <!-- Preload LCP Candidate -->
+    <link rel="preload" as="image" href="img/nosotros_pareja_tecnicos.png" fetchpriority="high">
 
     <!-- ===================================================================
-         4. OPEN GRAPH / REDES SOCIALES
+         3. OPEN GRAPH / REDES SOCIALES
          =================================================================== -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
     <meta property="og:site_name" content="Chapa Tu Técnico">
     <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/nosotros.html">
-    <meta property="og:title" content="Sobre Nosotros | Chapa Tu Técnico">
+    <meta property="og:title" content="Nosotros | Chapa Tu Técnico">
     <meta property="og:description"
-        content="Transformamos el servicio técnico a domicilio en Lima a través de confianza, verificación rigurosa y precios justos sin sorpresas.">
-    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png">
-    <meta property="og:image:alt" content="Equipo y técnicos de Chapa Tu Técnico">
+        content="Conectamos tu hogar con técnicos de confianza. Gasfitería, electricidad, pintura, carpintería y línea blanca en Lima.">
+    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/nosotros_pareja_tecnicos.png">
 
     <!-- ===================================================================
-         5. TWITTER / X CARDS
-         =================================================================== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://dlmediapro.github.io/chapatutecnico-dev/nosotros.html">
-    <meta name="twitter:title" content="Sobre Nosotros | Chapa Tu Técnico">
-    <meta name="twitter:description"
-        content="Conoce a la empresa peruana que formaliza y asegura las reparaciones del hogar con técnicos verificados 24/7.">
-    <meta name="twitter:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png">
-
-    <!-- ===================================================================
-         6. FAVICON & ICONOS
+         4. FAVICON & FUENTES
          =================================================================== -->
     <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="apple-touch-icon" href="img/logo.png">
-
-    <!-- ===================================================================
-         7. FUENTES & ESTILOS (FIGMA TYPOGRAPHY)
-         =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -73,7 +53,7 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- ===================================================================
-         8. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - ABOUTPAGE)
+         5. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - ABOUTPAGE)
          =================================================================== -->
     <script type="application/ld+json">
     {
@@ -84,14 +64,7 @@
         "name": "Chapa Tu Técnico",
         "url": "https://dlmediapro.github.io/chapatutecnico-dev/",
         "logo": "https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png",
-        "description": "Plataforma digital para la contratación de técnicos calificados y verificados en Lima Metropolitana.",
-        "areaServed": "Lima Metropolitana, Perú",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+51936372861",
-          "contactType": "Customer Support",
-          "availableLanguage": "Spanish"
-        }
+        "description": "Conectamos tu hogar con técnicos especialistas de confianza en Lima Metropolitana."
       }
     }
     </script>
@@ -102,172 +75,156 @@
     <!-- Header institucional compartido -->
     <script src="layout.js" data-part="header"></script>
 
-    <main class="nosotros-page">
-        <!-- 1. ENCABEZADO INSTITUCIONAL LIMPIO (Sin Hero Banner invasivo) -->
-        <section class="nosotros-intro-section">
-            <div class="container">
-                <nav class="breadcrumb" aria-label="Miga de pan">
-                    <a href="index.html">Inicio</a>
-                    <span aria-hidden="true">/</span>
-                    <span aria-current="page">Nosotros</span>
-                </nav>
-                <div class="nosotros-head-wrap">
-                    <p class="section-tag">NUESTRA IDENTIDAD</p>
-                    <h1 class="nosotros-main-title">CONECTAMOS LA CONFIANZA CON LA SOLUCIÓN TÉCNICA</h1>
-                    <p class="nosotros-lead">
-                        Somos la primera plataforma integral en Lima diseñada para erradicar la incertidumbre en los servicios del hogar, garantizando técnicos minuciosamente identificados, cotizaciones honestas y respaldo garantizado.
-                    </p>
+    <main class="nosotros-main">
+        <!-- ===============================================================
+             SECCIÓN 1: NOSOTROS (INTRO + FOTO PAREJA + DATOS CLAVE)
+             Figma Node: S1 · Nosotros (id: 1235:262)
+             =============================================================== -->
+        <section class="nosotros-sec nosotros-s1" aria-labelledby="nosotros-title">
+            <div class="nosotros-container">
+                <div class="nosotros-intro-grid">
+                    <div class="nosotros-foto-wrap">
+                        <img src="img/nosotros_pareja_tecnicos.png" 
+                             alt="Técnicos especialistas sonrientes de Chapa Tu Técnico" 
+                             class="nosotros-foto-rounded" 
+                             width="662" 
+                             height="441" 
+                             fetchpriority="high">
+                    </div>
+                    <div class="nosotros-intro-text">
+                        <h1 id="nosotros-title" class="nosotros-title">Nosotros</h1>
+                        <p class="nosotros-lead">Conectamos tu hogar con técnicos de confianza.</p>
+                        <p class="nosotros-parrafo">
+                            Chapa tu Técnico nació a pedido de nuestros clientes. Durante cuatro años les ofrecimos limpieza a domicilio, y muchos nos pedían también gasfitería, pintura o electricidad. Hoy seleccionamos a un grupo de técnicos especialistas para resolver cada necesidad de tu hogar en Lima.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3 Tarjetas de Datos Clave -->
+                <div class="nosotros-datos-grid" role="region" aria-label="Cifras clave">
+                    <article class="nosotros-dato-card">
+                        <span class="dato-valor">4 años</span>
+                        <span class="dato-etiqueta">de servicio a domicilio</span>
+                    </article>
+                    <article class="nosotros-dato-card">
+                        <span class="dato-valor">24/7</span>
+                        <span class="dato-etiqueta">atención y soporte</span>
+                    </article>
+                    <article class="nosotros-dato-card">
+                        <span class="dato-valor">Lima Metropolitana</span>
+                        <span class="dato-etiqueta">cobertura del servicio</span>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- 2. HISTORIA & PROPUESTA DE VALOR -->
-        <section class="nosotros-story-section">
-            <div class="container nosotros-story-grid">
-                <div class="nosotros-story-text">
-                    <h2 class="story-subtitle">¿CÓMO NACE CHAPA TU TÉCNICO?</h2>
-                    <p>
-                        En Lima Metropolitana, encontrar un especialista cuando surge una fuga de agua, un cortocircuito o una cerradura rota suele convertirse en una experiencia frustrante: falta de antecedentes verificados, precios arbitrarios y ausencia de garantía ante un mal trabajo.
-                    </p>
-                    <p>
-                        <strong>Chapa Tu Técnico</strong> nació de la necesidad de transformar ese escenario. Creamos un puente seguro y digital que conecta directamente a familias y empresas con los mejores especialistas técnicos independientes de la ciudad, formalizando el oficio y devolviéndole la tranquilidad a los hogares peruanos.
-                    </p>
-                    <div class="story-highlights">
-                        <div class="story-pill">
-                            <img src="img/check.svg" alt="" aria-hidden="true" width="20" height="20">
-                            <span>100% Antecedentes verificados</span>
+        <!-- ===============================================================
+             SECCIÓN 2: MISIÓN Y VISIÓN
+             Figma Node: S2 · Misión y Visión (id: 1235:277)
+             =============================================================== -->
+        <section class="nosotros-sec nosotros-s2" aria-label="Misión y Visión">
+            <div class="nosotros-container">
+                <div class="nosotros-mv-grid">
+                    <article class="nosotros-mv-card">
+                        <div class="nosotros-mv-icon">
+                            <img src="img/icon_mision.svg" alt="" width="36" height="36" aria-hidden="true">
                         </div>
-                        <div class="story-pill">
-                            <img src="img/dollar.svg" alt="" aria-hidden="true" width="20" height="20">
-                            <span>Presupuestos sin sorpresas</span>
+                        <h2 class="nosotros-card-title">Misión</h2>
+                        <p class="nosotros-card-text">
+                            Conectar a los hogares de Lima con técnicos especialistas y responsables, para resolver cada necesidad con rapidez, seguridad y buen trato.
+                        </p>
+                    </article>
+
+                    <article class="nosotros-mv-card">
+                        <div class="nosotros-mv-icon">
+                            <img src="img/icon_vision.svg" alt="" width="36" height="36" aria-hidden="true">
                         </div>
-                        <div class="story-pill">
-                            <img src="img/escudo.svg" alt="" aria-hidden="true" width="20" height="20">
-                            <span>Garantía en cada labor</span>
+                        <h2 class="nosotros-card-title">Visión</h2>
+                        <p class="nosotros-card-text">
+                            Ser la plataforma de servicios para el hogar en la que las familias peruanas confían primero, reconocida por la calidad de sus técnicos y la tranquilidad que ofrece a cada cliente.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===============================================================
+             SECCIÓN 3: POR QUÉ ELEGIRNOS
+             Figma Node: S3 · Por qué elegirnos (id: 1235:291)
+             =============================================================== -->
+        <section class="nosotros-sec nosotros-s3" aria-labelledby="por-que-title">
+            <div class="nosotros-container nosotros-porque-grid">
+                <div class="nosotros-foto-wrap">
+                    <img src="img/nosotros_equipo_tecnicos.png" 
+                         alt="Equipo completo de profesionales técnicos: gasfitero, electricista, cerrajero, carpintero, pintor y línea blanca" 
+                         class="nosotros-foto-rounded" 
+                         width="776" 
+                         height="503" 
+                         loading="lazy">
+                </div>
+                <div class="nosotros-porque-text">
+                    <h2 id="por-que-title" class="nosotros-section-h2">Por qué elegirnos</h2>
+                    <p class="nosotros-porque-intro">
+                        Encontrar a un buen especialista no debería ser complicado. Por eso te conectamos con verdaderos profesionales.
+                    </p>
+
+                    <div class="nosotros-pilares">
+                        <div class="nosotros-pilar-item">
+                            <div class="pilar-icon">
+                                <img src="img/icon_seguridad.svg" alt="" width="36" height="36" aria-hidden="true">
+                            </div>
+                            <div class="pilar-info">
+                                <h3 class="pilar-title">Seguridad</h3>
+                                <p class="pilar-desc">Técnicos seleccionados para trabajar en tu hogar con responsabilidad.</p>
+                            </div>
+                        </div>
+
+                        <div class="nosotros-pilar-item">
+                            <div class="pilar-icon">
+                                <img src="img/icon_confianza.svg" alt="" width="36" height="36" aria-hidden="true">
+                            </div>
+                            <div class="pilar-info">
+                                <h3 class="pilar-title">Confianza</h3>
+                                <p class="pilar-desc">Atención 24/7 y un equipo de soporte siempre disponible.</p>
+                            </div>
+                        </div>
+
+                        <div class="nosotros-pilar-item">
+                            <div class="pilar-icon">
+                                <img src="img/icon_calidad.svg" alt="" width="36" height="36" aria-hidden="true">
+                            </div>
+                            <div class="pilar-info">
+                                <h3 class="pilar-title">Calidad</h3>
+                                <p class="pilar-desc">Especialistas en gasfitería, electricidad, carpintería y línea blanca.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="nosotros-story-media">
-                    <picture>
-                        <source srcset="img/familia.webp" type="image/webp">
-                        <img src="img/familia.png" alt="Equipo de profesionales y clientes de Chapa Tu Técnico" width="560" height="370" loading="lazy" class="story-img">
-                    </picture>
-                    <div class="media-badge">
-                        <span class="badge-num">100%</span>
-                        <span class="badge-text">Compromiso Peruano</span>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <!-- 3. MISIÓN Y VISIÓN -->
-        <section class="nosotros-mv-section">
-            <div class="container nosotros-mv-grid">
-                <article class="mv-card mision-card">
-                    <div class="mv-icon-tag">MISIÓN</div>
-                    <h3 class="mv-title">Nuestra Misión</h3>
-                    <p>
-                        Brindar tranquilidad y seguridad a las familias y empresas de Lima conectándolas con técnicos calificados e identificados, garantizando un servicio ético, puntual y con precios transparentes que dignifiquen el trabajo técnico peruano.
-                    </p>
-                </article>
-                <article class="mv-card vision-card">
-                    <div class="mv-icon-tag vision-tag">VISIÓN</div>
-                    <h3 class="mv-title">Nuestra Visión</h3>
-                    <p>
-                        Consolidarnos como la plataforma digital líder de servicios para el hogar y mantenimiento en el Perú, reconocida por nuestros estándares de confianza, innovación tecnológica y formalización del ecosistema técnico independiente.
-                    </p>
-                </article>
+        <!-- ===============================================================
+             FRASE DE CIERRE DESTACADA
+             Figma Node: Frase de cierre (id: 1235:315)
+             =============================================================== -->
+        <section class="nosotros-sec nosotros-frase-sec" aria-label="Mensaje final">
+            <div class="nosotros-container">
+                <p class="nosotros-frase-texto">
+                    Tú tienes el problema, nosotros te conectamos con <span class="highlight-orange">la persona indicada</span> para solucionarlo.
+                </p>
             </div>
         </section>
 
-        <!-- 4. NUESTROS VALORES FUNDAMENTALES -->
-        <section class="nosotros-valores-section">
-            <div class="container">
-                <div class="section-center-head">
-                    <p class="section-tag">LO QUE NOS DEFINE</p>
-                    <h2 class="section-title-center">NUESTROS VALORES FUNDAMENTALES</h2>
-                </div>
-                <div class="valores-grid">
-                    <article class="valor-card">
-                        <div class="valor-icon-wrap">
-                            <img src="img/escudo.svg" alt="" aria-hidden="true" width="36" height="36">
-                        </div>
-                        <h3 class="valor-title">Seguridad y Rigor</h3>
-                        <p class="valor-desc">
-                            Cada técnico en nuestra plataforma pasa por un estricto filtro de validación de identidad, récord de antecedentes y acreditación de experiencia práctica.
-                        </p>
-                    </article>
-
-                    <article class="valor-card">
-                        <div class="valor-icon-wrap">
-                            <img src="img/dollar.svg" alt="" aria-hidden="true" width="36" height="36">
-                        </div>
-                        <h3 class="valor-title">Transparencia Total</h3>
-                        <p class="valor-desc">
-                            Cero cobros ocultos. La cotización acordada antes de iniciar el trabajo es exactamente lo que pagarás, con desglose claro de mano de obra y materiales.
-                        </p>
-                    </article>
-
-                    <article class="valor-card">
-                        <div class="valor-icon-wrap">
-                            <img src="img/check.svg" alt="" aria-hidden="true" width="36" height="36">
-                        </div>
-                        <h3 class="valor-title">Garantía Asegurada</h3>
-                        <p class="valor-desc">
-                            No te dejamos solo tras la reparación. Todos los trabajos cuentan con respaldo de nuestra plataforma y canal directo de mediación inmediata ante cualquier eventualidad.
-                        </p>
-                    </article>
-
-                    <article class="valor-card">
-                        <div class="valor-icon-wrap">
-                            <img src="img/whatsapp.webp" alt="" aria-hidden="true" width="36" height="36">
-                        </div>
-                        <h3 class="valor-title">Atención 24/7</h3>
-                        <p class="valor-desc">
-                            Las emergencias domésticas no avisan. Mantenemos canales de atención activos las 24 horas del día, los 7 días de la semana, con cobertura en todo Lima Metropolitana.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. CIFRAS DE IMPACTO -->
-        <section class="nosotros-cifras-section">
-            <div class="container nosotros-cifras-grid">
-                <div class="cifra-item">
-                    <p class="cifra-number">+1,500</p>
-                    <p class="cifra-label">Servicios realizados con éxito</p>
-                </div>
-                <div class="cifra-item">
-                    <p class="cifra-number">98%</p>
-                    <p class="cifra-label">Calificaciones de 5 estrellas</p>
-                </div>
-                <div class="cifra-item">
-                    <p class="cifra-number">100%</p>
-                    <p class="cifra-label">Técnicos verificados</p>
-                </div>
-                <div class="cifra-item">
-                    <p class="cifra-number">24/7</p>
-                    <p class="cifra-label">Atención de emergencia en Lima</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. LLAMADO A LA ACCIÓN (CTA) -->
-        <section class="nosotros-cta-section">
-            <div class="container nosotros-cta-box">
-                <div class="cta-content">
-                    <h2 class="cta-title">¿TIENES UNA EMERGENCIA O REPARACIÓN EN CASA?</h2>
-                    <p class="cta-subtitle">
-                        Conéctate con un especialista verificado en minutos y disfruta de la tranquilidad de un trabajo bien hecho.
-                    </p>
-                </div>
-                <div class="cta-actions">
-                    <a href="solicitud.html" class="btn-cta-primary">SOLICITAR TÉCNICO AHORA</a>
-                    <a href="https://wa.me/51936372861?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20atenci%C3%B3n%20inmediata" target="_blank" rel="noopener noreferrer" class="btn-cta-whatsapp">
-                        <img src="img/whatsapp.webp" alt="" aria-hidden="true" width="22" height="22">
-                        <span>WHATSAPP 24/7</span>
-                    </a>
+        <!-- ===============================================================
+             SECCIÓN 4: CIERRE / CTA
+             Figma Node: S4 · Cierre (id: 1235:316)
+             =============================================================== -->
+        <section class="nosotros-sec nosotros-cierre-sec" aria-labelledby="cierre-title">
+            <div class="nosotros-container nosotros-cierre-content">
+                <h2 id="cierre-title" class="nosotros-cierre-h2">Encuentra al técnico que necesitas</h2>
+                <div class="nosotros-cierre-acciones">
+                    <a href="index.html" class="btn-figma-outline">Volver al inicio</a>
+                    <a href="servicios.html" class="btn-figma-white">Ver servicios</a>
                 </div>
             </div>
         </section>

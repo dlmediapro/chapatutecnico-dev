@@ -94,15 +94,27 @@ Los tokens están centralizados en `styles.css` para mantener coherencia en toda
 
 ## 5. Anatomía de la Página Nosotros (`nosotros.html`)
 
-Siguiendo el diseño y arquitectura validada en Figma:
-- **Ausencia de Hero Pesado:** Se elimina el banner invasivo superior para iniciar inmediatamente con una experiencia editorial limpia y cómoda.
-- **Header & Footer Unificados:** Inyectados mediante `layout.js` con el enlace `NOSOTROS` activo (`aria-current="page"`).
-- **Estructura de Secciones:**
-  1. *Migas de Pan (Breadcrumb)* para orientación semántica (`Inicio > Nosotros`).
-  2. *Intro Editorial:* Titular Oswald con acentos en amarillo y descripción general.
-  3. *Historia & Propuesta de Valor:* Layout de 2 columnas con imagen optimizada de familia en hogar y puntos de confianza.
-  4. *Misión & Visión:* Tarjetas dobles con acentos de color diferenciales (amarillo marca y verde seguridad).
-  5. *Valores Fundamentales:* Grilla de 4 pilares (Seguridad, Rapidez, Claridad, Garantía).
-  6. *Cifras de Impacto:* Métricas institucionales en formato badge de alto contraste.
-  7. *CTA Final:* Banner de conversión hacia el catálogo de servicios técnicos.
+Replicada con fidelidad estricta al Frame **NOSOTROS** de Figma (`id: 1232:246`):
+- **Header & Footer Institucionales:** Inyectados mediante `layout.js` con el enlace `NOSOTROS` activo (`aria-current="page"`).
+- **Fondo Corporativo:** `#0a2941` unificado con la paleta de marca.
+- **Estructura de Secciones Oficiales (Figma):**
+  1. **S1 · Nosotros (`1235:262`):**
+     - Columna izquierda: Fotografía oficial de pareja de especialistas (`img/nosotros_pareja_tecnicos.png`, `662x441`, `border-radius: 16px`).
+     - Columna derecha: `H1` "Nosotros" (Raleway 40px w500), Lead "Conectamos tu hogar con técnicos de confianza." (Raleway 24px w500) y párrafo oficial de origen de la empresa.
+     - Franja inferior: 3 tarjetas de datos clave (`4 años` / *de servicio a domicilio*, `24/7` / *atención y soporte*, `Lima Metropolitana` / *cobertura del servicio*) con valor destacado en rojo/naranja `#dd3d22` y fondo translúcido (`rgba(255, 255, 255, 0.04)`).
+  2. **S2 · Misión y Visión (`1235:277`):**
+     - Tarjeta Misión: Icono diana concéntrica SVG oficial (`icon_mision.svg`), titular Raleway 32px w600 y texto de compromiso con los hogares de Lima.
+     - Tarjeta Visión: Icono de ojo SVG oficial (`icon_vision.svg`), titular Raleway 32px w600 y texto de consolidación en familias peruanas.
+  3. **S3 · Por qué elegirnos (`1235:291`):**
+     - Columna izquierda: Fotografía oficial del equipo técnico especializado (`img/nosotros_equipo_tecnicos.png`, `776x503`).
+     - Columna derecha: Titular `H2` "Por qué elegirnos", bajada explicativa y 3 pilares con sus iconos vectoriales oficiales:
+       - *Seguridad* (`icon_seguridad.svg`): Técnicos seleccionados con responsabilidad.
+       - *Confianza* (`icon_confianza.svg`): Soporte 24/7 disponible.
+       - *Calidad* (`icon_calidad.svg`): Especialistas en gasfitería, electricidad, carpintería y línea blanca.
+  4. **Frase de Cierre (`1235:315`):**
+     - Frase centrada de impacto: *"Tú tienes el problema, nosotros te conectamos con la persona indicada para solucionarlo"* con acento en `#dd3d22`.
+  5. **S4 · Cierre / CTA (`1235:316`):**
+     - Titular `H2` "Encuentra al técnico que necesitas".
+     - Botón primario: `Volver al inicio` (outline translúcido).
+     - Botón secundario: `Ver servicios` (fondo blanco, texto `#423f53`).
 
