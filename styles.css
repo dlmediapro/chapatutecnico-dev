@@ -60,52 +60,117 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 .icon-link img { width: 22px; height: 22px; object-fit: contain; }
 .menu-toggle { display: none; background: none; border: 0; font-size: 26px; line-height: 1; }
 
-/* ---------- Portada (hero) ---------- */
-.hero-wrap { display: flex; flex-direction: column; min-height: clamp(620px, 62vw, 820px);
-  background: linear-gradient(to bottom, rgba(0,0,0,.85) 0, rgba(0,0,0,.35) 90px, rgba(0,0,0,0) 220px), url('img/banner_principal.webp') center / cover no-repeat; }
+/* ---------- Portada (Hero Estático + Carrusel Inferior) ---------- */
+.hero-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(660px, 68vw, 840px);
+  background: linear-gradient(to bottom, rgba(0,0,0,.85) 0, rgba(0,0,0,.35) 90px, rgba(0,0,0,0) 220px),
+              url('img/banner_principal.webp') center top / cover no-repeat;
+  overflow: hidden;
+}
 .hero-wrap .topbar, .hero-wrap .header { background: none; border: 0; }
 
-.hero-banner { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(24px, 5vw, 70px); }
-.hero-content { position: relative; }
-.hero-content h1 { font-family: var(--font-title); font-weight: 500; font-size: clamp(2rem, 4.6vw, 4rem); line-height: 1.05; text-shadow: 0 2px 10px rgba(0,0,0,.45); }
-.hero-content .highlight { color: var(--orange); font-weight: 600; font-size: 1.6em; line-height: 1; }
-.hero-crosses { position: absolute; z-index: 1; font-family: var(--font-title); font-size: clamp(14px, 2vw, 26px); line-height: .85; letter-spacing: .12em; }
-.left-crosses { left: 14px; top: 28%; }
-.right-crosses { right: 5vw; bottom: 34%; }
-
-.hero-carousel {
+/* 1. Contenido Estático (Fondo, Titular y Cruces Inmóviles) */
+.hero-static-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: clamp(16px, 2.2vw, 26px);
-  overflow-x: auto;
-  padding: 14px 24px 36px;
-  scrollbar-width: none;
-  cursor: grab;
-  touch-action: pan-x;
-  scroll-behavior: smooth;
-  margin: 0 auto;
+  padding: clamp(20px, 4vw, 50px) 0 clamp(16px, 3vw, 32px);
+  pointer-events: none;
+}
+.hero-title-container {
+  position: relative;
+  width: 100%;
+}
+.hero-title-container h1 {
+  font-family: var(--font-title);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.6vw, 4.2rem);
+  line-height: 1.05;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.65);
+}
+.hero-title-container .y { color: var(--yellow); }
+.hero-title-container .highlight { color: var(--orange); font-weight: 600; font-size: 1.55em; line-height: 1; }
+
+.hero-crosses {
+  position: absolute;
+  z-index: 1;
+  font-family: var(--font-title);
+  font-size: clamp(14px, 2vw, 26px);
+  line-height: .85;
+  letter-spacing: .12em;
+  opacity: 0.35;
+  color: var(--white);
+}
+.left-crosses { left: 14px; top: 15%; }
+.right-crosses { right: 5vw; bottom: 20%; }
+
+/* 2. Carrusel Inferior Dinámico (Único elemento en movimiento) */
+.hero-carousel-section {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding-bottom: clamp(24px, 4vw, 42px);
+}
+
+.hero-carousel-container {
+  position: relative;
   width: 100%;
   max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
-.hero-carousel::-webkit-scrollbar { display: none; }
-.hero-carousel.dragging { cursor: grabbing; user-select: none; scroll-behavior: auto; }
 
+.hero-carousel-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0 20px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hero-carousel-track {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  cursor: grab;
+}
+.hero-carousel-track.is-animating {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hero-carousel-track.is-dragging {
+  cursor: grabbing;
+  transition: none !important;
+}
+
+/* Tarjetas de Servicio Redondeadas (Figma) */
 .hero-card {
   position: relative;
-  flex: 0 0 clamp(220px, 23vw, 310px);
+  flex: 0 0 clamp(240px, 22vw, 310px);
   aspect-ratio: 1.38;
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
   background: #08233b;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+  pointer-events: auto;
 }
 .hero-card:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.7), 0 0 22px rgba(95, 208, 104, 0.3);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.75), 0 0 22px rgba(95, 208, 104, 0.35);
   border-color: var(--green);
+}
+.hero-card:active {
+  transform: scale(0.98);
 }
 .hero-card img {
   width: 100%;
@@ -127,7 +192,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   pointer-events: none;
 }
 .hero-card-overlay p {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: .08em;
   color: var(--muted);
@@ -141,6 +206,42 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   line-height: 1.08;
   color: var(--orange);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Flechas Flotantes de Navegación */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: rgba(6, 27, 46, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: var(--white);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+.hero-arrow.prev { left: max(12px, 1.5vw); }
+.hero-arrow.next { right: max(12px, 1.5vw); }
+.hero-arrow:hover {
+  background: var(--bg);
+  border-color: var(--green);
+  transform: translateY(-50%) scale(1.12);
+  box-shadow: 0 0 16px rgba(95, 208, 104, 0.45);
+}
+.hero-arrow:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* ---------- Beneficios ---------- */
@@ -320,6 +421,9 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
 /* ---------- Responsive ---------- */
 @media (max-width: 992px) {
   .topbar-text { padding-left: 0; }
+  .hero-wrap { min-height: clamp(600px, 75vw, 750px); background-position: 60% top; }
+  .hero-title-container h1 { font-size: clamp(1.8rem, 4.2vw, 2.8rem); }
+  .hero-card { flex: 0 0 clamp(230px, 34vw, 290px); }
   .header-container { grid-template-columns: 90px 1fr auto; gap: 16px; }
   .logo { width: 80px; } .logo img { height: 60px; }
   .navbar { display: none; }
@@ -367,6 +471,9 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   .faq-chip { white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .hero-carousel-track { transition: none !important; }
+  .hero-card { transition: none !important; }
+  .hero-card:hover { transform: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }

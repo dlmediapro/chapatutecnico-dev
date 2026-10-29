@@ -1,69 +1,227 @@
-// Menú móvil
-const toggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-if (toggle && navbar) {
+// ==========================================================
+// Chapa Tu Técnico — Lógica Interactiva Principal
+// ==========================================================
+
+// 1. Menú Móvil
+(function initMobileMenu() {
+  const toggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+  if (!toggle || !navbar) return;
+
   toggle.addEventListener('click', () => {
     const open = navbar.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
   });
+
   navbar.addEventListener('click', e => {
-    if (e.target.tagName === 'A') { navbar.classList.remove('open'); toggle.setAttribute('aria-expanded', false); }
-  });
-}
-
-// Carrusel del hero: movimiento de pasarela interactivo y centrado
-const carousel = document.getElementById('hero-carousel');
-if (carousel) {
-  let down = false, moved = false, startX = 0, startLeft = 0;
-  let isHovered = false;
-
-  // Interacción con mouse (arrastrar)
-  carousel.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'touch') return;
-    down = true; moved = false; startX = e.clientX; startLeft = carousel.scrollLeft;
-  });
-  window.addEventListener('pointermove', e => {
-    if (!down) return;
-    const dx = e.clientX - startX;
-    if (Math.abs(dx) > 5) {
-      moved = true;
-      carousel.classList.add('dragging');
-      carousel.scrollLeft = startLeft - dx;
+    if (e.target.tagName === 'A') {
+      navbar.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
     }
   });
-  window.addEventListener('pointerup', () => {
-    down = false;
-    carousel.classList.remove('dragging');
+})();
+
+// 2. Carrusel Infinito del Hero (Navegación Híbrida: Autoplay + Flechas + Touch)
+(function initHeroInfiniteCarousel() {
+  const viewport = document.getElementById('hero-carousel-viewport');
+  const track = document.getElementById('hero-carousel-track');
+  const prevBtn = document.getElementById('hero-prev');
+  const nextBtn = document.getElementById('hero-next');
+
+  if (!viewport || !track) return;
+
+  const originalItems = Array.from(track.children);
+  const total = originalItems.length;
+  if (total === 0) return;
+
+  // Clonar elementos al inicio y al final para bucle infinito perfecto
+  originalItems.forEach(item => {
+    const cloneBefore = item.cloneNode(true);
+    cloneBefore.setAttribute('aria-hidden', 'true');
+    track.insertBefore(cloneBefore, track.firstChild);
   });
-  carousel.addEventListener('click', e => {
-    if (moved) e.preventDefault();
+
+  originalItems.forEach(item => {
+    const cloneAfter = item.cloneNode(true);
+    cloneAfter.setAttribute('aria-hidden', 'true');
+    track.appendChild(cloneAfter);
+  });
+
+  const allItems = Array.from(track.children);
+  let currentIndex = total; // Iniciar en el primer elemento original (índice 5)
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let dragDelta = 0;
+  let autoplayTimer = null;
+  let isPaused = false;
+  let resumeTimeout = null;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function getMetrics() {
+    const card = allItems[0];
+    const cardWidth = card ? card.offsetWidth : 280;
+    const computedGap = parseFloat(window.getComputedStyle(track).gap) || 20;
+    const step = cardWidth + computedGap;
+    const leftOffset = (viewport.clientWidth - cardWidth) / 2;
+    return { cardWidth, step, leftOffset };
+  }
+
+  function getPositionForIndex(index) {
+    const { step, leftOffset } = getMetrics();
+    return - (index * step) + leftOffset;
+  }
+
+  function moveTo(index, animate = true) {
+    currentIndex = index;
+    const targetPos = getPositionForIndex(currentIndex);
+    currentTranslate = targetPos;
+
+    if (animate && !prefersReducedMotion) {
+      track.classList.add('is-animating');
+    } else {
+      track.classList.remove('is-animating');
+    }
+
+    track.style.transform = `translate3d(${targetPos}px, 0, 0)`;
+  }
+
+  // Ajuste invisible al completar la transición para bucle infinito
+  track.addEventListener('transitionend', () => {
+    track.classList.remove('is-animating');
+
+    if (currentIndex >= total * 2) {
+      currentIndex -= total;
+      moveTo(currentIndex, false);
+    } else if (currentIndex < total) {
+      currentIndex += total;
+      moveTo(currentIndex, false);
+    }
+  });
+
+  function nextSlide() {
+    moveTo(currentIndex + 1, true);
+  }
+
+  function prevSlide() {
+    moveTo(currentIndex - 1, true);
+  }
+
+  // Controles de flechas
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      pauseTemporary();
+      nextSlide();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      pauseTemporary();
+      prevSlide();
+    });
+  }
+
+  // Autoplay Inteligente
+  function startAutoplay() {
+    if (prefersReducedMotion) return;
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isPaused && !isDragging) {
+        nextSlide();
+      }
+    }, 3400);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function pauseTemporary() {
+    isPaused = true;
+    if (resumeTimeout) clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => {
+      isPaused = false;
+    }, 3500);
+  }
+
+  // Pausa en hover / focus
+  viewport.addEventListener('mouseenter', () => { isPaused = true; });
+  viewport.addEventListener('mouseleave', () => {
+    if (!isDragging) isPaused = false;
+  });
+  viewport.addEventListener('focusin', () => { isPaused = true; });
+  viewport.addEventListener('focusout', () => { isPaused = false; });
+
+  // Gestos Táctiles y Arrastre con Puntero
+  viewport.addEventListener('pointerdown', e => {
+    if (e.button !== 0 && e.pointerType === 'mouse') return;
+    isDragging = true;
+    isPaused = true;
+    startX = e.clientX;
+    dragDelta = 0;
+    track.classList.remove('is-animating');
+    track.classList.add('is-dragging');
+    viewport.setPointerCapture(e.pointerId);
+  });
+
+  viewport.addEventListener('pointermove', e => {
+    if (!isDragging) return;
+    dragDelta = e.clientX - startX;
+    const basePos = getPositionForIndex(currentIndex);
+    track.style.transform = `translate3d(${basePos + dragDelta}px, 0, 0)`;
+  });
+
+  function endDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('is-dragging');
+    try { viewport.releasePointerCapture(e.pointerId); } catch (_) {}
+
+    const swipeThreshold = 45;
+    if (dragDelta < -swipeThreshold) {
+      currentIndex += 1;
+    } else if (dragDelta > swipeThreshold) {
+      currentIndex -= 1;
+    }
+
+    moveTo(currentIndex, true);
+    pauseTemporary();
+  }
+
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+
+  // Evitar que el clic abra enlaces durante un arrastre real
+  track.addEventListener('click', e => {
+    if (Math.abs(dragDelta) > 10) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }, true);
 
-  // Pausar pasarela si el usuario tiene el cursor encima
-  carousel.addEventListener('mouseenter', () => { isHovered = true; });
-  carousel.addEventListener('mouseleave', () => { isHovered = false; });
-  carousel.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
-  carousel.addEventListener('touchend', () => {
-    setTimeout(() => { isHovered = false; }, 2000);
-  }, { passive: true });
+  // Inicialización y reajuste en cambio de tamaño de ventana
+  moveTo(currentIndex, false);
+  startAutoplay();
 
-  // Movimiento automático tipo pasarela suave
-  setInterval(() => {
-    if (isHovered || down) return;
-    if (carousel.scrollWidth <= carousel.clientWidth + 10) return;
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      moveTo(currentIndex, false);
+    }, 100);
+  });
+})();
 
-    const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.offsetWidth + 20 : 280;
-    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 15) {
-      carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    }
-  }, 3200);
-}
+// 3. Carrusel Interactivo de Ofertas del Mes
+(function initOffersSlider() {
+  const offersWrap = document.querySelector('.offers');
+  if (!offersWrap) return;
 
-// Carrusel interactivo de Ofertas del Mes
-const offersWrap = document.querySelector('.offers');
-if (offersWrap) {
   const prevBtn = offersWrap.querySelector('.carousel-arrow.prev');
   const nextBtn = offersWrap.querySelector('.carousel-arrow.next');
   const titleEl = offersWrap.querySelector('.offers-text h3');
@@ -122,4 +280,4 @@ if (offersWrap) {
       renderOffer(currentOffer);
     });
   }
-}
+})();

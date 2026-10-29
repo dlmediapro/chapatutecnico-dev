@@ -74,6 +74,7 @@
     <!-- ===================================================================
          8. HOJA DE ESTILOS PRINCIPAL
          =================================================================== -->
+    <link rel="preload" as="image" href="img/banner_principal.webp" fetchpriority="high">
     <link rel="stylesheet" href="styles.css">
 
     <!-- ===================================================================
@@ -162,44 +163,56 @@
     <div class="hero-wrap">
         <script src="layout.js" data-part="header"></script>
 
-        <section class="hero-banner">
-            <div class="container hero-content">
+        <!-- 1. CONTENIDO ESTÁTICO (Fondo + Título + Cruces) -->
+        <div class="hero-static-content">
+            <div class="container hero-title-container">
                 <h1>SERVICIO TÉCNICO SEGURO<br><span class="y">Y</span> <span class="highlight">CONFIABLE</span></h1>
                 <div class="hero-crosses left-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
+                <div class="hero-crosses right-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
             </div>
-            <div class="hero-crosses right-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
+        </div>
 
-            <div class="hero-carousel" id="hero-carousel" aria-label="Servicios destacados">
-                <a href="servicios.html" class="hero-card"><picture><source srcset="img/blanca.webp" type="image/webp"><img src="img/blanca.png" alt="Servicio técnico de línea blanca y electrodomésticos" width="310" height="225"></picture>
-                    <div class="hero-card-overlay">
-                        <p>SERVICIO DE</p>
-                        <h3>LÍNEA BLANCA</h3>
+        <!-- 2. CARRUSEL INFERIOR DINÁMICO (Único elemento móvil) -->
+        <section class="hero-carousel-section" aria-label="Servicios destacados">
+            <div class="hero-carousel-container">
+                <button class="hero-arrow prev" id="hero-prev" aria-label="Servicio anterior" type="button">&#10094;</button>
+                
+                <div class="hero-carousel-viewport" id="hero-carousel-viewport">
+                    <div class="hero-carousel-track" id="hero-carousel-track">
+                        <a href="servicios.html" class="hero-card" data-service="blanca"><picture><source srcset="img/blanca.webp" type="image/webp"><img src="img/blanca.png" alt="Servicio técnico de línea blanca y electrodomésticos" width="310" height="225" loading="eager"></picture>
+                            <div class="hero-card-overlay">
+                                <p>SERVICIO DE</p>
+                                <h3>LÍNEA BLANCA</h3>
+                            </div>
+                        </a>
+                        <a href="servicios.html" class="hero-card" data-service="gasfiteria"><picture><source srcset="img/gasfitero.webp" type="image/webp"><img src="img/gasfitero.png" alt="Servicio de gasfitería profesional en Lima" width="310" height="225" loading="lazy"></picture>
+                            <div class="hero-card-overlay">
+                                <p>SERVICIO DE</p>
+                                <h3>GASFITERÍA</h3>
+                            </div>
+                        </a>
+                        <a href="servicios.html" class="hero-card" data-service="carpinteria"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.png" alt="Servicio de carpintería y muebles a medida" width="310" height="225" loading="lazy"></picture>
+                            <div class="hero-card-overlay">
+                                <p>SERVICIO DE</p>
+                                <h3>CARPINTERÍA</h3>
+                            </div>
+                        </a>
+                        <a href="electricidad.html" class="hero-card" data-service="electricidad"><picture><source srcset="img/electricista.webp" type="image/webp"><img src="img/electricista.png" alt="Servicio de electricidad residencial y comercial" width="310" height="225" loading="lazy"></picture>
+                            <div class="hero-card-overlay">
+                                <p>SERVICIO DE</p>
+                                <h3>ELECTRICIDAD</h3>
+                            </div>
+                        </a>
+                        <a href="servicios.html" class="hero-card" data-service="cerrajeria"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.png" alt="Servicio de cerrajería de emergencia 24 horas" width="310" height="225" loading="lazy"></picture>
+                            <div class="hero-card-overlay">
+                                <p>SERVICIO DE</p>
+                                <h3>CERRAJERÍA</h3>
+                            </div>
+                        </a>
                     </div>
-                </a>
-                <a href="servicios.html" class="hero-card"><picture><source srcset="img/gasfitero.webp" type="image/webp"><img src="img/gasfitero.png" alt="Servicio de gasfitería profesional en Lima" width="310" height="225" loading="lazy"></picture>
-                    <div class="hero-card-overlay">
-                        <p>SERVICIO DE</p>
-                        <h3>GASFITERÍA</h3>
-                    </div>
-                </a>
-                <a href="servicios.html" class="hero-card"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.png" alt="Servicio de carpintería y muebles a medida" width="310" height="225" loading="lazy"></picture>
-                    <div class="hero-card-overlay">
-                        <p>SERVICIO DE</p>
-                        <h3>CARPINTERÍA</h3>
-                    </div>
-                </a>
-                <a href="electricidad.html" class="hero-card"><picture><source srcset="img/electricista.webp" type="image/webp"><img src="img/electricista.png" alt="Servicio de electricidad residencial y comercial" width="310" height="225" loading="lazy"></picture>
-                    <div class="hero-card-overlay">
-                        <p>SERVICIO DE</p>
-                        <h3>ELECTRICIDAD</h3>
-                    </div>
-                </a>
-                <a href="servicios.html" class="hero-card"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.png" alt="Servicio de cerrajería de emergencia 24 horas" width="310" height="225" loading="lazy"></picture>
-                    <div class="hero-card-overlay">
-                        <p>SERVICIO DE</p>
-                        <h3>CERRAJERÍA</h3>
-                    </div>
-                </a>
+                </div>
+
+                <button class="hero-arrow next" id="hero-next" aria-label="Servicio siguiente" type="button">&#10095;</button>
             </div>
         </section>
     </div>
