@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & PRIVACIDAD (PANEL INTERNO DEL TÉCNICO)
+         =================================================================== -->
+    <title>Perfil del Técnico - Panel Profesional | Chapa Tu Técnico</title>
+    <meta name="title" content="Perfil del Técnico - Panel Profesional | Chapa Tu Técnico">
+    <meta name="description"
+        content="Panel de control interno para técnicos certificados de Chapa Tu Técnico: administración de solicitudes entrantes, calendario de disponibilidad 24/7 y métricas de desempeño.">
+    <meta name="keywords" content="panel tecnico, perfil tecnico lima, agenda de servicio, soporte profesional">
+    <meta name="author" content="Chapa Tu Técnico">
+    <!-- Panel interno de especialista: no indexable por buscadores -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://chapatutecnico.pe/perfil.html">
+
+    <!-- ===================================================================
+         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
+         =================================================================== -->
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima">
+    <meta name="geo.position" content="-12.046374;-77.042793">
+    <meta name="ICBM" content="-12.046374, -77.042793">
+
+    <!-- ===================================================================
+         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
+         =================================================================== -->
+    <meta property="og:type" content="profile">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Chapa Tu Técnico">
+    <meta property="og:url" content="https://chapatutecnico.pe/perfil.html">
+    <meta property="og:title" content="Perfil Profesional de Técnico | Chapa Tu Técnico">
+    <meta property="og:description"
+        content="Panel de gestión de solicitudes y reputación para técnicos verificados en Lima.">
+    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
+    <meta property="og:image:alt" content="Chapa Tu Técnico - Panel de Especialista">
+
+    <!-- ===================================================================
+         5. TWITTER / X CARDS
+         =================================================================== -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://chapatutecnico.pe/perfil.html">
+    <meta name="twitter:title" content="Perfil del Técnico | Chapa Tu Técnico">
+    <meta name="twitter:description"
+        content="Panel interno de atención para técnicos afiliados en Lima Metropolitana.">
+    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
+
+    <!-- ===================================================================
+         6. FAVICON & ICONOS DE APLICACIÓN
+         =================================================================== -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
+    <!-- ===================================================================
+         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
+         =================================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ===================================================================
+         8. HOJA DE ESTILOS PRINCIPAL
+         =================================================================== -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ===================================================================
+         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
+         =================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "name": "Panel del Técnico Verificado",
+      "description": "Entorno privado de control para el especialista técnico.",
+      "url": "https://chapatutecnico.pe/perfil.html"
+    }
+    </script>
+</head>
+<body data-page="perfil" class="body-tech-dashboard">
+
+<!-- ================= TOPBAR & HEADER FIGMA (Frame 614-103) ================= -->
+<header class="tech-header">
+    <div class="tech-header-container">
+        <!-- Logo con Mascota -->
+        <a href="index.html" class="tech-brand-logo">
+            <img src="img/logo.png" alt="Chapa Tu Técnico" class="tech-logo-img">
+            <span class="tech-brand-text">CHAPA TU<br>TÉCNICO</span>
+        </a>
+
+        <!-- Acciones Derecha -->
+        <div class="tech-header-actions">
+            <!-- Botón Emergencia 24/7 Verde -->
+            <a href="https://wa.me/51998204667?text=Emergencia%20tecnica" target="_blank" rel="noopener noreferrer" class="btn-emergency-pill">
+                <svg viewBox="0 0 24 24" class="pill-phone-icon" fill="currentColor" aria-hidden="true">
+                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>EMERGENCIA 24/7</span>
+            </a>
+
+            <!-- Usuario Técnico: Rodrigo Rojas -->
+            <div class="tech-user-badge" id="tech-user-dropdown-trigger">
+                <div class="tech-user-avatar">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div class="tech-user-info">
+                    <span class="tech-user-name">Rodrigo Rojas <span class="arrow-down">∨</span></span>
+                    <span class="tech-user-role">Tecnico</span>
+                </div>
+            </div>
+
+            <!-- Botón Salir / Logout -->
+            <button type="button" class="btn-icon-logout" id="btn-quick-logout" title="Cerrar Sesión" aria-label="Cerrar sesión">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ================= CONTENEDOR PRINCIPAL: SIDEBAR + DASHBOARD ================= -->
+<div class="tech-layout-wrapper">
+    <!-- BARRA LATERAL (SIDEBAR FIGMA) -->
+    <aside class="tech-sidebar" aria-label="Navegación del técnico">
+        <nav class="tech-sidebar-menu">
+            <!-- 1. Inicio -->
+            <a href="index.html" class="sidebar-item">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                </span>
+                <span class="sidebar-text">INICIO</span>
+            </a>
+
+            <!-- 2. Solicitudes (Con Badge 1) -->
+            <a href="solicitud.html" class="sidebar-item">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                </span>
+                <span class="sidebar-text">SOLICITUDES</span>
+                <span class="sidebar-badge-count">1</span>
+            </a>
+
+            <!-- 3. Mi Perfil (Activo) -->
+            <a href="perfil.html" class="sidebar-item active" aria-current="page">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </span>
+                <span class="sidebar-text">MI PERFIL</span>
+            </a>
+
+            <!-- 4. Calendario -->
+            <a href="#disponibilidad" class="sidebar-item">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                </span>
+                <span class="sidebar-text">CALENDARIO</span>
+            </a>
+
+            <!-- 5. Mensaje (Con Badge 1) -->
+            <a href="soporte.html" class="sidebar-item">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+                </span>
+                <span class="sidebar-text">MENSAJE</span>
+                <span class="sidebar-badge-count">1</span>
+            </a>
+
+            <!-- 6. Cerrar Sesión -->
+            <button type="button" class="sidebar-item sidebar-btn-logout" id="btn-sidebar-logout">
+                <span class="sidebar-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </span>
+                <span class="sidebar-text">CERRAR SESION</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO CENTRAL DEL DASHBOARD -->
+    <main class="tech-main-content">
+        <!-- Saludo al Técnico con Casco Blanco -->
+        <section class="tech-greeting-section">
+            <div class="tech-helmet-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C7.58 2 4 5.58 4 10v2h16v-2c0-4.42-3.58-8-8-8zm-9 11v2c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-2H3zm3 4h12v1c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2v-1z"/>
+                </svg>
+            </div>
+            <div class="tech-greeting-text">
+                <h1>¡Hola, técnico!</h1>
+                <p>Revisa y administra tus solicitudes de trabajo</p>
+            </div>
+        </section>
+
+        <!-- 4 Tarjetas de Métricas KPI -->
+        <section class="tech-kpi-grid">
+            <!-- 1. Solicitudes nuevas -->
+            <div class="kpi-card kpi-purple">
+                <div class="kpi-icon-wrap bg-purple-circle">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Solicitudes nuevas</span>
+                    <strong class="kpi-val" id="stat-new-requests">5</strong>
+                </div>
+                <span class="kpi-arrow">›</span>
+            </div>
+
+            <!-- 2. Trabajos en proceso -->
+            <div class="kpi-card kpi-indigo">
+                <div class="kpi-icon-wrap bg-indigo-circle">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Trabajos en proceso</span>
+                    <strong class="kpi-val" id="stat-in-progress">3</strong>
+                </div>
+                <span class="kpi-arrow">›</span>
+            </div>
+
+            <!-- 3. Servicios completados -->
+            <div class="kpi-card kpi-teal">
+                <div class="kpi-icon-wrap bg-teal-circle">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Servicios completados</span>
+                    <strong class="kpi-val" id="stat-completed">15</strong>
+                </div>
+                <span class="kpi-arrow">›</span>
+            </div>
+
+            <!-- 4. Calificación -->
+            <div class="kpi-card kpi-blue">
+                <div class="kpi-icon-wrap bg-cyan-circle">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                </div>
+                <div class="kpi-info">
+                    <span class="kpi-label">Calificación</span>
+                    <strong class="kpi-val" id="stat-rating">9.5</strong>
+                </div>
+                <span class="kpi-arrow">›</span>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: SOLICITUDES DE TRABAJO (Card Blanca Grande) -->
+        <section class="tech-white-box">
+            <div class="white-box-header">
+                <div class="header-title-pill">
+                    <h2>Solicitudes de trabajo</h2>
+                    <span class="badge-pill-green" id="badge-counter-work">5 nuevas</span>
+                </div>
+                <div class="header-category-filter">
+                    <select id="select-category-filter" aria-label="Filtrar por categoría">
+                        <option value="all">Todas las categorias</option>
+                        <option value="Plomeria">Plomería / Gasfitería</option>
+                        <option value="Electricista">Electricista</option>
+                        <option value="Gasfiteria">Termas y Calentadores</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="work-cards-list" id="work-cards-list">
+                <!-- TARJETA 1: Plomería - Reparación de fuga de agua -->
+                <article class="job-card" data-category="Plomeria">
+                    <div class="job-icon-col">
+                        <div class="job-round-icon purple-bg">
+                            <!-- Ícono Gota de Agua -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="job-info-col">
+                        <div class="job-tag-row">
+                            <span class="pill-tag-cyan">Nuevo</span>
+                            <span class="job-cat-name">Plomeria</span>
+                        </div>
+                        <h3 class="job-title">Reparación de fuga de agua</h3>
+                        <p class="job-desc">Se presenta una fuga en el lavadero de la cocina. El agua sale por la parte inferior del mueble.</p>
+                        <div class="job-meta-row">
+                            <span class="meta-location">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-pin" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                <strong>Miraflores</strong>
+                            </span>
+                            <span class="meta-time">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-clock" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                Hoy, 10:00 a. m.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="job-price-col">
+                        <strong class="job-price-range">S/ 80 - 120</strong>
+                        <span class="job-price-sub">Precio estimado</span>
+                    </div>
+
+                    <div class="job-actions-col">
+                        <a href="solicitud.html?id=CT-2026-084" class="btn-job-view">Ver solicitud</a>
+                        <button type="button" class="btn-job-accept" data-job-id="1">Aceptar trabajo</button>
+                    </div>
+                </article>
+
+                <!-- TARJETA 2: Electricista - Instalación de luminaria -->
+                <article class="job-card" data-category="Electricista">
+                    <div class="job-icon-col">
+                        <div class="job-round-icon purple-bg">
+                            <!-- Ícono Fuego / Llama -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 23c-4.97 0-9-4.03-9-9 0-4.97 4.03-9 9-9 .69 0 1.35.08 2 .22-2.22 1.34-3.72 3.8-3.72 6.6 0 4.29 3.49 7.78 7.78 7.78.47 0 .93-.05 1.38-.13A8.99 8.99 0 0112 23z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="job-info-col">
+                        <div class="job-tag-row">
+                            <span class="pill-tag-cyan">Nuevo</span>
+                            <span class="job-cat-name">Electricista</span>
+                        </div>
+                        <h3 class="job-title">Instalación de luminaria</h3>
+                        <p class="job-desc">Se necesita instalar una luminaria de techo en la sal, Ya cuenta con el punto eléctrico.</p>
+                        <div class="job-meta-row">
+                            <span class="meta-location">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-pin" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                <strong>Surco</strong>
+                            </span>
+                            <span class="meta-time">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-clock" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                Hoy, 2:00 p. m.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="job-price-col">
+                        <strong class="job-price-range">S/ 60 - 100</strong>
+                        <span class="job-price-sub">Precio estimado</span>
+                    </div>
+
+                    <div class="job-actions-col">
+                        <a href="solicitud.html?id=CT-2026-085" class="btn-job-view">Ver solicitud</a>
+                        <button type="button" class="btn-job-accept" data-job-id="2">Aceptar trabajo</button>
+                    </div>
+                </article>
+
+                <!-- TARJETA 3: Gasfitería - Mantenimiento de terma -->
+                <article class="job-card" data-category="Gasfiteria">
+                    <div class="job-icon-col">
+                        <div class="job-round-icon purple-bg">
+                            <!-- Ícono Bombilla / Foco -->
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="job-info-col">
+                        <div class="job-tag-row">
+                            <span class="pill-tag-yellow">Ninguno</span>
+                            <span class="job-cat-name">Gasfiteria</span>
+                        </div>
+                        <h3 class="job-title">Matenimiento de terma</h3>
+                        <p class="job-desc">La terma no calienta correctamente. Se requiere revisión y mantenimiento general</p>
+                        <div class="job-meta-row">
+                            <span class="meta-location">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-pin" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                <strong>San isidro</strong>
+                            </span>
+                            <span class="meta-time">
+                                <svg viewBox="0 0 24 24" fill="currentColor" class="meta-icon-clock" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                Mañana, 5:00 p. m.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="job-price-col">
+                        <strong class="job-price-range">S/ 90 - 130</strong>
+                        <span class="job-price-sub">Precio estimado</span>
+                    </div>
+
+                    <div class="job-actions-col">
+                        <a href="solicitud.html?id=CT-2026-086" class="btn-job-view">Ver solicitud</a>
+                        <button type="button" class="btn-job-accept" data-job-id="3">Aceptar trabajo</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: TU DISPONIBILIDAD (Card Blanca Grande) -->
+        <section class="tech-white-box" id="disponibilidad">
+            <div class="white-box-header">
+                <div class="header-title-calendar">
+                    <svg viewBox="0 0 24 24" class="cal-title-icon" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                    <h2>Tu disponibilidad</h2>
+                </div>
+                <a href="#disponibilidad" class="link-view-calendar" id="btn-toggle-all-calendar">Ver calendario</a>
+            </div>
+
+            <div class="calendar-days-row" id="calendar-days-row">
+                <!-- Lunes 19 Oct (Activo Turquesa) -->
+                <div class="cal-day-card active" data-day="19">
+                    <span class="cal-day-name">LUNES</span>
+                    <strong class="cal-day-number">19</strong>
+                    <span class="cal-day-month">OCT</span>
+                </div>
+
+                <!-- Martes 20 Oct -->
+                <div class="cal-day-card" data-day="20">
+                    <span class="cal-day-name">MARTES</span>
+                    <strong class="cal-day-number">20</strong>
+                    <span class="cal-day-month">OCT</span>
+                </div>
+
+                <!-- Miércoles 21 Oct -->
+                <div class="cal-day-card" data-day="21">
+                    <span class="cal-day-name">MIE</span>
+                    <strong class="cal-day-number">21</strong>
+                    <span class="cal-day-month">OCT</span>
+                </div>
+
+                <!-- Jueves 22 Oct -->
+                <div class="cal-day-card" data-day="22">
+                    <span class="cal-day-name">JUE</span>
+                    <strong class="cal-day-number">22</strong>
+                    <span class="cal-day-month">OCT</span>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- ================= FOOTER COMPARTIDO ================= -->
+<script src="layout.js" data-part="footer"></script>
+
+<!-- Toast de Notificaciones -->
+<div id="toast-notification" class="toast-notification" aria-live="polite" role="status"></div>
+
+<script src="main.js"></script>
+<script src="perfil.js"></script>
+</body>
+</html>
+

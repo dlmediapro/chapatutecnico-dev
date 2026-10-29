@@ -1,91 +1,304 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapa Tu Técnico | Servicio técnico seguro y confiable</title>
-    <meta name="description" content="Conectamos tu hogar o negocio con técnicos verificados en Lima Metropolitana: electricidad, gasfitería, carpintería, cerrajería y más. Atención 24/7.">
-    <link rel="icon" href="img/logo.png">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE BÁSICO (MANIPULACIÓN DIRECTA DE POSICIONAMIENTO)
+         =================================================================== -->
+    <title>Chapa Tu Técnico | Servicio Técnico Seguro y Confiable en Lima</title>
+    <meta name="title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable en Lima">
+    <meta name="description"
+        content="Conectamos tu hogar o negocio con técnicos verificados en Lima Metropolitana: electricidad, gasfitería, carpintería, cerrajería y más. Atención de emergencia 24/7. Cotizaciones transparentes y garantía asegurada.">
+    <meta name="keywords"
+        content="tecnicos lima, electricista a domicilio, gasfitero lima, cerrajero 24 horas, carpintero lima, servicio tecnico seguro, reparaciones del hogar, chapa tu tecnico, lima metropolitana">
+    <meta name="author" content="Chapa Tu Técnico">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://chapatutecnico.pe/">
+
+    <!-- ===================================================================
+         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
+         =================================================================== -->
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima">
+    <meta name="geo.position" content="-12.046374;-77.042793">
+    <meta name="ICBM" content="-12.046374, -77.042793">
+
+    <!-- ===================================================================
+         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
+         =================================================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Chapa Tu Técnico">
+    <meta property="og:url" content="https://chapatutecnico.pe/">
+    <meta property="og:title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable">
+    <meta property="og:description"
+        content="¿Problemas en casa? Técnicos 100% verificados con antecedentes, precios transparentes y garantía asegurada en Lima Metropolitana.">
+    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
+    <meta property="og:image:alt" content="Logotipo y técnicos de Chapa Tu Técnico">
+
+    <!-- ===================================================================
+         5. TWITTER / X CARDS
+         =================================================================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chapatutecnico.pe/">
+    <meta name="twitter:title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable">
+    <meta name="twitter:description"
+        content="Técnicos verificados en Lima: electricidad, gasfitería, cerrajería y más. Atención 24/7 y garantía de satisfacción.">
+    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
+
+    <!-- ===================================================================
+         6. FAVICON & ICONOS DE APLICACIÓN
+         =================================================================== -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
+    <!-- ===================================================================
+         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
+         =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ===================================================================
+         8. HOJA DE ESTILOS PRINCIPAL
+         =================================================================== -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- ===================================================================
+         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
+         =================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Chapa Tu Técnico",
+      "image": "https://chapatutecnico.pe/img/logo.png",
+      "@id": "https://chapatutecnico.pe/#organization",
+      "url": "https://chapatutecnico.pe/",
+      "telephone": "+51936372861",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lima Metropolitana",
+        "addressLocality": "Lima",
+        "addressRegion": "Lima",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -12.046374,
+        "longitude": -77.042793
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Lima Metropolitana"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios Técnicos Profesionales",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Servicio de Electricidad"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Servicio de Gasfitería"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Servicio de Carpintería"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Servicio de Cerrajería"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
+
 <body data-page="inicio">
 
-<div class="hero-wrap">
-    <script src="layout.js" data-part="header"></script>
+    <div class="hero-wrap">
+        <script src="layout.js" data-part="header"></script>
 
-    <section class="hero-banner">
-        <div class="container hero-content">
-            <h1>SERVICIO TÉCNICO SEGURO<br><span class="y">Y</span> <span class="highlight">CONFIABLE</span></h1>
-            <div class="hero-crosses left-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
-        </div>
-        <div class="hero-crosses right-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
-
-        <div class="hero-carousel" id="hero-carousel" aria-label="Servicios destacados">
-            <a href="#" class="hero-card"><img src="img/blanca.png" alt=""><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>LÍNEA BLANCA</h3></div></a>
-            <a href="#" class="hero-card"><img src="img/gasfitero.png" alt=""><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>GASFITERÍA</h3></div></a>
-            <a href="#" class="hero-card"><img src="img/carpintero.png" alt=""><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>CARPINTERÍA</h3></div></a>
-            <a href="electricidad.html" class="hero-card"><img src="img/electricista.png" alt=""><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>ELECTRICIDAD</h3></div></a>
-            <a href="#" class="hero-card"><img src="img/cerrajero.png" alt=""><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>CERRAJERÍA</h3></div></a>
-        </div>
-    </section>
-</div>
-
-<main>
-    <section class="benefits">
-        <div class="container benefits-container">
-            <div class="benefit-item"><img src="img/escudo.svg" alt=""><h4>TÉCNICOS<br>IDENTIFICADOS:</h4><p>"Todo nuestro personal cuenta con antecedentes verificados".</p></div>
-            <div class="benefit-item"><img src="img/dollar.svg" alt=""><h4>PRECIOS<br>TRANSPARENTES:</h4><p>"Cotizaciones claras antes de iniciar el trabajo, sin sorpresas".</p></div>
-            <div class="benefit-item"><img src="img/check.svg" alt=""><h4>GARANTÍA<br>ASEGURADA:</h4><p>"Todos los trabajos cuentan con respaldo y garantía de la plataforma".</p></div>
-        </div>
-    </section>
-
-    <section class="offers-section">
-        <div class="container"><h2 class="section-title">OFERTAS DEL MES</h2></div>
-        <div class="offers">
-            <button class="carousel-arrow prev" aria-label="Oferta anterior">&#10094;</button>
-            <div class="offers-text">
-                <h3>CELEBREMOS<br>JUNTOS LA<br>SEMANA DEL<br>GASFITERO</h3>
-                <p class="discount"><span class="percent">50 %</span><span class="desc">DE DESCUENTO</span></p>
-                <a href="#" class="btn-solicitar-oferta">solicitar</a>
+        <section class="hero-banner">
+            <div class="container hero-content">
+                <h1>SERVICIO TÉCNICO SEGURO<br><span class="y">Y</span> <span class="highlight">CONFIABLE</span></h1>
+                <div class="hero-crosses left-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
             </div>
-            <button class="carousel-arrow next" aria-label="Oferta siguiente">&#10095;</button>
-        </div>
-    </section>
+            <div class="hero-crosses right-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
 
-    <section class="services">
-        <div class="container">
-            <h2 class="section-title">SERVICIOS</h2>
-            <div class="services-grid">
-                <article class="service-card"><img src="img/electricista-1.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Electricidad</h4><a href="electricidad.html" class="btn-solicitar">Solicitar</a></div></article>
-                <article class="service-card"><img src="img/gasfitero-1.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Gasfitería</h4><a href="#" class="btn-solicitar">Solicitar</a></div></article>
-                <article class="service-card"><img src="img/carpintero.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Carpintería</h4><a href="#" class="btn-solicitar">Solicitar</a></div></article>
-                <article class="service-card"><img src="img/cerrajero.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Cerrajería</h4><a href="#" class="btn-solicitar">Solicitar</a></div></article>
-                <article class="service-card"><img src="img/vidriero.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Vidriería</h4><a href="#" class="btn-solicitar">Solicitar</a></div></article>
-                <article class="service-card"><img src="img/sistemas.png" alt="" loading="lazy"><div class="service-info"><h4>Servicio de Informática</h4><a href="#" class="btn-solicitar">Solicitar</a></div></article>
+            <div class="hero-carousel" id="hero-carousel" aria-label="Servicios destacados">
+                <a href="servicios.html" class="hero-card"><img src="img/blanca.png" alt="">
+                    <div class="hero-card-overlay">
+                        <p>SERVICIO DE</p>
+                        <h3>LÍNEA BLANCA</h3>
+                    </div>
+                </a>
+                <a href="servicios.html" class="hero-card"><img src="img/gasfitero.png" alt="">
+                    <div class="hero-card-overlay">
+                        <p>SERVICIO DE</p>
+                        <h3>GASFITERÍA</h3>
+                    </div>
+                </a>
+                <a href="servicios.html" class="hero-card"><img src="img/carpintero.png" alt="">
+                    <div class="hero-card-overlay">
+                        <p>SERVICIO DE</p>
+                        <h3>CARPINTERÍA</h3>
+                    </div>
+                </a>
+                <a href="electricidad.html" class="hero-card"><img src="img/electricista.png" alt="">
+                    <div class="hero-card-overlay">
+                        <p>SERVICIO DE</p>
+                        <h3>ELECTRICIDAD</h3>
+                    </div>
+                </a>
+                <a href="servicios.html" class="hero-card"><img src="img/cerrajero.png" alt="">
+                    <div class="hero-card-overlay">
+                        <p>SERVICIO DE</p>
+                        <h3>CERRAJERÍA</h3>
+                    </div>
+                </a>
             </div>
-            <p class="ver-mas-container"><a href="servicios.html" class="ver-mas">ver más</a></p>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <section class="why-us">
-        <div class="container">
-            <h2 class="section-title">POR QUÉ ELEGIRNOS</h2>
-            <div class="why-us-content">
-                <img src="img/familia.png" alt="Equipo de técnicos profesionales de Chapa Tu Técnico" loading="lazy">
-                <div class="why-us-text">
-                    <p>Porque sabemos que encontrar a un especialista que pueda brindarte <span class="highlight-red">SEGURIDAD</span>, <span class="highlight-red">CONFIANZA</span> y <span class="highlight-red">CALIDAD</span> es muchas veces complicado</p>
-                    <p>Por eso, nuestra empresa busca conectarte con verdaderos <span class="highlight-red">PROFESIONALES</span></p>
-                    <p>¡Tú tienes el problema, nosotros te conectamos con la persona indicada para solucionarlo!</p>
+    <main>
+        <section class="benefits">
+            <div class="container benefits-container">
+                <div class="benefit-item"><img src="img/escudo.svg" alt="">
+                    <h4>TÉCNICOS<br>IDENTIFICADOS:</h4>
+                    <p>"Todo nuestro personal cuenta con antecedentes verificados".</p>
+                </div>
+                <div class="benefit-item"><img src="img/dollar.svg" alt="">
+                    <h4>PRECIOS<br>TRANSPARENTES:</h4>
+                    <p>"Cotizaciones claras antes de iniciar el trabajo, sin sorpresas".</p>
+                </div>
+                <div class="benefit-item"><img src="img/check.svg" alt="">
+                    <h4>GARANTÍA<br>ASEGURADA:</h4>
+                    <p>"Todos los trabajos cuentan con respaldo y garantía de la plataforma".</p>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
 
-<script src="layout.js" data-part="footer"></script>
-<script src="main.js"></script>
+        <section class="offers-section">
+            <div class="container">
+                <h2 class="section-title">OFERTAS DEL MES</h2>
+            </div>
+            <div class="offers">
+                <button class="carousel-arrow prev" aria-label="Oferta anterior">&#10094;</button>
+                <div class="offers-text">
+                    <h3>CELEBREMOS<br>JUNTOS LA<br>SEMANA DEL<br>GASFITERO</h3>
+                    <p class="discount"><span class="percent">50 %</span><span class="desc">DE DESCUENTO</span></p>
+                    <a href="solicitud.html" class="btn-solicitar-oferta">solicitar</a>
+                </div>
+                <button class="carousel-arrow next" aria-label="Oferta siguiente">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">SERVICIOS</h2>
+                <div class="services-grid">
+                    <article class="service-card"><img src="img/electricista-1.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Electricidad</h4><a href="electricidad.html"
+                                class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                    <article class="service-card"><img src="img/gasfitero-1.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Gasfitería</h4><a href="#" class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                    <article class="service-card"><img src="img/carpintero.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Carpintería</h4><a href="#" class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                    <article class="service-card"><img src="img/cerrajero.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Cerrajería</h4><a href="#" class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                    <article class="service-card"><img src="img/vidriero.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Vidriería</h4><a href="#" class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                    <article class="service-card"><img src="img/sistemas.png" alt="" loading="lazy">
+                        <div class="service-info">
+                            <h4>Servicio de Informática</h4><a href="#" class="btn-solicitar">Solicitar</a>
+                        </div>
+                    </article>
+                </div>
+                <p class="ver-mas-container"><a href="servicios.html" class="ver-mas">ver más</a></p>
+            </div>
+        </section>
+
+        <section class="why-us" id="porque-elegirnos">
+            <div class="container">
+                <h2 class="section-title">POR QUÉ ELEGIRNOS</h2>
+                <div class="why-us-content">
+                    <img src="img/familia.png" alt="Equipo de técnicos profesionales de Chapa Tu Técnico"
+                        loading="lazy">
+                    <div class="why-us-text">
+                        <p>Porque sabemos que encontrar a un especialista que pueda brindarte <span
+                                class="highlight-red">SEGURIDAD</span>, <span class="highlight-red">CONFIANZA</span> y
+                            <span class="highlight-red">CALIDAD</span> es muchas veces complicado
+                        </p>
+                        <p>Por eso, nuestra empresa busca conectarte con verdaderos <span
+                                class="highlight-red">PROFESIONALES</span></p>
+                        <p>¡Tú tienes el problema, nosotros te conectamos con la persona indicada para solucionarlo!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>

@@ -1,15 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | Chapa Tu Técnico</title>
-    <meta name="description" content="Todos los servicios técnicos de Chapa Tu Técnico: electricidad, gasfitería, carpintería, cerrajería, vidriería, informática y más.">
-    <link rel="icon" href="img/logo.png">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE BÁSICO (MANIPULACIÓN DIRECTA DE POSICIONAMIENTO)
+         =================================================================== -->
+    <title>Catálogo de Servicios Técnicos para Hogar y Empresas | Chapa Tu Técnico</title>
+    <meta name="title" content="Catálogo de Servicios Técnicos para Hogar y Empresas | Chapa Tu Técnico">
+    <meta name="description"
+        content="Catálogo completo de servicios técnicos en Lima Metropolitana: electricidad, gasfitería, carpintería, cerrajería, vidriería, informática, línea blanca, albañilería y pintura con especialistas certificados.">
+    <meta name="keywords"
+        content="servicios tecnicos lima, catalogo tecnicos hogar, gasfiteria lima, electricidad lima, carpinteria, cerrajeria urgente, instalacion linea blanca, pintura y drywall">
+    <meta name="author" content="Chapa Tu Técnico">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://chapatutecnico.pe/servicios.html">
+
+    <!-- ===================================================================
+         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
+         =================================================================== -->
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima">
+    <meta name="geo.position" content="-12.046374;-77.042793">
+    <meta name="ICBM" content="-12.046374, -77.042793">
+
+    <!-- ===================================================================
+         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
+         =================================================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Chapa Tu Técnico">
+    <meta property="og:url" content="https://chapatutecnico.pe/servicios.html">
+    <meta property="og:title" content="Catálogo de Servicios Técnicos | Chapa Tu Técnico">
+    <meta property="og:description"
+        content="Encuentra al especialista indicado para tu hogar o empresa: electricistas, gasfiteros, cerrajeros y más técnicos verificados con atención 24/7 en Lima.">
+    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
+    <meta property="og:image:alt" content="Servicios técnicos ofrecidos por Chapa Tu Técnico">
+
+    <!-- ===================================================================
+         5. TWITTER / X CARDS
+         =================================================================== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://chapatutecnico.pe/servicios.html">
+    <meta name="twitter:title" content="Catálogo de Servicios Técnicos | Chapa Tu Técnico">
+    <meta name="twitter:description"
+        content="Conectamos tu problema con técnicos profesionales evaluados y con garantía en Lima Metropolitana.">
+    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
+
+    <!-- ===================================================================
+         6. FAVICON & ICONOS DE APLICACIÓN
+         =================================================================== -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
+    <!-- ===================================================================
+         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
+         =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ===================================================================
+         8. HOJA DE ESTILOS PRINCIPAL
+         =================================================================== -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- ===================================================================
+         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
+         =================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Catálogo de Servicios Técnicos Chapa Tu Técnico",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "numberOfItems": 8,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Servicio de Electricidad",
+          "url": "https://chapatutecnico.pe/electricidad.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Servicio de Gasfitería",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Servicio de Carpintería",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Servicio de Cerrajería",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Servicio de Vidriería",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Servicio de Informática",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Servicio de Línea Blanca",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Servicio de Pintura",
+          "url": "https://chapatutecnico.pe/servicios.html"
+        }
+      ]
+    }
+    </script>
 </head>
 <body data-page="servicios">
 

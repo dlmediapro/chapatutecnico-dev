@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO ON-PAGE & PRIVACIDAD (PORTAL PRIVADO DEL CLIENTE)
+         =================================================================== -->
+    <title>Mi Cuenta - Gestión de Cliente | Chapa Tu Técnico</title>
+    <meta name="title" content="Mi Cuenta - Gestión de Cliente | Chapa Tu Técnico">
+    <meta name="description"
+        content="Portal de usuario de Chapa Tu Técnico. Administra de forma segura tus datos personales, direcciones habituales en Lima, métodos de pago y el historial de servicios realizados.">
+    <meta name="keywords" content="mi cuenta, portal cliente, usuario chapa tu tecnico, direcciones de servicio">
+    <meta name="author" content="Chapa Tu Técnico">
+    <!-- Área privada: directiva estricta para evitar indexación en motores de búsqueda -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://chapatutecnico.pe/cuenta.html">
+
+    <!-- ===================================================================
+         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
+         =================================================================== -->
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima">
+    <meta name="geo.position" content="-12.046374;-77.042793">
+    <meta name="ICBM" content="-12.046374, -77.042793">
+
+    <!-- ===================================================================
+         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
+         =================================================================== -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Chapa Tu Técnico">
+    <meta property="og:url" content="https://chapatutecnico.pe/cuenta.html">
+    <meta property="og:title" content="Mi Cuenta | Chapa Tu Técnico">
+    <meta property="og:description"
+        content="Portal privado de cliente para administración de solicitudes y servicios técnicos en Lima.">
+    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
+    <meta property="og:image:alt" content="Chapa Tu Técnico - Portal de Usuario">
+
+    <!-- ===================================================================
+         5. TWITTER / X CARDS
+         =================================================================== -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://chapatutecnico.pe/cuenta.html">
+    <meta name="twitter:title" content="Mi Cuenta | Chapa Tu Técnico">
+    <meta name="twitter:description"
+        content="Panel de administración de usuario en Chapa Tu Técnico.">
+    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
+
+    <!-- ===================================================================
+         6. FAVICON & ICONOS DE APLICACIÓN
+         =================================================================== -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
+    <!-- ===================================================================
+         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
+         =================================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ===================================================================
+         8. HOJA DE ESTILOS PRINCIPAL
+         =================================================================== -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ===================================================================
+         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
+         =================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Panel de Mi Cuenta - Chapa Tu Técnico",
+      "description": "Sección privada de gestión del cliente y métodos de pago.",
+      "url": "https://chapatutecnico.pe/cuenta.html"
+    }
+    </script>
+</head>
+
+<body data-page="cuenta">
+
+    <script src="layout.js" data-part="header"></script>
+
+    <main id="main-content">
+        <div class="container page-head">
+            <span class="menu-icon" aria-hidden="true"></span>
+            <h1 class="page-title">MI CUENTA</h1>
+        </div>
+
+        <!-- Perfil Resumen / Hero Card -->
+        <section class="container account-hero-section">
+            <div class="account-profile-card">
+                <div class="account-avatar-wrapper">
+                    <div class="account-avatar" id="account-avatar-display">
+                        <img src="img/icon-cuenta.svg" alt="Foto de perfil" id="profile-img">
+                    </div>
+                    <button type="button" class="btn-change-avatar" id="btn-change-avatar"
+                        title="Cambiar foto de perfil" aria-label="Cambiar foto de perfil">📷</button>
+                </div>
+                <div class="account-profile-info">
+                    <div class="account-name-badge">
+                        <h2 id="display-fullname">Carlos Medina</h2>
+                        <span class="badge-verified" title="Usuario con número y DNI verificado">
+                            <img src="img/escudo.svg" alt="" width="14" height="14" aria-hidden="true">
+                            Cliente Verificado
+                        </span>
+                    </div>
+                    <p class="account-meta">
+                        <span>📱 <strong id="display-phone">998 204 667</strong></span> •
+                        <span>✉️ <span id="display-email">carlos.medina@gmail.com</span></span> •
+                        <span>📍 <strong id="display-district">Miraflores, Lima</strong></span>
+                    </p>
+                    <div class="account-badges-row">
+                        <span class="user-tier-chip">⭐ Cliente Frecuente (4 Servicios)</span>
+                        <a href="solicitud.html" class="active-order-chip">
+                            <span class="pulsing-dot"></span> 1 Solicitud en curso (#CT-2026-084)
+                        </a>
+                    </div>
+                </div>
+                <div class="account-profile-actions">
+                    <a href="solicitud.html" class="btn-primary-action">Ver Solicitud Activa</a>
+                    <button type="button" class="btn-logout-outline" id="btn-logout-trigger">Cerrar Sesión</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenedor Principal de Pestañas / Tabs -->
+        <section class="container account-tabs-container">
+            <!-- Navegación de Tabs -->
+            <nav class="account-tabs-nav" role="tablist" aria-label="Secciones de Mi Cuenta">
+                <button role="tab" class="tab-btn active" id="tab-btn-personal" aria-selected="true"
+                    aria-controls="tab-pane-personal">
+                    👤 Datos Personales
+                </button>
+                <button role="tab" class="tab-btn" id="tab-btn-addresses" aria-selected="false"
+                    aria-controls="tab-pane-addresses">
+                    📍 Mis Direcciones (<span id="address-counter">2</span>)
+                </button>
+                <button role="tab" class="tab-btn" id="tab-btn-payments" aria-selected="false"
+                    aria-controls="tab-pane-payments">
+                    💳 Métodos de Pago
+                </button>
+                <button role="tab" class="tab-btn" id="tab-btn-history" aria-selected="false"
+                    aria-controls="tab-pane-history">
+                    📋 Historial de Servicios
+                </button>
+                <button role="tab" class="tab-btn" id="tab-btn-security" aria-selected="false"
+                    aria-controls="tab-pane-security">
+                    🔒 Seguridad & Avisos
+                </button>
+            </nav>
+
+            <!-- PANEL 1: Datos Personales -->
+            <div role="tabpanel" class="tab-pane active" id="tab-pane-personal" aria-labelledby="tab-btn-personal">
+                <div class="pane-header">
+                    <div>
+                        <h3>Información Personal</h3>
+                        <p class="pane-subtitle">Mantén tus datos actualizados para que los técnicos puedan contactarte
+                            y emitir tus comprobantes de pago.</p>
+                    </div>
+                    <button type="button" class="btn-secondary-outline" id="btn-reset-profile">Restablecer</button>
+                </div>
+
+                <form id="form-personal-data" class="account-form" novalidate>
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="input-firstname">Nombres <span class="required">*</span></label>
+                            <input type="text" id="input-firstname" name="firstname" value="Carlos Alberto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-lastname">Apellidos <span class="required">*</span></label>
+                            <input type="text" id="input-lastname" name="lastname" value="Medina Rojas" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="input-doc-type">Tipo de Documento</label>
+                            <select id="input-doc-type" name="docType">
+                                <option value="DNI" selected>DNI (Documento Nacional de Identidad)</option>
+                                <option value="CE">Carnet de Extranjería</option>
+                                <option value="RUC">RUC (Persona Natural con Negocio)</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-doc-number">Número de Documento <span class="required">*</span></label>
+                            <input type="text" id="input-doc-number" name="docNumber" value="72849102" maxlength="11"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="input-phone">Teléfono de Contacto (WhatsApp) <span
+                                    class="required">*</span></label>
+                            <div class="input-with-prefix">
+                                <span class="phone-prefix">🇵🇪 +51</span>
+                                <input type="tel" id="input-phone" name="phone" value="998 204 667" maxlength="12"
+                                    required>
+                            </div>
+                            <small class="field-hint">Este número recibirá las actualizaciones de llegada del técnico
+                                vía WhatsApp.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-email">Correo Electrónico <span class="required">*</span></label>
+                            <input type="email" id="input-email" name="email" value="carlos.medina@gmail.com" required>
+                            <small class="field-hint">Enviaremos aquí la boleta o factura de cada trabajo.</small>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label for="input-birthdate">Fecha de Nacimiento</label>
+                            <input type="date" id="input-birthdate" name="birthdate" value="1996-05-18">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-emergency-contact">Contacto de Emergencia Adicional</label>
+                            <input type="tel" id="input-emergency-contact" name="emergencyContact"
+                                placeholder="Ej. 987 654 321 (Familiar)" value="987 112 334">
+                        </div>
+                    </div>
+
+                    <div class="form-footer-actions">
+                        <button type="submit" class="btn-save-primary" id="btn-save-personal">
+                            💾 Guardar Cambios
+                        </button>
+                        <span id="save-status-msg" class="save-status-msg" aria-live="polite"></span>
+                    </div>
+                </form>
+            </div>
+
+            <!-- PANEL 2: Mis Direcciones -->
+            <div role="tabpanel" class="tab-pane" id="tab-pane-addresses" aria-labelledby="tab-btn-addresses" hidden>
+                <div class="pane-header">
+                    <div>
+                        <h3>Direcciones de Atención</h3>
+                        <p class="pane-subtitle">Guarda los domicilios o negocios donde sueles solicitar visitas
+                            técnicas en Lima.</p>
+                    </div>
+                    <button type="button" class="btn-primary-action" id="btn-open-address-modal">+ Nueva
+                        Dirección</button>
+                </div>
+
+                <div class="addresses-grid" id="addresses-list-container">
+                    <!-- Se inyecta dinámicamente con JS -->
+                </div>
+            </div>
+
+            <!-- PANEL 3: Métodos de Pago -->
+            <div role="tabpanel" class="tab-pane" id="tab-pane-payments" aria-labelledby="tab-btn-payments" hidden>
+                <div class="pane-header">
+                    <div>
+                        <h3>Billeteras y Tarjetas Guardadas</h3>
+                        <p class="pane-subtitle">Tus pagos son procesados con encriptación de nivel bancario. Paga
+                            seguro al finalizar el trabajo.</p>
+                    </div>
+                    <button type="button" class="btn-secondary-outline" id="btn-add-payment-method">+ Asociar
+                        Método</button>
+                </div>
+
+                <div class="payments-wrapper">
+                    <!-- Billeteras Móviles -->
+                    <div class="payment-category-block">
+                        <h4>Billeteras Digitales Populares (Perú)</h4>
+                        <div class="wallets-grid">
+                            <div class="wallet-card active">
+                                <div class="wallet-logo-wrap yape-theme">
+                                    <img src="img/pago-yape.svg" alt="Yape" width="56" height="32">
+                                </div>
+                                <div class="wallet-info">
+                                    <h5>Yape Vinculado</h5>
+                                    <p>Número: <strong>998 *** 667</strong></p>
+                                    <span class="badge-default-method">Predeterminado</span>
+                                </div>
+                                <div class="wallet-status">✅ Activo</div>
+                            </div>
+
+                            <div class="wallet-card">
+                                <div class="wallet-logo-wrap plin-theme">
+                                    <img src="img/pago-plin.svg" alt="Plin" width="56" height="32">
+                                </div>
+                                <div class="wallet-info">
+                                    <h5>Plin BCP / BBVA / Interbank</h5>
+                                    <p>Número: <strong>998 *** 667</strong></p>
+                                </div>
+                                <button type="button" class="btn-text-action set-default-btn">Usar como
+                                    principal</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjetas de Crédito / Débito -->
+                    <div class="payment-category-block">
+                        <h4>Tarjetas Guardadas</h4>
+                        <div class="cards-grid">
+                            <div class="card-item visa-card">
+                                <div class="card-top">
+                                    <img src="img/pago-visa.svg" alt="Visa" width="48" height="24">
+                                    <span class="card-chip">Chip</span>
+                                </div>
+                                <div class="card-number">•••• •••• •••• 4219</div>
+                                <div class="card-bottom">
+                                    <div>
+                                        <span class="label">TITULAR</span>
+                                        <span class="val">CARLOS MEDINA</span>
+                                    </div>
+                                    <div>
+                                        <span class="label">VENCE</span>
+                                        <span class="val">08/29</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-item mastercard-card">
+                                <div class="card-top">
+                                    <img src="img/pago-mastercard.svg" alt="Mastercard" width="48" height="24">
+                                    <span class="card-chip">Chip</span>
+                                </div>
+                                <div class="card-number">•••• •••• •••• 8831</div>
+                                <div class="card-bottom">
+                                    <div>
+                                        <span class="label">TITULAR</span>
+                                        <span class="val">CARLOS MEDINA</span>
+                                    </div>
+                                    <div>
+                                        <span class="label">VENCE</span>
+                                        <span class="val">11/27</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pago en Efectivo -->
+                    <div class="cash-option-banner">
+                        <img src="img/dollar.svg" alt="" width="32" height="32">
+                        <div>
+                            <strong>¿Prefieres pagar contraentrega en efectivo?</strong>
+                            <p>También puedes pagarle en efectivo directamente al técnico una vez finalizado y probado
+                                el servicio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 4: Historial de Solicitudes -->
+            <div role="tabpanel" class="tab-pane" id="tab-pane-history" aria-labelledby="tab-btn-history" hidden>
+                <div class="pane-header">
+                    <div>
+                        <h3>Historial de Solicitudes y Servicios</h3>
+                        <p class="pane-subtitle">Consulta los trabajos realizados, garantías vigentes y detalles de cada
+                            técnico que te visitó.</p>
+                    </div>
+                    <div class="history-filters">
+                        <button type="button" class="filter-chip active" data-filter="all">Todos (4)</button>
+                        <button type="button" class="filter-chip" data-filter="active">En curso (1)</button>
+                        <button type="button" class="filter-chip" data-filter="completed">Finalizados (3)</button>
+                    </div>
+                </div>
+
+                <div class="history-list" id="history-items-list">
+                    <!-- Tarjeta de Solicitud en curso -->
+                    <article class="history-card active-service-border" data-status="active">
+                        <div class="history-card-header">
+                            <div class="history-tag-group">
+                                <span class="badge-status-active">
+                                    <span class="pulsing-dot"></span> EN CAMINO (12 min)
+                                </span>
+                                <span class="history-code">Orden #CT-2026-084</span>
+                            </div>
+                            <span class="history-date">Hoy, 28 Oct 2026</span>
+                        </div>
+
+                        <div class="history-card-body">
+                            <div class="service-icon-bubble">⚡</div>
+                            <div class="service-details">
+                                <h4>Servicio de Electricidad - Cortocircuito en tablero principal</h4>
+                                <p class="service-loc">📍 Av. Benavides 1240, Dpto 402, Miraflores</p>
+                                <p class="service-tech">👨‍🔧 Técnico: <strong>Carlos Rivas</strong> (⭐ 4.9)</p>
+                            </div>
+                            <div class="service-price-block">
+                                <span class="price-label">Monto Estimado</span>
+                                <span class="price-val">S/ 90.00</span>
+                                <span class="payment-method-chip">Pago vía Yape</span>
+                            </div>
+                        </div>
+
+                        <div class="history-card-footer">
+                            <a href="solicitud.html?id=CT-2026-084" class="btn-view-request">
+                                🚚 Ver Seguimiento en Vivo
+                            </a>
+                            <a href="https://wa.me/51998204667?text=Consulta%20sobre%20solicitud%20CT-2026-084"
+                                target="_blank" rel="noopener noreferrer" class="btn-contact-tech">
+                                💬 Contactar Soporte
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Tarjetas Pasadas -->
+                    <article class="history-card" data-status="completed">
+                        <div class="history-card-header">
+                            <div class="history-tag-group">
+                                <span class="badge-status-completed">✓ COMPLETADO</span>
+                                <span class="history-code">Orden #CT-2026-061</span>
+                            </div>
+                            <span class="history-date">14 Oct 2026</span>
+                        </div>
+
+                        <div class="history-card-body">
+                            <div class="service-icon-bubble">🔧</div>
+                            <div class="service-details">
+                                <h4>Gasfitería - Reparación de fuga en baño principal y cambio de llave</h4>
+                                <p class="service-loc">📍 Av. Benavides 1240, Dpto 402, Miraflores</p>
+                                <p class="service-tech">👨‍🔧 Técnico: <strong>Jorge Mendoza</strong> • Garantía hasta
+                                    14 Nov 2026</p>
+                            </div>
+                            <div class="service-price-block">
+                                <span class="price-label">Monto Pagado</span>
+                                <span class="price-val">S/ 75.00</span>
+                                <span class="payment-method-chip">Yape • Pagado</span>
+                            </div>
+                        </div>
+
+                        <div class="history-card-footer">
+                            <span class="rating-given">Tu valoración: ⭐⭐⭐⭐⭐ "Excelente servicio, muy puntual"</span>
+                            <a href="electricidad.html" class="btn-reorder">Repetir Solicitud</a>
+                        </div>
+                    </article>
+
+                    <article class="history-card" data-status="completed">
+                        <div class="history-card-header">
+                            <div class="history-tag-group">
+                                <span class="badge-status-completed">✓ COMPLETADO</span>
+                                <span class="history-code">Orden #CT-2026-039</span>
+                            </div>
+                            <span class="history-date">28 Set 2026</span>
+                        </div>
+
+                        <div class="history-card-body">
+                            <div class="service-icon-bubble">🚪</div>
+                            <div class="service-details">
+                                <h4>Cerrajería - Instalación de cerrojo de seguridad Cantol</h4>
+                                <p class="service-loc">📍 Jr. Huáscar 820, Jesús María</p>
+                                <p class="service-tech">👨‍🔧 Técnico: <strong>Manuel Silva</strong> • Garantía
+                                    finalizada</p>
+                            </div>
+                            <div class="service-price-block">
+                                <span class="price-label">Monto Pagado</span>
+                                <span class="price-val">S/ 110.00</span>
+                                <span class="payment-method-chip">Tarjeta Visa</span>
+                            </div>
+                        </div>
+
+                        <div class="history-card-footer">
+                            <span class="rating-given">Tu valoración: ⭐⭐⭐⭐⭐ "Rápido y limpio"</span>
+                            <a href="servicios.html" class="btn-reorder">Solicitar similar</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- PANEL 5: Seguridad & Notificaciones -->
+            <div role="tabpanel" class="tab-pane" id="tab-pane-security" aria-labelledby="tab-btn-security" hidden>
+                <div class="pane-header">
+                    <div>
+                        <h3>Seguridad y Preferencias</h3>
+                        <p class="pane-subtitle">Configura tus accesos y decide cómo deseas recibir las alertas de tus
+                            solicitudes.</p>
+                    </div>
+                </div>
+
+                <div class="security-sections-grid">
+                    <!-- Cambio de Contraseña -->
+                    <div class="security-card">
+                        <h4>🔑 Cambiar Contraseña</h4>
+                        <form id="form-password" class="password-form"
+                            onsubmit="event.preventDefault(); alert('Contraseña actualizada con éxito');">
+                            <div class="form-group">
+                                <label for="old-pwd">Contraseña Actual</label>
+                                <input type="password" id="old-pwd" placeholder="••••••••" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-pwd">Nueva Contraseña</label>
+                                <input type="password" id="new-pwd" placeholder="Mínimo 8 caracteres" required>
+                            </div>
+                            <button type="submit" class="btn-secondary-outline">Actualizar Contraseña</button>
+                        </form>
+                    </div>
+
+                    <!-- Preferencias de Canales -->
+                    <div class="security-card">
+                        <h4>🔔 Canales de Notificación</h4>
+                        <div class="toggle-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" checked id="pref-whatsapp">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">
+                                    <strong>Alertas por WhatsApp</strong>
+                                    <small>Notificarme cuando el técnico acepte la orden y cuando esté a 10 min.</small>
+                                </span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" checked id="pref-sms">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">
+                                    <strong>Notificaciones por SMS</strong>
+                                    <small>Código de seguridad de verificación para entrega del servicio.</small>
+                                </span>
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" checked id="pref-email">
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">
+                                    <strong>Envío de Boletas por Correo</strong>
+                                    <small>Comprobante electrónico inmediato al terminar el servicio.</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL: Nueva Dirección -->
+    <dialog id="modal-address" class="custom-dialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h3>📍 Añadir Nueva Dirección</h3>
+                <button type="button" class="btn-close-dialog" id="btn-close-address-modal"
+                    aria-label="Cerrar modal">✕</button>
+            </div>
+            <form id="form-new-address" class="dialog-body">
+                <div class="form-group">
+                    <label for="modal-addr-alias">Etiqueta o Nombre del Lugar <span class="required">*</span></label>
+                    <input type="text" id="modal-addr-alias"
+                        placeholder="Ej: Mi Departamento, Oficina Miraflores, Casa de mis padres" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-addr-district">Distrito (Lima Metropolitana) <span
+                            class="required">*</span></label>
+                    <select id="modal-addr-district" required>
+                        <option value="" disabled selected>Selecciona tu distrito</option>
+                        <option value="Miraflores">Miraflores</option>
+                        <option value="San Isidro">San Isidro</option>
+                        <option value="Surco">Santiago de Surco</option>
+                        <option value="San Borja">San Borja</option>
+                        <option value="Jesús María">Jesús María</option>
+                        <option value="Lince">Lince</option>
+                        <option value="Magdalena">Magdalena del Mar</option>
+                        <option value="Pueblo Libre">Pueblo Libre</option>
+                        <option value="La Molina">La Molina</option>
+                        <option value="Barranco">Barranco</option>
+                        <option value="San Miguel">San Miguel</option>
+                        <option value="Cercado de Lima">Cercado de Lima</option>
+                        <option value="Los Olivos">Los Olivos</option>
+                        <option value="Chorrillos">Chorrillos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-addr-line">Dirección Completa (Calle, Av., Jr., N° y Dpto) <span
+                            class="required">*</span></label>
+                    <input type="text" id="modal-addr-line" placeholder="Ej: Av. Pardo 450, Dpto 801" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-addr-ref">Referencia de Ubicación</label>
+                    <input type="text" id="modal-addr-ref"
+                        placeholder="Ej: A media cuadra del óvalo, portón negro con rejas">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="modal-addr-default">
+                        Establecer como dirección principal de servicios
+                    </label>
+                </div>
+                <div class="dialog-actions">
+                    <button type="button" class="btn-secondary-outline" id="btn-cancel-address">Cancelar</button>
+                    <button type="submit" class="btn-save-primary">Guardar Dirección</button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- MODAL: Confirmar Cerrar Sesión -->
+    <dialog id="modal-logout" class="custom-dialog">
+        <div class="dialog-content text-center">
+            <div class="dialog-header justify-center">
+                <h3>¿Cerrar Sesión?</h3>
+            </div>
+            <div class="dialog-body">
+                <p>Se cerrará tu sesión activa en este dispositivo. Podrás volver a ingresar en cualquier momento con tu
+                    número de teléfono o correo.</p>
+            </div>
+            <div class="dialog-actions justify-center">
+                <button type="button" class="btn-secondary-outline" id="btn-cancel-logout">Permanecer</button>
+                <button type="button" class="btn-logout-confirm" id="btn-confirm-logout">Sí, Cerrar Sesión</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Toast de Notificaciones -->
+    <div id="toast-notification" class="toast-notification" aria-live="polite" role="status"></div>
+
+    <script src="layout.js" data-part="footer"></script>
+    <script src="main.js"></script>
+    <script src="cuenta.js"></script>
+</body>
+
+</html>
