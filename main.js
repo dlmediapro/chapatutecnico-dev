@@ -2,21 +2,54 @@
 // Chapa Tu Técnico — Lógica Interactiva Principal
 // ==========================================================
 
-// 1. Menú Móvil
+// 1. Menú Móvil Accesible (Figma Drawer + Escape + Focus + Scroll Lock)
 (function initMobileMenu() {
   const toggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
   if (!toggle || !navbar) return;
 
-  toggle.addEventListener('click', () => {
-    const open = navbar.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+  function closeMenu() {
+    navbar.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-locked');
+    toggle.focus();
+  }
+
+  function openMenu() {
+    navbar.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-locked');
+    const closeBtn = document.getElementById('mobile-nav-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navbar.classList.contains('open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
-  navbar.addEventListener('click', e => {
-    if (e.target.tagName === 'A') {
-      navbar.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
+  navbar.addEventListener('click', (e) => {
+    if (e.target.closest('#mobile-nav-close') || e.target.closest('a')) {
+      closeMenu();
+    }
+  });
+
+  // Heurística #3: Control del usuario con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navbar.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+
+  // Clic en backdrop fuera del contenido del menú
+  document.addEventListener('click', (e) => {
+    if (navbar.classList.contains('open') && !navbar.contains(e.target) && !toggle.contains(e.target)) {
+      closeMenu();
     }
   });
 })();
