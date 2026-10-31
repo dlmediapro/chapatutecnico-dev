@@ -1,7 +1,7 @@
 /* Cabecera y pie compartidos: Chapa Tu Técnico (Figma System)
    Uso en el HTML:  <script src="layout.js" data-part="header"></script>
                     <script src="layout.js" data-part="footer"></script>
-   Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | tecnicos | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
+   Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
 (function () {
   var s = document.currentScript, part = s.dataset.part, page = document.body.dataset.page || '';
   var navLink = function (id, href, text) {
@@ -67,9 +67,9 @@
             '</button>' +
           '</form>' +
         '</div>' +
-        '<!-- 3. Acciones Derecha: Cuenta, Notificaciones, Carrito, Hamburguesa -->' +
+        '<!-- 3. Acciones Derecha: Cuenta/Login, Notificaciones, Carrito, Hamburguesa -->' +
         '<div class="header-actions">' +
-          '<a href="cuenta.html" class="header-account' + (page === 'cuenta' || page === 'perfil' ? ' active' : '') + '" title="Mi Cuenta" aria-label="Iniciar sesión o acceder a mi cuenta">' +
+          '<a href="login.html" class="header-account' + (page === 'login' || page === 'cuenta' || page === 'perfil' ? ' active' : '') + '"' + (page === 'login' ? ' aria-current="page"' : '') + ' title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta">' +
             '<img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon">' +
             '<span class="account-text">INICIAR SESIÓN</span>' +
           '</a>' +
@@ -91,6 +91,7 @@
   var footer =
     '<footer class="footer"><div class="container footer-container">' +
     '<div class="footer-col"><h4>Inicio:</h4><ul>' +
+    '<li><a href="login.html">Iniciar Sesión</a></li>' +
     '<li><a href="nosotros.html">Nosotros</a></li>' +
     '<li><a href="servicios.html">Servicios Generales</a></li>' +
     '<li><a href="cobertura.html">Cobertura Lima</a></li>' +

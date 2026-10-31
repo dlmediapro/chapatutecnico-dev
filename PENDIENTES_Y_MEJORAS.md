@@ -20,8 +20,10 @@ De acuerdo con la auditoría exhaustiva realizada contra el archivo de Figma (*C
    - *Situación actual:* El Frame **`COMPRA`** (`id: 475:454`) diseña la pantalla estática de resumen con botones de Yape, Visa, Mastercard y Plin.
    - *Pendiente en Figma:* Faltan los modales o pantallas de confirmación (pantalla de escaneo de QR para Yape/Plin, formulario de datos de tarjeta de crédito/débito y pantalla de "Pedido Confirmado / Voucher").
 
-4. **Flujo de Autenticación de Clientes (Login / Registro):**
-   - *Situación actual:* El Frame **`PERFIL DEL TECNICO`** (`id: 614:103`) atiende el panel del especialista, pero no hay Frame de registro para clientes nuevos ni recuperación de contraseña.
+4. **Flujo de Autenticación de Clientes y Técnicos (Login):**
+   - *Estado:* **IMPLEMENTADO AL 100%** mediante la página oficial [`login.html`](login.html) basada fielmente en el Frame oficial **`INICIAR SESIÓN`** (`id: 1423:848`) de Figma.
+   - *Características activas:* Selector dual de roles (Soy Cliente / Soy Técnico), validación en tiempo real para correo o celular peruano (+51 de 9 dígitos), toggle interactivo de contraseña, accesos rápidos multi-proveedor (Google, Apple, y código OTP vía WhatsApp con modal emergente), feedback visual accesible sin recarga y vinculación en el botón global del Header y Footer en todo el sitio web.
+   - *Fase backend futura:* Conexión de los endpoints de autenticación OAuth y servicio de SMS/WhatsApp OTP con backend productivo.
 
 ---
 
@@ -86,5 +88,5 @@ Para evitar enlaces muertos o saltos vacíos (`href="#"`), se enlazaron temporal
 
 ---
 
-*Documento actualizado el 29 de octubre de 2026 como parte del cierre de integración del repositorio oficial [dlmediapro/chapatutecnico-dev](https://github.com/dlmediapro/chapatutecnico-dev).*
+*Documento actualizado el 30 de octubre de 2026 tras la implementación de la vista oficial Iniciar Sesión (`login.html`) y su vinculación global.*
 
