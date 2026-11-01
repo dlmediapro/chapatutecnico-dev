@@ -4,7 +4,7 @@
    Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
 (function () {
   var s = document.currentScript, part = s.dataset.part, page = document.body.dataset.page || '';
-  var hideSearch = (s.dataset.search === 'false' || s.dataset.variant === 'compact' || page === 'cobertura' || page === 'soporte');
+  var hideSearch = (s.dataset.search === 'false' || s.dataset.variant === 'compact' || page === 'cobertura' || page === 'soporte' || page === 'tienda');
   var navLink = function (id, href, text) {
     var isActive = (page === id);
     return '<a href="' + href + '" class="nav-link' + (isActive ? ' active' : '') + '"' + (isActive ? ' aria-current="page"' : '') + '>' + text + '</a>';
