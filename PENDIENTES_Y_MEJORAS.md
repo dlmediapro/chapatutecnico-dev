@@ -9,9 +9,9 @@ Este documento registra formalmente el estado de integración del proyecto **Cha
 De acuerdo con la auditoría exhaustiva realizada contra el archivo de Figma (*CHAPA TU TECNICO*, file key `qg00MT4SVQUrHSM8c58jFt`), se identifican las siguientes pantallas y flujos que aún **no cuentan con Frame oficial diseñado en Figma**:
 
 1. **Catálogo de Productos y Herramientas (Tienda):**
-   - *Situación actual:* Existen los Frames oficiales de **`MI CARRITO`** (`id: 1184:945`), **`CARRITO DE SERVICIOS`** (`id: 873:737`) y **`COMPRA`** (`id: 475:454`), los cuales listan productos físicos y herramientas (Taladro Percutor DWD024K, Martillo barnizado, Wincha Truper, etc.).
-   - *Pendiente en Figma:* Falta diseñar el Frame oficial de la **Página de Catálogo / Tienda** donde el usuario explore, filtre y añada dichas herramientas al carrito.
-   - *Manejo en código:* Se cuenta con el archivo borrador [`tienda.html`](tienda.html) guardado en el repositorio, pero no se expone en la barra de navegación principal para respetar estrictamente los Frames oficiales diseñados. El acceso al carrito se resolvió mediante el botón oficial *"Carrito de servicio"* añadido en la vista de Soporte (Frame `873:509`, nodo `1269:260`) y el icono de carrito en la cabecera.
+   - *Estado:* **IMPLEMENTADO AL 100%** mediante la página oficial [`tienda.html`](tienda.html) basada fielmente en el Frame oficial **`TIENDA CHAPA`** (`id: 1331:265`) de Figma.
+   - *Características activas:* Matriz 3x3 de 9 herramientas en WebP (CLS = 0), barra de herramientas con filtro desplegable de "CATEGORÍAS", selector "Ordenar por: Recomendados", buscador instantáneo en vivo con micrófono (Search UX), botón "VER MÁS" de paginación progresiva y adición reactiva a `localStorage` (`chapa_cart`) sincronizada en tiempo real con el badge del `<header>`.
+   - *Navegación:* Expuesto en la barra de navegación institucional (`layout.js`) como enlace activo `TIENDA CHAPA` con la **Regla de Buscador Único** (`data-search="false"`).
 
 2. **Ficha de Detalle de Producto Individual:**
    - *Situación actual:* Al dar clic a un producto del carrito no existe una pantalla con especificaciones técnicas, selector de cantidad o galería de fotos del producto antes de agregarlo.
@@ -248,3 +248,29 @@ Se implementó y transformó al 100% la pantalla oficial **"MI CARRITO"** a part
   - `kit_herramientas.webp` (5.4 KB)
 - Reducción global de peso >80% respecto a los archivos PNG originales.
 - Atributos `width` y `height` explícitos en todas las etiquetas `<img>` para garantizar **CLS = 0**.
+
+---
+
+## 9. 🛒 Implementación Oficial de Tienda Chapa (`tienda.html` - Figma Frame `1331:265`)
+
+Se implementó y activó oficialmente el catálogo de productos **"TIENDA CHAPA"** (`tienda.html`) a partir de la inspección en vivo de Figma (`node-id=1331-265`) y la captura oficial, unificando la identidad visual con las 4 Agent Skills de UX/UI (`figma-design-to-code`, `frontend-ui-engineering`, `search-ux`, `verification-before-completion`) y las heurísticas del proyecto.
+
+### 9.1. Integración en Navegación Global y Regla de Buscador Único
+- **Habilitación en Menú Principal (`layout.js`):** Se incorporó `"TIENDA CHAPA"` como enlace activo oficial en la barra de navegación institucional con indicador de página activa (`aria-current="page"`).
+- **Cero Colisión Cognitiva (`data-search="false"`):** Al contar la vista con una barra de herramientas protagónica que incluye buscador por texto y voz, se configuró `page === 'tienda'` en `layout.js` para ocultar automáticamente el buscador genérico de oficios de la cabecera.
+
+### 9.2. Barra de Herramientas del Catálogo (Toolbar)
+- **Filtro de CATEGORÍAS (Heurística #7 Nielsen: Flexibilidad y Eficiencia):** Menú desplegable accesible con icono de hamburguesa que permite filtrar instantáneamente por familias: *Herramientas Eléctricas*, *Herramientas Manuales*, *Medición y Trazo*, *Tableros y Material Eléctrico*, *Cajas y Organizadores*, *Kits y Juegos de Herramientas*.
+- **Selector de Ordenamiento:** Opciones de clasificación en tiempo real: *Recomendados ⇅*, *Menor precio*, *Mayor precio* y *Nombre A - Z*.
+- **Buscador Píldora Blanco con Micrófono (Search UX):** Barra de búsqueda con bordes redondeados (`border-radius: 999px`), icono de lupa y botón de dictado por voz (Web Speech API) con animación de escucha activa.
+- **Estado Sin Resultados Empático:** Zero-state ilustrado con mensaje orientador y botón CTA para restaurar el catálogo completo sin recargar la página.
+
+### 9.3. Matriz de Productos 3x3 (Figma 1:1) & Optimización WebP
+- **Fidelidad Estética:** Cada tarjeta de producto cuenta con un contenedor superior blanco puro (`.tienda-img-box`) para máximo contraste visual de la herramienta, título en Oswald, badge de precio en naranja institucional (`#e8532b`), indicador de stock en verde neón (`#00e599`) y botón CTA blanco tipo píldora (`Añadir al carrito`).
+- **9 Herramientas Oficiales:** Taladro Percutor DeWalt, Wincha Truper 8m, Tablero Schneider 12 polos, Martillo barnizado Stanley, Arco de acero Montarez, Sierra circular Bosch, Caja de herramientas Tactix, Cinturón porta herramientas DeWalt y Kit de herramientas Workpro.
+- **Carga Progresiva ("VER MÁS"):** Botón centrado que inyecta herramientas adicionales del catálogo sin saltos de layout.
+- **Rendimiento CLS = 0:** Imágenes WebP con dimensiones intrínsecas declaradas y carga diferida (`loading="lazy"`).
+
+### 9.4. Sincronización Reactiva con el Carrito
+- Al presionar **"Añadir al carrito"**, el producto se almacena en `localStorage` (`chapa_cart`), el botón emite feedback táctil temporal (`¡Añadido! ✔`), se despacha el evento global `chapa-cart-updated` y la burbuja numérica del header (`.header-cart-count`) se actualiza instantáneamente en todo el sitio web.
+
