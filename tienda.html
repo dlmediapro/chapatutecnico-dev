@@ -243,12 +243,39 @@
     <script src="main.js"></script>
 
     <script>
-    window.agregarAlCarrito = function(nombre, precio) {
-        let carrito = JSON.parse(localStorage.getItem('chapa_carrito') || '[]');
-        carrito.push({ nombre, precio, cantidad: 1 });
-        localStorage.setItem('chapa_carrito', JSON.stringify(carrito));
-        if (confirm('¡' + nombre + ' añadido al carrito!\n¿Deseas ir a tu carrito de compras ahora?')) {
-            window.location.href = 'carrito.html';
+    window.agregarAlCarrito = function(nombre, precio, imagen) {
+        try {
+            var raw = localStorage.getItem('chapa_cart');
+            var carrito = raw ? JSON.parse(raw) : [];
+            var id = 'prod-' + nombre.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            var existing = carrito.find(function(it) { return it.id === id || it.nombre === nombre; });
+            if (existing) {
+                existing.cantidad = (existing.cantidad || 1) + 1;
+            } else {
+                carrito.push({
+                    id: id,
+                    tipo: 'producto',
+                    nombre: nombre,
+                    precio: Number(precio),
+                    cantidad: 1,
+                    imagen: imagen || 'assets/img/productos/taladro.webp',
+                    stock: 'En stock'
+                });
+            }
+            localStorage.setItem('chapa_cart', JSON.stringify(carrito));
+            window.dispatchEvent(new CustomEvent('chapa-cart-updated', { detail: { cart: carrito } }));
+            
+            // Notificación visual accesible
+            var badge = document.querySelector('.header-cart-count');
+            if (badge) {
+                badge.classList.add('pulse');
+                setTimeout(function() { badge.classList.remove('pulse'); }, 600);
+            }
+            if (confirm('¡' + nombre + ' añadido al carrito!\n¿Deseas ir a tu carrito de compras ahora?')) {
+                window.location.href = 'carrito.html';
+            }
+        } catch(e) {
+            console.error('Error al agregar al carrito:', e);
         }
     };
     </script>

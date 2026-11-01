@@ -124,4 +124,32 @@
     '</div><p class="footer-bottom">© 2026 | Empresa peruana innovadora</p></footer>';
 
   s.insertAdjacentHTML('beforebegin', part === 'footer' ? footer : header);
+
+  if (part === 'header') {
+    var updateHeaderCartBadge = function () {
+      try {
+        var raw = localStorage.getItem('chapa_cart');
+        var cart = raw ? JSON.parse(raw) : null;
+        var badge = document.querySelector('.header-cart-count');
+        if (badge) {
+          var count = 0;
+          if (Array.isArray(cart)) {
+            count = cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0);
+          } else {
+            count = 2;
+          }
+          badge.textContent = count;
+          badge.style.display = count > 0 ? 'inline-flex' : 'none';
+        }
+      } catch (e) {}
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateHeaderCartBadge);
+    } else {
+      updateHeaderCartBadge();
+    }
+    window.addEventListener('chapa-cart-updated', updateHeaderCartBadge);
+    window.addEventListener('storage', updateHeaderCartBadge);
+  }
 })();
