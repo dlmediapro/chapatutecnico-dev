@@ -208,3 +208,43 @@ Se completó y sincronizó al 100% la pantalla oficial **"SOPORTE"** a partir de
 - **Grilla 2x2 Canónica:** Reconfiguración a 2 columnas para las 4 tarjetas de canales con botones píldora (`border-radius: 999px`) y chevrons (`>`). Botón de WhatsApp en verde brillante `#00e599`, y los demás en contorno blanco elegante.
 - **Barras FAQ Píldora:** Acordeones estilizados como cápsulas oscuras flotantes de ancho completo con chevron animado (`>`).
 - **Módulo "¿Necesitas más ayuda?":** Contenedor unificado oscuro con la ilustración de soporte (`soporte-atencion.webp`) sobre el encabezado y formulario con campos oscuros e icono integrado, finalizando en el prominente botón blanco sólido `Enviar consulta` (`#ffffff` con texto azul `#08233b`).
+
+---
+
+## 8. 🛒 Implementación Oficial del Carrito de Servicios y Tienda Chapa (`carrito.html` - Figma Frame `1331:265`)
+
+Se implementó y transformó al 100% la pantalla oficial **"MI CARRITO"** a partir de la inspección en vivo de Figma mediante MCP (`node-id=1331-265`) y la aplicación sinérgica de las Agent Skills de UX/UI (`ux-heuristics`, `ux-heuristic-review`, `review-ux-ui`, `ui-laws-and-spacing`) y las leyes conductuales del diseño.
+
+### 8.1. Correspondencia Directa con Figma & Arquitectura Dual-Purpose
+- **Frame Oficial:** `CARRITO DE SERVICIOS` (Node ID `1331:265`).
+- **Arquitectura Dual-Purpose:** Unifica en una sola vista la gestión de servicios técnicos reservados (mano de obra con técnicos certificados) y productos/herramientas físicas de Tienda Chapa.
+- **Grilla de 12 Columnas (8 + 4):**
+  - **8 Columnas (Contenido Principal):** Lista dinámica de servicios y productos, controles de cantidad accesibles, eliminación con transición suave y sección de venta cruzada con las 9 herramientas de Figma.
+  - **4 Columnas (Lateral Sticky):** Tarjeta de Resumen del Pedido (`order-summary-card`) fija durante el desplazamiento en desktop, con cálculo en tiempo real, desglose transparente, cupón de descuento y CTA principal hacia `compra.html`.
+
+### 8.2. Leyes de UX Aplicadas en la Interfaz
+- **Ley de Fitts:** Botón primario de checkout (`FINALIZAR COMPRA`) con altura generosa de 52px, tipografía destacada y microinteracción de elevación a 60fps. Controles táctiles del stepper (`-` y `+`) y botón de eliminación con dimensiones mínimas estrictas de **44x44px**.
+- **Ley de Hick:** Organización jerárquica limpia que reduce la sobrecarga cognitiva: el usuario ve su resumen en 4 líneas claras sin pasos innecesarios antes de decidir la compra.
+- **Ley de Miller:** Desglose del pedido estructurado en 4 datos clave: Subtotal Servicios, Subtotal Productos, Desplazamiento Lima (Gratis en promoción) y Descuento por cupón.
+- **Ley de Jakob:** Patrón canónico de E-commerce familiar y predecible: lista a la izquierda, resumen y checkout flotante a la derecha, botón de cupón y papelera para eliminar.
+
+### 8.3. Motor Reactivo en Vanilla JS (`carrito.js`) & Sincronización en Tiempo Real
+- **Persistencia en `localStorage` (`chapa_cart`):** Almacenamiento seguro del estado del carrito con soporte para ítems de tipo servicio y tipo producto.
+- **Sincronización en Vivo del Header Badge:** `layout.js` escucha eventos `chapa-cart-updated` y cambios de `storage`, actualizando de inmediato la burbuja numérica del carrito (`.header-cart-count`) en todo el sitio web con una sutil animación de pulso (`pulse`).
+- **Cero `alert()` Invasivos:** Notificaciones toast accesibles (`chapa-toast`) con `role="status"` y anunciador para lectores de pantalla (`#chapa-sr-announcer`).
+- **Cupón de Descuento Interactivo:** Soporte para cupones dinámicos como `CHAPA20` (-20%), `CHAPA10` (-10%) y `BIENVENIDA` (-15%), con feedback visual instantáneo (verde/rojo) y opción de remover cupón.
+- **Zero-State Empático:** Si el usuario vacía el carrito, la interfaz muestra una ilustración vectorial personalizada (`assets/img/carrito-vacio.svg`), mensaje cordial y 2 botones de rescate hacia `servicios.html` y `tienda.html`.
+
+### 8.4. Optimización de Activos a `.webp` (CLS = 0)
+- Las 9 herramientas presentes en el Frame `1331:265` fueron convertidas y optimizadas en formato `.webp` en `assets/img/productos/`:
+  - `taladro.webp` (18.9 KB)
+  - `wincha.webp` (8.4 KB)
+  - `tablero.webp` (13.5 KB)
+  - `martillo.webp` (28.6 KB)
+  - `arco_acero.webp` (47.9 KB)
+  - `sierra.webp` (34.5 KB)
+  - `caja_herramientas.webp` (31.4 KB)
+  - `cinturon.webp` (5.4 KB)
+  - `kit_herramientas.webp` (5.4 KB)
+- Reducción global de peso >80% respecto a los archivos PNG originales.
+- Atributos `width` y `height` explícitos en todas las etiquetas `<img>` para garantizar **CLS = 0**.
