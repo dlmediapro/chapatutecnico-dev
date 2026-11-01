@@ -157,3 +157,47 @@ Se implementó y sincronizó al 100% la pantalla oficial **"LISTA DE TÉCNICOS"*
   - Migas de pan: `Inicio (index.html) > Servicios (servicios.html) > Electricidad (electricidad.html) > Técnicos Disponibles`.
   - Botón "Contratar" $\rightarrow$ `solicitud.html?servicio=electricidad&tecnico=...`.
   - Botón "Ver perfil" $\rightarrow$ `perfil.html?id=...`.
+
+
+---
+
+## 7. 🛡️ Implementación Oficial del Centro de Soporte y Ayuda (`soporte.html` - Figma Frame `873:509`)
+
+Se completó y sincronizó al 100% la pantalla oficial **"SOPORTE"** a partir de la inspección en vivo de Figma mediante MCP y la aplicación rigurosa de las 4 Agent Skills de UX/UI (`ux-heuristics`, `ux-heuristic-review`, `review-ux-ui` y `ui-laws-and-spacing`) con especial enfoque en la **Heurística #10 de Jakob Nielsen (Ayuda y Documentación)**.
+
+### 7.1. Correspondencia Directa con Figma
+- **Frame Oficial:** `SOPORTE` (Node ID `873:509`, página `0:1: Modelo pagina web`, dimensiones `1435 x 2380 px`, posición canvas `x=7302, y=-200`).
+- **Nodos Integrados:**
+  - `1336:235` / `978:1550`: Título protagónico `¿En qué podemos ayudarte?` y subtítulo de bienvenida.
+  - `934:224` / `1334:406`: Buscador exclusivo de consultas y FAQs (*"Escribe tu consulta aquí"*).
+  - `978:1624` / `978:1848` / `978:2052`: Tarjeta y botón de **WhatsApp**.
+  - `978:1667` / `978:1884` / `978:2074`: Tarjeta y botón de **Correo electrónico**.
+  - `978:1705` / `978:1919` / `978:2144`: Tarjeta y botón de **Preguntas frecuentes**.
+  - `978:1826` / `978:1977` / `978:2125`: Tarjeta y botón de **Libro de reclamaciones**.
+  - `978:1745`: Sección y acordeones interactivos de **Preguntas frecuentes** (`978:2159`, `978:2198`, `978:2239`).
+  - `978:1785` / `978:2019`: Sección de asistencia personalizada *"¿Necesitas más ayuda?"*.
+  - `1057:238`: Ilustración oficial del asesor de soporte (*"Persona con audífonos"*).
+  - `978:2297`, `978:2376`, `978:2313`, `978:2331`, `1334:403`: Formulario de ticket de consulta con botón `Enviar consulta`.
+  - `1269:260`: Botón de acceso directo a *Carrito de servicio*.
+
+### 7.2. Regla de Buscador Único (Cero Colisión Cognitiva)
+- Debido a que el hero de Soporte tiene como protagonista su propio buscador interno (`¿En qué podemos ayudarte?`), se activó la variante compacta del `<header>` institucional (`data-search="false"` / `page === 'soporte'`), suprimiendo el buscador superior de oficios para erradicar cualquier duplicidad o desorientación del usuario.
+
+### 7.3. Activos en `.webp` y Optimización (CLS = 0)
+- La ilustración oficial de soporte (`nodo 1057:238`) fue exportada a alta resolución y convertida a `.webp` (calidad 85%) mediante Pillow (PIL):
+  - `assets/img/soporte-atencion.webp` (4.8 KB, 302 x 251 px)
+  - `img/soporte-atencion.webp` (copia espejo para rutas relativas).
+- Se declararon dimensiones explícitas `width="302"`, `height="251"`, `aspect-ratio: 302/251` y `loading="lazy"` para garantizar **CLS = 0**.
+
+### 7.4. Accesibilidad WCAG 2.1 AA y Microinteracciones
+- **Acordeones Dinámicos:** Implementados en Vanilla JS con atributos semánticos `<button aria-expanded="false" aria-controls="...">` y soporte de teclado (`Enter` / `Espacio`).
+- **Filtrado en Tiempo Real:** El buscador del hero filtra instantáneamente los acordeones de FAQ, expandiendo automáticamente las coincidencias y anunciando los resultados mediante `aria-live="polite"`.
+- **Validación Amigable (Nielsen H1 & H5):** El formulario valida campos requeridos y formato de email sin recargar la página ni emitir alertas invasivas (`alert()`). Al enviar, muestra un ticket generado (`#TK-XXXXXX`) y confirma el tiempo estimado de respuesta (*"menos de 15 minutos por WhatsApp o por correo"*).
+- **Target Táctil:** Áreas de contacto de mínimo `44x44px` en todos los botones y campos interactivos.
+
+### 7.5. Bloque SEO y Esquema JSON-LD (`FAQPage` + `ContactPage`)
+- Sección `<head>` comentada con `<!-- === SEO & METADATOS EDITABLES === -->`.
+- Marcado estructurado Schema.org con `@graph` dual:
+  - `ContactPage`: Atención 24/7 en Lima Metropolitana, WhatsApp y correo.
+  - `FAQPage`: Las 4 preguntas esenciales sobre seguimiento, garantías, reprogramación y medios de pago.
+- Enlace de rescate integrado en `404.html` para redireccionar usuarios extraviados directamente al centro de soporte.

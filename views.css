@@ -2747,29 +2747,99 @@
   color: #475569;
 }
 
-/* Formulario Soporte */
+/* Formulario Soporte - Frame 873:509 (Diseño Dividido: Asesoría + Formulario) */
 .soporte-form-container {
-  max-width: 800px;
-  margin: 0 auto 40px;
+  max-width: 1100px;
+  margin: 0 auto 60px;
+}
+
+.soporte-form-wrapper {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+}
+
+@media (max-width: 900px) {
+  .soporte-form-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+.soporte-agent-col {
+  background: linear-gradient(135deg, #061829 0%, #0d2740 100%);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.soporte-agent-header h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.soporte-agent-header p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+}
+
+.soporte-agent-visual {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.soporte-agent-img {
+  max-width: 220px;
+  height: auto;
+  aspect-ratio: 302 / 251;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+}
+
+.soporte-agent-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+
+.agent-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.agent-perk-icon {
+  color: #00e599;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .soporte-form-card {
+  padding: 40px 36px;
   background: #ffffff;
-  border-radius: 20px;
-  padding: 36px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .soporte-form-header {
-  text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
-.soporte-form-header h2 {
+.soporte-form-header h3 {
   font-family: 'Oswald', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   color: #08233b;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .soporte-form-header p {
