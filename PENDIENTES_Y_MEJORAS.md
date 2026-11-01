@@ -40,7 +40,11 @@ Actualmente, las vistas del proyecto cuentan con prototipado dinámico en fronte
    - Generación dinámica de QR para cobros vía interoperabilidad Yape/Plin.
 
 3. **Geolocalización Dinámica y Mapas Interactivos ([`cobertura.html`](cobertura.html)):**
-   - *Estado actual (Implementado al 100%):* Se integró la **Google Maps JavaScript API oficial** con la API Key del proyecto, configurada con estilo cartográfico oscuro (*Midnight Navy / Cyan*), polígonos de geocercas reales para los 10 distritos cubiertos, capa de tráfico en tiempo real, vista satelital y selector de doble modo para alternar con la vista vectorial original de Figma.
+   - *Estado actual (Optimizado al 100% según Figma y Heurísticas de Nielsen):* 
+     - **Header compacto en 1 sola fila:** Se adaptó la cabecera en `layout.js` para omitir el buscador de oficios en esta vista, evitando redundancia con el buscador de distritos (#5 Prevención de errores y #8 Minimalismo).
+     - **Buscador protagónico de distritos:** Búsqueda en tiempo real por distrito o código postal con feedback amigable y zoom directo al polígono.
+     - **Google Maps como motor único:** Eliminación de 1.3 MB de imagen base rasterizada y 120+ líneas de SVG muerto.
+     - **Control ergonómico `Centrar`:** Botón flotante accesible con glassmorphism cian (#3 Control y libertad) para reencuadrar Lima Metropolitana.
    - *Fase backend futura:* Conexión con WebSockets para seguimiento GPS en movimiento de la moto/vehículo del técnico hacia el domicilio del cliente.
 
 4. **Persistencia del Carrito de Compras ([`carrito.html`](carrito.html)):**

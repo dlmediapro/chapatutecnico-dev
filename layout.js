@@ -4,6 +4,7 @@
    Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
 (function () {
   var s = document.currentScript, part = s.dataset.part, page = document.body.dataset.page || '';
+  var hideSearch = (s.dataset.search === 'false' || s.dataset.variant === 'compact' || page === 'cobertura');
   var navLink = function (id, href, text) {
     var isActive = (page === id);
     return '<a href="' + href + '" class="nav-link' + (isActive ? ' active' : '') + '"' + (isActive ? ' aria-current="page"' : '') + '>' + text + '</a>';
@@ -27,8 +28,8 @@
         '</div>' +
       '</div>' +
     '</div>' +
-    '<header class="header">' +
-      '<div class="container header-container">' +
+    '<header class="header' + (hideSearch ? ' header-compact' : '') + '">' +
+    '  <div class="container header-container">' +
         '<!-- 1. Identidad: Logo Figma con retorno a inicio -->' +
         '<a href="index.html" class="logo" aria-label="Chapa Tu Técnico - Ir a inicio">' +
           '<img src="img/logo.png" alt="Chapa Tu Técnico" class="logo-img" width="214" height="184">' +
@@ -57,6 +58,7 @@
               '</a>' +
             '</div>' +
           '</nav>' +
+          (hideSearch ? '' :
           '<form class="search-bar" role="search" action="servicios.html" method="get">' +
             '<button type="submit" class="search-btn search-btn-submit" aria-label="Buscar">' +
               '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>' +
@@ -65,7 +67,7 @@
             '<button type="button" class="search-btn search-btn-voice" aria-label="Buscar por voz">' +
               '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>' +
             '</button>' +
-          '</form>' +
+          '</form>') +
         '</div>' +
         '<!-- 3. Acciones Derecha: Cuenta/Login, Notificaciones, Carrito, Hamburguesa -->' +
         '<div class="header-actions">' +

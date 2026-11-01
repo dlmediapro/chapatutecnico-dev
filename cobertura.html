@@ -12,9 +12,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- ===================================================================
-         2. SEO ON-PAGE & METADATOS
-         =================================================================== -->
+    <!-- === SEO & METADATOS EDITABLES === -->
     <title>Cobertura en Lima Metropolitana | Chapa Tu Técnico</title>
     <meta name="title" content="Cobertura en Lima Metropolitana | Chapa Tu Técnico">
     <meta name="description"
@@ -25,23 +23,52 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/cobertura.html">
 
-    <!-- ===================================================================
-         3. SEO LOCAL & GEOLOCALIZACIÓN
-         =================================================================== -->
+    <!-- SEO Local & Geolocalización -->
     <meta name="geo.region" content="PE-LIM">
     <meta name="geo.placename" content="Lima Metropolitana">
     <meta name="geo.position" content="-12.046374;-77.042793">
     <meta name="ICBM" content="-12.046374, -77.042793">
 
-    <!-- Open Graph & Redes Sociales -->
+    <!-- Open Graph & Redes Sociales / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
     <meta property="og:site_name" content="Chapa Tu Técnico">
     <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/cobertura.html">
-    <meta property="og:title" content="Mapa Interactivo de Cobertura | Chapa Tu Técnico Lima">
+    <meta property="og:title" content="Mapa de Cobertura 24/7 en Lima Metropolitana | Chapa Tu Técnico">
     <meta property="og:description"
-        content="Inspecciona en tiempo real nuestros distritos de cobertura instantánea en Lima Metropolitana con atención 24/7.">
-    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/cobertura_mapa_base.png">
+        content="Inspecciona en tiempo real nuestros distritos de cobertura instantánea en Lima Metropolitana con atención 24/7 y llegada en 15 a 30 min.">
+    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png">
+
+    <!-- JSON-LD Datos Estructurados Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Chapa Tu Técnico - Cobertura",
+      "url": "https://dlmediapro.github.io/chapatutecnico-dev/cobertura.html",
+      "logo": "https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png",
+      "description": "Servicios técnicos a domicilio 24/7 con cobertura en distritos de Lima Metropolitana.",
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Miraflores"},
+        {"@type": "AdministrativeArea", "name": "Santiago de Surco"},
+        {"@type": "AdministrativeArea", "name": "San Borja"},
+        {"@type": "AdministrativeArea", "name": "San Isidro"},
+        {"@type": "AdministrativeArea", "name": "Surquillo"},
+        {"@type": "AdministrativeArea", "name": "Jesús María"},
+        {"@type": "AdministrativeArea", "name": "Magdalena del Mar"},
+        {"@type": "AdministrativeArea", "name": "Lince"},
+        {"@type": "AdministrativeArea", "name": "La Victoria"},
+        {"@type": "AdministrativeArea", "name": "Chorrillos"}
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+51-998-204-667",
+        "contactType": "customer service",
+        "areaServed": "PE"
+      }
+    }
+    </script>
+    <!-- === FIN SEO & METADATOS EDITABLES === -->
 
     <!-- Favicon & Fuentes -->
     <link rel="icon" type="image/png" href="img/logo.png">
@@ -94,155 +121,21 @@
         <section class="cobertura-mapa-section" aria-label="Mapa interactivo de cobertura en Lima">
             <div class="container">
                 <div class="cobertura-mapa-wrapper">
-                    <!-- Selector de Modo de Mapa y Herramientas Rápidas -->
-                    <div class="mapa-header-controls">
-                        <div class="mapa-mode-switch-bar" role="tablist" aria-label="Modo de visualización del mapa">
-                            <button type="button" class="btn-mapa-mode is-active" id="btn-mode-gmaps" data-mode="gmaps">
-                                <span>🌐</span> Google Maps Real (En vivo)
-                            </button>
-                            <button type="button" class="btn-mapa-mode" id="btn-mode-vector" data-mode="vector">
-                                <span>🗺️</span> Vista Vectorial Figma
-                            </button>
-                        </div>
-                        <div class="mapa-quick-tools" id="gmaps-tools-bar">
-                            <button type="button" class="btn-gmap-tool" id="btn-gmap-reset" title="Restablecer centro de Lima Sur">
-                                <span>🎯</span> Centrar
-                            </button>
-                            <button type="button" class="btn-gmap-tool" id="btn-gmap-traffic" title="Ver tráfico de Lima en tiempo real">
-                                <span>🚦</span> Tráfico en vivo
-                            </button>
-                            <button type="button" class="btn-gmap-tool" id="btn-gmap-satellite" title="Alternar vista satelital">
-                                <span>🛰️</span> Satélite
-                            </button>
-                        </div>
-                    </div>
-
                     <div class="mapa-interactivo-container" id="mapa-interactivo-container">
-                        <!-- 1. Lienzo de Google Maps Real (Activo por defecto) -->
+                        <!-- 1. Lienzo de Google Maps Real (Activo y dinámico) -->
                         <div id="google-map-canvas" class="google-map-canvas" aria-label="Mapa interactivo de Google Maps de Lima"></div>
 
-                        <!-- 2. Imagen Base Nocturna / Cartográfica de Lima (Modo Vectorial Figma) -->
-                        <img src="img/cobertura_mapa_base.png" 
-                             alt="Mapa de distritos de Lima Metropolitana" 
-                             class="mapa-img-base"
-                             width="1342" 
-                             height="1126" 
-                             loading="eager">
-
-                        <!-- 3. Capa Vectorial Interactiva SVG (viewBox 1342x1126) -->
-                        <svg class="mapa-svg-overlay" viewBox="0 0 1342 1126" preserveAspectRatio="xMidYMid meet" aria-label="Capas vectoriales de distritos con cobertura">
-                            <defs>
-                                <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="8" result="blur1" />
-                                    <feGaussianBlur stdDeviation="16" result="blur2" />
-                                    <feMerge>
-                                        <feMergeNode in="blur2" />
-                                        <feMergeNode in="blur1" />
-                                        <feMergeNode in="SourceGraphic" />
-                                    </feMerge>
-                                </filter>
-                            </defs>
-
-                            <!-- 1. Magdalena del Mar -->
-                            <polygon id="dist-magdalena" class="mapa-distrito"
-                                data-key="magdalena"
-                                data-nombre="Magdalena del Mar"
-                                data-tiempo="25 min"
-                                data-desc="Cobertura en Javier Prado Oeste, Av. Brasil y Malecón Castagnola."
-                                points="105,168 280,180 245,395 115,385 88,335 92,275">
-                                <title>Magdalena del Mar - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 2. Lince -->
-                            <polygon id="dist-lince" class="mapa-distrito"
-                                data-key="lince"
-                                data-nombre="Lince"
-                                data-tiempo="20 min"
-                                data-desc="Atención inmediata en Av. Arequipa, Arenales, Petit Thouars y Risso."
-                                points="280,180 425,235 460,395 345,415 245,395">
-                                <title>Lince - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 3. La Victoria -->
-                            <polygon id="dist-la-victoria" class="mapa-distrito"
-                                data-key="la-victoria"
-                                data-nombre="La Victoria"
-                                data-tiempo="25 min"
-                                data-desc="Cobertura en Av. Manco Cápac, Iquitos, México y alrededores."
-                                points="545,120 780,105 855,260 730,345 655,365">
-                                <title>La Victoria - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 4. Jesús María -->
-                            <polygon id="dist-jesus-maria" class="mapa-distrito"
-                                data-key="jesus-maria"
-                                data-nombre="Jesús María"
-                                data-tiempo="20 min"
-                                data-desc="Cobertura en Av. Salaverry, San Felipe, Cuba y Plaza Cáceres."
-                                points="425,235 545,120 655,365 730,345 810,480 490,550 460,395">
-                                <title>Jesús María - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 5. San Borja -->
-                            <polygon id="dist-san-borja" class="mapa-distrito"
-                                data-key="san-borja"
-                                data-nombre="San Borja"
-                                data-tiempo="15 min"
-                                data-desc="Atención express en Javier Prado Este, Aviación y San Borja Sur."
-                                points="730,345 855,260 915,345 1025,400 810,500 730,430">
-                                <title>San Borja - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 6. San Isidro -->
-                            <polygon id="dist-san-isidro" class="mapa-distrito"
-                                data-key="san-isidro"
-                                data-nombre="San Isidro"
-                                data-tiempo="20 min"
-                                data-desc="Servicio corporativo y residencial en Centro Financiero y El Olivar."
-                                points="245,395 460,395 490,550 460,645 475,750 345,870 130,700 210,550">
-                                <title>San Isidro - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 7. Surquillo -->
-                            <polygon id="dist-surquillo" class="mapa-distrito"
-                                data-key="surquillo"
-                                data-nombre="Surquillo"
-                                data-tiempo="15 min"
-                                data-desc="Atención express en Av. Angamos, Principal, Villarán y Tomás Marsano."
-                                points="490,550 665,540 700,770 625,845 595,785 535,830 495,795 460,645">
-                                <title>Surquillo - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 8. Miraflores -->
-                            <polygon id="dist-miraflores" class="mapa-distrito"
-                                data-key="miraflores"
-                                data-nombre="Miraflores"
-                                data-tiempo="25 min"
-                                data-desc="Servicio prioritario 24/7 en Larco, Pardo, Benavides y Malecón Armendáriz."
-                                points="130,700 345,870 495,795 535,830 460,1035 400,930 300,860">
-                                <title>Miraflores - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 9. Santiago de Surco -->
-                            <polygon id="dist-surco" class="mapa-distrito"
-                                data-key="surco"
-                                data-nombre="Santiago de Surco"
-                                data-tiempo="20 min"
-                                data-desc="Cobertura en Chacarilla, Monterrico, Benavides y Caminos del Inca."
-                                points="810,500 1025,400 1270,360 1240,580 1190,700 995,780 880,910 700,770 730,430">
-                                <title>Santiago de Surco - Cobertura Activa</title>
-                            </polygon>
-
-                            <!-- 10. Chorrillos -->
-                            <polygon id="dist-chorrillos" class="mapa-distrito"
-                                data-key="chorrillos"
-                                data-nombre="Chorrillos"
-                                data-tiempo="30 min"
-                                data-desc="Atención en Av. Huaylas, Matellini, La Campiña y Cedros de Villa."
-                                points="460,1035 535,830 595,785 625,845 700,770 880,910 820,985 875,1110 710,1115 690,960">
-                                <title>Chorrillos - Cobertura Activa</title>
-                            </polygon>
-                        </svg>
+                        <!-- 2. Control Flotante Ergonómico: Centrar Mapa -->
+                        <button type="button" class="btn-mapa-centrar" id="btn-gmap-reset" title="Restablecer centro de Lima Sur" aria-label="Centrar mapa en Lima Metropolitana">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="22" y1="12" x2="18" y2="12"></line>
+                                <line x1="6" y1="12" x2="2" y2="12"></line>
+                                <line x1="12" y1="6" x2="12" y2="2"></line>
+                                <line x1="12" y1="22" x2="12" y2="18"></line>
+                            </svg>
+                            <span>Centrar</span>
+                        </button>
 
                         <!-- Tooltip Dinámico Flotante -->
                         <div id="mapa-tooltip" class="mapa-tooltip" aria-hidden="true">
@@ -390,9 +283,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Elementos DOM
         const gmapCanvas = document.getElementById('google-map-canvas');
-        const imgBase = document.querySelector('.mapa-img-base');
-        const svgOverlay = document.querySelector('.mapa-svg-overlay');
-        const poligonosSVG = document.querySelectorAll('.mapa-distrito');
         const tooltip = document.getElementById('mapa-tooltip');
         const tooltipNombre = document.getElementById('tooltip-nombre');
         const tooltipTiempo = document.getElementById('tooltip-tiempo');
@@ -402,22 +292,10 @@
         const inputDistrito = document.getElementById('input-distrito');
         const clearBtn = document.getElementById('btn-clear-search');
         const feedbackMsg = document.getElementById('search-feedback-msg');
-
-        // Botones de Modo y Herramientas
-        const btnModeGmaps = document.getElementById('btn-mode-gmaps');
-        const btnModeVector = document.getElementById('btn-mode-vector');
-        const gmapsToolsBar = document.getElementById('gmaps-tools-bar');
         const btnGmapReset = document.getElementById('btn-gmap-reset');
-        const btnGmapTraffic = document.getElementById('btn-gmap-traffic');
-        const btnGmapSatellite = document.getElementById('btn-gmap-satellite');
 
-        let currentMode = 'gmaps'; // 'gmaps' o 'vector'
         let gmap = null;
-        let trafficLayer = null;
-        let isTrafficOn = false;
-        let isSatelliteOn = false;
         let activeGMapPolygon = null;
-        let activeSVGDistrito = null;
 
         // Base de Datos Geográfica Oficial del IGN (Instituto Geográfico Nacional) para los 10 Distritos
 const distritosGeoData = [
@@ -2619,8 +2497,6 @@ const distritosGeoData = [
         // Función para inicializar Google Maps
         function initGoogleMap() {
             if (typeof google === 'undefined' || !google.maps) {
-                // Si la API no cargó por algún motivo, fallback inmediato a modo vectorial
-                activarModo('vector');
                 return;
             }
 
@@ -2642,9 +2518,7 @@ const distritosGeoData = [
                 gestureHandling: 'greedy' // Desplazamiento fluido en móvil
             });
 
-            trafficLayer = new google.maps.TrafficLayer();
-
-            // Dibujar cada distrito con su polígono vectorial
+            // Dibujar Polígonos de Cobertura Oficiales de los 10 Distritos
             distritosGeoData.forEach(d => {
                 const poly = new google.maps.Polygon({
                     paths: d.coords,
@@ -2669,7 +2543,6 @@ const distritosGeoData = [
                 // Evento Clic / Tap
                 poly.addListener('click', function(e) {
                     highlightGMapDistrict(d, poly, e);
-                    // Doble tap o clic para consultar servicios
                     window.location.href = 'servicios.html?distrito=' + encodeURIComponent(d.key);
                 });
 
@@ -2715,7 +2588,6 @@ const distritosGeoData = [
                 tooltip.style.left = x + 'px';
                 tooltip.style.top = y + 'px';
             } else {
-                // Centrado en el contenedor
                 tooltip.classList.remove('tooltip-below');
                 tooltip.style.left = '50%';
                 tooltip.style.top = '40%';
@@ -2737,37 +2609,7 @@ const distritosGeoData = [
             activeGMapPolygon = null;
         }
 
-        // Alternancia de Modos (Google Maps vs Vectorial Figma)
-        function activarModo(modo) {
-            currentMode = modo;
-            if (modo === 'gmaps') {
-                btnModeGmaps.classList.add('is-active');
-                btnModeVector.classList.remove('is-active');
-                gmapCanvas.style.display = 'block';
-                imgBase.style.display = 'none';
-                svgOverlay.style.display = 'none';
-                if (gmapsToolsBar) gmapsToolsBar.style.display = 'inline-flex';
-
-                if (!gmap && typeof google !== 'undefined' && google.maps) {
-                    initGoogleMap();
-                }
-            } else {
-                btnModeVector.classList.add('is-active');
-                btnModeGmaps.classList.remove('is-active');
-                gmapCanvas.style.display = 'none';
-                imgBase.style.display = 'block';
-                svgOverlay.style.display = 'block';
-                if (gmapsToolsBar) gmapsToolsBar.style.display = 'none';
-                tooltip.classList.remove('is-visible');
-            }
-        }
-
-        if (btnModeGmaps && btnModeVector) {
-            btnModeGmaps.addEventListener('click', () => activarModo('gmaps'));
-            btnModeVector.addEventListener('click', () => activarModo('vector'));
-        }
-
-        // Herramientas de Google Maps
+        // Botón Ergonómico Centrar (Heurística #3: Control y Libertad)
         if (btnGmapReset) {
             btnGmapReset.addEventListener('click', () => {
                 if (gmap) {
@@ -2777,108 +2619,7 @@ const distritosGeoData = [
             });
         }
 
-        if (btnGmapTraffic) {
-            btnGmapTraffic.addEventListener('click', () => {
-                if (!gmap) return;
-                isTrafficOn = !isTrafficOn;
-                trafficLayer.setMap(isTrafficOn ? gmap : null);
-                btnGmapTraffic.classList.toggle('is-active', isTrafficOn);
-            });
-        }
-
-        if (btnGmapSatellite) {
-            btnGmapSatellite.addEventListener('click', () => {
-                if (!gmap) return;
-                isSatelliteOn = !isSatelliteOn;
-                gmap.setMapTypeId(isSatelliteOn ? 'hybrid' : 'roadmap');
-                btnGmapSatellite.classList.toggle('is-active', isSatelliteOn);
-            });
-        }
-
-        // -------------------------------------------------------------
-        // Modo Vectorial Figma (Polígonos SVG originales)
-        // -------------------------------------------------------------
-        function activarDistritoSVG(el, clientX, clientY) {
-            if (!el) return;
-            if (activeSVGDistrito && activeSVGDistrito !== el) {
-                activeSVGDistrito.classList.remove('is-active');
-            }
-            activeSVGDistrito = el;
-            el.classList.add('is-active');
-
-            const nombre = el.dataset.nombre || 'Distrito';
-            const tiempo = el.dataset.tiempo || '20 min';
-            const desc = el.dataset.desc || 'Técnicos verificados con cobertura 24/7.';
-            const key = el.dataset.key || '';
-
-            tooltipNombre.textContent = nombre;
-            tooltipTiempo.textContent = tiempo;
-            tooltipDesc.textContent = desc;
-            tooltipLink.href = 'servicios.html?distrito=' + encodeURIComponent(key);
-
-            if (clientX !== undefined && clientY !== undefined && mapContainer) {
-                const rect = mapContainer.getBoundingClientRect();
-                let x = clientX - rect.left;
-                let y = clientY - rect.top;
-
-                x = Math.max(140, Math.min(rect.width - 140, x));
-                if (y < 160) {
-                    tooltip.classList.add('tooltip-below');
-                } else {
-                    tooltip.classList.remove('tooltip-below');
-                }
-
-                tooltip.style.left = x + 'px';
-                tooltip.style.top = y + 'px';
-            }
-            tooltip.classList.add('is-visible');
-        }
-
-        function desactivarDistritoSVG() {
-            if (activeSVGDistrito) {
-                activeSVGDistrito.classList.remove('is-active');
-                activeSVGDistrito = null;
-            }
-            tooltip.classList.remove('is-visible');
-        }
-
-        poligonosSVG.forEach(poly => {
-            poly.addEventListener('mouseenter', function(e) {
-                activarDistritoSVG(this, e.clientX, e.clientY);
-            });
-            poly.addEventListener('mousemove', function(e) {
-                activarDistritoSVG(this, e.clientX, e.clientY);
-            });
-            poly.addEventListener('mouseleave', function() {
-                desactivarDistritoSVG();
-            });
-            poly.addEventListener('click', function() {
-                const key = this.dataset.key;
-                if (key) {
-                    window.location.href = 'servicios.html?distrito=' + encodeURIComponent(key);
-                }
-            });
-        });
-
-        if (mapContainer) {
-            function handleTouchMoveOrStart(e) {
-                if (currentMode !== 'vector') return;
-                if (e.touches.length === 1) {
-                    const touch = e.touches[0];
-                    const elements = document.elementsFromPoint ? document.elementsFromPoint(touch.clientX, touch.clientY) : [];
-                    const target = elements.find(el => el.classList && el.classList.contains('mapa-distrito'));
-                    if (target) {
-                        activarDistritoSVG(target, touch.clientX, touch.clientY);
-                    }
-                }
-            }
-            mapContainer.addEventListener('touchstart', handleTouchMoveOrStart, { passive: true });
-            mapContainer.addEventListener('touchmove', handleTouchMoveOrStart, { passive: true });
-        }
-
-        // -------------------------------------------------------------
-        // Búsqueda Inteligente Unificada (Funciona en ambos modos)
-        // -------------------------------------------------------------
+        // Búsqueda Inteligente Directa en Google Maps
         window.buscarDistrito = function() {
             const query = (inputDistrito.value || '').trim().toLowerCase();
             if (!query) return;
@@ -2891,25 +2632,12 @@ const distritosGeoData = [
             if (encontrado) {
                 mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                if (currentMode === 'gmaps' && gmap && gmapPolygons[encontrado.key]) {
-                    // Acción en Google Maps
+                if (gmap && gmapPolygons[encontrado.key]) {
                     gmap.panTo(encontrado.center);
                     gmap.setZoom(13.8);
                     highlightGMapDistrict(encontrado, gmapPolygons[encontrado.key], null);
-                } else {
-                    // Acción en Modo Vectorial
-                    const el = document.getElementById('dist-' + encontrado.key) || 
-                               document.querySelector('.mapa-distrito[data-key="' + encontrado.key + '"]');
-                    if (el) {
-                        const bbox = el.getBBox();
-                        const rect = mapContainer.getBoundingClientRect();
-                        const scaleX = rect.width / 1342;
-                        const scaleY = rect.height / 1126;
-                        activarDistritoSVG(el, rect.left + (bbox.x + bbox.width / 2) * scaleX, rect.top + (bbox.y + bbox.height / 2) * scaleY);
-                    }
                 }
 
-                // Mensaje de éxito
                 feedbackMsg.style.display = 'block';
                 feedbackMsg.className = 'search-feedback-box feedback-success';
                 feedbackMsg.innerHTML = '<strong>&check; ¡Cobertura confirmada en ' + encontrado.nombre + '!</strong> Tiempo promedio de llegada estimado: ' + encontrado.tiempo + '.';
@@ -2925,10 +2653,8 @@ const distritosGeoData = [
                 clearBtn.style.display = this.value.trim() ? 'block' : 'none';
                 if (!this.value.trim()) {
                     feedbackMsg.style.display = 'none';
-                    if (currentMode === 'gmaps' && activeGMapPolygon) {
+                    if (activeGMapPolygon) {
                         resetGMapDistrict(activeGMapPolygon);
-                    } else {
-                        desactivarDistritoSVG();
                     }
                 }
             });
@@ -2936,10 +2662,8 @@ const distritosGeoData = [
                 inputDistrito.value = '';
                 clearBtn.style.display = 'none';
                 feedbackMsg.style.display = 'none';
-                if (currentMode === 'gmaps' && activeGMapPolygon) {
+                if (activeGMapPolygon) {
                     resetGMapDistrict(activeGMapPolygon);
-                } else {
-                    desactivarDistritoSVG();
                 }
                 inputDistrito.focus();
             });
@@ -2955,26 +2679,15 @@ const distritosGeoData = [
                 mapContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
                 const dist = distritosGeoData.find(d => d.key === targetKey);
-                if (dist) {
-                    if (currentMode === 'gmaps' && gmap && gmapPolygons[targetKey]) {
-                        gmap.panTo(dist.center);
-                        gmap.setZoom(13.8);
-                        highlightGMapDistrict(dist, gmapPolygons[targetKey], null);
-                    } else {
-                        const el = document.querySelector('.mapa-distrito[data-key="' + targetKey + '"]');
-                        if (el) {
-                            const bbox = el.getBBox();
-                            const rect = mapContainer.getBoundingClientRect();
-                            const scaleX = rect.width / 1342;
-                            const scaleY = rect.height / 1126;
-                            activarDistritoSVG(el, rect.left + (bbox.x + bbox.width / 2) * scaleX, rect.top + (bbox.y + bbox.height / 2) * scaleY);
-                        }
-                    }
+                if (dist && gmap && gmapPolygons[targetKey]) {
+                    gmap.panTo(dist.center);
+                    gmap.setZoom(13.8);
+                    highlightGMapDistrict(dist, gmapPolygons[targetKey], null);
                 }
             });
         });
 
-        // Inicializar Google Maps tras cargar la ventana o la API
+        // Inicializar Google Maps tras cargar
         if (typeof google !== 'undefined' && google.maps) {
             initGoogleMap();
         } else {
