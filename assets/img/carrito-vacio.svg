@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" fill="none" role="img" aria-label="Carrito de servicios vacío">
+  <defs>
+    <linearGradient id="cartGrad" x1="20" y1="20" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#53c8f7"/>
+      <stop offset="100%" stop-color="#e8532b"/>
+    </linearGradient>
+    <radialGradient id="cartGlow" cx="80" cy="80" r="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#53c8f7" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#08233b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Fondo con resplandor sutil -->
+  <circle cx="80" cy="80" r="68" fill="url(#cartGlow)" stroke="#1e3a5f" stroke-width="2" stroke-dasharray="4 4"/>
+  
+  <!-- Carrito Base -->
+  <path d="M34 44h14l16 48h46l14-36H56" stroke="url(#cartGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Ruedas -->
+  <circle cx="68" cy="112" r="8" fill="#08233b" stroke="#53c8f7" stroke-width="4"/>
+  <circle cx="106" cy="112" r="8" fill="#08233b" stroke="#53c8f7" stroke-width="4"/>
+  <circle cx="68" cy="112" r="2.5" fill="#53c8f7"/>
+  <circle cx="106" cy="112" r="2.5" fill="#53c8f7"/>
+
+  <!-- Llave inglesa y destornillador flotantes en el centro -->
+  <path d="M78 62l14-14c2-2 5-2 7 0l2 2c2 2 2 5 0 7l-14 14" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M96 46l6-6c1.5-1.5 3.5-1.5 5 0l2 2c1.5 1.5 1.5 3.5 0 5l-6 6" stroke="#e8532b" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="73" cy="67" r="4" fill="#ffffff"/>
+
+  <!-- Destellos decorativos -->
+  <path d="M124 38l4 4m-4 0l4-4" stroke="#53c8f7" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M38 78l3 3m-3 0l3-3" stroke="#00e599" stroke-width="2" stroke-linecap="round"/>
+</svg>
