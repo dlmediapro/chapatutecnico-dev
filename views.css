@@ -1071,180 +1071,581 @@
   }
 }
 
-/* --- 3. VISTA TÉCNICOS (tecnicos.html) --- */
+/* --- 3. VISTA TÉCNICOS (tecnicos.html - Frame 873:198 Auditado con Skills UX/UI) --- */
 .tecnicos-main {
   background-color: #08233b;
-  padding: 48px 0 80px;
-  min-height: calc(100vh - 400px);
-}
-
-.tecnicos-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px;
-}
-
-.tecnicos-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(32px, 4.5vw, 46px);
+  padding: 32px 0 80px;
+  min-height: calc(100vh - 350px);
   color: #ffffff;
-  font-weight: 700;
-  margin-bottom: 14px;
 }
 
-.tecnicos-subtitle {
+.tecnicos-container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Breadcrumbs Semánticos (WCAG AA) */
+.tecnicos-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.tecnicos-breadcrumb a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tecnicos-breadcrumb a:hover,
+.tecnicos-breadcrumb a:focus-visible {
+  color: #00e599;
+  text-decoration: underline;
+}
+
+.tecnicos-breadcrumb .breadcrumb-separator {
+  color: #64748b;
+  user-select: none;
+}
+
+.tecnicos-breadcrumb [aria-current="page"] {
+  color: #00e599;
+  font-weight: 600;
+}
+
+/* Header de la Vista */
+.tecnicos-header-bar {
+  margin-bottom: 32px;
+}
+
+.tecnicos-page-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.tecnicos-page-desc {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
-  color: #cfd8dc;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #cbd5e1;
+  max-width: 75ch;
+  margin-bottom: 24px;
 }
 
+/* Barra de Filtros y Búsqueda (Hick's Law & Touch targets >= 44px) */
+.tecnicos-filter-box {
+  background: rgba(15, 35, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.tecnicos-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.tecnicos-search-wrap {
+  flex: 1 1 320px;
+  position: relative;
+}
+
+.tecnicos-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+  font-size: 16px;
+}
+
+.tecnicos-search-input {
+  width: 100%;
+  height: 48px;
+  background: #061829;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  padding: 0 16px 0 44px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tecnicos-search-input:focus {
+  border-color: #00e599;
+  box-shadow: 0 0 0 3px rgba(0, 229, 153, 0.2);
+}
+
+.tecnicos-live-counter {
+  display: flex;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #00e599;
+  padding: 0 4px;
+}
+
+/* Chips de Distrito y Disponibilidad */
+.tecnicos-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-chip-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-right: 4px;
+}
+
+.filter-chip {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.filter-chip:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.filter-chip.active {
+  background: #00e599;
+  border-color: #00e599;
+  color: #08233b;
+  font-weight: 700;
+}
+
+.filter-chip-status {
+  border-color: rgba(0, 229, 153, 0.4);
+}
+
+.filter-chip-status.active {
+  background: #ff9900;
+  border-color: #ff9900;
+  color: #08233b;
+}
+
+/* Grilla de Técnicos (Figma 2x2 - 12 columnas) */
 .tecnicos-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 32px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 48px;
 }
 
+@media (max-width: 992px) {
+  .tecnicos-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Tarjeta de Técnico */
 .tecnico-card {
-  background: #ffffff;
+  background: #0d2740;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .tecnico-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 229, 153, 0.4);
 }
 
-.tecnico-avatar-wrap {
+/* Banner Superior de la Tarjeta (CLS = 0 con Aspect Ratio) */
+.tecnico-banner-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 1/1;
-  background: #f1f5f9;
+  aspect-ratio: 16 / 10;
+  background: #061829;
   overflow: hidden;
 }
 
-.tecnico-avatar-wrap img {
+.tecnico-banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.tecnico-verif-badge {
+.tecnico-card:hover .tecnico-banner-img {
+  transform: scale(1.02);
+}
+
+/* Badges sobre la Imagen (Doble codificación WCAG AA) */
+.tecnico-badges-overlay {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #16a34a;
-  color: #ffffff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 999px;
+  top: 14px;
+  left: 14px;
+  right: 14px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  pointer-events: none;
 }
 
+.badge-verificado {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(0, 229, 153, 0.6);
+  color: #00e599;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(4px);
+}
+
+.badge-status {
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(4px);
+}
+
+.badge-status.disponible {
+  border-color: rgba(0, 229, 153, 0.6);
+  color: #a7f3d0;
+}
+
+.badge-status.en-linea {
+  border-color: rgba(255, 153, 0, 0.6);
+  color: #fed7aa;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Cuerpo de la Tarjeta */
 .tecnico-card-body {
-  padding: 20px 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.tecnico-name {
-  font-family: 'Oswald', sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  color: #08233b;
-  margin-bottom: 4px;
+.tecnico-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.tecnico-spec {
+.tecnico-nombre {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.tecnico-calificacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
   font-family: 'Raleway', sans-serif;
   font-size: 13px;
-  color: #e8532b;
   font-weight: 700;
-  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.tecnico-calificacion .estrella-svg {
+  width: 15px;
+  height: 15px;
+  fill: #f59e0b;
+}
+
+.tecnico-calificacion .rating-count {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.tecnico-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
-.tecnico-rating-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'Raleway', sans-serif;
-  font-size: 13px;
-  color: #475569;
-  margin-bottom: 14px;
-}
-
-.tecnico-rating-stars {
-  color: #f59e0b;
-  font-weight: 700;
-}
-
-.tecnico-pricing {
-  font-family: 'Oswald', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: #08233b;
-  margin-bottom: 16px;
-}
-
-.tecnico-pricing span {
+.tecnico-tag-distrito,
+.tecnico-tag-especialidad {
   font-family: 'Raleway', sans-serif;
   font-size: 12px;
-  font-weight: 500;
-  color: #64748b;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.tecnico-tag-especialidad {
+  color: #fde047;
+  background: rgba(250, 204, 21, 0.1);
+}
+
+.tecnico-descripcion {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* Footer de Tarjeta y CTAs (Fitts's Law: 44px touch targets) */
+.tecnico-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.tecnico-precio-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.tecnico-precio-label {
+  font-family: 'Raleway', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.tecnico-precio-monto {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00e599;
 }
 
 .tecnico-actions {
   display: flex;
-  gap: 8px;
-  margin-top: auto;
+  align-items: center;
+  gap: 10px;
 }
 
 .btn-tecnico-perfil {
-  flex: 1;
-  text-align: center;
-  padding: 10px 8px;
-  border: 1px solid #08233b;
-  color: #08233b;
-  font-family: 'Raleway', sans-serif;
-  font-size: 12px;
-  font-weight: 700;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
 }
 
-.btn-tecnico-perfil:hover {
-  background-color: #f1f5f9;
+.btn-tecnico-perfil:hover,
+.btn-tecnico-perfil:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #ffffff;
 }
 
-.btn-tecnico-solicitar {
-  flex: 1.2;
-  text-align: center;
-  padding: 10px 8px;
-  background-color: #288133;
+.btn-tecnico-contratar {
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: #288133;
   color: #ffffff;
   font-family: 'Raleway', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  border-radius: 8px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(40, 129, 51, 0.3);
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.btn-tecnico-solicitar:hover {
-  background-color: #1e6427;
+.btn-tecnico-contratar:hover,
+.btn-tecnico-contratar:focus-visible {
+  background: #1e6427;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(40, 129, 51, 0.45);
 }
+
+/* Estado Vacío (Zero-State Empático - H9) */
+.tecnicos-empty-state {
+  display: none;
+  background: rgba(15, 35, 59, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  margin: 32px 0;
+}
+
+.tecnicos-empty-state.active {
+  display: block;
+}
+
+.empty-state-icon {
+  font-size: 44px;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+.empty-state-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.empty-state-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 15px;
+  color: #cbd5e1;
+  max-width: 50ch;
+  margin: 0 auto 24px;
+}
+
+.btn-reset-filters {
+  min-height: 44px;
+  padding: 0 24px;
+  background: #00e599;
+  color: #08233b;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-reset-filters:hover,
+.btn-reset-filters:focus-visible {
+  background: #00c784;
+  transform: translateY(-1px);
+}
+
+/* Botón VER MÁS (Frame 873:198, nodo 1344:895) */
+.tecnicos-pagination-wrap {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.btn-figma-ver-mas {
+  min-height: 48px;
+  padding: 0 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-figma-ver-mas:hover,
+.btn-figma-ver-mas:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #00e599;
+  color: #00e599;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tecnico-card,
+  .tecnico-banner-img,
+  .filter-chip,
+  .btn-tecnico-contratar,
+  .btn-figma-ver-mas {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 
 /* --- 4. VISTA TIENDA (tienda.html) --- */
 .tienda-main {

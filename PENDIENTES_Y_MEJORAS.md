@@ -114,3 +114,46 @@ El 1 de noviembre de 2026 se completó la refactorización profunda de [`servici
 
 *Documento actualizado el 1 de noviembre de 2026 tras la sincronización oficial de `servicios.html` con el Frame de Figma 475:695.*
 
+
+
+---
+
+## 6. ⚡ Implementación Oficial de la Vista de Técnicos (`tecnicos.html` - Figma Frame `873:198`)
+
+Se implementó y sincronizó al 100% la pantalla oficial **"LISTA DE TÉCNICOS"** a partir de la inspección en vivo de Figma mediante MCP y la aplicación combinada de las 4 Agent Skills de UX/UI (`ux-heuristics`, `ux-heuristic-review`, `review-ux-ui` y `ui-laws-and-spacing`).
+
+### 6.1. Correspondencia Directa con Figma
+- **Frame Oficial:** `LISTA DE TECNICOS` (Node ID `873:198`, página `0:1: Modelo pagina web`, dimensiones `1427 x 1974 px`).
+- **Nodos Integrados:**
+  - `1452:730`: Título principal `TÉCNICOS`.
+  - `1100:1863` / `1091:1839`: Tarjeta de **Roberto Rojas** (4.5 ★, 267 reseñas, S/ 200).
+  - `1109:1893` / `1324:253`: Tarjeta de **Mateo Santos** (4.3 ★, 204 reseñas, S/ 100).
+  - `1109:1902` / `1092:1845`: Tarjeta de **Carlos Paredes** (4.6 ★, 221 reseñas, S/ 180; nombre unificado tras resolver duplicidad del diseño original).
+  - `1109:1920` / `1095:1853`: Tarjeta de **Ximena Gonzales** (4.7 ★, 321 reseñas, S/ 250).
+  - `1344:895`: Botón inferior `VER MÁS TÉCNICOS`.
+
+### 6.2. Activos Gráficos en `.webp` (CLS = 0)
+- Todas las imágenes fueron exportadas a alta resolución desde sus respectivos nodos de Figma y convertidas a formato `.webp` (calidad 85%) mediante Pillow (PIL):
+  - `assets/img/tecnicos/roberto-rojas.webp` (47 KB)
+  - `assets/img/tecnicos/mateo-santos.webp` (59 KB)
+  - `assets/img/tecnicos/carlos-paredes.webp` (53 KB)
+  - `assets/img/tecnicos/ximena-gonzales.webp` (56 KB)
+  *(Copia espejo en `img/tecnicos/` para máxima resiliencia de rutas relativas).*
+- Declaración obligatoria de `aspect-ratio: 16/10`, `width`, `height` y `loading="lazy"` bajo el pliegue para erradicar cualquier salto de contenido (**CLS = 0**).
+
+### 6.3. Mejoras Heurísticas y de Accesibilidad Aplicadas
+- **Ley de Hick & Don't Make Me Think (`ux-heuristics`):** Barra de filtrado ágil por distritos clave (Miraflores, Surco, San Isidro, San Borja, Los Olivos) y filtro de disponibilidad rápida (`⚡ Disponibles hoy`) sin abrumar al usuario con controles innecesarios.
+- **Ley de Fitts (`ui-laws-and-spacing`):** Áreas táctiles de mínimo `44x44px` en todos los botones y chips; diferenciación clara entre el CTA primario ("Contratar") y el secundario ("Ver perfil").
+- **Accesibilidad WCAG 2.1 AA (`review-ux-ui`):** Estados de disponibilidad con doble codificación (icono visual + texto explícito `🟢 Disponible hoy` / `⚡ En línea`), eliminando la dependencia exclusiva del color para usuarios daltónicos; contraste superior a 4.5:1; atributos `aria-live="polite"` para anunciar resultados filtrados; soporte de navegación completa por teclado con `:focus-visible`.
+- **Prevención y Recuperación de Errores (`ux-heuristic-review`):** Zero-State empático cuando la búsqueda no arroja resultados, con botón directo "Ver todos los técnicos" para restablecer filtros sin fricción.
+
+### 6.4. Vinculación y Flujo de Usuario
+- **Entrantes:**
+  - `servicios.html`: El botón *"Solicitar"* de la tarjeta "Servicio de Electricidad" apunta directamente a `tecnicos.html`.
+  - `index.html`: El botón *"Solicitar"* de "Servicio de Electricidad" en la grilla principal apunta a `tecnicos.html`.
+  - `electricidad.html`: Acceso directo *"Ver Técnicos Disponibles en Lima"* en el hero principal.
+  - `layout.js` (Footer): Enlace institucional *"Nuestros Técnicos"*.
+- **Salientes:**
+  - Migas de pan: `Inicio (index.html) > Servicios (servicios.html) > Electricidad (electricidad.html) > Técnicos Disponibles`.
+  - Botón "Contratar" $\rightarrow$ `solicitud.html?servicio=electricidad&tecnico=...`.
+  - Botón "Ver perfil" $\rightarrow$ `perfil.html?id=...`.
