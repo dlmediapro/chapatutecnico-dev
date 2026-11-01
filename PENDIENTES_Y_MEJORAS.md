@@ -309,4 +309,32 @@ Se implementó y desplegó oficialmente la pantalla de **Ficha de Detalle de Pro
 - **Buscador General Habilitado:** En `producto.html`, la cabecera compartida muestra el buscador superior de oficios y conserva activa la pestaña **`TIENDA CHAPA`** (`aria-current="page"`).
 - **Marcado Estructurado Schema.org:** JSON-LD tipo `Product` con lista de imágenes, descripción completa y nodo `offers` (`price: "279.90"`, `priceCurrency: "PEN"`, `availability: "InStock"`).
 
+---
+
+## 11. 🟢 Botón Flotante de WhatsApp Emergencia 24/7 (Figma Frame `1418:743` 'FAB / Emergencia WhatsApp')
+
+Se implementó el componente oficial **`FAB / Emergencia WhatsApp`** a partir del Frame `1418:743` de Figma, aplicando las Agent Skills especializadas (`frontend-ui-engineering`, `ui-laws-and-spacing`, `responsive-craft`, `verification-before-completion`) e inyectándolo de forma selectiva mediante [`layout.js`](layout.js).
+
+### 11.1. Alcance Selectivo (Exclusivo en 4 Vistas Clave)
+Por especificación estricta de diseño y conversión, el botón flotante se inyecta y renderiza **exclusivamente** en las 4 páginas principales de prospección:
+- **`INICIO`** ([`index.html`](index.html))
+- **`NOSOTROS`** ([`nosotros.html`](nosotros.html))
+- **`SERVICIOS`** ([`servicios.html`](servicios.html))
+- **`COBERTURA`** ([`cobertura.html`](cobertura.html))
+
+*(En las vistas de soporte, catálogo, fichas de producto, carrito, checkout o login, el botón se omite para evitar sobrecarga cognitiva o colisión con elementos de acción primaria).*
+
+### 11.2. Fidelidad Visual 1:1 con Figma
+- **Estado Default (`1418:726`):** Botón circular de `64x64px` en verde WhatsApp `#25D366`, icono SVG vectorial centrado en blanco puro y badge superior `"24/7"` en Dark Navy (`#08233b`) con borde blanco de `1.5px` y tipografía `Raleway:ExtraBold`.
+- **Estado Expandido (`1418:735`):** En `:hover` y `:focus-visible`, el botón se transforma suavemente en una píldora desplegando la etiqueta `"Emergencia 24/7"` en tipografía oscura sobre fondo verde.
+- **Onda de Pulso Sutil:** Anillo concéntrico animado a 60fps (`@keyframes fabPulseRing`) que atrae la atención de forma respetuosa sin interferir en la lectura.
+
+### 11.3. Enlace Directo, Seguridad y Accesibilidad WCAG 2.1 AA
+- **Destino:** Enlace seguro `https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20un%20t%C3%A9cnico%20de%20emergencia%2024/7` con `target="_blank"` y `rel="noopener noreferrer"`.
+- **Ley de Fitts:** Área táctil generosa de `64x64px` (superior al estándar mínimo de 44x44px).
+- **Anillo de Enfoque:** `:focus-visible` con resalte cian `#53c8f7` para navegación 100% por teclado.
+- **Reducción de Movimiento:** Soporte completo de `@media (prefers-reduced-motion: reduce)` que apaga la animación de pulso y transiciones.
+- **Rendimiento:** Posicionamiento fijo (`position: fixed`) fuera del flujo del documento (**CLS = 0**).
+
+
 

@@ -123,7 +123,30 @@
     '<a href="404.html" aria-label="TikTok"><img src="img/tik-tok.png" alt=""></a></div></div>' +
     '</div><p class="footer-bottom">© 2026 | Empresa peruana innovadora</p></footer>';
 
-  s.insertAdjacentHTML('beforebegin', part === 'footer' ? footer : header);
+  var fabWhatsApp = '';
+  var isFabPage = (page === 'inicio' || page === 'nosotros' || page === 'servicios' || page === 'cobertura');
+  if (isFabPage && !location.pathname.includes('electricidad')) {
+    fabWhatsApp =
+      '<aside class="fab-whatsapp-container" aria-label="Canal de asistencia de emergencia 24/7">' +
+        '<a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20un%20t%C3%A9cnico%20de%20emergencia%2024/7" ' +
+           'class="fab-whatsapp-btn" ' +
+           'target="_blank" ' +
+           'rel="noopener noreferrer" ' +
+           'aria-label="Contactar a técnico de emergencia por WhatsApp 24/7" ' +
+           'title="Emergencia 24/7 - Contactar por WhatsApp">' +
+          '<span class="fab-whatsapp-icon" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">' +
+              '<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>' +
+            '</svg>' +
+          '</span>' +
+          '<span class="fab-whatsapp-label">Emergencia 24/7</span>' +
+          '<span class="fab-whatsapp-badge" aria-hidden="true">24/7</span>' +
+          '<span class="fab-whatsapp-pulse" aria-hidden="true"></span>' +
+        '</a>' +
+      '</aside>';
+  }
+
+  s.insertAdjacentHTML('beforebegin', part === 'footer' ? (footer + fabWhatsApp) : header);
 
   if (part === 'header') {
     var updateHeaderCartBadge = function () {

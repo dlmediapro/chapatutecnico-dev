@@ -3704,3 +3704,171 @@ body.nav-locked {
     max-width: none;
   }
 }
+
+/* ===================================================================
+   FAB FLOTANTE: EMERGENCIA WHATSAPP 24/7 (Figma Frame 1418:743)
+   Estados: Default (64x64px circular) y Expandido (Hover/Focus)
+   =================================================================== */
+.fab-whatsapp-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.fab-whatsapp-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25d366;
+  color: #ffffff;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 999px;
+  padding: 0 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, padding 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-whatsapp-btn:focus-visible {
+  outline: 3px solid #53c8f7;
+  outline-offset: 3px;
+}
+
+.fab-whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s ease;
+}
+
+.fab-whatsapp-btn:hover .fab-whatsapp-icon {
+  transform: scale(1.06);
+}
+
+.fab-whatsapp-label {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #08233b;
+  margin-left: 0;
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin-left 0.25s ease;
+}
+
+/* Badge Superior 24/7 (Figma Estado=Default 1418:732) */
+.fab-whatsapp-badge {
+  position: absolute;
+  top: -6px;
+  right: -2px;
+  background-color: #08233b;
+  border: 1.5px solid #ffffff;
+  border-radius: 9px;
+  padding: 2px 7px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+/* Estado Expandido en Hover y Focus (Figma Estado=Expandido 1418:735) */
+.fab-whatsapp-btn:hover,
+.fab-whatsapp-btn:focus-visible {
+  padding-left: 16px;
+  padding-right: 22px;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45);
+}
+
+.fab-whatsapp-btn:hover .fab-whatsapp-label,
+.fab-whatsapp-btn:focus-visible .fab-whatsapp-label {
+  max-width: 160px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.fab-whatsapp-btn:hover .fab-whatsapp-badge,
+.fab-whatsapp-btn:focus-visible .fab-whatsapp-badge {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+/* Anillo de Pulso Sutil */
+.fab-whatsapp-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid #25d366;
+  animation: fabPulseRing 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fabPulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  65% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.38);
+    opacity: 0;
+  }
+}
+
+/* Accesibilidad y Reducción de Movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .fab-whatsapp-btn,
+  .fab-whatsapp-label,
+  .fab-whatsapp-badge,
+  .fab-whatsapp-icon {
+    transition: none !important;
+    transform: none !important;
+  }
+  .fab-whatsapp-pulse {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+/* Responsividad Mobile (< 768px) */
+@media (max-width: 767px) {
+  .fab-whatsapp-container {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+  }
+  .fab-whatsapp-btn {
+    height: 58px;
+    min-width: 58px;
+  }
+  .fab-whatsapp-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .fab-whatsapp-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
