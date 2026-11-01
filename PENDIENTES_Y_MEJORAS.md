@@ -85,8 +85,27 @@ Se implementó la página oficial [`404.html`](404.html) siguiendo estrictamente
 Para evitar enlaces muertos o saltos vacíos (`href="#"`), se enlazaron temporalmente a `404.html`:
 - **Redes Sociales del Footer (`layout.js`):** YouTube, Facebook, Instagram y TikTok.
 - **Botones de Solicitar en la Home (`index.html`):** Gasfitería, Carpintería, Cerrajería, Vidriería e Informática.
+- **Botones de Solicitar en Catálogo de Servicios (`servicios.html`):** Gasfitería, Carpintería, Cerrajería, Vidriería, Informática, Pintura, Línea Blanca, Albañilería, Drywall, Cámaras CCTV y Climatización (mientras que Electricidad apunta a [`electricidad.html`](electricidad.html) por contar con landing operativa y cotizador oficial).
 
 ---
 
-*Documento actualizado el 30 de octubre de 2026 tras la implementación de la vista oficial Iniciar Sesión (`login.html`) y su vinculación global.*
+## 5. 🛠️ Sincronización Oficial de la Vista de Servicios (`servicios.html` - Figma Frame `475:695`)
+
+El 1 de noviembre de 2026 se completó la refactorización profunda de [`servicios.html`](servicios.html) basada en el Frame oficial de Figma **`SERVICIOS`** (`node-id: 475:695`):
+
+1. **Arquitectura SEO y Metadatos Modularizados:**
+   - Organización en 7 bloques comentados en el `<head>` para fácil edición futura.
+   - Datos estructurados Schema.org duales en formato JSON-LD: `LocalBusiness` (atención 24/7 en Lima Metropolitana) e `ItemList` (12 servicios técnicos oficiales).
+   - Metadatos Open Graph y Twitter Cards enriquecidos para previsualizaciones limpias en WhatsApp, Facebook y LinkedIn.
+2. **Semántica HTML5 Estricta y Nielsen Heuristics (#1, #2, #3, #4, #6 y #8):**
+   - Único `<h1>SERVICIOS</h1>` en la página con jerarquía lógica `<h2>` (secciones) y `<h3>` (tarjetas y pilares de confianza).
+   - Buscador reactivo en Vanilla JS combinado con filtros de 4 categorías (Todos, Hogar & Instalaciones, Construcción & Acabados, Seguridad & Redes) con contenedor accesible de estado vacío (`role="status"`, `aria-live="polite"`).
+   - Botones píldora "Solicitar" con `min-height: 44px` (WCAG 2.2 touch target) y feedback visual inmediato.
+3. **Rendimiento Nativo (CLS = 0):**
+   - Atributos `width` y `height` explícitos en todas las imágenes con `aspect-ratio: 436 / 449` en tarjetas y `780 / 506` en la sección "Por Qué Elegirnos".
+   - Carga anticipada `loading="eager"` en el primer pliegue y `loading="lazy"` bajo el pliegue.
+
+---
+
+*Documento actualizado el 1 de noviembre de 2026 tras la sincronización oficial de `servicios.html` con el Frame de Figma 475:695.*
 
