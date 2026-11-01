@@ -16,3 +16,7 @@ __pycache__/
 # Editores
 .vscode/
 .idea/
+
+# Scripts de prueba y temporales
+scratch/
+

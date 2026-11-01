@@ -255,17 +255,25 @@
     productos.forEach(function (prod, idx) {
       var isAboveFold = idx < 3;
       var fetchAttr = isAboveFold ? 'fetchpriority="high"' : 'loading="lazy"';
+      var targetUrl = (prod.id === 'prod-taladro-dewalt') ? 'producto.html' : '404.html';
+      var targetAria = (prod.id === 'prod-taladro-dewalt') 
+        ? 'Ver detalle del ' + prod.nombre 
+        : 'Ver ficha técnica de ' + prod.nombre + ' (En preparación)';
 
       html += '<article class="tienda-producto-card" data-id="' + prod.id + '" data-cat="' + prod.categoria + '">';
       
-      // Contenedor Blanco de Imagen (Figma 1:1)
-      html += '  <div class="tienda-img-box">';
-      html += '    <img src="' + prod.imagen + '" alt="' + prod.alt + '" width="260" height="260" ' + fetchAttr + ' class="tienda-card-thumb">';
-      html += '  </div>';
+      // Contenedor Blanco de Imagen Enlazado (Figma 1:1)
+      html += '  <a href="' + targetUrl + '" class="tienda-card-link-visual" aria-label="' + targetAria + '">';
+      html += '    <div class="tienda-img-box">';
+      html += '      <img src="' + prod.imagen + '" alt="' + prod.alt + '" width="260" height="260" ' + fetchAttr + ' class="tienda-card-thumb">';
+      html += '    </div>';
+      html += '  </a>';
 
       // Información de Producto
       html += '  <div class="tienda-card-body">';
-      html += '    <h3 class="tienda-card-title" title="' + prod.nombre + '">' + prod.nombre + '</h3>';
+      html += '    <h3 class="tienda-card-title" title="' + prod.nombre + '">';
+      html += '      <a href="' + targetUrl + '" class="tienda-card-title-link">' + prod.nombre + '</a>';
+      html += '    </h3>';
       
       // Fila Precio Badge Naranja (Figma 1:1)
       html += '    <div class="tienda-card-price-row">';
@@ -517,3 +525,4 @@
     showToast: showToast
   };
 })();
+

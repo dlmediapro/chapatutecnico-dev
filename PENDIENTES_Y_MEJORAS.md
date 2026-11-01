@@ -14,7 +14,9 @@ De acuerdo con la auditoría exhaustiva realizada contra el archivo de Figma (*C
    - *Navegación:* Expuesto en la barra de navegación institucional (`layout.js`) como enlace activo `TIENDA CHAPA` con la **Regla de Buscador Único** (`data-search="false"`).
 
 2. **Ficha de Detalle de Producto Individual:**
-   - *Situación actual:* Al dar clic a un producto del carrito no existe una pantalla con especificaciones técnicas, selector de cantidad o galería de fotos del producto antes de agregarlo.
+   - *Estado:* **IMPLEMENTADO AL 100%** mediante la página oficial [`producto.html`](producto.html) basada fielmente en el Frame oficial **`PROCESO DE COMPRA`** (`id: 1334:408`) de Figma.
+   - *Características activas:* Riel vertical interactivo de 4 miniaturas accesibles, visor central en alta resolución (700x700 en contenedor blanco), Buy Box con precio destacado (`S/ 279.90`), badge *"Envío en 30 min."*, selector de cantidad `- 1 +`, botón primario *"Añadir al carrito"* con persistencia en `localStorage` y feedback reactivo, botones de flujo secundario (*"Ver carrito"* hacia `carrito.html` y *"Seguir comprando"* hacia `tienda.html`), ficha descriptiva técnica completa con 3 años de garantía y carrusel inferior deslizable (`scroll-snap`) de 4 productos relacionados con botón flecha `→`.
+   - *Enrutamiento desde Catálogo:* Tarjeta #1 de `tienda.html` (Taladro DeWalt DWD024K) enlazada a `producto.html`; tarjetas #2 a #9 enlazadas elegantemente a `404.html` para items en preparación.
 
 3. **Flujo de Pasarela de Pagos (Checkout Interactivo):**
    - *Situación actual:* El Frame **`COMPRA`** (`id: 475:454`) diseña la pantalla estática de resumen con botones de Yape, Visa, Mastercard y Plin.
@@ -273,4 +275,38 @@ Se implementó y activó oficialmente el catálogo de productos **"TIENDA CHAPA"
 
 ### 9.4. Sincronización Reactiva con el Carrito
 - Al presionar **"Añadir al carrito"**, el producto se almacena en `localStorage` (`chapa_cart`), el botón emite feedback táctil temporal (`¡Añadido! ✔`), se despacha el evento global `chapa-cart-updated` y la burbuja numérica del header (`.header-cart-count`) se actualiza instantáneamente en todo el sitio web.
+
+---
+
+## 10. 🛠️ Implementación Oficial de Detalle de Producto (`producto.html` - Figma Frame `1334:408` 'PROCESO DE COMPRA')
+
+Se implementó y desplegó oficialmente la pantalla de **Ficha de Detalle de Producto** (`producto.html`) con fidelidad visual y funcional 1:1 respecto al Frame `1334:408` de Figma (*PROCESO DE COMPRA*), aplicando las 4 Agent Skills especializadas (`figma-design-to-code`, `frontend-ui-engineering`, `responsive-craft`, `verification-before-completion`) y las leyes del diseño UX/UI.
+
+### 10.1. Enrutamiento Inteligente desde Catálogo (`tienda.html` / `tienda.js`)
+- **Tarjeta #1 (Taladro Percutor DWD024K):** Tanto la imagen sobre fondo blanco como el título del producto conducen directamente a [`producto.html`](producto.html).
+- **Tarjetas #2 a #9 (Resto del Catálogo):** Dado que sus fichas técnicas se encuentran en desarrollo, los clics en sus imágenes y títulos redirigen limpiamente a [`404.html`](404.html) con mensaje contextual sin romper el flujo del usuario.
+- **Acción Inmediata de Compra:** Todos los botones *"Añadir al carrito"* del catálogo continúan agregando reactivamente los productos al carrito de compras sin recargar la página.
+
+### 10.2. Galería de Fotos Interactiva & Visor de Alto Contraste
+- **Riel Vertical de 4 Miniaturas:** 4 vistas cuadradas del taladro en formato WebP sobre caja blanca con bordes redondeados. Al hacer clic o navegar por teclado (`Enter` / `Space`), actualiza fluidamente la foto del visor principal con transición suave de opacidad.
+- **Visor Central (Figma Nodo 1334:647 700x700):** Contenedor cuadrado blanco puro (`aspect-ratio: 1 / 1`) con imagen de alta resolución, carga prioritaria (`fetchpriority="high"`, `loading="eager"`) y **CLS = 0**.
+
+### 10.3. Buy Box (Panel de Compra) & Integración con Carrito
+- **Identidad y Precio:** Título `<h1>` en `Oswald`, subtítulo *"Vendido por Chapa tu técnico"*, precio destacado `S/ 279.90` y badge redondeado *"Envío en 30 min."*.
+- **Selector de Cantidad (Stepper):** Botones `-` y `+` con área táctil accesible $\ge 44\text{px}$, validación de 1 a 10 unidades y anuncio accesible (`aria-live="polite"`).
+- **Botón Primario "Añadir al carrito":** Guarda en `localStorage` (`chapa_cart`), muestra feedback táctil en el botón (`¡Añadido (N)! ✔`), emite notificación flotante accesible (Toast) y actualiza el contador del carrito en el `<header>` global.
+- **Botones Secundarios:** Enlace píldora claro *"Ver carrito"* hacia `carrito.html` y botón oscuro con borde *"Seguir comprando"* hacia `tienda.html`.
+
+### 10.4. Especificaciones Técnicas Oficiales
+- Bloque de descripción textual fiel al nodo `1342:804` de Figma: especificaciones completas del motor de 650W, mandril metálico de 1/2", velocidad variable/reversible, ventilación y **3 años de garantía oficial**.
+
+### 10.5. Carrusel Desplazable de "PRODUCTOS RELACIONADOS"
+- **Scroll Horizontal Nativo:** Fila continua con `scroll-snap-type: x mandatory` y `scroll-behavior: smooth`, barra de scroll visualmente oculta y soporte para navegación táctil, rueda del ratón y el **botón flotante de flecha derecha `→`** (`.btn-carousel-arrow-next`).
+- **4 Herramientas Similares:** Combo DeWalt XR 20V (S/ 1899.00), Taladro Percutor Werken 20V (S/ 159.90), Taladro Bosch GSB 18V-90 (S/ 379.90) y Combo Brushless Werken (S/ 279.90).
+- **Acciones Duales:** Clic en imagen/título redirige a `404.html`; botón *"Añadir al carrito"* añade inmediatamente el producto al carrito compartido.
+
+### 10.6. Cabecera Institucional y SEO Técnico
+- **Buscador General Habilitado:** En `producto.html`, la cabecera compartida muestra el buscador superior de oficios y conserva activa la pestaña **`TIENDA CHAPA`** (`aria-current="page"`).
+- **Marcado Estructurado Schema.org:** JSON-LD tipo `Product` con lista de imágenes, descripción completa y nodo `offers` (`price: "279.90"`, `priceCurrency: "PEN"`, `availability: "InStock"`).
+
 

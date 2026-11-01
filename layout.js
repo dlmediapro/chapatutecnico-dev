@@ -1,12 +1,12 @@
 /* Cabecera y pie compartidos: Chapa Tu Técnico (Figma System)
    Uso en el HTML:  <script src="layout.js" data-part="header"></script>
                     <script src="layout.js" data-part="footer"></script>
-   Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
+   Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | producto | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
 (function () {
   var s = document.currentScript, part = s.dataset.part, page = document.body.dataset.page || '';
   var hideSearch = (s.dataset.search === 'false' || s.dataset.variant === 'compact' || page === 'cobertura' || page === 'soporte' || page === 'tienda');
   var navLink = function (id, href, text) {
-    var isActive = (page === id);
+    var isActive = (page === id || (page === 'producto' && id === 'tienda'));
     return '<a href="' + href + '" class="nav-link' + (isActive ? ' active' : '') + '"' + (isActive ? ' aria-current="page"' : '') + '>' + text + '</a>';
   };
   var navDot = '<span class="nav-dot" aria-hidden="true">•</span>';
