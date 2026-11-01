@@ -336,5 +336,39 @@ Por especificación estricta de diseño y conversión, el botón flotante se iny
 - **Reducción de Movimiento:** Soporte completo de `@media (prefers-reduced-motion: reduce)` que apaga la animación de pulso y transiciones.
 - **Rendimiento:** Posicionamiento fijo (`position: fixed`) fuera del flujo del documento (**CLS = 0**).
 
+---
+
+## 12. 🟢 Rediseño Oficial "CONSULTA CLIENTE" (Paso 1: Describe tu problema — Roberto Rojas)
+
+Se completó la implementación integral de la pantalla rediseñada de **"CONSULTA CLIENTE"** ([`solicitud.html`](solicitud.html)) y su flujo hacia el **"CHAT DIRECTO"** ([`chat.html`](chat.html)), con fidelidad 1:1 respecto al diseño oficial de Figma y el mockup suministrado.
+
+### 12.1. Enrutamiento Condicional desde "Técnicos Disponibles" (`tecnicos.html`)
+- **Roberto Rojas (Caso Demostrativo Activo):** Los botones *"Ver perfil"* y *"Contratar"* de la tarjeta principal de Roberto Rojas enlazan directamente a [`solicitud.html`](solicitud.html).
+- **Resto de Especialistas (Mateo Santos, Carlos Paredes, Ximena Gonzales):** Los botones *"Ver perfil"* y *"Contratar"* redirigen limpiamente a [`404.html`](404.html), preservando la coherencia del prototipo académico/demostrativo.
+
+### 12.2. Anatomía de la Pantalla `solicitud.html`
+- **Header Focalizado de Cliente:** Logotipo oficial de Chapa Tu Técnico a la izquierda enlazado a `index.html`, y bloque de sesión activa a la derecha con avatar, nombre **María González** y subtítulo **`📍 Surco, Lima • Cliente verificado`**.
+- **Stepper Horizontal de 2 Pasos:** Indicador de avance con **Paso 1 (Activo)**: *"Describe tu problema"* y **Paso 2 (Pendiente)**: *"Chat directo y cotización con el técnico"*.
+- **Ficha Resumen del Técnico:** Tarjeta superior compacta con avatar en WebP (`56x56px`), nombre **Roberto Rojas**, píldora verde `✓ Técnico verificado`, especialidad *"Especialista en instalaciones eléctricas"* y métricas de confianza (`★ 4.9 • [punto verde] En línea • Responde en ~3 min`).
+- **Sección 1: Selección Rápida (Multi-chips):** 5 chips interactivos accesibles (`role="group"` y `aria-pressed`) con **`⚡ Cortocircuito ✓`** preseleccionado por defecto (borde `#e8532b`, fondo cálido y check activo).
+- **Sección 2: Mensaje Detallado:** Textarea con límite de 300 caracteres, placeholder explicativo y contador en tiempo real **`0 / 300`** en el pie.
+- **Sección 3: Evidencia Multimedia:** Fila de 3 slots cuadrados (`80x80px`): Slot 1 precargado con miniatura WebP y botón de eliminación funcional (`×`) que descuenta el contador de `1 / 3 archivos` a `0 / 3`, y slots 2-3 preparados para carga vía selector de archivos.
+- **Sección 4: ¿Cuándo lo necesitas?:** 2 Radio Cards mutuamente excluyentes con diseño responsivo:
+  - Opción A: **`Hoy lo antes posible`** (Emergencia • respuesta prioritaria, activa por defecto).
+  - Opción B: **`Programar fecha y hora`** (despliega selector limpio de fecha y rango de hora).
+  - Banner dinámico inferior: *"Priorizamos tu solicitud: el técnico verá la urgencia en el primer mensaje del chat."*
+- **Sección 5: Confianza y CTAs:** Cláusula de seguridad con icono de candado `🔒`, botón dominante verde **`"INICIAR CHAT Y SOLICITAR COTIZACIÓN →"`** y enlace secundario *"Buscar otro técnico"* que retorna a `tecnicos.html`.
+
+### 12.3. Persistencia y Pantalla Receptora del Paso 2 (`chat.html`)
+- Al enviar el formulario, los datos se serializan en `localStorage` bajo la clave `'chapa_consulta_actual'` y el botón muestra feedback visual antes de redirigir a [`chat.html`](chat.html).
+- [`chat.html`](chat.html) actúa como el **Paso 2** del embudo: carga la sesión activa con Roberto Rojas, muestra la ficha resumen con la urgencia y avería reportada, e incluye una simulación reactiva de conversación técnica con entrada de mensajes.
+
+### 12.4. Calidad Web-to-App, WCAG 2.1 AA y CLS = 0
+- **Ley de Fitts:** Todos los chips, slots, botones y enlaces interactivos cumplen un área táctil mínima de **44x44px**.
+- **CLS = 0:** Todas las imágenes poseen dimensiones intrínsecas (`width` y `height`) y formatos optimizados WebP.
+- **Contraste Accesible:** Mínimo ratio de contraste **4.5:1** para textos y **3:1** para componentes visuales.
+- **Animaciones a 60fps & Reducción de Movimiento:** Microinteracciones fluidas con soporte estricto de `@media (prefers-reduced-motion: reduce)`.
+
+
 
 

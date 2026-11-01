@@ -1,261 +1,286 @@
-/* ==========================================================
-   Chapa Tu Técnico — Lógica Interactiva para "Ver Solicitud"
-   ========================================================== */
-(function() {
+/* ==========================================================================
+   Chapa Tu Técnico — Lógica de Interacción: CONSULTA CLIENTE (solicitud.js)
+   Fidelidad 1:1 con Figma & WCAG 2.1 AA
+   ========================================================================== */
+
+(function () {
     'use strict';
 
-    // Estados posibles para la demostración académica
-    var STATES = {
-        1: {
-            title: "🟡 BUSCANDO TÉCNICO",
-            badgeClass: "badge-searching",
-            mainText: "Buscando al técnico verificado más cercano en tu distrito...",
-            eta: "BUSCANDO",
-            stepIndex: 1,
-            showTech: false,
-            showMap: false,
-            canCancel: true,
-            techName: "Buscando...",
-            techStatus: "Escaneando especialistas en Miraflores en un radio de 5km"
-        },
-        2: {
-            title: "🔵 TÉCNICO ASIGNADO",
-            badgeClass: "badge-assigned",
-            mainText: "El técnico <span class='highlight-tech'>Carlos Rivas</span> ha aceptado tu servicio y prepara sus herramientas",
-            eta: "PREPARANDO",
-            stepIndex: 2,
-            showTech: true,
-            showMap: false,
-            canCancel: true,
-            techName: "Carlos Rivas",
-            techStatus: "⚡ Técnico Electricista Colegiado (Cert. N° EL-4910)"
-        },
-        3: {
-            title: "🟣 EN CAMINO",
-            badgeClass: "badge-on-the-way",
-            mainText: "El técnico <span class='highlight-tech'>Carlos Rivas</span> está en camino a tu domicilio",
-            eta: "12 MIN",
-            stepIndex: 3,
-            showTech: true,
-            showMap: true,
-            canCancel: true,
-            techName: "Carlos Rivas",
-            techStatus: "⚡ Técnico Electricista Colegiado (Cert. N° EL-4910)"
-        },
-        4: {
-            title: "🟠 EN REPARACIÓN",
-            badgeClass: "badge-in-progress",
-            mainText: "<span class='highlight-tech'>Carlos Rivas</span> se encuentra en tu domicilio realizando el diagnóstico y reparación",
-            eta: "EN CURSO",
-            stepIndex: 4,
-            showTech: true,
-            showMap: false,
-            canCancel: false,
-            techName: "Carlos Rivas",
-            techStatus: "⚡ Trabajo técnico en ejecución • Garantía en proceso"
-        },
-        5: {
-            title: "🟢 FINALIZADO",
-            badgeClass: "badge-completed",
-            mainText: "¡Servicio completado! Revisa el trabajo realizado y emite tu calificación",
-            eta: "COMPLETADO",
-            stepIndex: 4,
-            isCompleted: true,
-            showTech: true,
-            showMap: false,
-            canCancel: false,
-            techName: "Carlos Rivas",
-            techStatus: "⚡ Servicio concluido con satisfacción • Garantía de 30 días activa"
-        }
-    };
+    document.addEventListener('DOMContentLoaded', initConsultaCliente);
 
-    var currentStep = 3; // Por defecto arrancamos en "En camino (12 min)"
+    function initConsultaCliente() {
+        var form = document.getElementById('form-consulta-cliente');
+        if (!form) return;
 
-    // Toast de notificaciones
-    function showToast(message, type) {
-        var toast = document.getElementById('toast-notification');
-        if (!toast) return;
-        toast.textContent = message;
-        toast.className = 'toast-notification show ' + (type || 'success');
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(function() {
-            toast.className = 'toast-notification';
-        }, 3200);
-    }
+        // Elementos interactivos
+        var chips = document.querySelectorAll('.chip-item');
+        var textarea = document.getElementById('consulta-mensaje');
+        var charCounter = document.getElementById('char-counter');
+        var uploadTrigger = document.getElementById('upload-trigger');
+        var fileInput = document.getElementById('consulta-file-input');
+        var slotsContainer = document.getElementById('photo-slots-container');
+        var photoCounterBadge = document.getElementById('photo-counter-badge');
+        var urgencyRadios = document.querySelectorAll('input[name="urgencia"]');
+        var cardHoy = document.getElementById('card-urgencia-hoy');
+        var cardProgramar = document.getElementById('card-urgencia-programar');
+        var schedulePicker = document.getElementById('schedule-picker');
+        var fechaInput = document.getElementById('fecha-servicio');
+        var urgencyNoticeBanner = document.getElementById('urgency-notice-banner');
+        var urgencyNoticeText = document.getElementById('urgency-notice-text');
+        var btnSubmit = document.getElementById('btn-submit-consulta');
 
-    // Actualizar vista completa según el paso seleccionado
-    function applyState(stepNum) {
-        currentStep = stepNum;
-        var st = STATES[stepNum];
-        if (!st) return;
+        // Estado local de la vista
+        var state = {
+            photosCount: 1, // Inicia con 1 foto de muestra en slot-1
+            uploadedFiles: []
+        };
 
-        // 1. Botones de Simulación
-        var simBtns = document.querySelectorAll('.ux-simulator-bar .sim-btn');
-        simBtns.forEach(function(b) {
-            b.classList.toggle('active', parseInt(b.getAttribute('data-step'), 10) === stepNum);
+        // ----------------------------------------------------------------------
+        // 1. CHIPS MULTI-SELECCIÓN INTERACTIVOS
+        // ----------------------------------------------------------------------
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var isSelected = chip.classList.toggle('is-selected');
+                chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+                var checkSpan = chip.querySelector('.chip-check');
+                if (checkSpan) {
+                    checkSpan.textContent = isSelected ? '✓' : '';
+                }
+            });
         });
 
-        // 2. Textos principales
-        var statusText = document.getElementById('tracking-status-text');
-        var badgeTitle = document.getElementById('badge-status-title');
-        var liveBadge = document.getElementById('live-status-badge');
-        var etaTime = document.getElementById('eta-time-val');
-        var etaBox = document.getElementById('eta-box');
+        // ----------------------------------------------------------------------
+        // 2. CONTADOR DE CARACTERES EN TIEMPO REAL (TEXTAREA)
+        // ----------------------------------------------------------------------
+        if (textarea && charCounter) {
+            textarea.addEventListener('input', function () {
+                var currentLength = textarea.value.length;
+                charCounter.textContent = currentLength + ' / 300';
+            });
+        }
 
-        if (statusText) statusText.innerHTML = st.mainText;
-        if (badgeTitle) badgeTitle.textContent = st.title.replace(/^[^\s]+\s/, '');
-        if (liveBadge) liveBadge.className = 'status-badge-live ' + st.badgeClass;
-        if (etaTime) etaTime.textContent = st.eta;
-
-        // 3. Stepper
-        var stepItems = document.querySelectorAll('#stepper-list .step-item');
-        stepItems.forEach(function(item) {
-            var idx = parseInt(item.getAttribute('data-index'), 10);
-            item.classList.remove('step-completed', 'step-current');
-
-            if (st.isCompleted) {
-                item.classList.add('step-completed');
-                item.querySelector('.step-circle').textContent = '✓';
-            } else if (idx < st.stepIndex) {
-                item.classList.add('step-completed');
-                item.querySelector('.step-circle').textContent = '✓';
-            } else if (idx === st.stepIndex) {
-                item.classList.add('step-current');
-                item.querySelector('.step-circle').textContent = idx;
-            } else {
-                item.querySelector('.step-circle').textContent = idx;
+        // ----------------------------------------------------------------------
+        // 3. GESTIÓN DE FOTOS Y SLOTS
+        // ----------------------------------------------------------------------
+        function updatePhotoCounter() {
+            if (photoCounterBadge) {
+                photoCounterBadge.textContent = state.photosCount + ' / 3 archivos';
             }
-        });
-
-        // 4. Tarjeta del Técnico
-        var techCard = document.getElementById('technician-card');
-        if (techCard) {
-            techCard.style.display = st.showTech ? 'block' : 'none';
         }
 
-        // 5. Mapa en vivo
-        var mapCard = document.getElementById('live-map-card');
-        if (mapCard) {
-            mapCard.style.display = st.showMap ? 'block' : 'none';
-        }
-
-        // 6. Botones de acción
-        var btnCancel = document.getElementById('btn-open-cancel-modal');
-        var btnFinish = document.getElementById('btn-simulate-finish');
-
-        if (btnCancel) {
-            btnCancel.style.display = st.canCancel ? 'block' : 'none';
-        }
-        if (btnFinish) {
-            btnFinish.style.display = (stepNum === 5) ? 'block' : 'none';
-        }
-
-        // Animación suave de scroll
-        liveBadge.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    // Configurar botones de simulación
-    function setupSimulator() {
-        var simBtns = document.querySelectorAll('.ux-simulator-bar .sim-btn');
-        simBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var step = parseInt(btn.getAttribute('data-step'), 10);
-                applyState(step);
-                showToast("Cambiado a estado: " + STATES[step].title);
-            });
-        });
-    }
-
-    // Modal Cancelar Solicitud
-    function setupCancelModal() {
-        var modal = document.getElementById('modal-cancel-request');
-        var btnOpen = document.getElementById('btn-open-cancel-modal');
-        var btnClose = document.getElementById('btn-close-cancel-modal');
-        var btnAbort = document.getElementById('btn-abort-cancel');
-        var form = document.getElementById('form-cancel-request');
-
-        if (!modal) return;
-
-        if (btnOpen) {
-            btnOpen.addEventListener('click', function() {
-                if (typeof modal.showModal === 'function') modal.showModal();
-                else modal.setAttribute('open', '');
-            });
-        }
-
-        function closeModal() {
-            if (typeof modal.close === 'function') modal.close();
-            else modal.removeAttribute('open');
-            if (form) form.reset();
-        }
-
-        if (btnClose) btnClose.addEventListener('click', closeModal);
-        if (btnAbort) btnAbort.addEventListener('click', closeModal);
-
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                closeModal();
-                showToast("Solicitud cancelada correctamente. No se aplicaron penalidades.", "info");
-
-                // Pasar a estado de cancelación visual
-                var statusText = document.getElementById('tracking-status-text');
-                var liveBadge = document.getElementById('live-status-badge');
-                if (statusText) statusText.innerHTML = "❌ Solicitud Cancelada por el Usuario";
-                if (liveBadge) {
-                    liveBadge.className = 'status-badge-live badge-cancelled';
-                    liveBadge.innerHTML = "CANCELADA";
+        // Eliminar foto de muestra inicial
+        var btnRemoveInitial = document.getElementById('btn-remove-slot-1');
+        if (btnRemoveInitial) {
+            btnRemoveInitial.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var slot1 = document.getElementById('slot-1');
+                if (slot1) {
+                    slot1.className = 'photo-slot-item is-empty';
+                    slot1.setAttribute('role', 'button');
+                    slot1.setAttribute('tabindex', '0');
+                    slot1.setAttribute('aria-label', 'Añadir foto o video 1');
+                    slot1.innerHTML = '<span class="slot-add-icon" aria-hidden="true">+</span>';
+                    bindEmptySlotClick(slot1);
                 }
-                var btnCancel = document.getElementById('btn-open-cancel-modal');
-                if (btnCancel) btnCancel.style.display = 'none';
-            });
-        }
-    }
-
-    // Modal de Calificación
-    function setupRateModal() {
-        var modal = document.getElementById('modal-rate-service');
-        var btnSimulate = document.getElementById('btn-simulate-finish');
-        var btnSubmit = document.getElementById('btn-submit-rating');
-        var starButtons = document.querySelectorAll('#rating-stars-picker .star-btn');
-
-        if (!modal) return;
-
-        if (btnSimulate) {
-            btnSimulate.addEventListener('click', function() {
-                if (typeof modal.showModal === 'function') modal.showModal();
-                else modal.setAttribute('open', '');
+                state.photosCount = Math.max(0, state.photosCount - 1);
+                updatePhotoCounter();
             });
         }
 
-        starButtons.forEach(function(star, idx) {
-            star.addEventListener('click', function() {
-                starButtons.forEach(function(s, i) {
-                    s.classList.toggle('active', i <= idx);
+        // Activar selector de archivos desde el dropzone
+        if (uploadTrigger && fileInput) {
+            uploadTrigger.addEventListener('click', function () {
+                if (state.photosCount < 3) {
+                    fileInput.click();
+                } else {
+                    alert('Has alcanzado el límite máximo de 3 archivos adjuntos.');
+                }
+            });
+            uploadTrigger.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    uploadTrigger.click();
+                }
+            });
+        }
+
+        // Asignar click a slots vacíos
+        function bindEmptySlotClick(slot) {
+            slot.addEventListener('click', function () {
+                if (fileInput && state.photosCount < 3) {
+                    fileInput.click();
+                }
+            });
+            slot.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    slot.click();
+                }
+            });
+        }
+
+        // Asignar a slots vacíos existentes (slot 2 y 3)
+        var emptySlots = document.querySelectorAll('.photo-slot-item.is-empty');
+        emptySlots.forEach(bindEmptySlotClick);
+
+        // Al seleccionar archivos locales
+        if (fileInput) {
+            fileInput.addEventListener('change', function () {
+                var files = Array.from(fileInput.files);
+                if (!files.length) return;
+
+                files.forEach(function (file) {
+                    if (state.photosCount >= 3) return;
+
+                    var nextEmptySlot = document.querySelector('.photo-slot-item.is-empty');
+                    if (!nextEmptySlot) return;
+
+                    var objectUrl = URL.createObjectURL(file);
+                    state.uploadedFiles.push({ file: file, url: objectUrl });
+                    state.photosCount++;
+
+                    nextEmptySlot.className = 'photo-slot-item is-filled';
+                    nextEmptySlot.removeAttribute('role');
+                    nextEmptySlot.removeAttribute('tabindex');
+                    nextEmptySlot.innerHTML =
+                        '<img src="' + objectUrl + '" alt="Vista previa de archivo adjunto" class="slot-preview-image" width="80" height="80">' +
+                        '<button type="button" class="btn-remove-photo" aria-label="Eliminar foto">×</button>';
+
+                    var removeBtn = nextEmptySlot.querySelector('.btn-remove-photo');
+                    if (removeBtn) {
+                        removeBtn.addEventListener('click', function (e) {
+                            e.stopPropagation();
+                            nextEmptySlot.className = 'photo-slot-item is-empty';
+                            nextEmptySlot.setAttribute('role', 'button');
+                            nextEmptySlot.setAttribute('tabindex', '0');
+                            nextEmptySlot.setAttribute('aria-label', 'Añadir foto o video');
+                            nextEmptySlot.innerHTML = '<span class="slot-add-icon" aria-hidden="true">+</span>';
+                            bindEmptySlotClick(nextEmptySlot);
+                            state.photosCount = Math.max(0, state.photosCount - 1);
+                            updatePhotoCounter();
+                        });
+                    }
                 });
+
+                updatePhotoCounter();
+                fileInput.value = ''; // Reset para permitir volver a cargar
+            });
+        }
+
+        // ----------------------------------------------------------------------
+        // 4. RADIO-CARDS DE URGENCIA Y BANNER DINÁMICO
+        // ----------------------------------------------------------------------
+        if (fechaInput) {
+            // Sugerir fecha de mañana por defecto para programar
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            var yyyy = tomorrow.getFullYear();
+            var mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            var dd = String(tomorrow.getDate()).padStart(2, '0');
+            fechaInput.min = yyyy + '-' + mm + '-' + dd;
+            fechaInput.value = yyyy + '-' + mm + '-' + dd;
+        }
+
+        urgencyRadios.forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var isHoy = (radio.value === 'hoy');
+
+                if (cardHoy) cardHoy.classList.toggle('is-checked', isHoy);
+                if (cardProgramar) cardProgramar.classList.toggle('is-checked', !isHoy);
+
+                if (schedulePicker) {
+                    if (isHoy) {
+                        schedulePicker.style.display = 'none';
+                        schedulePicker.setAttribute('aria-hidden', 'true');
+                    } else {
+                        schedulePicker.style.display = 'block';
+                        schedulePicker.setAttribute('aria-hidden', 'false');
+                    }
+                }
+
+                if (urgencyNoticeBanner && urgencyNoticeText) {
+                    if (isHoy) {
+                        urgencyNoticeBanner.querySelector('.notice-banner-icon').textContent = '⚠️';
+                        urgencyNoticeText.textContent = 'Priorizamos tu solicitud: el técnico verá la urgencia en el primer mensaje del chat.';
+                    } else {
+                        urgencyNoticeBanner.querySelector('.notice-banner-icon').textContent = '📅';
+                        urgencyNoticeText.textContent = 'Solicitud agendada: coordinarás la confirmación exacta de fecha y hora directamente en el chat.';
+                    }
+                }
             });
         });
 
-        if (btnSubmit) {
-            btnSubmit.addEventListener('click', function() {
-                if (typeof modal.close === 'function') modal.close();
-                else modal.removeAttribute('open');
+        // ----------------------------------------------------------------------
+        // 5. ENVÍO DEL FORMULARIO Y PERSISTENCIA HACIA CHAT.HTML
+        // ----------------------------------------------------------------------
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                showToast("✓ ¡Muchas gracias! Tu calificación fue enviada y la boleta llegó a tu correo.");
-                if (btnSimulate) {
-                    btnSimulate.textContent = "✓ Servicio Calificado";
-                    btnSimulate.disabled = true;
-                }
+            // Obtener chips seleccionados
+            var selectedChips = [];
+            document.querySelectorAll('.chip-item.is-selected').forEach(function (chip) {
+                var label = chip.querySelector('.chip-label');
+                if (label) selectedChips.push(label.textContent.trim());
             });
-        }
+
+            var mensajeTexto = textarea ? textarea.value.trim() : '';
+            var radioChecked = document.querySelector('input[name="urgencia"]:checked');
+            var urgenciaSeleccionada = radioChecked ? radioChecked.value : 'hoy';
+            var fechaProgramada = (urgenciaSeleccionada === 'programar' && fechaInput) ? fechaInput.value : null;
+            var horaSelect = document.getElementById('hora-servicio');
+            var horaProgramada = (urgenciaSeleccionada === 'programar' && horaSelect) ? horaSelect.value : null;
+
+            // Validación amigable (sin fricción): Requiere al menos un chip O mensaje
+            if (selectedChips.length === 0 && mensajeTexto.length === 0) {
+                alert('Por favor selecciona al menos una opción rápida del problema o escribe una breve descripción.');
+                var firstChip = document.querySelector('.chip-item');
+                if (firstChip) firstChip.focus();
+                return;
+            }
+
+            // Construcción del payload estructurado
+            var consultaPayload = {
+                tecnico: {
+                    id: 'roberto-rojas',
+                    nombre: 'Roberto Rojas',
+                    especialidad: 'Especialista en instalaciones eléctricas',
+                    avatar: 'assets/img/tecnicos/roberto-rojas-avatar.webp',
+                    rating: 4.9,
+                    tiempoRespuesta: '~3 min'
+                },
+                problema: {
+                    chips: selectedChips,
+                    mensaje: mensajeTexto || 'Sin mensaje adicional (problema especificado en selección rápida)',
+                    fotosCount: state.photosCount,
+                    urgencia: urgenciaSeleccionada,
+                    fechaProgramada: fechaProgramada,
+                    horaProgramada: horaProgramada
+                },
+                cliente: {
+                    nombre: 'María González',
+                    distrito: 'Surco, Lima',
+                    verificado: true
+                },
+                creadoEn: new Date().toISOString()
+            };
+
+            // Persistir en localStorage
+            try {
+                localStorage.setItem('chapa_consulta_actual', JSON.stringify(consultaPayload));
+            } catch (err) {
+                // Fallback silencioso si localStorage está restringido
+            }
+
+            // Feedback visual en el botón antes de redirigir
+            if (btnSubmit) {
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('is-submitting');
+                btnSubmit.innerHTML = '<span class="btn-iniciar-text">✓ CONECTANDO CON ROBERTO ROJAS...</span>';
+            }
+
+            setTimeout(function () {
+                window.location.href = 'chat.html';
+            }, 400);
+        });
     }
-
-    // Inicializar
-    document.addEventListener('DOMContentLoaded', function() {
-        setupSimulator();
-        setupCancelModal();
-        setupRateModal();
-        applyState(3); // Estado inicial: En Camino
-    });
 })();
-
