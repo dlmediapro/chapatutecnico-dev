@@ -132,29 +132,36 @@
   <main class="soporte-figma-main" id="main-content">
 
     <!-- ===================================================================
-         HERO DE SOPORTE (Figma Frame 873:509, nodos 1336:235 & 934:224)
-         Buscador Protagónico Único: "¿En qué podemos ayudarte?"
+         HERO DE SOPORTE SPLIT (Figma Frame 873:509, Nodos 1336:235 & 978:1550)
+         Buscador Hero Split con Micrófono según Lienzo Original
          =================================================================== -->
     <section class="soporte-hero-figma">
-      <div class="container soporte-hero-inner">
-        <span class="soporte-badge-pill">CENTRO DE ATENCIÓN Y AYUDA 24/7</span>
-        <h1 class="soporte-main-title">¿En qué podemos ayudarte?</h1>
-        <p class="soporte-main-subtitle">
-          Estamos aquí para resolver tus dudas y ayudarte con tu servicio en Lima Metropolitana.
-        </p>
+      <div class="container soporte-hero-split">
+        <div class="soporte-hero-text">
+          <h1 class="soporte-main-title">¿En que podemos ayudarte?</h1>
+          <p class="soporte-main-subtitle">
+            Estamos aqui para resolver tus dudas y ayudarte con tu servicio.
+          </p>
+        </div>
 
-        <!-- Buscador Exclusivo de Preguntas y Ayuda -->
+        <!-- Buscador Hero Split Píldora (Lupa + Micrófono) -->
         <div class="soporte-search-box">
           <form class="soporte-search-form" role="search" onsubmit="event.preventDefault();">
-            <svg class="search-svg-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="search-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#64748b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
             <input type="search" 
                    id="faq-search-input"
-                   placeholder="Escribe tu consulta aquí (ej. garantía, seguimiento, reprogramar, pagos)..."
-                   aria-label="Buscar en preguntas frecuentes y ayuda">
+                   placeholder="Escribe tu consulta aquí"
+                   aria-label="Escribe tu consulta aquí">
             <button type="button" id="faq-search-clear" class="btn-clear-search" aria-label="Limpiar búsqueda" style="display: none;">✕</button>
+            <svg class="mic-svg-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+              <line x1="12" y1="19" x2="12" y2="23"></line>
+              <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
           </form>
           <div id="faq-search-counter" class="faq-search-counter" aria-live="polite"></div>
         </div>
@@ -162,72 +169,94 @@
     </section>
 
     <!-- ===================================================================
-         4 CANALES CANÓNICOS DE ATENCIÓN (Figma Frame 873:509 - Ley de Hick)
+         4 CANALES DE ATENCIÓN (GRILLA 2x2 FIGMA Frame 873:509)
          =================================================================== -->
     <section class="container soporte-cards-section" aria-label="Canales de atención directa">
       <div class="soporte-cards-grid">
 
-        <!-- 1. WhatsApp (Nodo 978:1624) -->
+        <!-- 1. WhatsApp (Nodo 978:1624 & 978:2052) -->
         <article class="soporte-card-item card-whatsapp">
-          <div class="soporte-card-icon-wrap bg-green-light">
-            <img src="img/whatsapp.webp" alt="WhatsApp" width="32" height="32" loading="eager">
+          <div class="soporte-card-header">
+            <div class="soporte-card-icon-wrap icon-whatsapp">
+              <svg viewBox="0 0 24 24" width="38" height="38" fill="#00e599" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+              </svg>
+            </div>
+            <div class="soporte-card-info">
+              <h2 class="soporte-card-title">WhatsApp</h2>
+              <p class="soporte-card-desc">Conversa con nuestro equipo de soporte.</p>
+            </div>
           </div>
-          <h2 class="soporte-card-title">WhatsApp</h2>
-          <p class="soporte-card-desc">Conversa con nuestro equipo de soporte en tiempo real.</p>
           <a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20ayuda%20con%20mi%20servicio" 
              target="_blank" 
              rel="noopener noreferrer" 
              class="btn-soporte-action btn-soporte-whatsapp"
-             aria-label="Escribir por WhatsApp a soporte (abre en nueva pestaña)">
-            Escribir por WhatsApp
+             aria-label="Escribir por WhatsApp a soporte">
+            <span>Escribir por WhatsApps</span>
+            <span class="btn-chevron" aria-hidden="true">&gt;</span>
           </a>
         </article>
 
-        <!-- 2. Correo electrónico (Nodo 978:1667) -->
+        <!-- 2. Correo electrónico (Nodo 978:1667 & 978:2074) -->
         <article class="soporte-card-item card-correo">
-          <div class="soporte-card-icon-wrap bg-blue-light">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
+          <div class="soporte-card-header">
+            <div class="soporte-card-icon-wrap icon-correo">
+              <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="soporte-card-info">
+              <h2 class="soporte-card-title">Correo electrònico</h2>
+              <p class="soporte-card-desc">Envìanos tu consulta y te respondemos.</p>
+            </div>
           </div>
-          <h2 class="soporte-card-title">Correo electrónico</h2>
-          <p class="soporte-card-desc">Envíanos tu consulta detallada y te respondemos a la brevedad.</p>
           <a href="mailto:chapatutecnico@gmail.com?subject=Consulta%20de%20Soporte%20-%20Chapa%20Tu%20T%C3%A9cnico" 
-             class="btn-soporte-action btn-soporte-blue"
+             class="btn-soporte-action btn-soporte-outline"
              aria-label="Enviar correo electrónico a chapatutecnico@gmail.com">
-            Enviar correo
+            <span>Enviar correo.</span>
+            <span class="btn-chevron" aria-hidden="true">&gt;</span>
           </a>
         </article>
 
-        <!-- 3. Preguntas frecuentes (Nodo 978:1705) -->
+        <!-- 3. Preguntas frecuentes (Nodo 978:1705 & 982:2454) -->
         <article class="soporte-card-item card-faq">
-          <div class="soporte-card-icon-wrap bg-orange-light">
-            <span class="faq-mark-icon" aria-hidden="true">?</span>
+          <div class="soporte-card-header">
+            <div class="soporte-card-icon-wrap icon-faq">
+              <div class="faq-circle-mark">?</div>
+            </div>
+            <div class="soporte-card-info">
+              <h2 class="soporte-card-title">Preguntas frecuentes</h2>
+              <p class="soporte-card-desc">Encuentra respuestas ràpidas sobre servicios, pagos y tècnicos.</p>
+            </div>
           </div>
-          <h2 class="soporte-card-title">Preguntas frecuentes</h2>
-          <p class="soporte-card-desc">Encuentra respuestas rápidas sobre servicios, pagos y técnicos.</p>
           <a href="#faq-section" 
-             class="btn-soporte-action btn-soporte-orange"
-             aria-label="Ver lista de preguntas frecuentes">
-            Ver preguntas
+             class="btn-soporte-action btn-soporte-outline"
+             aria-label="Ver preguntas frecuentes">
+            <span>Ver preguntas.</span>
+            <span class="btn-chevron" aria-hidden="true">&gt;</span>
           </a>
         </article>
 
-        <!-- 4. Libro de reclamaciones (Nodo 978:1826) -->
+        <!-- 4. Libro de reclamaciones (Nodo 978:1826 & 978:2108) -->
         <article class="soporte-card-item card-reclamos">
-          <div class="soporte-card-icon-wrap bg-gray-light">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-            </svg>
+          <div class="soporte-card-header">
+            <div class="soporte-card-icon-wrap icon-reclamos">
+              <svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <div class="soporte-card-info">
+              <h2 class="soporte-card-title">Libro de reclamaciones</h2>
+              <p class="soporte-card-desc">Registra una queja o reclamo de forma sencilla.</p>
+            </div>
           </div>
-          <h2 class="soporte-card-title">Libro de reclamaciones</h2>
-          <p class="soporte-card-desc">Registra una queja o reclamo formal de forma sencilla y transparente.</p>
           <a href="#contacto-form" 
              class="btn-soporte-action btn-soporte-outline"
-             aria-label="Ir al formulario para presentar un reclamo">
-            Presentar reclamo
+             aria-label="Presentar reclamo en formulario">
+            <span>Presentar reclamo.</span>
+            <span class="btn-chevron" aria-hidden="true">&gt;</span>
           </a>
         </article>
 
@@ -235,191 +264,144 @@
     </section>
 
     <!-- ===================================================================
-         PREGUNTAS FRECUENTES (Figma Frame 873:509, nodo 978:1745)
-         Acordeones Accesibles (Nielsen H10: Ayuda y Documentación)
+         PREGUNTAS FRECUENTES - BARRAS FLOTANTES OSCURAS (Figma Frame 873:509)
+         Nodos 978:1608, 978:1610, 978:1612 (Acordeones Accesibles WCAG 2.1 AA)
          =================================================================== -->
-    <section class="container soporte-faq-container" id="faq-section" aria-labelledby="faq-main-heading">
-      <div class="soporte-faq-box">
-        <div class="faq-header-bar">
-          <span class="faq-badge">FAQ</span>
-          <h2 id="faq-main-heading">Preguntas más consultadas</h2>
+    <section class="container soporte-faq-section" id="faq-section" aria-labelledby="faq-main-heading">
+      <h2 id="faq-main-heading" class="soporte-faq-title">Preguntas frecuentes</h2>
+
+      <div class="faq-accordion-list" id="faq-accordion-list">
+
+        <!-- FAQ 1 (Figma nodo 978:2159) -->
+        <div class="faq-accordion-item" data-keywords="seguimiento tecnico orden estado llegada tiempo mapa">
+          <button type="button" 
+                  class="faq-question-btn" 
+                  id="faq-btn-1"
+                  aria-expanded="false" 
+                  aria-controls="faq-pane-1">
+            <span>¿Como puedo hacer seguimiento a mi tècnico?</span>
+            <span class="accordion-chevron" aria-hidden="true">&gt;</span>
+          </button>
+          <div class="faq-answer-pane" id="faq-pane-1" role="region" aria-labelledby="faq-btn-1" hidden>
+            <p>
+              Puedes revisar el estado en tiempo real ingresando a la vista <strong><a href="solicitud.html">Detalle de Solicitud</a></strong> en la barra superior o escribirnos a nuestro WhatsApp 24/7 indicando tu código de servicio. Recibirás actualizaciones cuando el técnico esté en camino y su tiempo estimado de llegada.
+            </p>
+          </div>
         </div>
 
-        <div class="faq-accordion-list" id="faq-accordion-list">
-
-          <!-- FAQ 1 (Figma nodo 978:2159) -->
-          <div class="faq-accordion-item" data-keywords="seguimiento tecnico orden estado llegada tiempo mapa">
-            <button type="button" 
-                    class="faq-question-btn" 
-                    id="faq-btn-1"
-                    aria-expanded="false" 
-                    aria-controls="faq-pane-1">
-              <span>¿Cómo puedo hacer seguimiento a mi técnico?</span>
-              <span class="accordion-arrow" aria-hidden="true">∨</span>
-            </button>
-            <div class="faq-answer-pane" id="faq-pane-1" role="region" aria-labelledby="faq-btn-1" hidden>
-              <p>
-                Puedes revisar el estado en tiempo real ingresando a la vista <strong><a href="solicitud.html">Detalle de Solicitud</a></strong> en la barra superior o escribirnos a nuestro WhatsApp 24/7 indicando tu código de servicio. Recibirás actualizaciones cuando el técnico esté en camino y su tiempo estimado de llegada.
-              </p>
-            </div>
+        <!-- FAQ 2 (Figma nodo 978:2198) -->
+        <div class="faq-accordion-item" data-keywords="problema garantia falla reclamo insatisfaccion repuestos revision">
+          <button type="button" 
+                  class="faq-question-btn" 
+                  id="faq-btn-2"
+                  aria-expanded="false" 
+                  aria-controls="faq-pane-2">
+            <span>¿ Que hago si tengo un problema con el servicio?</span>
+            <span class="accordion-chevron" aria-hidden="true">&gt;</span>
+          </button>
+          <div class="faq-answer-pane" id="faq-pane-2" role="region" aria-labelledby="faq-btn-2" hidden>
+            <p>
+              Todos los servicios contratados cuentan con respaldo y <strong>garantía de satisfacción de hasta 30 días</strong>. Si detectas alguna anomalía o inconformidad, contáctanos de inmediato por WhatsApp o completa el formulario inferior para programar una revisión prioritaria sin costo adicional.
+            </p>
           </div>
-
-          <!-- FAQ 2 (Figma nodo 978:2198) -->
-          <div class="faq-accordion-item" data-keywords="problema garantia falla reclamo insatisfaccion repuestos revision">
-            <button type="button" 
-                    class="faq-question-btn" 
-                    id="faq-btn-2"
-                    aria-expanded="false" 
-                    aria-controls="faq-pane-2">
-              <span>¿Qué hago si tengo un problema con el servicio?</span>
-              <span class="accordion-arrow" aria-hidden="true">∨</span>
-            </button>
-            <div class="faq-answer-pane" id="faq-pane-2" role="region" aria-labelledby="faq-btn-2" hidden>
-              <p>
-                Todos los servicios contratados cuentan con respaldo y <strong>garantía de satisfacción de hasta 30 días</strong>. Si detectas alguna anomalía o inconformidad, contáctanos de inmediato por WhatsApp o completa el formulario inferior para programar una revisión prioritaria sin costo adicional.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ 3 (Figma nodo 978:2239) -->
-          <div class="faq-accordion-item" data-keywords="cancelar reprogramar cambiar horario fecha cita modificar">
-            <button type="button" 
-                    class="faq-question-btn" 
-                    id="faq-btn-3"
-                    aria-expanded="false" 
-                    aria-controls="faq-pane-3">
-              <span>¿Cómo puedo cancelar o reprogramar una solicitud?</span>
-              <span class="accordion-arrow" aria-hidden="true">∨</span>
-            </button>
-            <div class="faq-answer-pane" id="faq-pane-3" role="region" aria-labelledby="faq-btn-3" hidden>
-              <p>
-                Puedes cancelar o modificar el horario de tu cita de forma gratuita avisando con un mínimo de <strong>2 horas de anticipación</strong>. Hazlo desde tu panel de usuario o comunicándote con soporte para reasignar la visita al horario que te sea más conveniente.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ 4 (Pagos y Seguridad) -->
-          <div class="faq-accordion-item" data-keywords="pago yape plin tarjeta visa mastercard efectivo contraentrega factura boleta">
-            <button type="button" 
-                    class="faq-question-btn" 
-                    id="faq-btn-4"
-                    aria-expanded="false" 
-                    aria-controls="faq-pane-4">
-              <span>¿Cuáles son los medios de pago disponibles?</span>
-              <span class="accordion-arrow" aria-hidden="true">∨</span>
-            </button>
-            <div class="faq-answer-pane" id="faq-pane-4" role="region" aria-labelledby="faq-btn-4" hidden>
-              <p>
-                Aceptamos pagos mediante <strong>Yape, Plin, tarjetas de crédito/débito (Visa y Mastercard)</strong> a través de nuestra pasarela segura, y pago contraentrega en efectivo una vez finalizado el trabajo técnico. Emitimos boleta o factura según lo solicites.
-              </p>
-            </div>
-          </div>
-
         </div>
+
+        <!-- FAQ 3 (Figma nodo 978:2239) -->
+        <div class="faq-accordion-item" data-keywords="cancelar reprogramar cambiar horario fecha cita modificar">
+          <button type="button" 
+                  class="faq-question-btn" 
+                  id="faq-btn-3"
+                  aria-expanded="false" 
+                  aria-controls="faq-pane-3">
+            <span>¿ Como puedo cancelar o reprogramar una solicitud?</span>
+            <span class="accordion-chevron" aria-hidden="true">&gt;</span>
+          </button>
+          <div class="faq-answer-pane" id="faq-pane-3" role="region" aria-labelledby="faq-btn-3" hidden>
+            <p>
+              Puedes cancelar o modificar el horario de tu cita de forma gratuita avisando con un mínimo de <strong>2 horas de anticipación</strong>. Hazlo desde tu panel de usuario o comunicándote con soporte para reasignar la visita al horario que te sea más conveniente.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ===================================================================
-         FORMULARIO DE CONTACTO / ¿NECESITAS MÁS AYUDA? (Frame 873:509)
-         Diseño Dividido: Ilustración Asesoría + Ticket Accesible
+         ¿NECESITAS MÁS AYUDA? - CONTENEDOR UNIFICADO OSCURO (Frame 873:509)
+         Nodo 978:275 (Persona con audífonos 1057:238 + Formulario con botón blanco)
          =================================================================== -->
     <section class="container soporte-form-container" id="contacto-form" aria-labelledby="form-heading">
       <div class="soporte-form-wrapper">
 
-        <!-- Columna Izquierda: Ilustración de Soporte (Nodo 1057:238) y Perks -->
+        <!-- Columna Izquierda: Icono Persona con audífonos + Título + Subtítulo -->
         <aside class="soporte-agent-col">
-          <div class="soporte-agent-header">
-            <h2 id="form-heading">¿Necesitas más ayuda?</h2>
-            <p>Cuéntanos qué pasó y te ayudaremos a solucionarlo de inmediato con atención personalizada.</p>
-          </div>
-
           <div class="soporte-agent-visual">
-            <picture>
-              <source srcset="assets/img/soporte-atencion.webp" type="image/webp">
-              <img src="img/soporte-atencion.webp" 
-                   alt="Asesor del equipo de soporte y atención 24/7 de Chapa Tu Técnico" 
-                   class="soporte-agent-img" 
-                   width="302" 
-                   height="251" 
-                   loading="lazy">
-            </picture>
+            <img src="assets/img/soporte-atencion.webp" 
+                 alt="Asistencia de soporte" 
+                 class="soporte-agent-img" 
+                 width="217" 
+                 height="206" 
+                 loading="lazy">
           </div>
-
-          <div class="soporte-agent-perks">
-            <div class="agent-perk-item">
-              <span class="agent-perk-icon" aria-hidden="true">✓</span>
-              <span>Atención 24/7 en toda Lima Metropolitana</span>
-            </div>
-            <div class="agent-perk-item">
-              <span class="agent-perk-icon" aria-hidden="true">✓</span>
-              <span>Respuesta promedio en menos de 15 minutos</span>
-            </div>
-            <div class="agent-perk-item">
-              <span class="agent-perk-icon" aria-hidden="true">✓</span>
-              <span>Garantía escrita y técnicos con antecedentes</span>
-            </div>
+          <div class="soporte-agent-header">
+            <h2 id="form-heading">¿Necesitas màs ayuda?</h2>
+            <p>Cuèntanos que pasò y te ayudaremos.</p>
           </div>
         </aside>
 
-        <!-- Columna Derecha: Formulario con Validación Amigable -->
+        <!-- Columna Derecha: Formulario con campos oscuros y botón CTA blanco -->
         <div class="soporte-form-card">
-          <div class="soporte-form-header">
-            <h3>Envíanos tu consulta</h3>
-            <p>Completa los datos y un asesor se pondrá en contacto contigo.</p>
-          </div>
-
           <!-- Mensaje de Feedback Visual (Nielsen H1: Estado del Sistema) -->
           <div id="soporte-feedback-msg" class="soporte-feedback-box" style="display: none;" role="alert"></div>
 
           <form id="soporte-inquiry-form" class="soporte-form-grid" novalidate>
-            <!-- Rol / Tipo de Usuario -->
-            <div class="soporte-field-col full-width">
-              <label for="select-rol">Tipo de consulta / Rol *</label>
-              <select id="select-rol" name="rol" required>
-                <option value="cliente">Soy Cliente (Necesito ayuda con un servicio)</option>
-                <option value="tecnico">Soy Técnico (Quiero postular o tengo dudas operativas)</option>
-                <option value="empresa">Soy Empresa (Convenios y servicios corporativos)</option>
+            <!-- Fila 1: Nombre completo y Correo electrónico (Nodos 978:2297 & 978:2376) -->
+            <div class="soporte-input-with-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input type="text" id="input-nombre" name="nombre" required placeholder="Nombre completo" autocomplete="name" aria-label="Nombre completo">
+            </div>
+
+            <div class="soporte-input-with-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <input type="email" id="input-email" name="email" required placeholder="Correo electrònico" autocomplete="email" aria-label="Correo electrónico">
+            </div>
+
+            <!-- Fila 2: Motivo de consulta (Nodo 978:2313) -->
+            <div class="soporte-input-with-icon full-width">
+              <select id="select-motivo" name="motivo" required aria-label="Motivo de consulta">
+                <option value="" disabled selected hidden>Motivo de consulta</option>
+                <option value="seguimiento">Seguimiento a mi técnico</option>
+                <option value="problema">Problema o inconformidad con el servicio</option>
+                <option value="reprogramar">Cancelar o reprogramar solicitud</option>
+                <option value="reclamo">Libro de reclamaciones</option>
+                <option value="otro">Otro motivo</option>
               </select>
             </div>
 
-            <!-- Nombre Completo (Nodo 978:2297) -->
-            <div class="soporte-field-col">
-              <label for="input-nombre">Nombre completo *</label>
-              <input type="text" id="input-nombre" name="nombre" required placeholder="Ej. Carlos Mendoza" autocomplete="name">
+            <!-- Fila 3: Describe tu consulta (Nodo 978:2331) -->
+            <div class="soporte-textarea-with-icon full-width">
+              <div class="textarea-header-row">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span class="textarea-label-text">Describe tu consulta</span>
+              </div>
+              <textarea id="textarea-consulta" name="consulta" rows="3" required placeholder="Escribe aqui tu mensaje..." aria-label="Describe tu consulta"></textarea>
             </div>
 
-            <!-- Correo Electrónico (Nodo 978:2376) -->
-            <div class="soporte-field-col">
-              <label for="input-email">Correo electrónico *</label>
-              <input type="email" id="input-email" name="email" required placeholder="carlos@ejemplo.com" autocomplete="email">
-            </div>
-
-            <!-- Motivo de Consulta (Nodo 978:2313) -->
-            <div class="soporte-field-col full-width">
-              <label for="select-motivo">Motivo de consulta *</label>
-              <select id="select-motivo" name="motivo" required>
-                <option value="">Selecciona un motivo</option>
-                <option value="seguimiento">Seguimiento de orden o visita técnica</option>
-                <option value="garantia">Activación de garantía o reclamo de servicio</option>
-                <option value="tarifas">Consulta de tarifas y presupuestos</option>
-                <option value="pagos">Dudas con facturación o métodos de pago</option>
-                <option value="reclamacion">Libro de reclamaciones formal</option>
-                <option value="otro">Otro asunto</option>
-              </select>
-            </div>
-
-            <!-- Descripción (Nodo 978:2331) -->
-            <div class="soporte-field-col full-width">
-              <label for="textarea-consulta">Describe tu consulta *</label>
-              <textarea id="textarea-consulta" name="consulta" rows="4" required placeholder="Escribe aquí tu mensaje detallando el problema o tu requerimiento..."></textarea>
-            </div>
-
-            <!-- Botón de Envío y Privacidad -->
+            <!-- Fila 4: Botón Enviar consulta Blanco (Nodo 1334:403) -->
             <div class="soporte-submit-row full-width">
-              <button type="submit" id="btn-enviar-consulta" class="btn-soporte-submit">
+              <button type="submit" id="btn-enviar-consulta" class="btn-soporte-submit-white">
                 Enviar consulta
               </button>
-              <span class="soporte-privacy-hint">🔒 Atención rápida garantizada. Datos estrictamente confidenciales.</span>
             </div>
           </form>
         </div>
@@ -427,23 +409,11 @@
       </div>
     </section>
 
-    <!-- Acceso Directo Figma: Carrito de servicio (Frame 873:509 / Nodo 1269:260) -->
-    <div class="container soporte-carrito-row">
-      <a href="carrito.html" class="btn-soporte-carrito" id="btn-soporte-carrito" title="Ir a Carrito de servicio">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span>Carrito de servicio</span>
-      </a>
-    </div>
-
     <!-- Barra de Regreso al Inicio -->
     <div class="container back-row">
       <a href="index.html" class="btn-regresar" aria-label="Volver a la página de inicio">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="12" fill="#fff"/>
+          <circle cx="12" cy="12" fill="#fff"/>
           <path d="M14 7l-5 5 5 5M9 12h8" fill="none" stroke="#08233b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <em>REGRESAR AL INICIO</em>

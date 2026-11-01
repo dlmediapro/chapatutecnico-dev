@@ -201,3 +201,10 @@ Se completó y sincronizó al 100% la pantalla oficial **"SOPORTE"** a partir de
   - `ContactPage`: Atención 24/7 en Lima Metropolitana, WhatsApp y correo.
   - `FAQPage`: Las 4 preguntas esenciales sobre seguimiento, garantías, reprogramación y medios de pago.
 - Enlace de rescate integrado en `404.html` para redireccionar usuarios extraviados directamente al centro de soporte.
+
+### 7.6. Rediseño y Ajuste de Precisión 1:1 con Figma (Tema Oscuro & Captura Oficial)
+- **100% Dark Theme:** Se erradicaron las tarjetas blancas artificiales; la vista adopta el fondo dark navy continuo (`#08233b`) con contenedores oscuros translúcidos (`#061a2c`) y bordes de alta sutileza (`1px solid rgba(255,255,255,0.18)`).
+- **Hero Split:** Título y subtítulo en columna izquierda y buscador píldora blanco (con iconos SVG de lupa y micrófono) alineado a la derecha.
+- **Grilla 2x2 Canónica:** Reconfiguración a 2 columnas para las 4 tarjetas de canales con botones píldora (`border-radius: 999px`) y chevrons (`>`). Botón de WhatsApp en verde brillante `#00e599`, y los demás en contorno blanco elegante.
+- **Barras FAQ Píldora:** Acordeones estilizados como cápsulas oscuras flotantes de ancho completo con chevron animado (`>`).
+- **Módulo "¿Necesitas más ayuda?":** Contenedor unificado oscuro con la ilustración de soporte (`soporte-atencion.webp`) sobre el encabezado y formulario con campos oscuros e icono integrado, finalizando en el prominente botón blanco sólido `Enviar consulta` (`#ffffff` con texto azul `#08233b`).
