@@ -98,8 +98,9 @@ El 1 de noviembre de 2026 se completó la refactorización profunda de [`servici
    - Datos estructurados Schema.org duales en formato JSON-LD: `LocalBusiness` (atención 24/7 en Lima Metropolitana) e `ItemList` (12 servicios técnicos oficiales).
    - Metadatos Open Graph y Twitter Cards enriquecidos para previsualizaciones limpias en WhatsApp, Facebook y LinkedIn.
 2. **Semántica HTML5 Estricta y Nielsen Heuristics (#1, #2, #3, #4, #6 y #8):**
-   - Único `<h1>SERVICIOS</h1>` en la página con jerarquía lógica `<h2>` (secciones) y `<h3>` (tarjetas y pilares de confianza).
-   - Buscador reactivo en Vanilla JS combinado con filtros de 4 categorías (Todos, Hogar & Instalaciones, Construcción & Acabados, Seguridad & Redes) con contenedor accesible de estado vacío (`role="status"`, `aria-live="polite"`).
+   - Único `<h1>SERVICIOS</h1>` en la página con jerarquía lógica `<h2>` (secciones) y `<h3>` (tarjetas y pilares de confianza), con encabezado `≡ SERVICIOS` alineado a la izquierda según el canvas de Figma.
+   - **Unificación del Buscador Global (Heurísticas #4 y #8):** Eliminación del segundo input de búsqueda repetido en el `<main>`. El filtrado en vivo se conecta 100% al input del Header global cuando se está en `servicios.html`, y detecta parámetros de URL `?q=termino` si el usuario busca desde otras páginas (`index.html`, etc.).
+   - **Estado Vacío y Recuperación (Heurística #9):** Contenedor accesible (`role="status"`, `aria-live="polite"`) con botón interactivo "Ver todos los servicios" para restablecer el catálogo con 1 clic.
    - Botones píldora "Solicitar" con `min-height: 44px` (WCAG 2.2 touch target) y feedback visual inmediato.
 3. **Rendimiento Nativo (CLS = 0):**
    - Atributos `width` y `height` explícitos en todas las imágenes con `aspect-ratio: 436 / 449` en tarjetas y `780 / 506` en la sección "Por Qué Elegirnos".

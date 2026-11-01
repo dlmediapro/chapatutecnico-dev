@@ -820,7 +820,7 @@
   background-color: #08233b;
   min-height: calc(100vh - 360px);
   color: #ffffff;
-  padding: 40px 0 90px;
+  padding: 24px 0 80px;
 }
 
 /* Utilidad Accesible para Jerarquía Semántica de Encabezados (WCAG 2.2) */
@@ -837,24 +837,23 @@
   border: 0 !important;
 }
 
-/* Encabezado y Barra de Filtros / Búsqueda */
+/* Encabezado Alineado a la Izquierda (Figma Frame 475:695) */
 .servicios-header-box {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto 36px;
+  text-align: left;
+  margin: 0 0 24px 0;
 }
 
 .servicios-title-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 12px;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 .servicios-title-icon {
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -863,113 +862,12 @@
 
 .servicios-title {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(34px, 5vw, 52px);
+  font-size: clamp(28px, 3.5vw, 36px);
   font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   margin: 0;
-}
-
-.servicios-subtitle {
-  font-family: 'Raleway', sans-serif;
-  font-size: clamp(15px, 2vw, 18px);
-  color: #cbd5e1;
-  margin-bottom: 28px;
-  line-height: 1.5;
-}
-
-/* Barra de Búsqueda y Filtros de Categorías */
-.servicios-controls-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: center;
-  margin-bottom: 42px;
-}
-
-.servicios-search-input-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 580px;
-}
-
-.servicios-search-input {
-  width: 100%;
-  padding: 12px 20px 12px 46px;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-family: 'Raleway', sans-serif;
-  font-size: 15px;
-  outline: none;
-  transition: all 0.25s ease;
-}
-
-.servicios-search-input::placeholder {
-  color: #94a3b8;
-}
-
-.servicios-search-input:focus {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #53c8f7;
-  box-shadow: 0 0 16px rgba(83, 200, 247, 0.35);
-}
-
-.servicios-search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #94a3b8;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.servicios-tabs-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
-.btn-servicio-tab {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #e2e8f0;
-  font-family: 'Raleway', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 10px 20px;
-  min-height: 44px;
-  border-radius: 30px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.btn-servicio-tab:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-  border-color: rgba(83, 200, 247, 0.6);
-}
-
-.btn-servicio-tab:focus-visible {
-  outline: 3px solid #53c8f7;
-  outline-offset: 2px;
-}
-
-.btn-servicio-tab.is-active {
-  background: #53c8f7;
-  color: #08233b;
-  border-color: #53c8f7;
-  box-shadow: 0 0 14px rgba(83, 200, 247, 0.45);
 }
 
 /* Grilla de 12 Servicios (3 Columnas Figma Frame 475:695) */
