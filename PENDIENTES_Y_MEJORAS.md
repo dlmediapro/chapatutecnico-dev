@@ -369,6 +369,33 @@ Se completó la implementación integral de la pantalla rediseñada de **"CONSUL
 - **Contraste Accesible:** Mínimo ratio de contraste **4.5:1** para textos y **3:1** para componentes visuales.
 - **Animaciones a 60fps & Reducción de Movimiento:** Microinteracciones fluidas con soporte estricto de `@media (prefers-reduced-motion: reduce)`.
 
+---
+
+## 13. 🌐 Migración a SVG del Footer (Grilla de 8pt, WCAG 2.1 AA y Eliminación de PNGs Obsoletos)
+
+Se completó la modernización integral del componente **Footer** global ([`layout.js`](layout.js)) y sus estilos asociados ([`styles.css`](styles.css)):
+
+### 13.1. Reemplazo de Iconos PNG por SVG Inline y Assets Vectoriales
+- **Redes Sociales:** Se migraron los 4 accesos de YouTube, Facebook, Instagram y TikTok a componentes SVG inline de alto rendimiento con `viewBox="0 0 24 24"`, `width="20"`, `height="20"`, `fill="currentColor"`, `role="img"` y `aria-hidden="true"`.
+- **Soporte y Contacto:** Se migraron los iconos de WhatsApp y Correo a SVG inline de `16x16px`.
+- **Biblioteca Vectorial:** Se crearon los archivos `.svg` correspondientes en `img/icons/` (`youtube.svg`, `facebook.svg`, `instagram.svg`, `tiktok.svg`, `whatsapp.svg`, `email.svg`).
+
+### 13.2. Sistema Matemático de Diseño en Grilla de 8pt
+- **Padding del Footer:** `padding: 32px 0 16px;` (múltiplos de 8pt).
+- **Contenedor y Columnas:** `gap: 32px 24px;` alineado armónicamente en el layout de 12 columnas.
+- **Contenedores de Redes:** `gap: 16px;`, `margin-top: 16px;` y contenedores `.footer-social-link` con dimensiones de `40x40px`, área táctil mínima de `44x44px` y `border-radius: 8px;`.
+
+### 13.3. Accesibilidad Total WCAG 2.1 AA y CLS = 0
+- **Etiquetas Descriptivas:** `aria-label` completo en cada enlace social (ej. `"Canal oficial de YouTube de Chapa Tu Técnico (abre en nueva pestaña)"`), con `target="_blank"` y `rel="noopener noreferrer"`.
+- **Estados Focus-Visible:** Contorno de foco de alto contraste `:focus-visible { outline: 2px solid var(--cyan, #53c8f7); outline-offset: 4px; }`.
+- **Hover Dinámico por Red:** YouTube (`#ff4d4d`), Facebook (`#38bdf8`), Instagram (`#f472b6`) y TikTok (`#22d3ee`).
+- **Cumulative Layout Shift (CLS = 0):** Atributos `width`, `height` explícitos y `aspect-ratio: 1 / 1;` en los contenedores.
+
+### 13.4. Eliminación de Archivos PNG Obsoletos
+- Se eliminaron del repositorio los 6 archivos PNG reemplazados: `img/youtube.png`, `img/facebook.png`, `img/instagram.png`, `img/tik-tok.png`, `img/communication.png` y `img/whatsapp.png`.
+- Se añadieron pruebas unitarias automatizadas en [`tests/test_footer_svg.js`](tests/test_footer_svg.js) ejecutables vía `npm test` con tasa de aprobación del 100% (8/8 tests passing).
+
+
 
 
 

@@ -139,7 +139,91 @@
         if (e.key === 'Escape') { toggleModal(modalOtp, false); toggleModal(modalForgot, false); }
     });
 
-    // 6. Accesos OAuth
-    $('btn-quick-google')?.addEventListener('click', () => showToast('Conectando de forma segura con Google...', 'info'));
-    $('btn-quick-apple')?.addEventListener('click', () => showToast('Conectando de forma segura con Apple ID...', 'info'));
+    // 6. Accesos OAuth (Google Identity Services)
+    const GOOGLE_CLIENT_ID = '708739576455-gbe3ep4mn95ihsdnoebu312tka3jk68j.apps.googleusercontent.com';
+    let googleTokenClient = null;
+
+    function initGoogleAuth() {
+        if (typeof google === 'undefined' || !google.accounts || !google.accounts.oauth2) {
+            return;
+        }
+
+        try {
+            googleTokenClient = google.accounts.oauth2.initTokenClient({
+                client_id: GOOGLE_CLIENT_ID,
+                scope: 'email profile openid',
+                callback: async (tokenResponse) => {
+                    if (tokenResponse.error) {
+                        showToast('Acceso con Google cancelado o no completado.', 'error');
+                        return;
+                    }
+
+                    try {
+                        showToast('Verificando cuenta de Google...', 'info');
+                        const res = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                            headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
+                        });
+
+                        if (!res.ok) throw new Error('Error al obtener perfil');
+                        const userInfo = await res.json();
+
+                        const fullName = (userInfo.name || '').trim();
+                        const parts = fullName ? fullName.split(' ') : [];
+                        const firstname = userInfo.given_name || parts[0] || 'Usuario';
+                        const lastname = userInfo.family_name || (parts.length > 1 ? parts.slice(1).join(' ') : '');
+
+                        const userProfile = {
+                            firstname: firstname,
+                            lastname: lastname,
+                            email: userInfo.email || '',
+                            picture: userInfo.picture || '',
+                            authProvider: 'google',
+                            docType: 'DNI',
+                            docNumber: '',
+                            phone: '',
+                            birthdate: '',
+                            emergencyContact: ''
+                        };
+
+                        localStorage.setItem('ctt_profile', JSON.stringify(userProfile));
+                        localStorage.setItem('ctt_is_authenticated', 'true');
+                        window.dispatchEvent(new Event('chapa-auth-updated'));
+
+                        showToast(`¡Bienvenido(a), ${firstname}! Redirigiendo...`, 'success');
+                        setTimeout(() => {
+                            window.location.href = currentRole === 'cliente' ? 'cuenta.html' : 'perfil.html';
+                        }, 1000);
+                    } catch (err) {
+                        showToast('Error al conectar con tu perfil de Google.', 'error');
+                    }
+                }
+            });
+        } catch (e) {
+            // Manejo seguro en caso de bloqueo de cookies de terceros
+        }
+    }
+
+    $('btn-quick-google')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (googleTokenClient) {
+            googleTokenClient.requestAccessToken();
+        } else if (typeof google !== 'undefined' && google.accounts && google.accounts.oauth2) {
+            initGoogleAuth();
+            if (googleTokenClient) {
+                googleTokenClient.requestAccessToken();
+            } else {
+                showToast('Inicializando conexión con Google. Reintenta en breve.', 'info');
+            }
+        } else {
+            showToast('Cargando servicio de Google... Intenta de nuevo en un segundo.', 'info');
+        }
+    });
+
+    $('btn-quick-apple')?.addEventListener('click', () => showToast('Conexión con Apple ID disponible próximamente.', 'info'));
+
+    if (document.readyState === 'complete') {
+        initGoogleAuth();
+    } else {
+        window.addEventListener('load', initGoogleAuth);
+    }
 })();

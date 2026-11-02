@@ -111,6 +111,13 @@
         if (displayPhone) displayPhone.textContent = profile.phone;
         if (displayEmail) displayEmail.textContent = profile.email;
 
+        var profileImg = document.getElementById('profile-img');
+        if (profileImg && profile.picture) {
+            profileImg.src = profile.picture;
+            profileImg.style.objectFit = 'cover';
+            profileImg.style.borderRadius = '50%';
+        }
+
         var inputFirstname = document.getElementById('input-firstname');
         var inputLastname = document.getElementById('input-lastname');
         var inputDocType = document.getElementById('input-doc-type');
@@ -325,6 +332,9 @@
         if (btnConfirm) {
             btnConfirm.addEventListener('click', function() {
                 closeLogout();
+                localStorage.removeItem('ctt_is_authenticated');
+                localStorage.removeItem('ctt_profile');
+                window.dispatchEvent(new Event('chapa-auth-updated'));
                 showToast("Sesión cerrada. Redirigiendo al inicio...", "info");
                 setTimeout(function() {
                     window.location.href = "index.html";
