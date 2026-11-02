@@ -32,7 +32,7 @@
     '  <div class="container header-container">' +
         '<!-- 1. Identidad: Logo Figma con retorno a inicio -->' +
         '<a href="index.html" class="logo" aria-label="Chapa Tu Técnico - Ir a inicio">' +
-          '<img src="img/logo.png" alt="Chapa Tu Técnico" class="logo-img" width="214" height="184">' +
+          '<img src="img/logo.webp" alt="Chapa Tu Técnico - Servicios profesionales a domicilio" class="logo-img" width="118" height="101" fetchpriority="high" decoding="async">' +
         '</a>' +
         '<!-- 2. Centro: Menú de Navegación Principal + Buscador Global -->' +
         '<div class="header-main">' +
@@ -54,7 +54,7 @@
             navLink('tienda', 'tienda.html', 'TIENDA CHAPA') +
             '<div class="mobile-nav-footer">' +
               '<a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20atenci%C3%B3n%20de%20emergencia" target="_blank" rel="noopener noreferrer" class="btn-emergency-mobile">' +
-                '<img src="img/whatsapp.webp" alt="" width="20" height="20"> EMERGENCIA 24/7' +
+                '<img src="img/icons/whatsapp.svg" alt="" width="20" height="20"> EMERGENCIA 24/7' +
               '</a>' +
             '</div>' +
           '</nav>' +
@@ -129,7 +129,9 @@
     '<div class="payment-icons"><img src="img/pago-mastercard.svg" alt="Mastercard" width="38" height="24"><img src="img/pago-visa.svg" alt="Visa" width="38" height="24">' +
     '<img src="img/pago-yape.svg" alt="Yape" width="38" height="24"><img src="img/pago-plin.svg" alt="Plin" width="38" height="24"></div></div>' +
     '<a href="soporte.html#contacto-form" class="footer-col claim-col"><img src="img/libro-reclamaciones.svg" alt="" width="56" height="56"><span>Libro de Reclamaciones</span></a>' +
-    '<div class="footer-col brand-col"><img src="img/logo.png" alt="Chapa Tu Técnico" width="120" height="46"><p>Servicios confiables<br>y al instante</p>' +
+    '<div class="footer-col brand-col">' +
+      '<img src="img/logo.webp" alt="Chapa Tu Técnico" class="footer-logo-img" width="118" height="101" loading="lazy" decoding="async">' +
+      '<p>Servicios confiables<br>y al instante</p>' +
     '<div class="footer-socials">' +
     '<a href="https://www.youtube.com/@chapatutecnico" class="footer-social-link social-youtube" target="_blank" rel="noopener noreferrer" aria-label="Canal oficial de YouTube de Chapa Tu Técnico (abre en nueva pestaña)">' + svgYt + '</a>' +
     '<a href="https://www.facebook.com/chapatutecnico" class="footer-social-link social-facebook" target="_blank" rel="noopener noreferrer" aria-label="Página oficial de Facebook de Chapa Tu Técnico (abre en nueva pestaña)">' + svgFb + '</a>' +

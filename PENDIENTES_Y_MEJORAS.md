@@ -395,7 +395,36 @@ Se completó la modernización integral del componente **Footer** global ([`layo
 - Se eliminaron del repositorio los 6 archivos PNG reemplazados: `img/youtube.png`, `img/facebook.png`, `img/instagram.png`, `img/tik-tok.png`, `img/communication.png` y `img/whatsapp.png`.
 - Se añadieron pruebas unitarias automatizadas en [`tests/test_footer_svg.js`](tests/test_footer_svg.js) ejecutables vía `npm test` con tasa de aprobación del 100% (8/8 tests passing).
 
+---
 
+## 14. 💎 Vinculación de `logo.webp` en Header/Footer, Optimización SEO y Cero Salto Visual (CLS = 0)
 
+Se concluyó la integración del nuevo activo de logotipo **`img/logo.webp`** (formato WebP sin pérdida VP8L de 12 KB, dimensiones intrínsecas de **118 × 101 px**) en toda la arquitectura del sitio:
 
+### 14.1. Integración en Header y Footer (`layout.js`)
+- **Cabecera Principal:** Logotipo vinculado con `src="img/logo.webp"`, `width="118"`, `height="101"`, `fetchpriority="high"` (priorizando el LCP en el viewport inicial) y `decoding="async"`.
+- **Pie de Página (Footer):** Logotipo en columna de marca con `src="img/logo.webp"`, clase `footer-logo-img`, `width="118"`, `height="101"`, `loading="lazy"` y `decoding="async"`.
+- **Cabecera Móvil:** Sustitución del icono de emergencia por `img/icons/whatsapp.svg` vectorial.
+
+### 14.2. Bloqueo Matemático de Ratios en CSS (`styles.css`)
+- **Cabecera (`.logo-img`):** `aspect-ratio: 118 / 101;` y `max-height: clamp(58px, 5.2vw, 82px);` con ajuste `object-fit: contain;`.
+- **Pie de Página (`.brand-col .footer-logo-img`):** `aspect-ratio: 118 / 101;`, altura de `48px` y centrado automático con margen de 8pt (`margin: 0 auto 8px;`).
+- **Garantía CLS = 0:** El navegador reserva el espacio exacto del logotipo antes de que los bytes terminen de descargarse, eliminando cualquier movimiento parásito del diseño.
+
+### 14.3. Depuración Global de SEO Técnico y Metadatos en Plantillas HTML
+- Se reemplazaron 39 referencias residuales al extinto `logo.png` en todas las páginas (`404.html`, `carrito.html`, `cobertura.html`, `compra.html`, `cuenta.html`, `electricidad.html`, `index.html`, `login.html`, `mensajes.html`, `nosotros.html`, `perfil.html`, `producto.html`, `servicios.html`, `soporte.html`, `tecnicos.html`, `tienda.html`).
+- Metadatos actualizados:
+  - Favicons: `<link rel="icon" type="image/webp" href="img/logo.webp">`
+  - Iconos Apple: `<link rel="apple-touch-icon" href="img/logo.webp">`
+  - Tarjetas sociales: `og:image` y `twitter:image` apuntando a `logo.webp`.
+  - Datos estructurados: URLs de esquema JSON-LD actualizadas a `logo.webp`.
+
+### 14.4. Test Suite Automatizado Ampliado
+- Se ampliaron las pruebas unitarias en [`tests/test_footer_svg.js`](tests/test_footer_svg.js) a 12 pruebas automatizadas (`npm test`), certificando:
+  1. Renderizado de WebP en Header con LCP priority.
+  2. Renderizado de WebP en Footer con lazy loading.
+  3. Aplicación de `aspect-ratio: 118 / 101` en hoja de estilos.
+  4. Cero referencias rotas a `logo.png` en cualquier archivo HTML o JavaScript.
+  5. Cumplimiento total de accesibilidad WCAG 2.1 AA en iconos SVG inline.
+- Resultado: **12/12 pruebas aprobadas al 100%**.
 

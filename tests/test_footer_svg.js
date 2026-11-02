@@ -3,7 +3,7 @@ const path = require('path');
 const assert = require('assert');
 
 console.log('====================================================');
-console.log('🧪 SUITE DE PRUEBAS UNITARIAS: FOOTER SVG & WCAG 2.1 AA');
+console.log('🧪 SUITE DE PRUEBAS UNITARIAS: FOOTER SVG, LOGO WEBP & WCAG 2.1 AA');
 console.log('====================================================\n');
 
 let passedTests = 0;
@@ -23,10 +23,11 @@ function test(description, fn) {
 }
 
 // 1. Carga de Archivos
-const layoutJsPath = path.resolve(__dirname, '../layout.js');
-const stylesCssPath = path.resolve(__dirname, '../styles.css');
-const imgDir = path.resolve(__dirname, '../img');
-const iconsDir = path.resolve(__dirname, '../img/icons');
+const rootDir = path.resolve(__dirname, '..');
+const layoutJsPath = path.resolve(rootDir, 'layout.js');
+const stylesCssPath = path.resolve(rootDir, 'styles.css');
+const imgDir = path.resolve(rootDir, 'img');
+const iconsDir = path.resolve(rootDir, 'img/icons');
 
 const layoutContent = fs.readFileSync(layoutJsPath, 'utf8');
 const stylesContent = fs.readFileSync(stylesCssPath, 'utf8');
@@ -103,6 +104,39 @@ test('Los archivos PNG obsoletos ya no existen en img/', () => {
   obsoletePngs.forEach(png => {
     const fullPath = path.join(imgDir, png);
     assert(!fs.existsSync(fullPath), `El archivo ${png} NO debe existir en ${imgDir}`);
+  });
+});
+
+// Test 9: Comprobación de existencia de logo.webp sin pérdida
+test('El archivo img/logo.webp existe y es accesible', () => {
+  const logoPath = path.join(imgDir, 'logo.webp');
+  assert(fs.existsSync(logoPath), 'img/logo.webp debe existir en el disco');
+  const stats = fs.statSync(logoPath);
+  assert(stats.size > 0, 'img/logo.webp no debe estar vacío');
+});
+
+// Test 10: Vinculación optimizada de logo.webp en layout.js (Header y Footer)
+test('layout.js renderiza img/logo.webp con CLS=0 y optimizaciones LCP/Lazy', () => {
+  assert(layoutContent.includes('src="img/logo.webp"'), 'layout.js debe enlazar img/logo.webp');
+  assert(layoutContent.includes('width="118"'), 'logo debe tener width="118"');
+  assert(layoutContent.includes('height="101"'), 'logo debe tener height="101"');
+  assert(layoutContent.includes('fetchpriority="high"'), 'Header logo debe tener fetchpriority="high"');
+  assert(layoutContent.includes('loading="lazy"'), 'Footer logo debe tener loading="lazy"');
+  assert(layoutContent.includes('footer-logo-img'), 'Footer logo debe tener clase footer-logo-img');
+});
+
+// Test 11: Bloqueo de aspecto en styles.css (aspect-ratio: 118 / 101)
+test('styles.css contiene aspect-ratio: 118 / 101 para prevenir CLS en cabecera y pie', () => {
+  assert(stylesContent.includes('aspect-ratio: 118 / 101;'), 'styles.css debe definir aspect-ratio: 118 / 101');
+  assert(stylesContent.includes('.brand-col .footer-logo-img'), 'styles.css debe estilizar .brand-col .footer-logo-img');
+});
+
+// Test 12: Ausencia total de referencias rotas a logo.png en HTML y JS
+test('Cero archivos HTML o JS mantienen enlaces al antiguo logo.png', () => {
+  const files = fs.readdirSync(rootDir).filter(f => f.endsWith('.html') || f.endsWith('.js'));
+  files.forEach(f => {
+    const content = fs.readFileSync(path.join(rootDir, f), 'utf8');
+    assert(!content.includes('logo.png'), `El archivo ${f} no debe contener ninguna referencia a logo.png`);
   });
 });
 

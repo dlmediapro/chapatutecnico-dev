@@ -128,7 +128,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   width: 100%;
   height: auto;
   max-height: clamp(58px, 5.2vw, 82px);
-  aspect-ratio: 214 / 184;
+  aspect-ratio: 118 / 101;
   object-fit: contain;
   object-position: left center;
 }
@@ -709,10 +709,12 @@ body.nav-locked {
   text-align: center; 
   font-size: 10px; 
 }
+.brand-col .footer-logo-img,
 .brand-col img { 
   width: auto; 
-  height: 46px; 
+  height: 48px; 
   max-width: 120px; 
+  aspect-ratio: 118 / 101;
   object-fit: contain; 
   margin: 0 auto 8px; 
 }
