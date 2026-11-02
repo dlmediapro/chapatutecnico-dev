@@ -169,6 +169,51 @@
                         </div>
                     </div>
 
+                    <!-- Tarjeta de Propuesta Formal de Servicio y Cotización -->
+                    <div class="chat-bubble-row msg-in">
+                        <div class="chat-bubble chat-cotizacion-card" role="region" aria-label="Propuesta de servicio y cotización">
+                            <div class="cotizacion-card-head">
+                                <div class="cotizacion-badge">
+                                    <span class="cotizacion-badge-icon" aria-hidden="true">⚡</span>
+                                    <span>COTIZACIÓN FORMAL</span>
+                                </div>
+                                <span class="cotizacion-tag-urgencia">Atención prioritaria</span>
+                            </div>
+
+                            <div class="cotizacion-detalles">
+                                <div class="cotizacion-precio-box">
+                                    <span class="cotizacion-precio-label">Diagnóstico e intervención base estimada:</span>
+                                    <div class="cotizacion-precio-row">
+                                        <span class="cotizacion-precio-valor">S/ 120.00</span>
+                                        <span class="cotizacion-precio-rango">Rango según falla: S/ 120 – S/ 180</span>
+                                    </div>
+                                </div>
+                                <ul class="cotizacion-beneficios-list">
+                                    <li><span class="cotizacion-check" aria-hidden="true">✓</span> Traslado prioritario a Surco (~25 minutos)</li>
+                                    <li><span class="cotizacion-check" aria-hidden="true">✓</span> Revisión de tablero, llaves térmicas y circuito</li>
+                                    <li><span class="cotizacion-check" aria-hidden="true">✓</span> Garantía y respaldo oficial Chapa Tu Técnico</li>
+                                </ul>
+                            </div>
+
+                            <!-- Botones de Acción: Contratar y Pagar / Buscar otro técnico -->
+                            <div class="chat-cotizacion-actions">
+                                <button type="button" class="btn-chat-contratar" id="btn-contratar-pagar" onclick="window.procederContratacion()">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                                    </svg>
+                                    <span>Contratar y Pagar</span>
+                                </button>
+                                <a href="tecnicos.html" class="btn-chat-buscar-otro" id="btn-buscar-otro-tecnico" aria-label="Buscar otro técnico especialista">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                    <span>Buscar otro técnico</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Caja de Entrada de Mensaje Interactivo -->
@@ -239,6 +284,33 @@
             } catch(e) {}
         });
 
+        window.procederContratacion = function() {
+            var btn = document.getElementById('btn-contratar-pagar');
+            if (btn) {
+                btn.style.opacity = '0.8';
+                btn.style.pointerEvents = 'none';
+                btn.innerHTML = '<span aria-hidden="true">⏳</span> Redirigiendo a pago seguro...';
+            }
+            var reserva = {
+                tecnico: 'Roberto Rojas',
+                especialidad: 'Especialista en instalaciones eléctricas',
+                avatar: 'assets/img/tecnicos/roberto-rojas-avatar.webp',
+                servicio: 'Reparación de cortocircuito (Emergencia)',
+                montoBase: 120,
+                montoEstimado: 'S/ 120 – S/ 180',
+                distrito: 'Surco, Lima',
+                urgencia: 'Hoy lo antes posible (~25 min)',
+                cliente: 'María González',
+                fecha: new Date().toISOString()
+            };
+            try {
+                localStorage.setItem('chapa_reserva_activa', JSON.stringify(reserva));
+            } catch(e) {}
+            setTimeout(function() {
+                window.location.href = 'compra.html?servicio=electricidad&tecnico=roberto-rojas&monto=120';
+            }, 300);
+        };
+
         window.sendChatMessage = function() {
             var input = document.getElementById('chat-input-text');
             var stream = document.getElementById('chat-stream');
@@ -265,7 +337,7 @@
                 replyRow.className = 'chat-bubble-row msg-in';
                 replyRow.innerHTML = 
                     '<div class="chat-bubble tech-reply">' +
-                        '<p>Entendido, María. Ya tomé nota de la dirección en Surco. Voy para allá con repuestos y multímetro para diagnosticarlo de inmediato.</p>' +
+                        '<p>Entendido, María. Ya tomé nota de la dirección en Surco. Puedes pulsar el botón <strong>Contratar y Pagar</strong> arriba para formalizar la orden y salgo inmediatamente hacia tu domicilio.</p>' +
                         '<span class="tech-msg-time">' + timeStr + '</span>' +
                     '</div>';
                 stream.appendChild(replyRow);

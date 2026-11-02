@@ -292,6 +292,27 @@
     <script src="main.js"></script>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        try {
+            var raw = localStorage.getItem('chapa_reserva_activa');
+            if (raw) {
+                var data = JSON.parse(raw);
+                var srvElem = document.getElementById('res-servicio');
+                var detElem = document.getElementById('res-detalle');
+                if (srvElem && data.servicio) {
+                    srvElem.textContent = data.servicio;
+                }
+                if (detElem && data.tecnico) {
+                    detElem.textContent = 'Técnico: ' + data.tecnico + ' (' + (data.montoEstimado || ('S/ ' + data.montoBase)) + ') • ' + (data.urgencia || 'Atención prioritaria en Surco');
+                }
+                var nomInput = document.getElementById('cliente-nombre');
+                var apeInput = document.getElementById('cliente-apellidos');
+                if (nomInput && !nomInput.value) nomInput.value = 'María';
+                if (apeInput && !apeInput.value) apeInput.value = 'González';
+                if (window.actualizarResumenEnVivo) window.actualizarResumenEnVivo();
+            }
+        } catch(e) {}
+    });
     window.actualizarResumenEnVivo = function() {
         const nom = document.getElementById('cliente-nombre').value.trim();
         const ape = document.getElementById('cliente-apellidos').value.trim();
