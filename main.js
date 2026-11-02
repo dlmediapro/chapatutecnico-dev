@@ -67,22 +67,26 @@
   const total = originalItems.length;
   if (total === 0) return;
 
-  // Clonar elementos al inicio y al final para bucle infinito perfecto (Accesible: tabindex=-1 e inert)
+  // Clonar elementos con DocumentFragment para minimizar invalidaciones del DOM
+  const fragmentBefore = document.createDocumentFragment();
+  const fragmentAfter = document.createDocumentFragment();
+
   originalItems.forEach(item => {
     const cloneBefore = item.cloneNode(true);
     cloneBefore.setAttribute('aria-hidden', 'true');
     cloneBefore.setAttribute('tabindex', '-1');
     if ('inert' in cloneBefore) cloneBefore.inert = true;
-    track.insertBefore(cloneBefore, track.firstChild);
-  });
+    fragmentBefore.appendChild(cloneBefore);
 
-  originalItems.forEach(item => {
     const cloneAfter = item.cloneNode(true);
     cloneAfter.setAttribute('aria-hidden', 'true');
     cloneAfter.setAttribute('tabindex', '-1');
     if ('inert' in cloneAfter) cloneAfter.inert = true;
-    track.appendChild(cloneAfter);
+    fragmentAfter.appendChild(cloneAfter);
   });
+
+  track.insertBefore(fragmentBefore, track.firstChild);
+  track.appendChild(fragmentAfter);
 
   const allItems = Array.from(track.children);
   let currentIndex = total; // Iniciar en el primer elemento original (índice 5)
@@ -96,13 +100,22 @@
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  let cachedMetrics = null;
+
   function getMetrics() {
-    const card = allItems[0];
-    const cardWidth = card ? card.offsetWidth : 280;
-    const computedGap = parseFloat(window.getComputedStyle(track).gap) || 20;
-    const step = cardWidth + computedGap;
-    const leftOffset = (viewport.clientWidth - cardWidth) / 2;
-    return { cardWidth, step, leftOffset };
+    if (!cachedMetrics) {
+      const card = allItems[0];
+      const cardWidth = card ? card.offsetWidth : 280;
+      const computedGap = parseFloat(window.getComputedStyle(track).gap) || 20;
+      const step = cardWidth + computedGap;
+      const leftOffset = (viewport.clientWidth - cardWidth) / 2;
+      cachedMetrics = { cardWidth, step, leftOffset };
+    }
+    return cachedMetrics;
+  }
+
+  function invalidateMetrics() {
+    cachedMetrics = null;
   }
 
   function getPositionForIndex(index) {
@@ -241,12 +254,13 @@
     }
   }, true);
 
-  // Inicialización y reajuste en cambio de tamaño de ventana
+  // Inicialización sincrónica para evitar cualquier CLS
   moveTo(currentIndex, false);
   startAutoplay();
 
   let resizeTimer = null;
   window.addEventListener('resize', () => {
+    invalidateMetrics();
     if (resizeTimer) clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
       moveTo(currentIndex, false);
