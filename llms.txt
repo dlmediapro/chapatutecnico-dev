@@ -1,0 +1,15 @@
+# Chapa Tu Técnico
+
+> Servicio Técnico Seguro y Confiable en Lima Metropolitana.
+
+Plataforma peruana que conecta hogares y empresas con profesionales técnicos 100% verificados con antecedentes policiales y penales en Lima Metropolitana.
+
+## Servicios Principales
+
+- [Servicio de Electricidad](https://chapatutecnico.pe/electricidad.html): Instalación y reparación de cableado, tableros y cortocircuitos.
+- [Catálogo General de Servicios](https://chapatutecnico.pe/servicios.html): Gasfitería, carpintería, cerrajería, vidriería y climatización.
+- [Cobertura Lima Metropolitana](https://chapatutecnico.pe/cobertura.html): Cobertura técnica garantizada en distritos de Lima.
+- [Tienda Chapa](https://chapatutecnico.pe/tienda.html): Catálogo de herramientas y materiales de ferretería.
+- [Centro de Soporte](https://chapatutecnico.pe/soporte.html): Asistencia 24/7 y preguntas frecuentes.
+- [Directorio de Técnicos](https://chapatutecnico.pe/tecnicos.html): Especialistas verificados con antecedentes.
+- [Solicitud de Servicio](https://chapatutecnico.pe/solicitud.html): Formulario oficial para pedir un técnico.

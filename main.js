@@ -67,16 +67,20 @@
   const total = originalItems.length;
   if (total === 0) return;
 
-  // Clonar elementos al inicio y al final para bucle infinito perfecto
+  // Clonar elementos al inicio y al final para bucle infinito perfecto (Accesible: tabindex=-1 e inert)
   originalItems.forEach(item => {
     const cloneBefore = item.cloneNode(true);
     cloneBefore.setAttribute('aria-hidden', 'true');
+    cloneBefore.setAttribute('tabindex', '-1');
+    if ('inert' in cloneBefore) cloneBefore.inert = true;
     track.insertBefore(cloneBefore, track.firstChild);
   });
 
   originalItems.forEach(item => {
     const cloneAfter = item.cloneNode(true);
     cloneAfter.setAttribute('aria-hidden', 'true');
+    cloneAfter.setAttribute('tabindex', '-1');
+    if ('inert' in cloneAfter) cloneAfter.inert = true;
     track.appendChild(cloneAfter);
   });
 

@@ -79,7 +79,7 @@
             '<img src="img/111.svg" alt="" width="38" height="38">' +
             '<span class="header-badge-dot" aria-hidden="true"></span>' +
           '</a>' +
-          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito de Compras" title="Mi Carrito">' +
+          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito: 2 productos" title="Mi Carrito">' +
             '<img src="img/222.svg" alt="" width="38" height="38">' +
             '<span class="header-cart-count" aria-hidden="true">2</span>' +
           '</a>' +
@@ -104,8 +104,8 @@
   var svgMailSupport = footerSvg('email', 'M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z', 16, 16);
 
   var footer =
-    '<footer class="footer"><div class="container footer-container">' +
-    '<div class="footer-col"><h4>Inicio:</h4><ul>' +
+    '<footer class="footer"><h2 class="sr-only">Navegación del pie de página</h2><div class="container footer-container">' +
+    '<div class="footer-col"><h3 class="footer-col-title">Inicio:</h3><ul>' +
     '<li><a href="login.html">Iniciar Sesión</a></li>' +
     '<li><a href="nosotros.html">Nosotros</a></li>' +
     '<li><a href="servicios.html">Servicios Generales</a></li>' +
@@ -115,16 +115,16 @@
     '<li><a href="perfil.html">Perfil Técnico</a></li>' +
     '<li><a href="solicitud.html">Detalle Solicitud</a></li>' +
     '<li><a href="mensajes.html">Bandeja de Mensajes</a></li></ul></div>' +
-    '<div class="footer-col"><h4>Categoría:</h4><ul>' +
+    '<div class="footer-col"><h3 class="footer-col-title">Categoría:</h3><ul>' +
     '<li><a href="servicios.html">Gasfitero</a></li>' +
     '<li><a href="electricidad.html">Electricista</a></li>' +
     '<li><a href="servicios.html">Línea Blanca</a></li>' +
     '<li><a href="servicios.html">Carpintería</a></li>' +
     '<li><a href="electricidad.html">Otros Servicios</a></li></ul></div>' +
-    '<div class="footer-col support-col"><h4>Soporte</h4><p>Atención 24/7.</p><p>Consulta a los siguientes datos</p>' +
+    '<div class="footer-col support-col"><h3 class="footer-col-title">Soporte</h3><p>Atención 24/7.</p><p>Consulta a los siguientes datos</p>' +
     '<p><a href="tel:+51998204667" class="support-contact-link" aria-label="Llamar o escribir a soporte por WhatsApp: 998 204 667">' + svgWaSupport + ' <strong>998 204 667</strong></a></p>' +
     '<p><a href="mailto:chapatutecnico@gmail.com" class="support-contact-link" aria-label="Enviar correo electrónico a chapatutecnico@gmail.com">' + svgMailSupport + ' <strong>chapatutecnico@gmail.com</strong></a></p></div>' +
-    '<div class="footer-col payment-col"><h4>Medios de pago</h4>' +
+    '<div class="footer-col payment-col"><h3 class="footer-col-title">Medios de pago</h3>' +
     '<p class="small">Contamos con varios medios de pago.<br>Paga seguro, paga con confianza</p>' +
     '<div class="payment-icons"><img src="img/pago-mastercard.svg" alt="Mastercard" width="38" height="24"><img src="img/pago-visa.svg" alt="Visa" width="38" height="24">' +
     '<img src="img/pago-yape.svg" alt="Yape" width="38" height="24"><img src="img/pago-plin.svg" alt="Plin" width="38" height="24"></div></div>' +
@@ -163,7 +163,15 @@
       '</aside>';
   }
 
-  s.insertAdjacentHTML('beforebegin', part === 'footer' ? (footer + fabWhatsApp) : header);
+  if (part === 'header') {
+    if (!document.querySelector('.header')) {
+      s.insertAdjacentHTML('beforebegin', header);
+    }
+  } else if (part === 'footer') {
+    if (!document.querySelector('.footer')) {
+      s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
+    }
+  }
 
   if (part === 'header') {
     var updateHeaderCartBadge = function () {
@@ -171,6 +179,7 @@
         var raw = localStorage.getItem('chapa_cart');
         var cart = raw ? JSON.parse(raw) : null;
         var badge = document.querySelector('.header-cart-count');
+        var cartLink = document.querySelector('.icon-cart');
         if (badge) {
           var count = 0;
           if (Array.isArray(cart)) {
@@ -180,6 +189,9 @@
           }
           badge.textContent = count;
           badge.style.display = count > 0 ? 'inline-flex' : 'none';
+          if (cartLink) {
+            cartLink.setAttribute('aria-label', 'Mi Carrito: ' + count + (count === 1 ? ' producto' : ' productos'));
+          }
         }
       } catch (e) {}
     };
