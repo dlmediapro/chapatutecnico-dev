@@ -9939,3 +9939,665 @@
   }
 }
 
+
+/* ==========================================================================
+   ESTILOS DE LA VISTA: SEGUIMIENTO EN VIVO (seguimiento.html)
+   ========================================================================== */
+.seguimiento-main-layout {
+  padding: 24px 0 64px;
+  background-color: #061829;
+  min-height: calc(100vh - 80px);
+}
+
+.seguimiento-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.seguimiento-page-header {
+  margin: 16px 0 24px;
+}
+
+.seguimiento-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seguimiento-h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #22c55e;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.seguimiento-check-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #22c55e;
+  color: #061829;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Grilla Responsiva de 12 Columnas (Layout Grid) */
+.seguimiento-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.seguimiento-panel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Tarjetas Principales del Panel Izquierdo */
+.tracking-card {
+  background-color: #0a2238;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Cabecera del Técnico */
+.tracking-tech-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tracking-tech-avatar-box {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tracking-tech-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tech-verified-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #22c55e;
+  color: #061829;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 50%;
+  border: 2px solid #0a2238;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tracking-tech-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.tracking-tech-nombre {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.tracking-tech-cargo {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 4px 0 6px;
+}
+
+.tracking-tech-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #fbbf24;
+  font-size: 16px;
+}
+
+/* Aviso de Estado */
+.tracking-status-notice {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 20px 0 16px;
+}
+
+.status-notice-text {
+  font-size: 13px;
+  color: #e2e8f0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.status-notice-text strong {
+  color: #38bdf8;
+}
+
+/* Barra de Progreso Horizontal (3 Estados) */
+.tracking-stepper-progress {
+  position: relative;
+  margin: 24px 0 16px;
+  padding: 0 8px;
+}
+
+.stepper-progress-bar {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-line-fill {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #22c55e 100%);
+  border-radius: 3px;
+}
+
+.stepper-nodes-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -11px;
+}
+
+.stepper-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stepper-node .node-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #64748b;
+  border: 2px solid #0a2238;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: #061829;
+}
+
+.stepper-node.is-completed .node-dot {
+  background-color: #22c55e;
+}
+
+.stepper-node.is-active .node-dot {
+  background-color: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+}
+
+.stepper-node .node-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.stepper-node.is-active .node-label {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.stepper-node.is-completed .node-label {
+  color: #cbd5e1;
+}
+
+/* Footer del Servicio */
+.tracking-service-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+
+.service-name-cost {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.service-name-cost strong {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   TARJETA 2: MÉTODO DE PAGO & ACCIONES
+   ========================================================================== */
+.pago-card-h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.pago-card-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 4px 0 16px;
+}
+
+/* Grid de Métodos de Pago (Auto Layout) */
+.payment-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.payment-option-btn {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 14px 8px;
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.payment-option-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.payment-option-btn:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+.payment-option-btn.is-selected {
+  background-color: rgba(16, 185, 129, 0.12);
+  border-color: #10b981;
+  box-shadow: 0 0 0 1px #10b981;
+}
+
+.payment-check-corner {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  background-color: #10b981;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-option-btn.is-selected .payment-check-corner {
+  display: flex;
+}
+
+.payment-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.payment-icon-wrapper.yape-bg {
+  background-color: #701a75;
+}
+
+.payment-icon-wrapper.plin-bg {
+  background-color: #0891b2;
+}
+
+.payment-icon-wrapper.culqi-bg {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: #ffffff;
+}
+
+.culqi-text-icon {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.payment-icon-wrapper.cash-bg {
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+}
+
+.payment-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #cbd5e1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Botones de Acción (Auto Layout / Flexbox) */
+.tracking-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-tracking-chat {
+  flex: 1;
+  min-height: 48px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 24px;
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-tracking-chat:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+  filter: brightness(1.08);
+}
+
+.btn-tracking-chat:focus-visible {
+  outline: 3px solid #34d399;
+  outline-offset: 2px;
+}
+
+.btn-icon-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.btn-tracking-call {
+  flex: 1;
+  min-height: 48px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border-radius: 24px;
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-tracking-call:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+  filter: brightness(1.08);
+}
+
+.btn-tracking-call:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Salida de Emergencia */
+.tracking-cancel-wrap {
+  text-align: center;
+  margin-top: 14px;
+}
+
+.btn-cancelar-servicio {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  min-height: 44px;
+  padding: 8px 16px;
+  transition: color 0.15s ease;
+}
+
+.btn-cancelar-servicio:hover {
+  color: #f87171;
+}
+
+.btn-cancelar-servicio:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   PANEL DERECHO: MAPA DE SEGUIMIENTO (LEAFLET.JS)
+   ========================================================================== */
+.seguimiento-mapa-column {
+  width: 100%;
+}
+
+.mapa-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 580px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: #061829;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.tracking-map-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  z-index: 1;
+}
+
+/* Tooltip / Pill Flotante ETA */
+.mapa-eta-pill {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.eta-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: etaPulse 2s infinite;
+}
+
+@keyframes etaPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Marcadores Personalizados Leaflet */
+.custom-map-icon {
+  background: none;
+  border: none;
+}
+
+.home-icon-inner,
+.dest-icon-inner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #08233b;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dest-icon-inner {
+  background-color: #047857;
+  border-color: #34d399;
+}
+
+.tech-marker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tech-name-pill {
+  background-color: #22c55e;
+  color: #061829;
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.tech-van-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #10b981;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (BREAKPOINTS CANÓNICOS)
+   ========================================================================== */
+@media (max-width: 1023px) {
+  .seguimiento-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mapa-card-wrapper {
+    height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .seguimiento-container {
+    padding: 0 16px;
+  }
+
+  .seguimiento-h1 {
+    font-size: 24px;
+  }
+
+  .payment-methods-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tracking-action-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-tracking-chat,
+  .btn-tracking-call {
+    width: 100%;
+  }
+
+  .mapa-card-wrapper {
+    height: 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eta-pulse-dot {
+    animation: none !important;
+  }
+  .payment-option-btn,
+  .btn-tracking-chat,
+  .btn-tracking-call {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -289,17 +289,17 @@
             if (btn) {
                 btn.style.opacity = '0.8';
                 btn.style.pointerEvents = 'none';
-                btn.innerHTML = '<span aria-hidden="true">⏳</span> Redirigiendo a pago seguro...';
+                btn.innerHTML = '<span aria-hidden="true">⏳</span> Redirigiendo a seguimiento en vivo...';
             }
             var reserva = {
                 tecnico: 'Roberto Rojas',
                 especialidad: 'Especialista en instalaciones eléctricas',
-                avatar: 'assets/img/tecnicos/roberto-rojas-avatar.webp',
-                servicio: 'Reparación de cortocircuito (Emergencia)',
-                montoBase: 120,
-                montoEstimado: 'S/ 120 – S/ 180',
+                avatar: 'img/tecnicos/roberto-rojas-avatar.webp',
+                servicio: 'Instalaciones Eléctricas',
+                montoBase: 80,
+                montoEstimado: 'S/ 80.00',
                 distrito: 'Surco, Lima',
-                urgencia: 'Hoy lo antes posible (~25 min)',
+                urgencia: 'En camino (20-30 min)',
                 cliente: 'María González',
                 fecha: new Date().toISOString()
             };
@@ -307,7 +307,7 @@
                 localStorage.setItem('chapa_reserva_activa', JSON.stringify(reserva));
             } catch(e) {}
             setTimeout(function() {
-                window.location.href = 'compra.html?servicio=electricidad&tecnico=roberto-rojas&monto=120';
+                window.location.href = 'seguimiento.html?servicio=electricidad&tecnico=roberto-rojas';
             }, 300);
         };
 
