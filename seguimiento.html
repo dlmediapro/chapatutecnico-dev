@@ -188,7 +188,7 @@
                             <!-- 1. Yape (Seleccionado por defecto con check verde) -->
                             <button type="button" 
                                     class="payment-option-btn is-selected" 
-                                    id="pay-yape" 
+                                    id="pay-yape" data-method="yape" 
                                     aria-pressed="true" 
                                     onclick="selectPaymentMethod('yape')">
                                 <span class="payment-check-corner" aria-hidden="true">✓</span>
@@ -201,7 +201,7 @@
                             <!-- 2. Plin -->
                             <button type="button" 
                                     class="payment-option-btn" 
-                                    id="pay-plin" 
+                                    id="pay-plin" data-method="plin" 
                                     aria-pressed="false" 
                                     onclick="selectPaymentMethod('plin')">
                                 <span class="payment-check-corner" aria-hidden="true">✓</span>
@@ -214,7 +214,7 @@
                             <!-- 3. Culqi / Tarjeta -->
                             <button type="button" 
                                     class="payment-option-btn" 
-                                    id="pay-culqi" 
+                                    id="pay-culqi" data-method="culqi" 
                                     aria-pressed="false" 
                                     onclick="selectPaymentMethod('culqi')">
                                 <span class="payment-check-corner" aria-hidden="true">✓</span>
@@ -227,7 +227,7 @@
                             <!-- 4. Contra entrega -->
                             <button type="button" 
                                     class="payment-option-btn" 
-                                    id="pay-contraentrega" 
+                                    id="pay-contraentrega" data-method="contraentrega" 
                                     aria-pressed="false" 
                                     onclick="selectPaymentMethod('contraentrega')">
                                 <span class="payment-check-corner" aria-hidden="true">✓</span>
@@ -241,17 +241,39 @@
 
                         </div>
 
-                        <!-- Botones de Acción (Auto Layout / Flexbox) -->
-                        <div class="tracking-action-buttons">
-                            <a href="chat.html" class="btn-tracking-chat" id="btn-chat-tecnico" aria-label="Abrir chat directo con el técnico">
-                                <span class="btn-icon-check" aria-hidden="true">✓</span>
-                                <span>CHAT CON EL TÉCNICO</span>
-                            </a>
-                            <a href="tel:+51998204667" class="btn-tracking-call" id="btn-llamar-tecnico" aria-label="Llamar directamente a Roberto Rojas">
-                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-                                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        <!-- ===================================================================
+                             BOTÓN PRINCIPAL DE PAGO (PRIMARY CTA - Ley de Fitts: Ancho completo)
+                             =================================================================== -->
+                        <div class="tracking-pay-wrapper">
+                            <button type="button" 
+                                    class="btn-confirmar-pago" 
+                                    id="btn-confirmar-pago" 
+                                    aria-live="polite">
+                                <span class="btn-pay-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </span>
+                                <span class="btn-pay-text" id="btn-pay-text">CONFIRMAR Y PAGAR S/ 80.00</span>
+                            </button>
+                            <div id="payment-feedback-msg" class="payment-feedback-msg" role="status" aria-live="polite"></div>
+                        </div>
+
+                        <!-- ===================================================================
+                             ACCIONES SECUNDARIAS: COMUNICACIÓN (Outline / Ghost - Menor peso visual)
+                             =================================================================== -->
+                        <div class="tracking-secondary-actions">
+                            <a href="chat.html" class="btn-secondary-action btn-secondary-chat" id="btn-chat-tecnico" aria-label="Abrir chat directo con el técnico">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                 </svg>
-                                <span>LLAMAR</span>
+                                <span>Chat con el técnico</span>
+                            </a>
+                            <a href="tel:+51998204667" class="btn-secondary-action btn-secondary-call" id="btn-llamar-tecnico" aria-label="Llamar directamente a Roberto Rojas">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                <span>Llamar</span>
                             </a>
                         </div>
 
@@ -317,7 +339,92 @@
             try {
                 localStorage.setItem('chapa_metodo_pago', method);
             } catch(e) {}
+            updatePayButtonState();
         };
+
+        // 2. Control de Estado Reactivo del Botón de Pago (Heurística #5: Prevención de Errores)
+        function updatePayButtonState() {
+            var selectedBtn = document.querySelector('.payment-option-btn.is-selected');
+            var payBtn = document.getElementById('btn-confirmar-pago');
+            var payText = document.getElementById('btn-pay-text');
+            if (!payBtn || !payText) return;
+
+            var costoEl = document.getElementById('tracking-costo-display');
+            var monto = costoEl ? costoEl.textContent.trim() : 'S/ 80.00';
+
+            if (selectedBtn) {
+                var method = selectedBtn.getAttribute('data-method') || selectedBtn.id.replace('pay-', '');
+                payBtn.disabled = false;
+                payBtn.classList.remove('is-disabled');
+                if (method === 'contraentrega') {
+                    payText.textContent = 'CONFIRMAR PAGO CONTRA ENTREGA (' + monto + ')';
+                } else {
+                    payText.textContent = 'CONFIRMAR Y PAGAR ' + monto;
+                }
+            } else {
+                payBtn.disabled = true;
+                payBtn.classList.add('is-disabled');
+                payText.textContent = 'SELECCIONA UN MÉTODO DE PAGO';
+            }
+        }
+
+        // 3. Flujo Asíncrono de Procesamiento de Pago
+        function initPaymentAction() {
+            var payBtn = document.getElementById('btn-confirmar-pago');
+            var payText = document.getElementById('btn-pay-text');
+            var feedbackMsg = document.getElementById('payment-feedback-msg');
+            if (!payBtn) return;
+
+            payBtn.addEventListener('click', function() {
+                if (payBtn.disabled || payBtn.classList.contains('is-processing') || payBtn.classList.contains('is-success')) return;
+
+                var selectedBtn = document.querySelector('.payment-option-btn.is-selected');
+                var method = selectedBtn ? (selectedBtn.getAttribute('data-method') || selectedBtn.id.replace('pay-', '')) : 'yape';
+                var methodNames = {
+                    yape: 'Yape',
+                    plin: 'Plin',
+                    culqi: 'Tarjeta (Culqi)',
+                    contraentrega: 'Contra entrega'
+                };
+
+                // Estado 1: Procesando (2 segundos)
+                payBtn.disabled = true;
+                payBtn.classList.add('is-processing');
+                payText.textContent = 'PROCESANDO PAGO...';
+                if (feedbackMsg) {
+                    feedbackMsg.className = 'payment-feedback-msg show-info';
+                    feedbackMsg.textContent = 'Conectando con la pasarela segura...';
+                }
+
+                setTimeout(function() {
+                    payBtn.classList.remove('is-processing');
+                    payBtn.classList.add('is-success');
+
+                    if (method === 'contraentrega') {
+                        payText.textContent = '✓ MÉTODO REGISTRADO: CONTRA ENTREGA';
+                        if (feedbackMsg) {
+                            feedbackMsg.className = 'payment-feedback-msg show-success';
+                            feedbackMsg.textContent = '¡Listo! Realizarás el pago al especialista al finalizar el servicio.';
+                        }
+                    } else {
+                        var name = methodNames[method] ? methodNames[method].toUpperCase() : 'MÉTODO ELEGIDO';
+                        payText.textContent = '✓ PAGO CONFIRMADO CON ' + name;
+                        if (feedbackMsg) {
+                            feedbackMsg.className = 'payment-feedback-msg show-success';
+                            feedbackMsg.textContent = '¡Pago registrado con éxito! Tu comprobante digital fue generado.';
+                        }
+                    }
+
+                    try {
+                        localStorage.setItem('chapa_pago_completado', JSON.stringify({
+                            status: 'completed',
+                            method: method,
+                            date: new Date().toISOString()
+                        }));
+                    } catch(e) {}
+                }, 2000);
+            });
+        }
 
         // 2. Salida de Emergencia (Heurística #3: User control and freedom)
         window.confirmarCancelacion = function() {
@@ -343,7 +450,11 @@
                 }
             } catch(e) {}
 
-            // 4. Inicialización Robusta del Mapa con Leaflet (Anti-Overflow)
+            // 4. Inicialización de Estado del Botón de Pago y Acción
+            updatePayButtonState();
+            initPaymentAction();
+
+            // 5. Inicialización Robusta del Mapa con Leaflet (Anti-Overflow)
             initTrackingMap();
         });
 
