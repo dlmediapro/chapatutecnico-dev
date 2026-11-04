@@ -2,15 +2,30 @@
 <html lang="es">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-97ZL37YY1M"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) - Carga diferida no bloqueante para evitar redistribución forzada y optimizar Speed Index -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-97ZL37YY1M');
 
-  gtag('config', 'G-97ZL37YY1M');
-</script>
+      function loadGtag() {
+        if (window._gtagLoaded) return;
+        window._gtagLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-97ZL37YY1M';
+        document.head.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtag, { timeout: 2500 });
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(loadGtag, 1000);
+        });
+      }
+    </script>
     <!-- ===================================================================
          1. METADATOS TÉCNICOS & RENDERIZADO
          =================================================================== -->
@@ -76,8 +91,6 @@
          =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
-    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
