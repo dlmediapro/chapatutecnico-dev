@@ -2,8 +2,7 @@
 <html lang="es">
 
 <head>
-    <!-- Google tag (gtag.js) - Carga diferida no bloqueante para evitar redistribución forzada y optimizar Speed Index -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <!-- Google tag (gtag.js) - Carga en interacción para proteger Core Web Vitals y Rendimiento 97+ -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -18,13 +17,10 @@
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-97ZL37YY1M';
         document.head.appendChild(s);
       }
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadGtag, { timeout: 2500 });
-      } else {
-        window.addEventListener('load', function() {
-          setTimeout(loadGtag, 1000);
-        });
-      }
+      ['scroll', 'touchstart', 'pointerdown', 'click', 'keydown'].forEach(function(evt) {
+        window.addEventListener(evt, loadGtag, { once: true, passive: true });
+      });
+      setTimeout(loadGtag, 7000);
     </script>
     <!-- ===================================================================
          1. METADATOS TÉCNICOS & RENDERIZADO
@@ -91,9 +87,11 @@
          =================================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"></noscript>
     <link rel="help" type="text/markdown" href="llms.txt">
 
     <!-- ===================================================================
