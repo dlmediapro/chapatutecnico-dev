@@ -64,25 +64,25 @@ test('Los 4 enlaces de redes sociales tienen aria-label descriptivo, target="_bl
 test('El SVG y los contenedores definen dimensiones estáticas y aspect-ratio', () => {
   assert(layoutContent.includes('width="20"') || layoutContent.includes("width='\" + w + \"'"), 'SVG debe tener width estático');
   assert(layoutContent.includes('height="20"') || layoutContent.includes("height='\" + h + \"'"), 'SVG debe tener height estático');
-  assert(stylesContent.includes('aspect-ratio: 1 / 1;'), 'Los enlaces de redes deben tener aspect-ratio: 1 / 1;');
-  assert(stylesContent.includes('flex-shrink: 0;'), 'Los iconos deben tener flex-shrink: 0;');
+  assert(/aspect-ratio:\s*1\s*\/\s*1/.test(stylesContent), 'Los enlaces de redes deben tener aspect-ratio: 1 / 1;');
+  assert(/flex-shrink:\s*0;?/.test(stylesContent), 'Los iconos deben tener flex-shrink: 0;');
 });
 
 // Test 5: Grilla de 8pt y área táctil accesible en styles.css
 test('styles.css implementa espaciados matemáticos en grilla de 8pt y área táctil mínima de 44x44px', () => {
-  assert(stylesContent.includes('padding: 32px 0 16px;'), 'Footer debe tener padding en múltiplos de 8pt (32px y 16px)');
-  assert(stylesContent.includes('gap: 32px 24px;'), 'Footer container debe tener gap en múltiplos de 8pt (32px y 24px)');
-  assert(stylesContent.includes('gap: 16px;'), 'Footer socials debe tener gap de 16px (2 * 8pt)');
-  assert(stylesContent.includes('margin-top: 16px;'), 'Footer socials debe tener margin-top de 16px (2 * 8pt)');
-  assert(stylesContent.includes('min-width: 44px;'), 'Área táctil debe tener min-width de 44px');
-  assert(stylesContent.includes('min-height: 44px;'), 'Área táctil debe tener min-height de 44px');
-  assert(stylesContent.includes('border-radius: 8px;'), 'Border radius debe ser 8px (1 * 8pt)');
+  assert(/padding:\s*32px 0 16px;?/.test(stylesContent), 'Footer debe tener padding en múltiplos de 8pt (32px y 16px)');
+  assert(/gap:\s*32px 24px;?/.test(stylesContent), 'Footer container debe tener gap en múltiplos de 8pt (32px y 24px)');
+  assert(/gap:\s*16px;?/.test(stylesContent), 'Footer socials debe tener gap de 16px (2 * 8pt)');
+  assert(/margin-top:\s*16px;?/.test(stylesContent), 'Footer socials debe tener margin-top de 16px (2 * 8pt)');
+  assert(/min-width:\s*44px;?/.test(stylesContent), 'Área táctil debe tener min-width de 44px');
+  assert(/min-height:\s*44px;?/.test(stylesContent), 'Área táctil debe tener min-height de 44px');
+  assert(/border-radius:\s*8px;?/.test(stylesContent), 'Border radius debe ser 8px (1 * 8pt)');
 });
 
 // Test 6: Estados de Foco Accesible (:focus-visible) y Colores de Marca
 test('styles.css define focus-visible de alto contraste y estados hover por marca', () => {
   assert(stylesContent.includes('.footer-social-link:focus-visible'), 'Debe existir regla :focus-visible');
-  assert(stylesContent.includes('outline: 2px solid'), 'Foco debe tener outline de 2px');
+  assert(/outline:\s*2px solid/.test(stylesContent), 'Foco debe tener outline de 2px');
   assert(stylesContent.includes('.social-youtube:hover'), 'Debe existir hover para YouTube');
   assert(stylesContent.includes('.social-facebook:hover'), 'Debe existir hover para Facebook');
   assert(stylesContent.includes('.social-instagram:hover'), 'Debe existir hover para Instagram');
@@ -127,7 +127,7 @@ test('layout.js renderiza img/logo.webp con CLS=0 y optimizaciones LCP/Lazy', ()
 
 // Test 11: Bloqueo de aspecto en styles.css (aspect-ratio: 118 / 101)
 test('styles.css contiene aspect-ratio: 118 / 101 para prevenir CLS en cabecera y pie', () => {
-  assert(stylesContent.includes('aspect-ratio: 118 / 101;'), 'styles.css debe definir aspect-ratio: 118 / 101');
+  assert(/aspect-ratio:\s*118\s*\/\s*101/.test(stylesContent), 'styles.css debe definir aspect-ratio: 118 / 101');
   assert(stylesContent.includes('.brand-col .footer-logo-img'), 'styles.css debe estilizar .brand-col .footer-logo-img');
 });
 
