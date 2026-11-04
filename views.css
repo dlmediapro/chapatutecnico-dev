@@ -10746,3 +10746,48 @@
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   ESTILOS SEMÁNTICOS SEO & ACCESIBILIDAD (ON-PAGE MATRIX)
+   ========================================================================== */
+.section-subtitle-seo {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin-top: calc(var(--space-1) * -1);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.form-section-heading {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--yellow);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.form-urgency-heading {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+.trust-pillar-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: var(--yellow);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.trust-pillar-link:hover,
+.trust-pillar-link:focus-visible {
+  color: var(--white);
+}
