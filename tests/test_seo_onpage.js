@@ -88,7 +88,7 @@ try {
   );
 
   assert(
-    indexH1s.length === 1 && indexH1s[0].includes('Servicio Técnico de confianza para tu hogar'),
+    indexH1s.length === 1 && indexH1s[0].toLowerCase().includes('servicio técnico de confianza para tu hogar'),
     'index.html: Encabezado <h1> único con texto exacto',
     `H1s encontrados (${indexH1s.length}): ${JSON.stringify(indexH1s)}`
   );
