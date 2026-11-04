@@ -44,14 +44,14 @@ function getMetaDescription(html) {
 
 function getH1s(html) {
   const matches = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)];
-  return matches.map(m => m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
+  return matches.map(m => m[1].replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim());
 }
 
 function hasHeadingWithText(html, tag, expectedText) {
   const regex = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'gi');
   const matches = [...html.matchAll(regex)];
   return matches.some(m => {
-    const text = m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const text = m[1].replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
     return text.toLowerCase().includes(expectedText.toLowerCase());
   });
 }

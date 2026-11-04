@@ -10791,3 +10791,93 @@
 .trust-pillar-link:focus-visible {
   color: var(--white);
 }
+
+/* ==========================================================================
+   HERO ACTIONS & ACCENT TYPOGRAPHY (FITTS'S LAW & CONTRAST AA)
+   ========================================================================== */
+.electricidad-hero-text h1 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-bottom: var(--space-3);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.text-accent-hero {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.hero-actions-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3); /* 16px */
+  margin-top: var(--space-4); /* 24px */
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.9375rem, 1vw, 1rem);
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(232, 83, 43, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 83, 43, 0.5);
+  color: var(--white);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.9375rem, 1vw, 1rem);
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--white);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .hero-actions-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}
