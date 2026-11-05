@@ -1,0 +1,370 @@
+/* --- 2.5 VISTA SERVICIOS ACTUALIZADA (servicios.html - Figma Frame 475:695) --- */
+.servicios-main {
+  background-color: #08233b;
+  min-height: calc(100vh - 360px);
+  color: #ffffff;
+  padding: 24px 0 80px;
+}
+
+/* Utilidad Accesible para Jerarquía Semántica de Encabezados (WCAG 2.2) */
+.servicios-main .visually-hidden,
+.servicios-main .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Encabezado Alineado a la Izquierda (Figma Frame 475:695) */
+.servicios-header-box {
+  text-align: left;
+  margin: 0 0 24px 0;
+}
+
+.servicios-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.servicios-title-icon {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.servicios-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* Grilla de 12 Servicios (3 Columnas Figma Frame 475:695) */
+.servicios-grid-3cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+  margin-bottom: 70px;
+}
+
+.servicio-card-v2 {
+  position: relative;
+  aspect-ratio: 436 / 449;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0a2941;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-card-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(83, 200, 247, 0.25);
+}
+
+.servicio-card-v2.is-hidden {
+  display: none !important;
+}
+
+.servicio-card-img-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.servicio-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.servicio-card-v2:hover .servicio-card-img {
+  transform: scale(1.05);
+}
+
+/* Zócalo Inferior (Rectangle Overlay Figma EL-950affcf / #0A2941 90%) */
+.servicio-card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: rgba(10, 41, 65, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 2;
+}
+
+.servicio-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  flex: 1;
+}
+
+/* Botón Píldora Solicitar (Figma EL-9aa08422 + EL-95af7c07 / WCAG min 44x44px) */
+.btn-servicio-solicitar {
+  background: #ffffff;
+  color: #0a2941;
+  min-width: 104px;
+  min-height: 44px;
+  padding: 8px 20px;
+  border-radius: 22px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-servicio-solicitar:hover {
+  background: #68daa4;
+  color: #0a2941;
+  box-shadow: 0 6px 16px rgba(104, 218, 164, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-servicio-solicitar:focus-visible {
+  outline: 3px solid #53c8f7;
+  outline-offset: 3px;
+}
+
+/* Banner de Garantías y Confianza (Group #537:326 Figma) */
+.servicios-trust-banner {
+  background: rgba(10, 41, 65, 0.65);
+  border: 1px solid rgba(83, 200, 247, 0.25);
+  border-radius: 24px;
+  padding: 48px 36px;
+  margin: 0 auto 70px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.trust-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.trust-pillar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.trust-icon-wrap {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background: rgba(83, 200, 247, 0.08);
+  border-radius: 20px;
+  border: 1px solid rgba(83, 200, 247, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trust-pillar-card:hover .trust-icon-wrap {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 20px rgba(83, 200, 247, 0.3);
+}
+
+.trust-icon-wrap img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.trust-pillar-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 12px;
+}
+
+.trust-pillar-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+  max-width: 280px;
+}
+
+/* Sección Por Qué Elegirnos (Figma #537:340 - #537:342) */
+.servicios-why-us-section {
+  padding: 20px 0 40px;
+}
+
+.servicios-why-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 40px;
+}
+
+.servicios-why-content {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.servicios-why-img-wrap {
+  flex: 1.1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.servicios-why-img-wrap img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 780 / 506;
+  object-fit: cover;
+  display: block;
+}
+
+.servicios-why-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.servicios-why-text p {
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.servicios-why-text .highlight-red {
+  color: #dd3d22;
+  font-weight: 800;
+}
+
+/* Responsividad para Vista Servicios */
+@media (max-width: 1024px) {
+  .servicios-grid-3cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .servicios-why-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicios-main {
+    padding: 30px 0 60px;
+  }
+
+  .trust-banner-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .servicios-grid-3cols {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto 50px;
+  }
+
+  .servicios-trust-banner {
+    padding: 30px 20px;
+  }
+}
+
+/* ==========================================================================
+   ESTILOS SEM�NTICOS SEO & ACCESIBILIDAD (ON-PAGE MATRIX)
+   ========================================================================== */
+.section-subtitle-seo {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin-top: calc(var(--space-1) * -1);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.form-section-heading {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--yellow);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.form-urgency-heading {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+.trust-pillar-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: var(--yellow);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.trust-pillar-link:hover,
+.trust-pillar-link:focus-visible {
+  color: var(--white);
+}
+

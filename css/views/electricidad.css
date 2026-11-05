@@ -1,0 +1,293 @@
+/* --- 2.5 VISTA SERVICIOS ACTUALIZADA (servicios.html - Figma Frame 475:695) --- */
+.servicios-main {
+  background-color: #08233b;
+  min-height: calc(100vh - 360px);
+  color: #ffffff;
+  padding: 24px 0 80px;
+}
+
+/* Utilidad Accesible para Jerarquía Semántica de Encabezados (WCAG 2.2) */
+.servicios-main .visually-hidden,
+.servicios-main .sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Encabezado Alineado a la Izquierda (Figma Frame 475:695) */
+.servicios-header-box {
+  text-align: left;
+  margin: 0 0 24px 0;
+}
+
+.servicios-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.servicios-title-icon {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.servicios-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* Grilla de 12 Servicios (3 Columnas Figma Frame 475:695) */
+.servicios-grid-3cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+  margin-bottom: 70px;
+}
+
+.servicio-card-v2 {
+  position: relative;
+  aspect-ratio: 436 / 449;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0a2941;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.servicio-card-v2:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(83, 200, 247, 0.25);
+}
+
+.servicio-card-v2.is-hidden {
+  display: none !important;
+}
+
+.servicio-card-img-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.servicio-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.servicio-card-v2:hover .servicio-card-img {
+  transform: scale(1.05);
+}
+
+/* Zócalo Inferior (Rectangle Overlay Figma EL-950affcf / #0A2941 90%) */
+.servicio-card-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: rgba(10, 41, 65, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 2;
+}
+
+.servicio-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  flex: 1;
+}
+
+/* Botón Píldora Solicitar (Figma EL-9aa08422 + EL-95af7c07 / WCAG min 44x44px) */
+.btn-servicio-solicitar {
+  background: #ffffff;
+  color: #0a2941;
+  min-width: 104px;
+  min-height: 44px;
+  padding: 8px 20px;
+  border-radius: 22px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-servicio-solicitar:hover {
+  background: #68daa4;
+  color: #0a2941;
+  box-shadow: 0 6px 16px rgba(104, 218, 164, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-servicio-solicitar:focus-visible {
+  outline: 3px solid #53c8f7;
+/* ==========================================================================
+   ESTILOS SEM�NTICOS SEO & ACCESIBILIDAD (ON-PAGE MATRIX)
+   ========================================================================== */
+.section-subtitle-seo {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--muted);
+  margin-top: calc(var(--space-1) * -1);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+.form-section-heading {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--yellow);
+  margin-top: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.form-urgency-heading {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: var(--space-2);
+}
+
+.trust-pillar-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: var(--yellow);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+.trust-pillar-link:hover,
+.trust-pillar-link:focus-visible {
+  color: var(--white);
+}
+
+/* ==========================================================================
+   HERO ACTIONS & ACCENT TYPOGRAPHY (FITTS'S LAW & CONTRAST AA)
+   ========================================================================== */
+.electricidad-hero-text h1 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin-bottom: var(--space-3);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.text-accent-hero {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.hero-actions-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3); /* 16px */
+  margin-top: var(--space-4); /* 24px */
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(0.9375rem, 1vw, 1rem);
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(232, 83, 43, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 83, 43, 0.5);
+  color: var(--white);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(0.9375rem, 1vw, 1rem);
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--white);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .hero-actions-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}

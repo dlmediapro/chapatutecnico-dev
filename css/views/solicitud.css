@@ -1,0 +1,1312 @@
+/* --- 7. VISTA DETALLE DE SOLICITUD (solicitud.html) --- */
+.solicitud-figma-main {
+  background-color: #08233b;
+  padding: 40px 0 80px;
+}
+
+.solicitud-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.solicitud-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.solicitud-back-link:hover {
+  color: #e8532b;
+}
+
+.solicitud-tech-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  color: #cfd8dc;
+}
+
+.solicitud-tech-badge strong {
+  color: #ffffff;
+}
+
+.solicitud-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.solicitud-header-title h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(30px, 4.5vw, 44px);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.solicitud-status-pill {
+  background: #fef08a;
+  color: #854d0e;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.solicitud-grid-container {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 32px;
+}
+
+.cliente-card-figma,
+.mensaje-cliente-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cliente-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cliente-avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e2e8f0;
+}
+
+.cliente-nombre {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #08233b;
+  margin-bottom: 4px;
+}
+
+.cliente-distrito {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.cliente-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 20px 0;
+}
+
+.cliente-contact-info .info-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.info-label {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.info-val {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #08233b;
+  font-weight: 600;
+}
+
+.phone-link {
+  color: #288133;
+  text-decoration: none;
+}
+
+.cliente-evidence-wrap {
+  margin-top: 24px;
+}
+
+.evidence-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  color: #08233b;
+  margin-bottom: 12px;
+}
+
+.evidence-img-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.evidence-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.evidence-tag {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(221, 61, 34, 0.9);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.evidence-caption {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.mensaje-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.mensaje-header h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: #08233b;
+  flex: 1;
+}
+
+.mensaje-time {
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.mensaje-body-text .lead-msg {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #08233b;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.mensaje-body-text .detail-msg {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 28px;
+}
+
+.solicitud-actions-group {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.btn-solicitud-aceptar {
+  flex: 1.5;
+  background-color: #288133;
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-solicitud-aceptar:hover {
+  background-color: #1e6427;
+}
+
+.btn-solicitud-rechazar {
+  flex: 1;
+  background: transparent;
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  padding: 14px;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-solicitud-rechazar:hover {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-solicitud-chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background: #f1f5f9;
+  color: #08233b;
+  border-radius: 10px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn-solicitud-chat:hover {
+  background-color: #e2e8f0;
+}
+
+/* ==========================================================================
+   13. VISTA: CONSULTA CLIENTE (solicitud.html) & CHAT DIRECTO (chat.html)
+   Fidelidad 1:1 con Figma & Estándares Web-to-App
+   ========================================================================== */
+
+/* Variables de Vista */
+.consulta-page,
+.chat-page {
+  background-color: #061829;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  min-height: 100vh;
+}
+
+/* Header Exclusivo de Sesión */
+.consulta-header {
+  background-color: #08233b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.consulta-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.consulta-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.consulta-brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.consulta-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.brand-top {
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f59e0b;
+}
+
+.brand-bottom {
+  font-family: 'Oswald', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.consulta-session-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px 6px 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+
+.session-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e3a5f, #0f243a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.session-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-user-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.session-user-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-pin {
+  font-size: 11px;
+}
+
+/* Layout Principal de la Consulta */
+.consulta-main-layout {
+  padding: 24px 16px 64px;
+}
+
+.consulta-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Navegación de Retorno */
+.consulta-back-nav {
+  margin-bottom: 20px;
+}
+
+.btn-volver-especialistas {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-volver-especialistas:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-volver-especialistas:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+/* Stepper Horizontal */
+.consulta-stepper-wrap {
+  margin-bottom: 24px;
+}
+
+.stepper-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stepper-step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.stepper-step.is-active .step-number-badge {
+  background-color: #ffffff;
+  color: #061829;
+}
+
+.stepper-step.is-pending .step-number-badge {
+  background-color: transparent;
+  color: #64748b;
+  border: 1px solid #475569;
+}
+
+.stepper-step.is-completed .step-number-badge {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.step-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.stepper-step.is-active .step-tag {
+  color: #94a3b8;
+}
+
+.stepper-step.is-pending .step-tag {
+  color: #475569;
+}
+
+.step-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.stepper-step.is-active .step-title {
+  color: #ffffff;
+}
+
+.stepper-step.is-pending .step-title {
+  color: #64748b;
+}
+
+.step-line {
+  height: 3px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.step-line.is-active {
+  background-color: #ffffff;
+}
+
+/* Tarjeta Resumen del Técnico (Roberto Rojas) */
+.consulta-technician-card {
+  background-color: #0a2238;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.technician-avatar-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.technician-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.technician-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.technician-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.technician-name {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.badge-verificado-verde {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.technician-specialty {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.technician-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.tech-rating {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.tech-dot-divider {
+  color: #475569;
+}
+
+.tech-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.status-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.tech-response-time {
+  color: #94a3b8;
+}
+
+/* Formulario Principal de Consulta */
+.consulta-form-card {
+  background-color: #0a2238;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.consulta-form-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.form-main-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px;
+  letter-spacing: 0.3px;
+}
+
+.form-main-subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Fieldset y Leyendas */
+.consulta-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fieldset-legend-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fieldset-legend-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 0;
+}
+
+.fieldset-legend-hint {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Chips de Selección Rápida */
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #081d30;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #e2e8f0;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.2s ease;
+}
+
+.chip-item:hover {
+  background-color: #0d2842;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.chip-item.is-selected {
+  background-color: rgba(232, 83, 43, 0.16);
+  border-color: #e8532b;
+  color: #ffffff;
+}
+
+.chip-item:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+.chip-icon {
+  font-size: 14px;
+}
+
+.chip-check {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e8532b;
+}
+
+/* Campo de Mensaje */
+.consulta-field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.field-label-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.field-label-hint {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.field-instruction-text {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.textarea-control-wrap {
+  width: 100%;
+}
+
+.consulta-textarea {
+  width: 100%;
+  background-color: #051322;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 96px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.consulta-textarea:focus {
+  outline: none;
+  border-color: #e8532b;
+  box-shadow: 0 0 0 3px rgba(232, 83, 43, 0.15);
+}
+
+.consulta-textarea::placeholder {
+  color: #64748b;
+}
+
+.textarea-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.textarea-advice {
+  color: #94a3b8;
+}
+
+.textarea-counter {
+  color: #64748b;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Fotos o Videos */
+.photo-counter-pill {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+  background-color: rgba(255, 255, 255, 0.06);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.upload-dropzone {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  padding: 16px 20px;
+  background-color: rgba(5, 19, 34, 0.4);
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.2s ease;
+}
+
+.upload-dropzone:hover {
+  border-color: #e8532b;
+  background-color: rgba(232, 83, 43, 0.05);
+}
+
+.upload-dropzone:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+.dropzone-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background-color: #0a253e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.dropzone-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropzone-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dropzone-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 2px 0 0;
+}
+
+.photo-slots-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.photo-slot-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.photo-slot-item.is-filled {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.slot-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.btn-remove-photo {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.btn-remove-photo:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+.photo-slot-item.is-empty {
+  border: 1px dashed rgba(255, 255, 255, 0.24);
+  background-color: #051322;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.photo-slot-item.is-empty:hover {
+  border-color: #e8532b;
+  color: #e8532b;
+  background-color: rgba(232, 83, 43, 0.05);
+}
+
+.photo-slot-item.is-empty:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+.slot-add-icon {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+/* Radio-cards de Urgencia */
+.urgency-grid-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.urgency-card-option {
+  position: relative;
+  display: block;
+  background-color: #081d30;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  min-height: 44px;
+  transition: all 0.2s ease;
+}
+
+.urgency-native-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.urgency-card-option:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.urgency-card-option.is-checked {
+  background-color: rgba(232, 83, 43, 0.12);
+  border: 2px solid #e8532b;
+}
+
+.urgency-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.urgency-head-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-radio-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #64748b;
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.urgency-card-option.is-checked .custom-radio-circle {
+  border-color: #e8532b;
+}
+
+.urgency-card-option.is-checked .custom-radio-circle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e8532b;
+}
+
+.urgency-icon-symbol {
+  font-size: 16px;
+}
+
+.urgency-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.urgency-card-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 0 28px;
+}
+
+.urgency-card-option.is-checked .urgency-card-desc {
+  color: #f1f5f9;
+}
+
+/* Selector Desplegable de Fecha y Hora */
+.schedule-picker-container {
+  background-color: #051322;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+.picker-fields-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.picker-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.picker-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.picker-input-control {
+  background-color: #08233b;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 10px 12px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  min-height: 44px;
+}
+
+.picker-input-control:focus {
+  outline: none;
+  border-color: #e8532b;
+}
+
+/* Banner Informativo Dinámico */
+.urgency-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(232, 83, 43, 0.1);
+  border: 1px solid rgba(232, 83, 43, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #fed7aa;
+}
+
+.notice-banner-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.notice-banner-text {
+  line-height: 1.4;
+}
+
+/* Cláusula de Confianza y CTAs */
+.consulta-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.security-guarantee-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.security-lock-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.security-guarantee-text {
+  margin: 0;
+}
+
+/* CTA Primario Dominante Verde */
+.btn-iniciar-chat-verde {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 16px 24px;
+  cursor: pointer;
+  min-height: 54px;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+
+.btn-iniciar-chat-verde:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+  filter: brightness(1.08);
+}
+
+.btn-iniciar-chat-verde:active {
+  transform: translateY(0);
+}
+
+.btn-iniciar-chat-verde:focus-visible {
+  outline: 3px solid #34d399;
+  outline-offset: 3px;
+}
+
+.btn-iniciar-chat-verde.is-submitting {
+  opacity: 0.85;
+  cursor: wait;
+}
+
+.btn-iniciar-arrow {
+  font-size: 20px;
+}
+
+.buscar-otro-link-wrap {
+  text-align: center;
+}
+
+.btn-buscar-otro-tecnico {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 8px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.btn-buscar-otro-tecnico:hover {
+  color: #ffffff;
+}
+
+.btn-buscar-otro-tecnico:focus-visible {
+  outline: 2px solid #e8532b;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (BREAKPOINTS CANÓNICOS)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .consulta-form-card {
+    padding: 20px 16px;
+    gap: 20px;
+  }
+
+  .urgency-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .picker-fields-row {
+    grid-template-columns: 1fr;
+  }
+
+  .stepper-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .step-header {
+    gap: 8px;
+  }
+
+  .step-title {
+    font-size: 12px;
+  }
+
+  .consulta-header-container {
+    padding: 10px 16px;
+  }
+
+  .session-user-details {
+    display: none;
+  }
+
+  .btn-iniciar-chat-verde {
+    font-size: 16px;
+    padding: 14px 18px;
+  }
+
+  .chat-cotizacion-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn-chat-contratar,
+  .btn-chat-buscar-otro {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-item,
+  .upload-dropzone,
+  .photo-slot-item,
+  .urgency-card-option,
+  .btn-iniciar-chat-verde,
+  .btn-send-message,
+  .btn-chat-contratar,
+  .btn-chat-buscar-otro {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+

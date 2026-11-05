@@ -1,0 +1,458 @@
+/* ==========================================================
+   Chapa Tu Técnico — Vista Oficial "NOSOTROS" (Figma: id 1232:246)
+   ========================================================== */
+
+.nosotros-main {
+  background-color: #0a2941;
+  color: #ffffff;
+  padding: 60px 0 100px;
+  overflow-x: hidden;
+}
+
+.nosotros-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.nosotros-sec {
+  margin-bottom: 72px;
+}
+
+/* 1. SECCIÓN 1: INTRO + FOTO PAREJA + DATOS CLAVE */
+.nosotros-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.nosotros-foto-wrap {
+  width: 100%;
+}
+
+.nosotros-foto-rounded {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 662 / 441;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+.nosotros-intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nosotros-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+}
+
+.nosotros-lead {
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.nosotros-parrafo {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* 3 Tarjetas de Datos Clave */
+.nosotros-datos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.nosotros-dato-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.nosotros-dato-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(221, 61, 34, 0.5);
+}
+
+.dato-valor {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #dd3d22;
+  line-height: 1.25;
+}
+
+.dato-etiqueta {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+/* 2. SECCIÓN 2: MISIÓN Y VISIÓN */
+.nosotros-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.nosotros-mv-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.nosotros-mv-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(221, 61, 34, 0.4);
+}
+
+.nosotros-mv-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nosotros-mv-icon img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.nosotros-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+}
+
+.nosotros-card-text {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* 3. SECCIÓN 3: POR QUÉ ELEGIRNOS */
+.nosotros-porque-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.nosotros-porque-grid .nosotros-foto-rounded {
+  aspect-ratio: 776 / 503;
+}
+
+.nosotros-section-h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+}
+
+.nosotros-porque-intro {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 28px 0;
+}
+
+.nosotros-pilares {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nosotros-pilar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.pilar-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.pilar-icon img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.pilar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pilar-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+}
+
+.pilar-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* FRASE DE CIERRE DESTACADA */
+.nosotros-frase-sec {
+  margin: 64px 0 80px;
+  text-align: center;
+}
+
+.nosotros-frase-texto {
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.highlight-orange {
+  color: #dd3d22;
+  font-weight: 600;
+}
+
+/* 4. SECCIÓN 4: CIERRE / CTA */
+.nosotros-cierre-sec {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nosotros-cierre-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.nosotros-cierre-h2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+}
+
+.nosotros-cierre-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-figma-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 48px;
+  min-width: 170px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-figma-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-figma-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  color: #423f53;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 48px;
+  min-width: 170px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-figma-white:hover {
+  background: #f3f3f3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================
+   Breakpoints Responsivos para "NOSOTROS" (Figma Responsive)
+   ========================================================== */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  .nosotros-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .nosotros-porque-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .nosotros-foto-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+/* Móvil Grande / Tablet vertical (≤ 768px) */
+@media (max-width: 768px) {
+  .nosotros-sec {
+    margin-bottom: 56px;
+  }
+
+  .nosotros-title {
+    font-size: 32px;
+  }
+
+  .nosotros-lead {
+    font-size: 20px;
+  }
+
+  .nosotros-parrafo {
+    font-size: 16px;
+  }
+
+  .nosotros-datos-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .nosotros-dato-card {
+    padding: 24px;
+  }
+
+  .nosotros-mv-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .nosotros-mv-card {
+    padding: 28px;
+  }
+
+  .nosotros-card-title,
+  .nosotros-section-h2,
+  .nosotros-cierre-h2 {
+    font-size: 26px;
+  }
+
+  .nosotros-frase-texto {
+    font-size: 20px;
+    padding: 0 12px;
+  }
+
+  .nosotros-cierre-acciones {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-figma-outline,
+  .btn-figma-white {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Móvil Compacto (≤ 480px) */
+@media (max-width: 480px) {
+  .nosotros-main {
+    padding: 40px 0 64px;
+  }
+
+  .nosotros-title {
+    font-size: 28px;
+  }
+
+  .nosotros-lead {
+    font-size: 18px;
+  }
+
+  .dato-valor {
+    font-size: 26px;
+  }
+}
+
+
