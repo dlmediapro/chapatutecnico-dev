@@ -119,7 +119,7 @@
 <body data-page="tienda">
 
     <!-- Header institucional compartido (Regla de Buscador Único: data-search="false") -->
-    <script src="layout.js" data-part="header" data-search="false"></script>
+    <script src="layout.js" data-part="header" data-search="false" defer></script>
 
     <main class="tienda-main" id="main-content">
         <div class="container tienda-container">
@@ -231,9 +231,9 @@
     <div id="chapa-sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Footer institucional compartido -->
-    <script src="layout.js" data-part="footer"></script>
-    <script src="main.js"></script>
-    <script src="tienda.js"></script>
+    <script src="layout.js" data-part="footer" defer></script>
+    <script src="main.js" defer></script>
+    <script src="tienda.js" defer></script>
 </body>
 
 </html>

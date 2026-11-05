@@ -17,8 +17,22 @@
     });
   }
 
-  var s = document.currentScript || document.querySelector('script[src*="layout.js"]');
+  var s = document.currentScript;
   var part = (s && s.dataset && s.dataset.part) ? s.dataset.part : '';
+  if (!part) {
+    var headerScript = document.querySelector('script[src*="layout.js"][data-part="header"]:not([data-injected])');
+    var footerScript = document.querySelector('script[src*="layout.js"][data-part="footer"]:not([data-injected])');
+    if (headerScript && !document.querySelector('.header')) {
+      s = headerScript;
+      part = 'header';
+      s.setAttribute('data-injected', 'true');
+    } else if (footerScript && !document.querySelector('.footer')) {
+      s = footerScript;
+      part = 'footer';
+      s.setAttribute('data-injected', 'true');
+    }
+  }
+
   var page = (document.body && document.body.dataset && document.body.dataset.page) ? document.body.dataset.page : '';
   var hideSearch = (s && s.dataset && s.dataset.search === 'false') || (s && s.dataset && s.dataset.variant === 'compact') || page === 'cobertura' || page === 'soporte' || page === 'tienda';
 
@@ -187,10 +201,8 @@
     }
   } else if (part === 'footer') {
     // FASE 2: Inyección Below-the-fold diferida para no competir con el Main Thread durante el inicio
-    if (s) {
-      if (!document.querySelector('.footer')) {
-        s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
-      }
+    if (s && !document.querySelector('.footer')) {
+      s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
     }
   }
 
