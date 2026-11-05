@@ -1,10 +1,27 @@
 /* Cabecera y pie compartidos: Chapa Tu Técnico (Figma System)
-   Uso en el HTML:  <script src="layout.js" data-part="header"></script>
-                    <script src="layout.js" data-part="footer"></script>
+   Uso en el HTML:  <script src="layout.js" data-part="header" defer></script>
+                    <script src="layout.js" data-part="footer" defer></script>
    Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | producto | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
 (function () {
-  var s = document.currentScript, part = s.dataset.part, page = document.body.dataset.page || '';
-  var hideSearch = (s.dataset.search === 'false' || s.dataset.variant === 'compact' || page === 'cobertura' || page === 'soporte' || page === 'tienda');
+  // Helper de modern-web-guidance (break-up-long-tasks) para no bloquear el hilo principal
+  function yieldToMain() {
+    if (typeof scheduler !== 'undefined' && typeof scheduler.yield === 'function') {
+      return scheduler.yield();
+    }
+    return new Promise(function (resolve) {
+      if (typeof requestIdleCallback !== 'undefined') {
+        requestIdleCallback(resolve);
+      } else {
+        setTimeout(resolve, 0);
+      }
+    });
+  }
+
+  var s = document.currentScript || document.querySelector('script[src*="layout.js"]');
+  var part = (s && s.dataset && s.dataset.part) ? s.dataset.part : '';
+  var page = (document.body && document.body.dataset && document.body.dataset.page) ? document.body.dataset.page : '';
+  var hideSearch = (s && s.dataset && s.dataset.search === 'false') || (s && s.dataset && s.dataset.variant === 'compact') || page === 'cobertura' || page === 'soporte' || page === 'tienda';
+
   var navLink = function (id, href, text) {
     var isActive = (page === id || (page === 'producto' && id === 'tienda'));
     return '<a href="' + href + '" class="nav-link' + (isActive ? ' active' : '') + '"' + (isActive ? ' aria-current="page"' : '') + '>' + text + '</a>';
@@ -163,48 +180,55 @@
       '</aside>';
   }
 
+  // FASE 1: Inyección Above-the-fold sincrónica y limpia
   if (part === 'header') {
-    if (!document.querySelector('.header')) {
+    if (!document.querySelector('.header') && s) {
       s.insertAdjacentHTML('beforebegin', header);
     }
   } else if (part === 'footer') {
-    if (!document.querySelector('.footer')) {
-      s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
+    // FASE 2: Inyección Below-the-fold diferida para no competir con el Main Thread durante el inicio
+    if (s) {
+      if (!document.querySelector('.footer')) {
+        s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
+      }
     }
   }
 
+  // FASE 3: Hidratación en Idle sin provocar Layout Thrashing
   if (part === 'header') {
-    var updateHeaderCartBadge = function () {
-      try {
-        var raw = localStorage.getItem('chapa_cart');
-        var cart = raw ? JSON.parse(raw) : null;
+    var updateHeaderState = function () {
+      yieldToMain().then(function () {
+        var isAuth = false;
+        var profile = null;
+        var cartCount = 0;
+
+        // Batch reads de localStorage
+        try {
+          isAuth = localStorage.getItem('ctt_is_authenticated') === 'true';
+          var rawProfile = localStorage.getItem('ctt_profile');
+          profile = rawProfile ? JSON.parse(rawProfile) : null;
+          var rawCart = localStorage.getItem('chapa_cart');
+          var cart = rawCart ? JSON.parse(rawCart) : null;
+          if (Array.isArray(cart)) {
+            cartCount = cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0);
+          } else {
+            cartCount = 2;
+          }
+        } catch (e) {}
+
+        // Batch writes al DOM
         var badge = document.querySelector('.header-cart-count');
         var cartLink = document.querySelector('.icon-cart');
         if (badge) {
-          var count = 0;
-          if (Array.isArray(cart)) {
-            count = cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0);
-          } else {
-            count = 2;
-          }
-          badge.textContent = count;
-          badge.style.display = count > 0 ? 'inline-flex' : 'none';
+          badge.textContent = cartCount;
+          badge.style.display = cartCount > 0 ? 'inline-flex' : 'none';
           if (cartLink) {
-            cartLink.setAttribute('aria-label', 'Mi Carrito: ' + count + (count === 1 ? ' producto' : ' productos'));
+            cartLink.setAttribute('aria-label', 'Mi Carrito: ' + cartCount + (cartCount === 1 ? ' producto' : ' productos'));
           }
         }
-      } catch (e) {}
-    };
 
-    var updateHeaderAuthState = function () {
-      try {
-        var isAuth = localStorage.getItem('ctt_is_authenticated') === 'true';
-        var raw = localStorage.getItem('ctt_profile');
-        var profile = raw ? JSON.parse(raw) : null;
         var accountLink = document.querySelector('.header-account');
-        if (!accountLink) return;
-
-        if (isAuth && profile) {
+        if (accountLink && isAuth && profile) {
           accountLink.href = 'cuenta.html';
           var name = (profile.firstname || 'Mi Cuenta').trim();
           accountLink.title = 'Mi Cuenta (' + name + ')';
@@ -222,23 +246,16 @@
             iconImg.style.objectFit = 'cover';
           }
         }
-      } catch (e) {}
+      });
     };
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function () {
-        updateHeaderCartBadge();
-        updateHeaderAuthState();
-      });
+      document.addEventListener('DOMContentLoaded', updateHeaderState);
     } else {
-      updateHeaderCartBadge();
-      updateHeaderAuthState();
+      updateHeaderState();
     }
-    window.addEventListener('chapa-cart-updated', updateHeaderCartBadge);
-    window.addEventListener('chapa-auth-updated', updateHeaderAuthState);
-    window.addEventListener('storage', function () {
-      updateHeaderCartBadge();
-      updateHeaderAuthState();
-    });
+    window.addEventListener('chapa-cart-updated', updateHeaderState);
+    window.addEventListener('chapa-auth-updated', updateHeaderState);
+    window.addEventListener('storage', updateHeaderState);
   }
 })();
