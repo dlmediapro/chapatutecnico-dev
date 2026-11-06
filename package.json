@@ -7,12 +7,13 @@
     "dev": "node dev-server.js",
     "start": "node dev-server.js",
     "figma": "node -e \"const { exec } = require('child_process'); exec('start https://www.figma.com/design/qg00MT4SVQUrHSM8c58jFt/CHAPA-TU-TECNICO?m=auto&t=UcRT9b8HSTMI72Ax-1');\"",
-    "test": "node tests/test_footer_svg.js && node tests/test_seguimiento_boton_pago.js && node tests/test_carrusel_scroll_nativo.js && node tests/test_seo_onpage.js && node tests/test_performance_assets.js",
+    "test": "node tests/test_footer_svg.js && node tests/test_seguimiento_boton_pago.js && node tests/test_carrusel_scroll_nativo.js && node tests/test_seo_onpage.js && node tests/test_performance_assets.js && node tests/test_electricidad_e2e.js",
     "test:footer": "node tests/test_footer_svg.js",
     "test:seguimiento": "node tests/test_seguimiento_boton_pago.js",
     "test:carrusel": "node tests/test_carrusel_scroll_nativo.js",
     "test:seo": "node tests/test_seo_onpage.js",
-    "test:performance": "node tests/test_performance_assets.js"
+    "test:performance": "node tests/test_performance_assets.js",
+    "test:e2e": "node tests/test_electricidad_e2e.js"
   },
   "repository": {
     "type": "git",
