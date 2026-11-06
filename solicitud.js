@@ -1,24 +1,53 @@
 /* ==========================================================================
    Chapa Tu Técnico — Lógica de Interacción: CONSULTA CLIENTE (solicitud.js)
-   Fidelidad 1:1 con Figma & WCAG 2.1 AA
+   Fidelidad Figma, WCAG 2.1 AA & Desacoplamiento de Sesión
    ========================================================================== */
-
 (function () {
     'use strict';
 
     document.addEventListener('DOMContentLoaded', initConsultaCliente);
 
+    function getActiveSessionUser() {
+        try {
+            var raw = localStorage.getItem('ctt_profile') || localStorage.getItem('chapa_auth_user');
+            if (raw) {
+                var p = JSON.parse(raw);
+                var name = p.nombre || (p.firstname ? (p.firstname + (p.lastname ? ' ' + p.lastname : '')).trim() : null) || p.name;
+                if (name) {
+                    return {
+                        nombre: name,
+                        distrito: p.distrito || p.district || 'Surco, Lima',
+                        verificado: p.verificado !== undefined ? p.verificado : true
+                    };
+                }
+            }
+        } catch (_) {}
+        return {
+            nombre: 'Diego León',
+            distrito: 'Surco, Lima',
+            verificado: true
+        };
+    }
+
+    function hydrateSessionUI(user) {
+        var nameEl = document.getElementById('session-user-name');
+        var distEl = document.getElementById('session-user-district');
+        if (nameEl) nameEl.textContent = user.nombre;
+        if (distEl) distEl.textContent = user.distrito;
+    }
+
     function initConsultaCliente() {
         var form = document.getElementById('form-consulta-cliente');
         if (!form) return;
 
-        // Elementos interactivos
+        var currentUser = getActiveSessionUser();
+        hydrateSessionUI(currentUser);
+
         var chips = document.querySelectorAll('.chip-item');
         var textarea = document.getElementById('consulta-mensaje');
         var charCounter = document.getElementById('char-counter');
         var uploadTrigger = document.getElementById('upload-trigger');
         var fileInput = document.getElementById('consulta-file-input');
-        var slotsContainer = document.getElementById('photo-slots-container');
         var photoCounterBadge = document.getElementById('photo-counter-badge');
         var urgencyRadios = document.querySelectorAll('input[name="urgencia"]');
         var cardHoy = document.getElementById('card-urgencia-hoy');
@@ -29,46 +58,29 @@
         var urgencyNoticeText = document.getElementById('urgency-notice-text');
         var btnSubmit = document.getElementById('btn-submit-consulta');
 
-        // Estado local de la vista
-        var state = {
-            photosCount: 1, // Inicia con 1 foto de muestra en slot-1
-            uploadedFiles: []
-        };
+        var state = { photosCount: 1, uploadedFiles: [] };
 
-        // ----------------------------------------------------------------------
-        // 1. CHIPS MULTI-SELECCIÓN INTERACTIVOS
-        // ----------------------------------------------------------------------
         chips.forEach(function (chip) {
             chip.addEventListener('click', function () {
                 var isSelected = chip.classList.toggle('is-selected');
                 chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
                 var checkSpan = chip.querySelector('.chip-check');
-                if (checkSpan) {
-                    checkSpan.textContent = isSelected ? '✓' : '';
-                }
+                if (checkSpan) checkSpan.textContent = isSelected ? '✓' : '';
             });
         });
 
-        // ----------------------------------------------------------------------
-        // 2. CONTADOR DE CARACTERES EN TIEMPO REAL (TEXTAREA)
-        // ----------------------------------------------------------------------
         if (textarea && charCounter) {
             textarea.addEventListener('input', function () {
-                var currentLength = textarea.value.length;
-                charCounter.textContent = currentLength + ' / 300';
+                charCounter.textContent = textarea.value.length + ' / 300';
             });
         }
 
-        // ----------------------------------------------------------------------
-        // 3. GESTIÓN DE FOTOS Y SLOTS
-        // ----------------------------------------------------------------------
         function updatePhotoCounter() {
             if (photoCounterBadge) {
                 photoCounterBadge.textContent = state.photosCount + ' / 3 archivos';
             }
         }
 
-        // Eliminar foto de muestra inicial
         var btnRemoveInitial = document.getElementById('btn-remove-slot-1');
         if (btnRemoveInitial) {
             btnRemoveInitial.addEventListener('click', function (e) {
@@ -87,14 +99,9 @@
             });
         }
 
-        // Activar selector de archivos desde el dropzone
         if (uploadTrigger && fileInput) {
             uploadTrigger.addEventListener('click', function () {
-                if (state.photosCount < 3) {
-                    fileInput.click();
-                } else {
-                    alert('Has alcanzado el límite máximo de 3 archivos adjuntos.');
-                }
+                if (state.photosCount < 3) fileInput.click();
             });
             uploadTrigger.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -104,12 +111,9 @@
             });
         }
 
-        // Asignar click a slots vacíos
         function bindEmptySlotClick(slot) {
             slot.addEventListener('click', function () {
-                if (fileInput && state.photosCount < 3) {
-                    fileInput.click();
-                }
+                if (fileInput && state.photosCount < 3) fileInput.click();
             });
             slot.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -119,11 +123,8 @@
             });
         }
 
-        // Asignar a slots vacíos existentes (slot 2 y 3)
-        var emptySlots = document.querySelectorAll('.photo-slot-item.is-empty');
-        emptySlots.forEach(bindEmptySlotClick);
+        document.querySelectorAll('.photo-slot-item.is-empty').forEach(bindEmptySlotClick);
 
-        // Al seleccionar archivos locales
         if (fileInput) {
             fileInput.addEventListener('change', function () {
                 var files = Array.from(fileInput.files);
@@ -131,7 +132,6 @@
 
                 files.forEach(function (file) {
                     if (state.photosCount >= 3) return;
-
                     var nextEmptySlot = document.querySelector('.photo-slot-item.is-empty');
                     if (!nextEmptySlot) return;
 
@@ -161,17 +161,12 @@
                         });
                     }
                 });
-
                 updatePhotoCounter();
-                fileInput.value = ''; // Reset para permitir volver a cargar
+                fileInput.value = '';
             });
         }
 
-        // ----------------------------------------------------------------------
-        // 4. RADIO-CARDS DE URGENCIA Y BANNER DINÁMICO
-        // ----------------------------------------------------------------------
         if (fechaInput) {
-            // Sugerir fecha de mañana por defecto para programar
             var tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             var yyyy = tomorrow.getFullYear();
@@ -184,39 +179,30 @@
         urgencyRadios.forEach(function (radio) {
             radio.addEventListener('change', function () {
                 var isHoy = (radio.value === 'hoy');
-
                 if (cardHoy) cardHoy.classList.toggle('is-checked', isHoy);
                 if (cardProgramar) cardProgramar.classList.toggle('is-checked', !isHoy);
 
                 if (schedulePicker) {
-                    if (isHoy) {
-                        schedulePicker.style.display = 'none';
-                        schedulePicker.setAttribute('aria-hidden', 'true');
-                    } else {
-                        schedulePicker.style.display = 'block';
-                        schedulePicker.setAttribute('aria-hidden', 'false');
-                    }
+                    schedulePicker.style.display = isHoy ? 'none' : 'block';
+                    schedulePicker.setAttribute('aria-hidden', isHoy ? 'true' : 'false');
                 }
 
                 if (urgencyNoticeBanner && urgencyNoticeText) {
+                    var bannerIcon = urgencyNoticeBanner.querySelector('.notice-banner-icon');
                     if (isHoy) {
-                        urgencyNoticeBanner.querySelector('.notice-banner-icon').textContent = '⚠️';
+                        if (bannerIcon) bannerIcon.textContent = '⚠️';
                         urgencyNoticeText.textContent = 'Priorizamos tu solicitud: el técnico verá la urgencia en el primer mensaje del chat.';
                     } else {
-                        urgencyNoticeBanner.querySelector('.notice-banner-icon').textContent = '📅';
+                        if (bannerIcon) bannerIcon.textContent = '📅';
                         urgencyNoticeText.textContent = 'Solicitud agendada: coordinarás la confirmación exacta de fecha y hora directamente en el chat.';
                     }
                 }
             });
         });
 
-        // ----------------------------------------------------------------------
-        // 5. ENVÍO DEL FORMULARIO Y PERSISTENCIA HACIA CHAT.HTML
-        // ----------------------------------------------------------------------
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Obtener chips seleccionados
             var selectedChips = [];
             document.querySelectorAll('.chip-item.is-selected').forEach(function (chip) {
                 var label = chip.querySelector('.chip-label');
@@ -230,15 +216,13 @@
             var horaSelect = document.getElementById('hora-servicio');
             var horaProgramada = (urgenciaSeleccionada === 'programar' && horaSelect) ? horaSelect.value : null;
 
-            // Validación amigable (sin fricción): Requiere al menos un chip O mensaje
             if (selectedChips.length === 0 && mensajeTexto.length === 0) {
-                alert('Por favor selecciona al menos una opción rápida del problema o escribe una breve descripción.');
                 var firstChip = document.querySelector('.chip-item');
                 if (firstChip) firstChip.focus();
                 return;
             }
 
-            // Construcción del payload estructurado
+            var activeUser = getActiveSessionUser();
             var consultaPayload = {
                 tecnico: {
                     id: 'roberto-rojas',
@@ -257,21 +241,17 @@
                     horaProgramada: horaProgramada
                 },
                 cliente: {
-                    nombre: 'María González',
-                    distrito: 'Surco, Lima',
-                    verificado: true
+                    nombre: activeUser.nombre,
+                    distrito: activeUser.distrito,
+                    verificado: activeUser.verificado
                 },
                 creadoEn: new Date().toISOString()
             };
 
-            // Persistir en localStorage
             try {
                 localStorage.setItem('chapa_consulta_actual', JSON.stringify(consultaPayload));
-            } catch (err) {
-                // Fallback silencioso si localStorage está restringido
-            }
+            } catch (_) {}
 
-            // Feedback visual en el botón antes de redirigir
             if (btnSubmit) {
                 btnSubmit.disabled = true;
                 btnSubmit.classList.add('is-submitting');
@@ -280,7 +260,7 @@
 
             setTimeout(function () {
                 window.location.href = 'chat.html';
-            }, 400);
+            }, 300);
         });
     }
 })();

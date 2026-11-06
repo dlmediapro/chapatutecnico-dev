@@ -1,241 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <!-- ===================================================================
-         1. METADATOS TÉCNICOS & RENDERIZADO (WEB-TO-APP PRODUCCIÓN)
-         =================================================================== -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#061829">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ===================================================================
-         2. SEO ON-PAGE & METADATOS EDITABLES
-         =================================================================== -->
     <title>Cotizar Servicio Técnico Hogar | Electricista 24 Horas Lima</title>
-    <meta name="title" content="Cotizar Servicio Técnico Hogar | Electricista 24 Horas Lima">
-    <meta name="description"
-        content="Ingresa y aprende cómo cotizar servicio técnico hogar fácilmente. Contamos con disponibilidad de electricista 24 horas en Lima para urgencias.">
-    <meta name="keywords"
-        content="consulta electricista, Roberto Rojas, cortocircuito, instalaciones eléctricas, Chapa Tu Técnico Lima, servicio técnico 24/7">
+    <meta name="description" content="Ingresa y aprende cómo cotizar servicio técnico hogar fácilmente. Contamos con disponibilidad de electricista 24 horas en Lima para urgencias.">
+    <meta name="keywords" content="consulta electricista, Roberto Rojas, cortocircuito, instalaciones eléctricas, Chapa Tu Técnico Lima, servicio técnico 24/7">
     <meta name="author" content="Chapa Tu Técnico">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/solicitud.html">
-
-    <!-- Open Graph / Redes Sociales -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/solicitud.html">
     <meta property="og:title" content="Cotizar Servicio Técnico Hogar | Electricista 24 Horas Lima">
-    <meta property="og:description"
-        content="Ingresa y aprende cómo cotizar servicio técnico hogar fácilmente. Contamos con disponibilidad de electricista 24 horas en Lima para urgencias.">
+    <meta property="og:description" content="Ingresa y aprende cómo cotizar servicio técnico hogar fácilmente. Disponibilidad de electricista 24 horas en Lima para urgencias.">
     <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/assets/img/tecnicos/roberto-rojas-avatar.webp">
-
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Cotizar Servicio Técnico Hogar | Electricista 24 Horas Lima">
-    <meta name="twitter:description" content="Ingresa y aprende cómo cotizar servicio técnico hogar fácilmente. Contamos con disponibilidad de electricista 24 horas en Lima para urgencias.">
-    <meta name="twitter:image" content="https://dlmediapro.github.io/chapatutecnico-dev/assets/img/tecnicos/roberto-rojas-avatar.webp">
-
-    <!-- Geolocalización Estricta (Lima Metropolitana) -->
     <meta name="geo.region" content="PE-LIM">
     <meta name="geo.placename" content="Lima">
     <meta name="geo.position" content="-12.046374;-77.042793">
-    <meta name="ICBM" content="-12.046374, -77.042793">
-
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <!-- Google Fonts Canónicas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Hojas de Estilo Base y Vistas Modulares -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/views/solicitud.css">
 </head>
-
 <body class="theme-dark consulta-page" data-page="solicitud">
-
-    <!-- ===================================================================
-         HEADER EXCLUSIVO: CONTEXTO DE SESIÓN DE CLIENTE
-         =================================================================== -->
     <header class="consulta-header" role="banner">
         <div class="consulta-header-container">
-            <!-- Logo oficial -->
             <a href="index.html" class="consulta-brand" aria-label="Volver a la página principal de Chapa Tu Técnico">
-                <img src="img/mascota.png" alt="Mascota oficial de Chapa Tu Técnico" class="consulta-brand-logo" width="40" height="40" loading="eager" fetchpriority="high">
+                <img src="img/logo.webp" alt="Logo Chapa Tu Técnico" class="consulta-brand-logo" width="46" height="40" loading="eager" fetchpriority="high">
                 <div class="consulta-brand-text">
                     <span class="brand-top">CHAPA TU</span>
                     <span class="brand-bottom">TÉCNICO</span>
                 </div>
             </a>
-
-            <!-- Sesión del Cliente (María González) -->
             <div class="consulta-session-pill" role="region" aria-label="Usuario actual">
                 <div class="session-avatar-circle" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
                 </div>
                 <div class="session-user-details">
-                    <strong class="session-user-name">María González</strong>
-                    <span class="session-user-meta">
-                        <span class="meta-pin" aria-hidden="true">📍</span> Surco, Lima • Cliente verificado
-                    </span>
+                    <strong class="session-user-name" id="session-user-name" data-fallback="Diego León">Diego León</strong>
+                    <span class="session-user-meta" id="session-user-meta"><span class="meta-pin" aria-hidden="true">📍</span> <span id="session-user-district">Surco, Lima</span> • Cliente verificado</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ===================================================================
-         CONTENIDO PRINCIPAL: PASO 1 - DESCRIBE TU PROBLEMA
-         =================================================================== -->
     <main id="main-content" class="consulta-main-layout" role="main">
         <div class="consulta-container">
-
-            <!-- Navegación de Retorno -->
             <nav class="consulta-back-nav" aria-label="Navegación de retorno">
-                <a href="index.html" class="btn-volver-especialistas" aria-label="Volver a la página de inicio"><span class="back-arrow" aria-hidden="true">←</span><span>Inicio</span></a>
-                <a href="servicios.html" class="btn-volver-especialistas" aria-label="Volver al catálogo de servicios"><span class="back-arrow" aria-hidden="true">←</span><span>Servicios</span></a>
-                <a href="tecnicos.html" class="btn-volver-especialistas">
-                    <span class="back-arrow" aria-hidden="true">←</span>
-                    <span>Volver a especialistas</span>
-                </a>
+                <a href="index.html" class="btn-volver-especialistas" aria-label="Volver a inicio"><span class="back-arrow" aria-hidden="true">←</span><span>Inicio</span></a>
+                <a href="servicios.html" class="btn-volver-especialistas" aria-label="Volver a servicios"><span class="back-arrow" aria-hidden="true">←</span><span>Servicios</span></a>
+                <a href="tecnicos.html" class="btn-volver-especialistas" aria-label="Volver a especialistas"><span class="back-arrow" aria-hidden="true">←</span><span>Volver a especialistas</span></a>
             </nav>
 
-            <!-- Stepper Horizontal (2 Pasos) -->
             <div class="consulta-stepper-wrap" role="region" aria-label="Progreso del servicio">
                 <div class="stepper-grid">
-                    <!-- Paso 1: Activo -->
                     <div class="stepper-step is-active" aria-current="step">
                         <div class="step-header">
                             <span class="step-number-badge">1</span>
-                            <div class="step-text-wrap">
-                                <span class="step-tag">PASO 1</span>
-                                <span class="step-title">Describe tu problema</span>
-                            </div>
+                            <div class="step-text-wrap"><span class="step-tag">PASO 1</span><span class="step-title">Describe tu problema</span></div>
                         </div>
                         <div class="step-line is-active" aria-hidden="true"></div>
                     </div>
-
-                    <!-- Paso 2: Pendiente -->
                     <div class="stepper-step is-pending">
                         <div class="step-header">
                             <span class="step-number-badge">2</span>
-                            <div class="step-text-wrap">
-                                <span class="step-tag">PASO 2</span>
-                                <span class="step-title">Chat directo y cotización con el técnico</span>
-                            </div>
+                            <div class="step-text-wrap"><span class="step-tag">PASO 2</span><span class="step-title">Chat directo y cotización con el técnico</span></div>
                         </div>
                         <div class="step-line" aria-hidden="true"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tarjeta Resumen del Técnico Seleccionado (Roberto Rojas) -->
             <aside class="consulta-technician-card" aria-label="Técnico asignado para la consulta">
                 <div class="technician-avatar-wrap">
-                    <img src="assets/img/tecnicos/roberto-rojas-avatar.webp" 
-                         alt="Foto de perfil de Roberto Rojas, especialista electricista" 
-                         class="technician-avatar-img" 
-                         width="56" 
-                         height="56" 
-                         loading="eager" 
-                         fetchpriority="high">
+                    <img src="assets/img/tecnicos/roberto-rojas-avatar.webp" alt="Foto de perfil de Roberto Rojas, especialista electricista" class="technician-avatar-img" width="56" height="56" loading="eager" fetchpriority="high">
                 </div>
                 <div class="technician-content-wrap">
                     <div class="technician-name-row">
                         <span class="technician-name">Roberto Rojas</span>
-                        <span class="badge-verificado-verde">
-                            <span aria-hidden="true">✓</span> Técnico verificado
-                        </span>
+                        <span class="badge-verificado-verde"><span aria-hidden="true">✓</span> Técnico verificado</span>
                     </div>
                     <p class="technician-specialty">Especialista en instalaciones eléctricas</p>
                     <div class="technician-meta-row">
                         <span class="tech-rating">★ 4.9</span>
                         <span class="tech-dot-divider" aria-hidden="true">•</span>
-                        <span class="tech-status-badge">
-                            <span class="status-pulse-dot" aria-hidden="true"></span>
-                            <span>En línea</span>
-                        </span>
+                        <span class="tech-status-badge"><span class="status-pulse-dot" aria-hidden="true"></span><span>En línea</span></span>
                         <span class="tech-dot-divider" aria-hidden="true">•</span>
                         <span class="tech-response-time">Responde en ~3 min</span>
                     </div>
                 </div>
             </aside>
 
-            <!-- Formulario Principal: Describe tu problema -->
             <section class="consulta-form-wrapper" aria-labelledby="form-heading">
                 <form id="form-consulta-cliente" class="consulta-form-card" novalidate>
-                    
                     <header class="consulta-form-header">
                         <h1 id="form-heading" class="form-main-title">Cotizar Servicio Técnico de Hogar</h1>
                         <h2 class="form-section-heading">Formulario de Atención Rápida</h2>
                         <h3 class="form-urgency-heading">¿Buscas un Electricista 24 Horas en Lima?</h3>
-                        <p class="form-main-subtitle">
-                            Toma menos de 30 segundos: con una opción rápida y la urgencia ya puedes enviar.
-                        </p>
+                        <p class="form-main-subtitle">Toma menos de 30 segundos: con una opción rápida y la urgencia ya puedes enviar.</p>
                     </header>
 
-                    <!-- Sección 1: Selección Rápida (Multi-chips) -->
                     <fieldset class="consulta-fieldset" aria-describedby="chips-hint">
                         <div class="fieldset-legend-row">
                             <legend class="fieldset-legend-title">Selección rápida</legend>
                             <span id="chips-hint" class="fieldset-legend-hint">puedes marcar varias</span>
                         </div>
-
                         <div class="chips-container" role="group" aria-label="Opciones rápidas de fallas eléctricas">
                             <button type="button" class="chip-item is-selected" data-chip="cortocircuito" aria-pressed="true">
                                 <span class="chip-icon" aria-hidden="true">⚡</span>
                                 <span class="chip-label">Cortocircuito</span>
                                 <span class="chip-check" aria-hidden="true">✓</span>
                             </button>
-
                             <button type="button" class="chip-item" data-chip="tomacorriente" aria-pressed="false">
                                 <span class="chip-icon" aria-hidden="true">🔌</span>
                                 <span class="chip-label">Instalación de tomacorriente</span>
-                                <span class="chip-check" aria-hidden="true">✓</span>
+                                <span class="chip-check" aria-hidden="true"></span>
                             </button>
-
                             <button type="button" class="chip-item" data-chip="sin-luz" aria-pressed="false">
                                 <span class="chip-icon" aria-hidden="true">💡</span>
                                 <span class="chip-label">Sin luz en zona</span>
-                                <span class="chip-check" aria-hidden="true">✓</span>
+                                <span class="chip-check" aria-hidden="true"></span>
                             </button>
-
                             <button type="button" class="chip-item" data-chip="tablero" aria-pressed="false">
                                 <span class="chip-icon" aria-hidden="true">🧰</span>
                                 <span class="chip-label">Tablero eléctrico / Llave térmica</span>
-                                <span class="chip-check" aria-hidden="true">✓</span>
+                                <span class="chip-check" aria-hidden="true"></span>
                             </button>
-
                             <button type="button" class="chip-item" data-chip="otro" aria-pressed="false">
                                 <span class="chip-icon" aria-hidden="true">+</span>
                                 <span class="chip-label">Otro problema</span>
-                                <span class="chip-check" aria-hidden="true">✓</span>
+                                <span class="chip-check" aria-hidden="true"></span>
                             </button>
                         </div>
                     </fieldset>
 
-                    <!-- Sección 2: Mensaje Detallado -->
                     <div class="consulta-field-block">
                         <div class="field-label-row">
                             <label for="consulta-mensaje" class="field-label-title">Mensaje</label>
                             <span class="field-label-hint">• opcional si elegiste una opción</span>
                         </div>
-                        <p class="field-instruction-text">
-                            Menciona qué ocurrió, en qué ambiente de la casa estás y desde cuándo tienes el problema.
-                        </p>
+                        <p class="field-instruction-text">Menciona qué ocurrió, en qué ambiente de la casa estás y desde cuándo tienes el problema.</p>
                         <div class="textarea-control-wrap">
-                            <textarea id="consulta-mensaje" 
-                                      name="mensaje" 
-                                      class="consulta-textarea" 
-                                      maxlength="300" 
-                                      rows="4" 
-                                      placeholder="Ejemplo: «se produjo un chispazo en el tomacorriente y nos quedamos sin luz en la cocina» o similar"></textarea>
+                            <textarea id="consulta-mensaje" name="mensaje" class="consulta-textarea" maxlength="300" rows="4" placeholder="Ejemplo: «se produjo un chispazo en el tomacorriente y nos quedamos sin luz en la cocina» o similar"></textarea>
                         </div>
                         <div class="textarea-footer-meta">
                             <span class="textarea-advice">Mientras más detalle, más exacta será la cotización.</span>
@@ -243,65 +156,38 @@
                         </div>
                     </div>
 
-                    <!-- Sección 3: Fotos o Videos -->
                     <div class="consulta-field-block">
                         <div class="field-label-row">
                             <span class="field-label-title">Fotos o videos</span>
                             <span class="field-label-hint">• opcional</span>
                             <span id="photo-counter-badge" class="photo-counter-pill" aria-live="polite">1 / 3 archivos</span>
                         </div>
-
-                        <!-- Zona de carga discontinua -->
                         <div class="upload-dropzone" id="upload-trigger" role="button" tabindex="0" aria-label="Añadir fotos o videos, máximo 3 archivos">
                             <div class="dropzone-icon-box" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                                    <circle cx="12" cy="13" r="4"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                             </div>
                             <div class="dropzone-text-box">
                                 <strong class="dropzone-title">Añadir fotos o videos (máx. 3)</strong>
                                 <p class="dropzone-sub">JPG, PNG, MP4 • Opcional, pero ayuda al técnico a darte un precio exacto</p>
                             </div>
                         </div>
-
-                        <!-- Input oculto para carga de archivos -->
                         <input type="file" id="consulta-file-input" accept="image/jpeg,image/png,image/webp,video/mp4" multiple hidden>
-
-                        <!-- Fila de slots de previsualización (80x80px) -->
                         <div class="photo-slots-row" id="photo-slots-container">
-                            <!-- Slot 1: Precargado con foto de muestra -->
                             <div class="photo-slot-item is-filled" id="slot-1" data-slot="1">
-                                <img src="assets/img/consulta/foto-muestra-1.webp" 
-                                     alt="Evidencia fotográfica de avería eléctrica" 
-                                     class="slot-preview-image" 
-                                     width="80" 
-                                     height="80" 
-                                     loading="lazy">
+                                <img src="assets/img/consulta/foto-muestra-1.webp" alt="Evidencia fotográfica de avería eléctrica" class="slot-preview-image" width="80" height="80" loading="lazy">
                                 <button type="button" class="btn-remove-photo" id="btn-remove-slot-1" aria-label="Eliminar foto de evidencia 1">×</button>
                             </div>
-
-                            <!-- Slot 2: Vacío -->
-                            <div class="photo-slot-item is-empty" id="slot-2" data-slot="2" role="button" tabindex="0" aria-label="Añadir foto o video 2">
-                                <span class="slot-add-icon" aria-hidden="true">+</span>
-                            </div>
-
-                            <!-- Slot 3: Vacío -->
-                            <div class="photo-slot-item is-empty" id="slot-3" data-slot="3" role="button" tabindex="0" aria-label="Añadir foto o video 3">
-                                <span class="slot-add-icon" aria-hidden="true">+</span>
-                            </div>
+                            <div class="photo-slot-item is-empty" id="slot-2" data-slot="2" role="button" tabindex="0" aria-label="Añadir foto o video 2"><span class="slot-add-icon" aria-hidden="true">+</span></div>
+                            <div class="photo-slot-item is-empty" id="slot-3" data-slot="3" role="button" tabindex="0" aria-label="Añadir foto o video 3"><span class="slot-add-icon" aria-hidden="true">+</span></div>
                         </div>
                     </div>
 
-                    <!-- Sección 4: ¿Cuándo lo necesitas? -->
                     <fieldset class="consulta-fieldset">
                         <div class="fieldset-legend-row">
                             <legend class="fieldset-legend-title">¿Cuándo lo necesitas?</legend>
                             <span class="fieldset-legend-hint">• elige una</span>
                         </div>
-
                         <div class="urgency-grid-two-col">
-                            <!-- Opción 1: Hoy lo antes posible (Activa por defecto) -->
                             <label class="urgency-card-option is-checked" id="card-urgencia-hoy">
                                 <input type="radio" name="urgencia" value="hoy" checked class="urgency-native-radio">
                                 <div class="urgency-card-inner">
@@ -313,8 +199,6 @@
                                     <p class="urgency-card-desc">Emergencia • respuesta prioritaria</p>
                                 </div>
                             </label>
-
-                            <!-- Opción 2: Programar fecha y hora -->
                             <label class="urgency-card-option" id="card-urgencia-programar">
                                 <input type="radio" name="urgencia" value="programar" class="urgency-native-radio">
                                 <div class="urgency-card-inner">
@@ -327,8 +211,6 @@
                                 </div>
                             </label>
                         </div>
-
-                        <!-- Selector desplegable de fecha/hora (solo visible si se elige 'Programar') -->
                         <div class="schedule-picker-container" id="schedule-picker" style="display: none;" aria-hidden="true">
                             <div class="picker-fields-row">
                                 <div class="picker-col">
@@ -346,50 +228,30 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Banner Dinámico de Urgencia -->
                         <div class="urgency-status-banner" id="urgency-notice-banner" role="status">
                             <span class="notice-banner-icon" aria-hidden="true">⚠️</span>
-                            <span class="notice-banner-text" id="urgency-notice-text">
-                                Priorizamos tu solicitud: el técnico verá la urgencia en el primer mensaje del chat.
-                            </span>
+                            <span class="notice-banner-text" id="urgency-notice-text">Priorizamos tu solicitud: el técnico verá la urgencia en el primer mensaje del chat.</span>
                         </div>
                     </fieldset>
 
-                    <!-- Sección 5: Cláusula de Confianza y CTAs -->
                     <div class="consulta-footer-actions">
-                        <!-- Nota de Seguridad -->
                         <div class="security-guarantee-note">
                             <span class="security-lock-icon" aria-hidden="true">🔒</span>
-                            <p class="security-guarantee-text">
-                                Al continuar, se abrirá el chat directo con Roberto Rojas con este resumen para acordar la cotización sin compromiso.
-                            </p>
+                            <p class="security-guarantee-text">Al continuar, se abrirá el chat directo con Roberto Rojas con este resumen para acordar la cotización sin compromiso.</p>
                         </div>
-
-                        <!-- Botón CTA Principal Verde -->
                         <button type="submit" id="btn-submit-consulta" class="btn-iniciar-chat-verde">
                             <span class="btn-iniciar-text">INICIAR CHAT Y SOLICITAR COTIZACIÓN</span>
                             <span class="btn-iniciar-arrow" aria-hidden="true">→</span>
                         </button>
-
-                        <!-- Enlace Secundario: Buscar otro técnico -->
                         <div class="buscar-otro-link-wrap">
                             <a href="tecnicos.html" class="btn-buscar-otro-tecnico">Buscar otro técnico</a>
                         </div>
                     </div>
-
                 </form>
             </section>
-
         </div>
-    </main>
-
-    <!-- ===================================================================
-         FOOTER INSTITUCIONAL COMPARTIDO & SCRIPTS
-         =================================================================== -->
-    <script src="layout.js" data-part="footer" defer></script>
+    </main>    <script src="layout.js" data-part="footer" defer></script>
     <script src="main.js" defer></script>
     <script src="solicitud.js" defer></script>
 </body>
-
 </html>
