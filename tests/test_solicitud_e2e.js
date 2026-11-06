@@ -182,3 +182,4 @@ runE2E().catch((err) => {
   console.error('\n❌ ERROR EN TEST E2E DE SOLICITUD:', err);
   process.exit(1);
 });
+

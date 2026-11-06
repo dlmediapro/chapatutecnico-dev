@@ -89,6 +89,22 @@
         setTimeout(() => {
             btnSubmit.disabled = false;
             btnSubmit.innerHTML = orig;
+            const rawId = (inId?.value || '').trim();
+            const cleanName = rawId ? (rawId.includes('@') ? rawId.split('@')[0] : rawId).replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : (currentRole === 'tecnico' ? 'Rodrigo Rojas' : 'Diego León');
+            const profile = {
+                firstname: cleanName.split(' ')[0] || cleanName,
+                lastname: cleanName.split(' ').slice(1).join(' ') || '',
+                nombre: cleanName,
+                name: cleanName,
+                role: currentRole
+            };
+            if (currentRole === 'tecnico') {
+                localStorage.setItem('ctt_tech_profile', JSON.stringify(profile));
+            }
+            localStorage.setItem('ctt_profile', JSON.stringify(profile));
+            localStorage.setItem('ctt_is_authenticated', 'true');
+            window.dispatchEvent(new Event('chapa-auth-updated'));
+
             showToast('¡Sesión iniciada con éxito! Redirigiendo...', 'success');
             setTimeout(() => { window.location.href = currentRole === 'cliente' ? 'cuenta.html' : 'perfil.html'; }, 900);
         }, 1000);
@@ -186,6 +202,9 @@
                         };
 
                         localStorage.setItem('ctt_profile', JSON.stringify(userProfile));
+                        if (currentRole === 'tecnico') {
+                            localStorage.setItem('ctt_tech_profile', JSON.stringify(userProfile));
+                        }
                         localStorage.setItem('ctt_is_authenticated', 'true');
                         window.dispatchEvent(new Event('chapa-auth-updated'));
 
