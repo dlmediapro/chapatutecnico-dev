@@ -137,3 +137,4 @@
 @media (prefers-reduced-motion: reduce) {
   .sidebar-item, .kpi-card, .job-card, .btn-job-view, .btn-job-accept, .cal-day-card, .skeleton-box { transition: none !important; transform: none !important; animation: none !important; }
 }
+
