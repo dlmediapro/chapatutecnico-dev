@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO & METADATOS EDITABLES
+         =================================================================== -->
+    <title>Mi Carrito de Servicios y Tienda | Chapa Tu Técnico</title>
+    <meta name="title" content="Mi Carrito de Servicios y Tienda | Chapa Tu Técnico">
+    <meta name="description"
+        content="Revisa y confirma tus servicios técnicos contratados y herramientas seleccionadas en Chapa Tu Técnico. Cobertura 24/7 en Lima Metropolitana con garantía y checkout seguro.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/carrito.html">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/carrito.html">
+    <meta property="og:title" content="Mi Carrito de Servicios y Tienda | Chapa Tu Técnico">
+    <meta property="og:description"
+        content="Reserva tus servicios técnicos certificados para el hogar y herramientas de alta calidad con garantía garantizada en Lima Metropolitana.">
+    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.webp">
+
+    <!-- Favicon & Fuentes -->
+    <link rel="icon" type="image/webp" href="img/logo.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/views/carrito.css">
+</head>
+
+<body data-page="carrito">
+
+    <!-- Header institucional compartido -->
+    <script src="layout.js" data-part="header" defer></script>
+
+    <main class="carrito-main" id="main-content">
+        <div class="container">
+
+            <!-- Navegación de Migas de Pan (Breadcrumbs) -->
+            <nav class="carrito-breadcrumb-nav" aria-label="Ruta de navegación">
+                <a href="index.html">Inicio</a>
+                <span class="crumb-separator" aria-hidden="true">›</span>
+                <a href="servicios.html">Servicios</a>
+                <span class="crumb-separator" aria-hidden="true">›</span>
+                <a href="tienda.html">Tienda Chapa</a>
+                <span class="crumb-separator" aria-hidden="true">›</span>
+                <span class="crumb-current" aria-current="page">Mi Carrito</span>
+            </nav>
+
+            <!-- Título de la Vista -->
+            <header class="carrito-view-header">
+                <h1 class="carrito-title-h1">
+                    MI CARRITO DE SERVICIOS
+                    <span class="carrito-header-count" id="carrito-header-count" aria-live="polite">(3 ítems)</span>
+                </h1>
+                <p class="carrito-view-subtitle">Verifica los servicios reservados y herramientas antes de continuar al checkout seguro.</p>
+            </header>
+
+            <!-- Grilla Principal de 12 Columnas (8 cols ítems + 4 cols sticky summary) -->
+            <div class="carrito-layout-grid">
+
+                <!-- COLUMNA IZQUIERDA (8 Columnas): Lista de Ítems & Venta Cruzada -->
+                <div class="carrito-col-items">
+
+                    <!-- Lista Dinámica de Ítems -->
+                    <div id="carrito-items-list" class="carrito-items-stack" role="region" aria-label="Artículos y servicios en el carrito">
+                        <!-- Generado dinámicamente por carrito.js -->
+                    </div>
+
+                    <!-- Estado Vacío (Zero-State Empty Cart) -->
+                    <div id="carrito-empty-state" class="carrito-empty-card" style="display: none;" role="region" aria-label="Carrito de compras vacío">
+                        <div class="empty-cart-illu-wrap">
+                            <img src="assets/img/carrito-vacio.svg" alt="" width="140" height="140" class="empty-cart-img" aria-hidden="true">
+                        </div>
+                        <h2 class="empty-cart-title">Tu carrito está vacío</h2>
+                        <p class="empty-cart-desc">
+                            Aún no tienes servicios agendados ni herramientas seleccionadas. Encuentra técnicos profesionales verificados en Lima o complementa tus proyectos con las mejores herramientas de Tienda Chapa.
+                        </p>
+                        <div class="empty-cart-actions">
+                            <a href="servicios.html" class="btn-empty-rescue btn-rescue-primary">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                <span>Explorar Servicios Técnicos</span>
+                            </a>
+                            <a href="tienda.html" class="btn-empty-rescue btn-rescue-secondary">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
+                                <span>Ver Tienda de Herramientas</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SECCIÓN DE VENTA CRUZADA / HERRAMIENTAS DE FIGMA (Frame 1331:265) -->
+                    <section class="carrito-cross-sell-section" aria-labelledby="cross-sell-heading">
+                        <div class="cross-sell-header-row">
+                            <div class="cross-sell-title-wrap">
+                                <span class="cross-sell-kicker">Recomendados para ti</span>
+                                <h2 id="cross-sell-heading" class="cross-sell-title">
+                                    HERRAMIENTAS Y REPUESTOS SUGERIDOS PARA TU SERVICIO
+                                </h2>
+                            </div>
+                            <a href="tienda.html" class="link-cross-sell-all">
+                                <span>Ver catálogo completo</span>
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                            </a>
+                        </div>
+
+                        <!-- Grid 3x3 de las 9 herramientas de Figma -->
+                        <div id="cross-sell-grid" class="cross-sell-grid" role="region" aria-label="Herramientas sugeridas de Tienda Chapa">
+                            <!-- Renderizado por carrito.js -->
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- COLUMNA DERECHA (4 Columnas): Sticky Order Summary Card -->
+                <aside class="carrito-col-summary" aria-label="Resumen de la orden y pago">
+                    <div class="carrito-summary-wrapper" id="carrito-summary-wrapper">
+                        <div class="order-summary-card">
+                            <h2 class="summary-card-title">RESUMEN DEL PEDIDO</h2>
+
+                            <!-- Desglose de Costos -->
+                            <div class="summary-breakdown-list">
+                                <div class="summary-row">
+                                    <span class="summary-row-label">Mano de obra y servicios</span>
+                                    <strong class="summary-row-val" id="sum-subtotal-servicios">S/ 0.00</strong>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-row-label">Herramientas y repuestos</span>
+                                    <strong class="summary-row-val" id="sum-subtotal-productos">S/ 0.00</strong>
+                                </div>
+                                <div class="summary-row">
+                                    <div class="summary-label-with-tip">
+                                        <span class="summary-row-label">Desplazamiento Lima</span>
+                                        <span class="badge-tag-free" title="Cero costo de visita técnica en distritos de cobertura estándar">PROMO</span>
+                                    </div>
+                                    <strong class="summary-row-val val-green" id="sum-envio-val">GRATIS</strong>
+                                </div>
+                                <div class="summary-row summary-descuento-row" id="sum-descuento-row" style="display: none;">
+                                    <span class="summary-row-label" id="sum-descuento-label">Descuento cupón</span>
+                                    <strong class="summary-row-val val-discount" id="sum-descuento-val">- S/ 0.00</strong>
+                                </div>
+                            </div>
+
+                            <!-- Fila Total Destacado -->
+                            <div class="summary-total-container">
+                                <div class="summary-total-header">
+                                    <span class="summary-total-text">Total a pagar:</span>
+                                    <span class="summary-total-igv">(Incluye IGV)</span>
+                                </div>
+                                <strong class="summary-total-number" id="sum-total-val">S/ 0.00</strong>
+                            </div>
+
+                            <!-- Caja de Cupón de Descuento -->
+                            <div class="summary-cupon-box">
+                                <form id="form-cupon" class="cupon-form" aria-label="Ingresar cupón de descuento">
+                                    <label for="input-cupon" class="cupon-input-label">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .35.07.69.18 1H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM9 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15H4v-2h16v2zm0-5H4V8h5.08L7 10.83 8.62 12 11 8.76l1-1.36 1 1.36L15.38 12 17 10.83 14.92 8H20v6z"/></svg>
+                                        <span>¿Tienes un cupón? Prueba con <code>CHAPA20</code></span>
+                                    </label>
+                                    <div class="cupon-input-wrap">
+                                        <input type="text" id="input-cupon" class="input-cupon-field" placeholder="Ingresa código..." maxlength="20" autocomplete="off" aria-label="Código de descuento">
+                                        <button type="submit" class="btn-cupon-submit">APLICAR</button>
+                                    </div>
+                                    <div id="cupon-feedback" class="cupon-feedback-msg" role="status" aria-live="polite"></div>
+                                    <button type="button" id="btn-remover-cupon" class="btn-remover-cupon" style="display: none;">✕ Quitar cupón</button>
+                                </form>
+                            </div>
+
+                            <!-- CTA Primario Fitts's Law hacia compra.html -->
+                            <div class="summary-cta-wrap">
+                                <a href="compra.html" class="btn-finalizar-compra" id="btn-finalizar-compra" aria-label="Finalizar compra y continuar al paso de confirmación y pago">
+                                    <span>FINALIZAR COMPRA</span>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                                <a href="servicios.html" class="link-seguir-comprando">
+                                    ‹ Seguir explorando servicios
+                                </a>
+                            </div>
+
+                            <!-- Badges de Seguridad & Confianza Institucional -->
+                            <div class="summary-trust-section">
+                                <div class="trust-pill">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00e599" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                    <span>Pago Seguro SSL 256 bits</span>
+                                </div>
+                                <div class="trust-pill">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00e599" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                    <span>Garantía de Satisfacción 30 días</span>
+                                </div>
+                                <div class="trust-pill">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#00e599" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                                    <span>Técnicos Verificados PNP y SAT</span>
+                                </div>
+                            </div>
+
+                            <!-- Medios de Pago Aceptados -->
+                            <div class="summary-payment-logos">
+                                <span class="payment-logos-label">Medios de pago admitidos:</span>
+                                <div class="payment-logos-row">
+                                    <img src="img/pago-yape.svg" alt="Yape" width="36" height="24">
+                                    <img src="img/pago-plin.svg" alt="Plin" width="36" height="24">
+                                    <img src="img/pago-visa.svg" alt="Visa" width="36" height="24">
+                                    <img src="img/pago-mastercard.svg" alt="Mastercard" width="36" height="24">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Región para Anuncios Accesibles a Lectores de Pantalla -->
+    <div id="chapa-sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer" defer></script>
+    <script src="main.js" defer></script>
+    <script src="carrito.js" defer></script>
+</body>
+
+</html>

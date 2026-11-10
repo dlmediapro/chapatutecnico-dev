@@ -43,14 +43,15 @@
     <!-- ===================================================================
          4. FAVICON & FUENTES
          =================================================================== -->
-    <link rel="icon" type="image/png" href="img/logo.png">
-    <link rel="apple-touch-icon" href="img/logo.png">
+    <link rel="icon" type="image/webp" href="img/logo.webp">
+    <link rel="apple-touch-icon" href="img/logo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/views/nosotros.css">
 
     <!-- ===================================================================
          5. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - ABOUTPAGE)
@@ -63,7 +64,7 @@
         "@type": "Organization",
         "name": "Chapa Tu Técnico",
         "url": "https://dlmediapro.github.io/chapatutecnico-dev/",
-        "logo": "https://dlmediapro.github.io/chapatutecnico-dev/img/logo.png",
+        "logo": "https://dlmediapro.github.io/chapatutecnico-dev/img/logo.webp",
         "description": "Conectamos tu hogar con técnicos especialistas de confianza en Lima Metropolitana."
       }
     }
@@ -73,7 +74,7 @@
 <body data-page="nosotros">
 
     <!-- Header institucional compartido -->
-    <script src="layout.js" data-part="header"></script>
+    <script src="layout.js" data-part="header" defer></script>
 
     <main class="nosotros-main">
         <!-- ===============================================================
@@ -231,8 +232,8 @@
     </main>
 
     <!-- Footer institucional compartido -->
-    <script src="layout.js" data-part="footer"></script>
-    <script src="main.js"></script>
+    <script src="layout.js" data-part="footer" defer></script>
+    <script src="main.js" defer></script>
 </body>
 
 </html>

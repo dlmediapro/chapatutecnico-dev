@@ -1,317 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <!-- ===================================================================
-         1. METADATOS TÉCNICOS & RENDERIZADO
-         =================================================================== -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#08233b">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ===================================================================
-         2. SEO ON-PAGE BÁSICO (MANIPULACIÓN DIRECTA DE POSICIONAMIENTO)
-         =================================================================== -->
-    <title>Chapa Tu Técnico | Servicio Técnico Seguro y Confiable en Lima</title>
-    <meta name="title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable en Lima">
-    <meta name="description"
-        content="Conectamos tu hogar o negocio con técnicos verificados en Lima Metropolitana: electricidad, gasfitería, carpintería, cerrajería y más. Atención de emergencia 24/7. Cotizaciones transparentes y garantía asegurada.">
-    <meta name="keywords"
-        content="tecnicos lima, electricista a domicilio, gasfitero lima, cerrajero 24 horas, carpintero lima, servicio tecnico seguro, reparaciones del hogar, chapa tu tecnico, lima metropolitana">
+    <title>Contratar Técnico de Confianza en Lima | Técnicos a Domicilio</title>
+    <meta name="title" content="Contratar Técnico de Confianza en Lima | Técnicos a Domicilio">
+    <meta name="description" content="Encuentra la mejor asistencia técnica para el hogar. Te ayudamos a contratar un técnico de confianza y técnicos a domicilio para cualquier necesidad.">
+    <meta name="keywords" content="tecnicos lima, electricista a domicilio, gasfitero lima, cerrajero 24 horas, carpintero lima, servicio tecnico seguro, reparaciones del hogar, chapa tu tecnico, lima metropolitana">
     <meta name="author" content="Chapa Tu Técnico">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://chapatutecnico.pe/">
-
-    <!-- ===================================================================
-         3. SEO LOCAL & GEOLOCALIZACIÓN (DIRIGIDO A LIMA METROPOLITANA, PERÚ)
-         =================================================================== -->
     <meta name="geo.region" content="PE-LIM">
     <meta name="geo.placename" content="Lima">
     <meta name="geo.position" content="-12.046374;-77.042793">
     <meta name="ICBM" content="-12.046374, -77.042793">
-
-    <!-- ===================================================================
-         4. OPEN GRAPH / REDES SOCIALES (WHATSAPP, FACEBOOK, LINKEDIN)
-         =================================================================== -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_PE">
     <meta property="og:site_name" content="Chapa Tu Técnico">
     <meta property="og:url" content="https://chapatutecnico.pe/">
-    <meta property="og:title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable">
-    <meta property="og:description"
-        content="¿Problemas en casa? Técnicos 100% verificados con antecedentes, precios transparentes y garantía asegurada en Lima Metropolitana.">
-    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.png">
+    <meta property="og:title" content="Contratar Técnico de Confianza en Lima | Técnicos a Domicilio">
+    <meta property="og:description" content="Encuentra la mejor asistencia técnica para el hogar. Te ayudamos a contratar un técnico de confianza y técnicos a domicilio para cualquier necesidad.">
+    <meta property="og:image" content="https://chapatutecnico.pe/img/logo.webp">
     <meta property="og:image:alt" content="Logotipo y técnicos de Chapa Tu Técnico">
-
-    <!-- ===================================================================
-         5. TWITTER / X CARDS
-         =================================================================== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://chapatutecnico.pe/">
-    <meta name="twitter:title" content="Chapa Tu Técnico | Servicio Técnico Seguro y Confiable">
-    <meta name="twitter:description"
-        content="Técnicos verificados en Lima: electricidad, gasfitería, cerrajería y más. Atención 24/7 y garantía de satisfacción.">
-    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.png">
-
-    <!-- ===================================================================
-         6. FAVICON & ICONOS DE APLICACIÓN
-         =================================================================== -->
-    <link rel="icon" type="image/png" href="img/logo.png">
-    <link rel="apple-touch-icon" href="img/logo.png">
-
-    <!-- ===================================================================
-         7. OPTIMIZACIÓN DE RENDIMIENTO & FUENTES (FIGMA TYPOGRAPHY)
-         =================================================================== -->
+    <meta name="twitter:title" content="Contratar Técnico de Confianza en Lima | Técnicos a Domicilio">
+    <meta name="twitter:description" content="Encuentra la mejor asistencia técnica para el hogar. Te ayudamos a contratar un técnico de confianza y técnicos a domicilio para cualquier necesidad.">
+    <meta name="twitter:image" content="https://chapatutecnico.pe/img/logo.webp">
+    <link rel="icon" type="image/webp" href="img/logo.webp">
+    <link rel="apple-touch-icon" href="img/logo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- ===================================================================
-         8. HOJA DE ESTILOS PRINCIPAL
-         =================================================================== -->
-    <link rel="preload" as="image" href="img/banner_principal.webp" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- ===================================================================
-         9. DATOS ESTRUCTURADOS SCHEMA.ORG (JSON-LD - SEO SEMÁNTICO GOOGLE)
-         =================================================================== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "Chapa Tu Técnico",
-      "image": "https://chapatutecnico.pe/img/logo.png",
-      "@id": "https://chapatutecnico.pe/#organization",
-      "url": "https://chapatutecnico.pe/",
-      "telephone": "+51936372861",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Lima Metropolitana",
-        "addressLocality": "Lima",
-        "addressRegion": "Lima",
-        "addressCountry": "PE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -12.046374,
-        "longitude": -77.042793
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "00:00",
-        "closes": "23:59"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Lima Metropolitana"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Servicios Técnicos Profesionales",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Servicio de Electricidad"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Servicio de Gasfitería"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Servicio de Carpintería"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Servicio de Cerrajería"
-            }
-          }
-        ]
-      }
-    }
-    </script>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <link rel="help" type="text/markdown" href="llms.txt">
+    <link rel="preload" as="image" href="img/banner_principal.webp" imagesrcset="img/banner_principal-640.webp 640w, img/banner_principal-1133.webp 1133w, img/banner_principal.webp 1920w" imagesizes="(max-width: 768px) 100vw, (max-width: 1280px) 1133px, 100vw" fetchpriority="high">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <style id="critical-css">:root{--bg:#08233b;--bg-dark:#061b2e;--white:#fff;--muted:#c9d4de;--orange:#e8532b;--red:#ff5a36;--green:#5fd068;--cyan:#53c8f7;--red-accent:#eb5f47;--yellow:#fdb913;--min-touch-target:44px;--line:rgba(255,255,255,.22);--font-title:'Oswald',sans-serif;--font-body:'Raleway',sans-serif}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--white);font-family:var(--font-body);line-height:1.5;-webkit-font-smoothing:antialiased}img,svg{max-width:100%;display:block}a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;color:inherit;cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--green);outline-offset:2px}.container{width:100%;max-width:1280px;margin:0 auto;padding:0 24px}.section-title{font-family:var(--font-title);font-weight:600;font-size:1.6rem;margin-bottom:20px}.topbar{min-height:36px;background:#000;color:var(--white);border-bottom:1px solid rgba(255,255,255,0.08);font-size:13px;position:relative;z-index:101}.topbar-container{display:flex;align-items:center;justify-content:space-between;min-height:36px;gap:16px}.topbar-left{flex:0 0 clamp(80px,10vw,160px)}.topbar-text{flex:1;text-align:center;font-family:var(--font-body);font-size:clamp(11px,0.92vw,13px);color:var(--white);letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topbar-right{display:flex;align-items:center;gap:clamp(10px,1.2vw,18px);flex-shrink:0}.topbar-location{display:inline-flex;align-items:center;gap:6px;font-size:clamp(11px,0.88vw,13px);color:var(--white);white-space:nowrap}.topbar-pin-icon{width:14px;height:14px;color:var(--red-accent,#eb5f47);flex-shrink:0}.topbar-flags{display:inline-flex;align-items:center;gap:8px}.flag{width:28px;height:19px;border-radius:4px;object-fit:cover;display:block;box-shadow:0 1px 3px rgba(0,0,0,0.3)}.header{min-height:84px;position:relative;z-index:100;background:var(--bg-dark);border-bottom:1px solid var(--line);padding:10px 0 14px}.header.header-compact{padding:clamp(10px,1.2vw,14px) 0}.header.header-compact .header-main{gap:0;justify-content:center}.header-container{display:grid;grid-template-columns:clamp(140px,14vw,220px) 1fr auto;align-items:center;gap:clamp(16px,2vw,36px)}.logo{display:flex;align-items:center;width:clamp(130px,13vw,200px);text-decoration:none;flex-shrink:0}.logo-img{width:100%;height:auto;max-height:clamp(58px,5.2vw,82px);aspect-ratio:118 / 101;object-fit:contain;object-position:left center}.header-main{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;min-width:0}.navbar{display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:clamp(4px,0.6vw,10px);width:100%}.nav-link{display:inline-flex;align-items:center;font-family:var(--font-body);font-size:clamp(13px,1.12vw,17.5px);font-weight:500;color:var(--white);text-decoration:none;letter-spacing:0.03em;white-space:nowrap;padding:4px 2px;border-bottom:2px solid transparent;transition:color 0.18s ease,border-color 0.18s ease}.nav-link:hover{color:var(--cyan,#53c8f7)}.nav-link.active{font-weight:700;color:var(--white);border-bottom-color:var(--cyan,#53c8f7)}.nav-dot{color:rgba(255,255,255,0.85);font-size:10px;line-height:1;user-select:none;flex-shrink:0;margin:0 clamp(2px,0.4vw,6px)}.search-bar{display:flex;align-items:center;gap:10px;width:100%;max-width:775px;height:48px;background:#f8f8f8;border-radius:999px;padding:4px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s ease,outline 0.15s ease}.search-bar:focus-within{outline:3px solid var(--cyan,#53c8f7);box-shadow:0 4px 14px rgba(83,200,247,0.25)}.search-btn{background:none;border:0;display:grid;place-items:center;color:#494c50;cursor:pointer;padding:4px;border-radius:50%;transition:color 0.15s,transform 0.15s}.search-btn:hover{color:var(--bg);transform:scale(1.08)}.search-bar input{flex:1;min-width:0;border:0;outline:0;background:none;font-family:var(--font-body);font-weight:400;font-size:clamp(13px,1.05vw,15px);color:#1a1a1a}.search-bar input::placeholder{color:#5f6368;font-weight:300}.header-actions{display:flex;align-items:center;gap:clamp(12px,1.4vw,22px);flex-shrink:0}.header-account{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--white);text-decoration:none;min-width:70px;padding:2px 4px;border-radius:6px;transition:opacity 0.2s,transform 0.15s}.header-account:hover{opacity:0.9;transform:translateY(-1px)}.header-account.active .account-text{color:var(--cyan,#53c8f7)}.account-icon{width:34px;height:34px;object-fit:contain}.account-text{font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:0.03em;text-decoration:underline;text-underline-position:from-font;white-space:nowrap;line-height:1.1;color:#fff}.icon-link{position:relative;display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:8px;transition:transform 0.15s ease,background-color 0.15s ease}.icon-link:hover{background-color:rgba(255,255,255,0.08);transform:scale(1.05)}.icon-link img{width:32px;height:32px;object-fit:contain}.header-badge-dot{position:absolute;top:7px;right:7px;width:9px;height:9px;background:var(--red-accent,#eb5f47);border:1.5px solid var(--bg-dark);border-radius:50%;animation:pulse-dot 2s infinite ease-in-out}@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:0.8}}.header-cart-count{position:absolute;top:4px;right:4px;min-width:18px;height:18px;padding:0 4px;background:var(--red-accent,#eb5f47);color:#fff;font-family:var(--font-body);font-weight:800;font-size:11px;line-height:18px;text-align:center;border-radius:999px;border:1.5px solid var(--bg-dark)}.menu-toggle{display:none;background:none;border:0;width:44px;height:44px;min-width:44px;min-height:44px;padding:10px 8px;flex-direction:column;justify-content:space-around;cursor:pointer;border-radius:6px;color:#fff;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.menu-toggle-bar{display:block;width:100%;height:2.5px;background:#fff;border-radius:2px;transition:transform 0.22s ease,opacity 0.22s ease}.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1){transform:translateY(8px) rotate(45deg)}.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3){transform:translateY(-8px) rotate(-45deg)}.mobile-nav-header,.mobile-nav-footer{display:none}body.nav-locked{overflow:hidden;touch-action:none}.hero-wrap{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:clamp(660px,68vw,840px);background-color:var(--bg-dark,#061b2e);overflow:hidden}.hero-bg-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;pointer-events:none;aspect-ratio:16 / 9}.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.85) 0,rgba(0,0,0,.35) 90px,rgba(0,0,0,0) 220px);z-index:1;pointer-events:none}.hero-wrap .topbar,.hero-wrap .header{background:none;border:0}.hero-static-content{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:clamp(20px,4vw,50px) 0 clamp(16px,3vw,32px);pointer-events:none}.hero-title-container{position:relative;width:100%}.hero-title-container h1{font-family:var(--font-title);font-weight:500;font-size:clamp(2.2rem,4.6vw,4.2rem);line-height:1.05;text-shadow:0 4px 14px rgba(0,0,0,0.65)}.hero-title-container .y{color:var(--yellow)}.hero-title-container .highlight{color:var(--orange);font-weight:600;font-size:1.55em;line-height:1}.hero-crosses{position:absolute;z-index:1;font-family:var(--font-title);font-size:clamp(14px,2vw,26px);line-height:.85;letter-spacing:.12em;opacity:0.35;color:var(--white)}.left-crosses{left:14px;top:15%}.right-crosses{right:5vw;bottom:20%}.hero-carousel-section{position:relative;z-index:5;width:100%;padding-bottom:clamp(24px,4vw,42px)}.hero-carousel-container{position:relative;width:100%;max-width:1440px;margin:0 auto;display:flex;align-items:center}.hero-carousel-viewport{width:100%;display:flex;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:14px 24px 20px}.hero-carousel-viewport::-webkit-scrollbar{display:none;width:0;height:0}.hero-carousel-track{display:flex;gap:clamp(16px,2vw,24px);width:max-content}.hero-card{position:relative;flex:0 0 auto;width:clamp(240px,22vw,310px);scroll-snap-align:start;aspect-ratio:1.38;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.22);box-shadow:0 10px 28px rgba(0,0,0,0.55);background:#08233b;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),box-shadow 0.35s ease,border-color 0.3s ease;pointer-events:auto}.hero-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 20px 42px rgba(0,0,0,0.75),0 0 22px rgba(95,208,104,0.35);border-color:var(--green)}.hero-card:active{transform:scale(0.98)}.hero-card img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;transition:transform 0.5s ease}.hero-card:hover img{transform:scale(1.08)}.hero-card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 20px;background:linear-gradient(to top,rgba(6,27,46,0.95) 0%,rgba(6,27,46,0.45) 55%,transparent 100%);pointer-events:none}.hero-card-overlay p{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:2px}.hero-card-overlay h3{font-family:var(--font-title);font-weight:700;font-size:clamp(1.2rem,2.2vw,1.85rem);line-height:1.08;color:var(--orange);text-shadow:0 2px 8px rgba(0,0,0,0.8)}.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:50%;background:rgba(6,27,46,0.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.28);color:var(--white);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease;box-shadow:0 6px 18px rgba(0,0,0,0.5)}.hero-arrow.prev{left:max(12px,1.5vw)}.hero-arrow.next{right:max(12px,1.5vw)}.hero-arrow:hover{background:var(--bg);border-color:var(--green);transform:translateY(-50%) scale(1.12);box-shadow:0 0 16px rgba(95,208,104,0.45)}.hero-arrow:active{transform:translateY(-50%) scale(0.95)}@media (max-width:1023px){.topbar-left{display:none}.topbar-container{justify-content:center;flex-wrap:wrap;padding:4px 12px}.topbar-text{flex:0 0 100%;text-align:center}.topbar-right{justify-content:center;width:100%}.header-container{grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:12px 14px;padding:8px 16px}.logo{grid-column:1;grid-row:1;width:clamp(120px,32vw,150px)}.header-actions{grid-column:2;grid-row:1;justify-self:end;gap:10px}.header-account{min-width:48px}.account-icon{width:28px;height:28px}.account-text{font-size:9px}.icon-link{width:40px;height:40px;min-width:40px;min-height:40px}.header-main{grid-column:1 / -1;grid-row:2;width:100%}.search-bar{max-width:100%;height:44px}.menu-toggle{display:flex}.navbar{display:none}.navbar.open{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;background:rgba(6,27,46,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:9999;padding:calc(env(safe-area-inset-top,16px)+16px) 24px calc(env(safe-area-inset-bottom,16px)+24px);overflow-y:auto;-webkit-overflow-scrolling:touch;gap:4px;animation:drawerFadeIn 0.22s cubic-bezier(0.16,1,0.3,1)}.navbar.open .nav-dot{display:none}.navbar.open .nav-link{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:12px 16px;font-size:18px;font-weight:600;border-radius:8px;border-bottom:1px solid rgba(255,255,255,0.08);color:#fff}.navbar.open .nav-link.active{background:rgba(83,200,247,0.12);color:var(--cyan,#53c8f7);border-left:4px solid var(--cyan,#53c8f7)}.navbar.open .mobile-nav-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;margin-bottom:12px;border-bottom:1px solid var(--line)}.navbar.open .mobile-nav-footer{display:block;margin-top:auto;padding-top:20px}.btn-emergency-mobile{display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:#061b2e;font-family:var(--font-body);font-weight:800;font-size:16px;min-height:48px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,0.35)}.hero-wrap{min-height:clamp(600px,75vw,750px)}.hero-bg-img{object-position:60% top}.hero-title-container h1{font-size:clamp(1.8rem,4.2vw,2.8rem)}.hero-card{flex:0 0 clamp(230px,34vw,290px)}}@media (max-width:768px){.topbar{flex-direction:column;gap:2px;text-align:center}.hero-carousel{justify-content:flex-start;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:12px 20px 28px;gap:16px}.hero-card{flex:0 0 auto;width:78vw;max-width:290px;scroll-snap-align:start;border-radius:16px}}@media (max-width:480px){.topbar-left{display:none}.topbar-container{justify-content:center;flex-wrap:wrap;padding:4px 12px}.topbar-text{flex:0 0 100%;text-align:center}.topbar-right{justify-content:center;width:100%}.header-container{grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:12px 14px;padding:8px 16px}.logo{grid-column:1;grid-row:1;width:clamp(120px,32vw,150px)}.header-actions{grid-column:2;grid-row:1;justify-self:end;gap:10px}.header-account{min-width:48px}.account-icon{width:28px;height:28px}.account-text{font-size:9px}.icon-link{width:40px;height:40px;min-width:40px;min-height:40px}.header-main{grid-column:1 / -1;grid-row:2;width:100%}.search-bar{max-width:100%;height:44px}.menu-toggle{display:flex}.navbar{display:none}.navbar.open{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;position:fixed;top:0;left:0;right:0;bottom:0;width:100vw;height:100vh;height:100dvh;background:rgba(6,27,46,0.98);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:9999;padding:calc(env(safe-area-inset-top,16px)+16px) 24px calc(env(safe-area-inset-bottom,16px)+24px);overflow-y:auto;-webkit-overflow-scrolling:touch;gap:4px;animation:drawerFadeIn 0.22s cubic-bezier(0.16,1,0.3,1)}.navbar.open .nav-dot{display:none}.navbar.open .nav-link{display:flex;align-items:center;justify-content:space-between;min-height:48px;padding:12px 16px;font-size:18px;font-weight:600;border-radius:8px;border-bottom:1px solid rgba(255,255,255,0.08);color:#fff}.navbar.open .nav-link.active{background:rgba(83,200,247,0.12);color:var(--cyan,#53c8f7);border-left:4px solid var(--cyan,#53c8f7)}.navbar.open .mobile-nav-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;margin-bottom:12px;border-bottom:1px solid var(--line)}.navbar.open .mobile-nav-footer{display:block;margin-top:auto;padding-top:20px}.btn-emergency-mobile{display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:#061b2e;font-family:var(--font-body);font-weight:800;font-size:16px;min-height:48px;border-radius:999px;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,0.35)}.hero-wrap{min-height:clamp(600px,75vw,750px)}.hero-bg-img{object-position:60% top}.hero-title-container h1{font-size:clamp(1.8rem,4.2vw,2.8rem)}.hero-card{flex:0 0 clamp(230px,34vw,290px)}.topbar{flex-direction:column;gap:2px;text-align:center}.hero-carousel{justify-content:flex-start;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:12px 20px 28px;gap:16px}.hero-card{flex:0 0 auto;width:78vw;max-width:290px;scroll-snap-align:start;border-radius:16px}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}}</style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Chapa Tu Técnico","image":"https://chapatutecnico.pe/img/logo.webp","@id":"https://chapatutecnico.pe/#organization","url":"https://chapatutecnico.pe/","telephone":"+51936372861","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"Lima Metropolitana","addressLocality":"Lima","addressRegion":"Lima","addressCountry":"PE"},"geo":{"@type":"GeoCoordinates","latitude":-12.046374,"longitude":-77.042793},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"areaServed":{"@type":"City","name":"Lima Metropolitana"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios Técnicos Profesionales","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Servicio de Electricidad"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Servicio de Gasfitería"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Servicio de Carpintería"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Servicio de Cerrajería"}}]}}</script>
 </head>
-
 <body data-page="inicio">
-
     <div class="hero-wrap">
-        <script src="layout.js" data-part="header"></script>
-
-        <!-- 1. CONTENIDO ESTÁTICO (Fondo + Título + Cruces) -->
+        <img src="img/banner_principal.webp" srcset="img/banner_principal-640.webp 640w, img/banner_principal-1133.webp 1133w, img/banner_principal.webp 1920w" sizes="(max-width: 768px) 100vw, (max-width: 1280px) 1133px, 100vw" alt="Servicio técnico profesional de confianza para el hogar en Lima" class="hero-bg-img" width="1920" height="1080" fetchpriority="high" decoding="async">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="topbar">
+            <div class="container topbar-container">
+                <div class="topbar-left" aria-hidden="true"></div>
+                <p class="topbar-text">***Atención 24/7. Cobertura solo en Lima Metropolitana***</p>
+                <div class="topbar-right">
+                    <div class="topbar-location"><svg class="topbar-pin-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Lima, Lima, Perú</span></div>
+                    <div class="topbar-flags" aria-label="Idiomas disponibles"><img src="img/flag-pe.svg" alt="Español (Perú)" class="flag" width="28" height="19"><img src="img/flag-us.svg" alt="English (United States)" class="flag" width="28" height="19"></div>
+                </div>
+            </div>
+        </div>
+        <header class="header">
+            <div class="container header-container">
+                <a href="index.html" class="logo" aria-label="Chapa Tu Técnico - Ir a inicio"><img src="img/logo.webp" alt="Chapa Tu Técnico - Servicios profesionales a domicilio" class="logo-img" width="118" height="101" fetchpriority="high" decoding="async"></a>
+                <div class="header-main">
+                    <nav class="navbar" id="navbar" aria-label="Navegación principal">
+                        <div class="mobile-nav-header"><span class="mobile-nav-title">MENÚ</span><button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="Cerrar menú">&times;</button></div>
+                        <a href="index.html" class="nav-link active" aria-current="page">INICIO</a><span class="nav-dot" aria-hidden="true">•</span>
+                        <a href="nosotros.html" class="nav-link">NOSOTROS</a><span class="nav-dot" aria-hidden="true">•</span>
+                        <a href="servicios.html" class="nav-link">SERVICIOS</a><span class="nav-dot" aria-hidden="true">•</span>
+                        <a href="cobertura.html" class="nav-link">COBERTURA</a><span class="nav-dot" aria-hidden="true">•</span>
+                        <a href="soporte.html" class="nav-link">SOPORTE</a><span class="nav-dot" aria-hidden="true">•</span>
+                        <a href="tienda.html" class="nav-link">TIENDA CHAPA</a>
+                        <div class="mobile-nav-footer"><a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20atenci%C3%B3n%20de%20emergencia" target="_blank" rel="noopener noreferrer" class="btn-emergency-mobile"><img src="img/icons/whatsapp.svg" alt="" width="20" height="20"> EMERGENCIA 24/7</a></div>
+                    </nav>
+                    <form class="search-bar" role="search" action="servicios.html" method="get">
+                        <button type="submit" class="search-btn search-btn-submit" aria-label="Buscar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                        <input type="search" name="q" placeholder="Ejemplo: gasfitero, electricista, etc..." aria-label="Buscar servicio">
+                        <button type="button" class="search-btn search-btn-voice" aria-label="Buscar por voz"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button>
+                    </form>
+                </div>
+                <div class="header-actions">
+                    <a href="login.html" class="header-account" title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta"><img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span></a>
+                    <a href="mensajes.html" class="icon-link header-notif" aria-label="Notificaciones y mensajes" title="Notificaciones (1 nueva)"><img src="img/111.svg" alt="" width="38" height="38"><span class="header-badge-dot" aria-hidden="true"></span></a>
+                    <a href="carrito.html" class="icon-link icon-cart" aria-label="Mi Carrito: 2 productos" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"><span class="header-cart-count" aria-hidden="true">2</span></a>
+                    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbar"><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span></button>
+                </div>
+            </div>
+        </header>
+        <script src="layout.js" data-part="header" defer></script>
         <div class="hero-static-content">
             <div class="container hero-title-container">
-                <h1>SERVICIO TÉCNICO SEGURO<br><span class="y">Y</span> <span class="highlight">CONFIABLE</span></h1>
+                <h1>SERVICIO TÉCNICO DE<br><span class="highlight">CONFIANZA<br>PARA TU HOGAR</span></h1>
                 <div class="hero-crosses left-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
                 <div class="hero-crosses right-crosses" aria-hidden="true">+++<br>+++++<br>+++</div>
             </div>
         </div>
-
-        <!-- 2. CARRUSEL INFERIOR DINÁMICO (Único elemento móvil) -->
         <section class="hero-carousel-section" aria-label="Servicios destacados">
+            <h2 class="sr-only">Servicios Técnicos Destacados</h2>
             <div class="hero-carousel-container">
                 <button class="hero-arrow prev" id="hero-prev" aria-label="Servicio anterior" type="button">&#10094;</button>
-                
                 <div class="hero-carousel-viewport" id="hero-carousel-viewport">
                     <div class="hero-carousel-track" id="hero-carousel-track">
-                        <a href="servicios.html" class="hero-card" data-service="blanca"><picture><source srcset="img/blanca.webp" type="image/webp"><img src="img/blanca.png" alt="Servicio técnico de línea blanca y electrodomésticos" width="310" height="225" loading="eager"></picture>
-                            <div class="hero-card-overlay">
-                                <p>SERVICIO DE</p>
-                                <h3>LÍNEA BLANCA</h3>
-                            </div>
-                        </a>
-                        <a href="servicios.html" class="hero-card" data-service="gasfiteria"><picture><source srcset="img/gasfitero.webp" type="image/webp"><img src="img/gasfitero.png" alt="Servicio de gasfitería profesional en Lima" width="310" height="225" loading="lazy"></picture>
-                            <div class="hero-card-overlay">
-                                <p>SERVICIO DE</p>
-                                <h3>GASFITERÍA</h3>
-                            </div>
-                        </a>
-                        <a href="servicios.html" class="hero-card" data-service="carpinteria"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.png" alt="Servicio de carpintería y muebles a medida" width="310" height="225" loading="lazy"></picture>
-                            <div class="hero-card-overlay">
-                                <p>SERVICIO DE</p>
-                                <h3>CARPINTERÍA</h3>
-                            </div>
-                        </a>
-                        <a href="electricidad.html" class="hero-card" data-service="electricidad"><picture><source srcset="img/electricista.webp" type="image/webp"><img src="img/electricista.png" alt="Servicio de electricidad residencial y comercial" width="310" height="225" loading="lazy"></picture>
-                            <div class="hero-card-overlay">
-                                <p>SERVICIO DE</p>
-                                <h3>ELECTRICIDAD</h3>
-                            </div>
-                        </a>
-                        <a href="servicios.html" class="hero-card" data-service="cerrajeria"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.png" alt="Servicio de cerrajería de emergencia 24 horas" width="310" height="225" loading="lazy"></picture>
-                            <div class="hero-card-overlay">
-                                <p>SERVICIO DE</p>
-                                <h3>CERRAJERÍA</h3>
-                            </div>
-                        </a>
+                        <a href="404.html" class="hero-card" data-service="blanca"><picture><source srcset="img/blanca.webp" type="image/webp"><img src="img/blanca.webp" alt="Servicio técnico de línea blanca y electrodomésticos" width="310" height="225" loading="eager"></picture><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>LÍNEA BLANCA</h3></div></a>
+                        <a href="404.html" class="hero-card" data-service="gasfiteria"><picture><source srcset="img/gasfitero.webp" type="image/webp"><img src="img/gasfitero.webp" alt="Servicio de gasfitería profesional en Lima" width="310" height="225" loading="lazy"></picture><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>GASFITERÍA</h3></div></a>
+                        <a href="404.html" class="hero-card" data-service="carpinteria"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.webp" alt="Servicio de carpintería y muebles a medida" width="310" height="225" loading="lazy"></picture><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>CARPINTERÍA</h3></div></a>
+                        <a href="lista-tecnicos.html" class="hero-card" data-service="electricidad"><picture><source srcset="img/electricista.webp" type="image/webp"><img src="img/electricista.webp" alt="Servicio de electricidad residencial y comercial" width="310" height="225" loading="lazy"></picture><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>ELECTRICIDAD</h3></div></a>
+                        <a href="404.html" class="hero-card" data-service="cerrajeria"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.webp" alt="Servicio de cerrajería de emergencia 24 horas" width="310" height="225" loading="lazy"></picture><div class="hero-card-overlay"><p>SERVICIO DE</p><h3>CERRAJERÍA</h3></div></a>
                     </div>
                 </div>
-
                 <button class="hero-arrow next" id="hero-next" aria-label="Servicio siguiente" type="button">&#10095;</button>
             </div>
         </section>
     </div>
-
     <main>
-        <section class="benefits">
+        <section class="benefits" aria-label="Beneficios">
+            <h2 class="sr-only">Beneficios de elegir Chapa Tu Técnico</h2>
             <div class="container benefits-container">
-                <div class="benefit-item"><img src="img/escudo.svg" alt="Técnicos identificados y verificados" width="48" height="48">
-                    <h4>TÉCNICOS<br>IDENTIFICADOS:</h4>
-                    <p>"Todo nuestro personal cuenta con antecedentes verificados".</p>
-                </div>
-                <div class="benefit-item"><img src="img/dollar.svg" alt="Precios transparentes sin costos ocultos" width="48" height="48">
-                    <h4>PRECIOS<br>TRANSPARENTES:</h4>
-                    <p>"Cotizaciones claras antes de iniciar el trabajo, sin sorpresas".</p>
-                </div>
-                <div class="benefit-item"><img src="img/check.svg" alt="Garantía de servicio asegurada" width="48" height="48">
-                    <h4>GARANTÍA<br>ASEGURADA:</h4>
-                    <p>"Todos los trabajos cuentan con respaldo y garantía de la plataforma".</p>
-                </div>
+                <div class="benefit-item"><img src="img/escudo.svg" alt="Técnicos identificados y verificados" width="48" height="48"><h3>TÉCNICOS<br>IDENTIFICADOS:</h3><p>"Todo nuestro personal cuenta con antecedentes verificados".</p></div>
+                <div class="benefit-item"><img src="img/dollar.svg" alt="Precios transparentes sin costos ocultos" width="48" height="48"><h3>PRECIOS<br>TRANSPARENTES:</h3><p>"Cotizaciones claras antes de iniciar el trabajo, sin sorpresas".</p></div>
+                <div class="benefit-item"><img src="img/check.svg" alt="Garantía de servicio asegurada" width="48" height="48"><h3>GARANTÍA<br>ASEGURADA:</h3><p>"Todos los trabajos cuentan con respaldo y garantía de la plataforma".</p></div>
             </div>
         </section>
-
         <section class="offers-section">
-            <div class="container">
-                <h2 class="section-title">OFERTAS DEL MES</h2>
-            </div>
+            <div class="container"><h2 class="section-title">OFERTAS DEL MES</h2></div>
             <div class="offers">
                 <button class="carousel-arrow prev" aria-label="Oferta anterior">&#10094;</button>
                 <div class="offers-text">
                     <h3>CELEBREMOS<br>JUNTOS LA<br>SEMANA DEL<br>GASFITERO</h3>
                     <p class="discount"><span class="percent">50 %</span><span class="desc">DE DESCUENTO</span></p>
-                    <a href="solicitud.html" class="btn-solicitar-oferta">solicitar</a>
+                    <a href="solicitud.html" class="btn-solicitar-oferta" aria-label="Cotizar servicio técnico para el hogar">Solicitar Servicio a Domicilio</a>
                 </div>
                 <button class="carousel-arrow next" aria-label="Oferta siguiente">&#10095;</button>
             </div>
         </section>
-
         <section class="services">
             <div class="container">
-                <h2 class="section-title">SERVICIOS</h2>
+                <h2 class="section-title">Técnicos a Domicilio en Lima</h2>
+                <h3 class="section-subtitle-seo">Asistencia Técnica para el Hogar</h3>
                 <div class="services-grid">
-                    <article class="service-card"><picture><source srcset="img/electricista-1.webp" type="image/webp"><img src="img/electricista-1.png" alt="Servicio de Electricidad residencial y comercial" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Electricidad</h4><a href="electricidad.html"
-                                class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
-                    <article class="service-card"><picture><source srcset="img/gasfitero-1.webp" type="image/webp"><img src="img/gasfitero-1.png" alt="Servicio de Gasfitería profesional en Lima" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Gasfitería</h4><a href="#" class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
-                    <article class="service-card"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.png" alt="Servicio de Carpintería y acabados" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Carpintería</h4><a href="#" class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
-                    <article class="service-card"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.png" alt="Servicio de Cerrajería 24 horas" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Cerrajería</h4><a href="#" class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
-                    <article class="service-card"><picture><source srcset="img/vidriero.webp" type="image/webp"><img src="img/vidriero.png" alt="Servicio de Vidriería e instalaciones" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Vidriería</h4><a href="#" class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
-                    <article class="service-card"><picture><source srcset="img/sistemas.webp" type="image/webp"><img src="img/sistemas.png" alt="Servicio de Soporte en Informática y Redes" width="300" height="306" loading="lazy"></picture>
-                        <div class="service-info">
-                            <h4>Servicio de Informática</h4><a href="#" class="btn-solicitar">Solicitar</a>
-                        </div>
-                    </article>
+                    <article class="service-card"><picture><source srcset="img/electricista-1.webp" type="image/webp"><img src="img/electricista-1.webp" alt="Servicio de Electricidad residencial y comercial" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Electricidad</h3><a href="lista-tecnicos.html" aria-label="Solicitar servicio de Electricidad - Ver técnicos disponibles" class="btn-solicitar">Solicitar</a></div></article>
+                    <article class="service-card"><picture><source srcset="img/gasfitero-1.webp" type="image/webp"><img src="img/gasfitero-1.webp" alt="Servicio de Gasfitería profesional en Lima" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Gasfitería</h3><a href="404.html" class="btn-solicitar" aria-label="Solicitar servicio de Gasfitería profesional en Lima">Solicitar</a></div></article>
+                    <article class="service-card"><picture><source srcset="img/carpintero.webp" type="image/webp"><img src="img/carpintero.webp" alt="Servicio de Carpintería y acabados" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Carpintería</h3><a href="404.html" class="btn-solicitar" aria-label="Solicitar servicio de Carpintería y acabados">Solicitar</a></div></article>
+                    <article class="service-card"><picture><source srcset="img/cerrajero.webp" type="image/webp"><img src="img/cerrajero.webp" alt="Servicio de Cerrajería 24 horas" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Cerrajería</h3><a href="404.html" class="btn-solicitar" aria-label="Solicitar servicio de Cerrajería 24 horas">Solicitar</a></div></article>
+                    <article class="service-card"><picture><source srcset="img/vidriero.webp" type="image/webp"><img src="img/vidriero.webp" alt="Servicio de Vidriería e instalaciones" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Vidriería</h3><a href="404.html" class="btn-solicitar" aria-label="Solicitar servicio de Vidriería e instalaciones">Solicitar</a></div></article>
+                    <article class="service-card"><picture><source srcset="img/sistemas.webp" type="image/webp"><img src="img/sistemas.webp" alt="Servicio de Soporte en Informática y Redes" width="300" height="306" loading="lazy"></picture><div class="service-info"><h3>Servicio de Informática</h3><a href="404.html" class="btn-solicitar" aria-label="Solicitar servicio de Informática y Redes">Solicitar</a></div></article>
                 </div>
-                <p class="ver-mas-container"><a href="servicios.html" class="ver-mas">ver más</a></p>
+                <p class="ver-mas-container"><a href="servicios.html" class="ver-mas" aria-label="Ver catálogo completo de servicios técnicos en Lima">Ver Catálogo Completo de Servicios</a></p>
             </div>
         </section>
-
         <section class="why-us" id="porque-elegirnos">
             <div class="container">
                 <h2 class="section-title">POR QUÉ ELEGIRNOS</h2>
                 <div class="why-us-content">
-                    <picture><source srcset="img/familia.webp" type="image/webp"><img src="img/familia.png" alt="Equipo de técnicos profesionales de Chapa Tu Técnico" width="560" height="370"
-                        loading="lazy"></picture>
+                    <picture><source srcset="img/familia.webp" type="image/webp"><img src="img/familia.webp" alt="Equipo de técnicos profesionales de Chapa Tu Técnico" width="560" height="363" loading="lazy"></picture>
                     <div class="why-us-text">
-                        <p>Porque sabemos que encontrar a un especialista que pueda brindarte <span
-                                class="highlight-red">SEGURIDAD</span>, <span class="highlight-red">CONFIANZA</span> y
-                            <span class="highlight-red">CALIDAD</span> es muchas veces complicado
-                        </p>
-                        <p>Por eso, nuestra empresa busca conectarte con verdaderos <span
-                                class="highlight-red">PROFESIONALES</span></p>
+                        <p>Porque sabemos que encontrar a un especialista que pueda brindarte <span class="highlight-red">SEGURIDAD</span>, <span class="highlight-red">CONFIANZA</span> y <span class="highlight-red">CALIDAD</span> es muchas veces complicado</p>
+                        <p>Por eso, nuestra empresa busca conectarte con verdaderos <span class="highlight-red">PROFESIONALES</span></p>
                         <p>¡Tú tienes el problema, nosotros te conectamos con la persona indicada para solucionarlo!</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <script src="layout.js" data-part="footer"></script>
-    <script src="main.js"></script>
+    <script src="layout.js" data-part="footer" defer></script>
+    <script src="main.js" defer></script>
 </body>
-
 </html>

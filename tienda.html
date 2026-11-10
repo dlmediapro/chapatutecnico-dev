@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- ===================================================================
+         1. METADATOS TÉCNICOS & RENDERIZADO
+         =================================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08233b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ===================================================================
+         2. SEO & METADATOS EDITABLES
+         =================================================================== -->
+    <title>Tienda Chapa | Herramientas y Equipos Técnicos en Lima — Chapa Tu Técnico</title>
+    <meta name="title" content="Tienda Chapa | Herramientas y Equipos Técnicos en Lima — Chapa Tu Técnico">
+    <meta name="description"
+        content="Compra herramientas profesionales, materiales eléctricos, repuestos y equipos certificados con delivery en Lima Metropolitana. Taladros DeWalt, winchas Truper, tableros Schneider y cajas de herramientas con garantía.">
+    <meta name="keywords"
+        content="tienda chapa, comprar herramientas lima, taladro dewalt lima, wincha truper, tablero adosable schneider, herramientas delivery lima">
+    <meta name="author" content="Chapa Tu Técnico">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="PE-LIM">
+    <meta name="geo.placename" content="Lima">
+    <link rel="canonical" href="https://dlmediapro.github.io/chapatutecnico-dev/tienda.html">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dlmediapro.github.io/chapatutecnico-dev/tienda.html">
+    <meta property="og:title" content="Tienda Chapa | Herramientas y Equipos Técnicos en Lima — Chapa Tu Técnico">
+    <meta property="og:description"
+        content="Encuentra herramientas de calidad profesional e insumos técnicos con entrega rápida y garantía en Lima Metropolitana.">
+    <meta property="og:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.webp">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tienda Chapa | Herramientas y Equipos Técnicos en Lima">
+    <meta name="twitter:description" content="Taladros, sierras, winchas y cajas de herramientas para especialistas y el hogar.">
+    <meta name="twitter:image" content="https://dlmediapro.github.io/chapatutecnico-dev/img/logo.webp">
+
+    <!-- Favicon & Fuentes Canónicas -->
+    <link rel="icon" type="image/webp" href="img/logo.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/views/tienda.css">
+
+    <!-- ===================================================================
+         3. DATOS ESTRUCTURADOS SCHEMA.ORG (ItemList / Product)
+         =================================================================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Catálogo Oficial Tienda Chapa",
+      "description": "Herramientas e insumos técnicos profesionales con delivery en Lima Metropolitana.",
+      "url": "https://dlmediapro.github.io/chapatutecnico-dev/tienda.html",
+      "numberOfItems": 9,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Product",
+            "name": "Taladro Percutor DWD024K",
+            "image": "https://dlmediapro.github.io/chapatutecnico-dev/assets/img/productos/taladro.webp",
+            "brand": "DeWalt",
+            "offers": {
+              "@type": "Offer",
+              "price": "279.90",
+              "priceCurrency": "PEN",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Product",
+            "name": "Wincha Contra Impactos 8m",
+            "image": "https://dlmediapro.github.io/chapatutecnico-dev/assets/img/productos/wincha.webp",
+            "brand": "Truper",
+            "offers": {
+              "@type": "Offer",
+              "price": "39.90",
+              "priceCurrency": "PEN",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Product",
+            "name": "Tablero Adosable Plástico",
+            "image": "https://dlmediapro.github.io/chapatutecnico-dev/assets/img/productos/tablero.webp",
+            "brand": "Schneider Electric",
+            "offers": {
+              "@type": "Offer",
+              "price": "384.90",
+              "priceCurrency": "PEN",
+              "availability": "https://schema.org/InStock"
+            }
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body data-page="tienda">
+
+    <!-- Header institucional compartido (Regla de Buscador Único: data-search="false") -->
+    <script src="layout.js" data-part="header" data-search="false" defer></script>
+
+    <main class="tienda-main" id="main-content">
+        <div class="container tienda-container">
+
+            <!-- ===============================================================
+                 BARRA DE HERRAMIENTAS DEL CATÁLOGO (Toolbar Superior Figma 1:1)
+                 =============================================================== -->
+            <section class="tienda-toolbar-section" aria-label="Barra de búsqueda y filtros del catálogo">
+                <div class="tienda-toolbar">
+
+                    <!-- Lado Izquierdo: Menú Categorías + Selector de Orden -->
+                    <div class="tienda-toolbar-left">
+
+                        <!-- Desplegable CATEGORÍAS -->
+                        <div class="tienda-cat-dropdown-wrap">
+                            <button type="button" class="btn-tienda-cat" id="btn-categorias" aria-expanded="false" aria-haspopup="true" aria-controls="menu-categorias">
+                                <svg class="tienda-hamb-svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                                </svg>
+                                <span id="categoria-actual-label" class="tienda-cat-btn-text">CATEGORÍAS</span>
+                            </button>
+
+                            <ul id="menu-categorias" class="tienda-cat-menu" role="menu" aria-label="Filtrar por categoría">
+                                <li><a href="#todas" class="cat-menu-item active" data-cat="todas">Todas las categorías</a></li>
+                                <li><a href="#electricas" class="cat-menu-item" data-cat="electricas">Herramientas Eléctricas</a></li>
+                                <li><a href="#manuales" class="cat-menu-item" data-cat="manuales">Herramientas Manuales</a></li>
+                                <li><a href="#medicion" class="cat-menu-item" data-cat="medicion">Medición y Trazo</a></li>
+                                <li><a href="#tableros" class="cat-menu-item" data-cat="tableros">Tableros y Material Eléctrico</a></li>
+                                <li><a href="#organizadores" class="cat-menu-item" data-cat="organizadores">Cajas y Organizadores</a></li>
+                                <li><a href="#kits" class="cat-menu-item" data-cat="kits">Kits y Juegos de Herramientas</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Selector Ordenar por -->
+                        <div class="tienda-sort-container">
+                            <label for="select-ordenar" class="tienda-sort-label">Ordenar por:</label>
+                            <div class="tienda-select-wrapper">
+                                <select id="select-ordenar" class="tienda-sort-select" aria-label="Ordenar productos">
+                                    <option value="recomendados" selected>Recomendados ⇅</option>
+                                    <option value="precio-menor">Menor precio</option>
+                                    <option value="precio-mayor">Mayor precio</option>
+                                    <option value="nombre-az">Nombre A - Z</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Lado Derecho: Buscador Píldora Blanco con Micrófono -->
+                    <div class="tienda-toolbar-right">
+                        <div class="tienda-search-pill-box" role="search">
+                            <svg class="search-glass-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="search" id="input-buscar-tienda" class="tienda-search-pill-input" placeholder="Buscar" aria-label="Buscar en la tienda">
+                            <button type="button" class="btn-search-mic" id="btn-tienda-mic" aria-label="Búsqueda por voz" title="Búsqueda por voz">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                                    <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===============================================================
+                 GRILLA DE 9 PRODUCTOS (Matriz 3x3 Figma 1:1)
+                 =============================================================== -->
+            <section class="tienda-catalogo-section" aria-label="Productos de Tienda Chapa">
+                <div class="tienda-grid-3x3" id="tienda-grid" role="region" aria-label="Catálogo de herramientas">
+                    <!-- Renderizado dinámicamente por tienda.js -->
+                </div>
+
+                <!-- Estado sin resultados (Search UX) -->
+                <div id="tienda-sin-resultados" class="tienda-empty-results" style="display: none;" role="region" aria-label="Sin resultados de búsqueda">
+                    <div class="empty-icon-wrap" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#53c8f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                        </svg>
+                    </div>
+                    <h2 class="empty-results-title">No encontramos herramientas coincidentes</h2>
+                    <p class="empty-results-desc">
+                        No se hallaron productos para el término ingresado<span id="busqueda-termino-label"></span>. Prueba buscando por categoría o revisa la ortografía.
+                    </p>
+                    <button type="button" id="btn-limpiar-busqueda" class="btn-limpiar-filtros">
+                        Ver todas las herramientas
+                    </button>
+                </div>
+
+                <!-- Botón Centrado VER MÁS (Figma 1:1) -->
+                <div class="tienda-ver-mas-container" id="tienda-ver-mas-wrap">
+                    <button type="button" class="btn-tienda-ver-mas" id="btn-ver-mas" aria-label="Cargar más herramientas del catálogo">
+                        VER MÁS
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Región para Anuncios Accesibles a Lectores de Pantalla -->
+    <div id="chapa-sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Footer institucional compartido -->
+    <script src="layout.js" data-part="footer" defer></script>
+    <script src="main.js" defer></script>
+    <script src="tienda.js" defer></script>
+</body>
+
+</html>

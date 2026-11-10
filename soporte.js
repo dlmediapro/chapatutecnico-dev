@@ -253,7 +253,7 @@
         '<p class="ticket-code">Ticket N.° <strong>' + escapeHtml(ticketId) + '</strong></p>' +
         '<p class="success-detail">Gracias <strong>' + escapeHtml(nombre) + '</strong>. Un asesor de Chapa Tu Técnico se pondrá en contacto a través de <strong>' + escapeHtml(contacto) + '</strong> en un plazo máximo de 15 minutos.</p>' +
         '<div class="success-actions">' +
-          '<a href="https://wa.me/51998204667?text=' + encodeURIComponent('Hola Chapa Tu Técnico, he registrado el ticket ' + ticketId) + '" target="_blank" rel="noopener noreferrer" class="btn-ticket-whatsapp"><img src="img/whatsapp.png" alt="" width="20" height="20"> Notificar por WhatsApp</a>' +
+          '<a href="https://wa.me/51998204667?text=' + encodeURIComponent('Hola Chapa Tu Técnico, he registrado el ticket ' + ticketId) + '" target="_blank" rel="noopener noreferrer" class="btn-ticket-whatsapp"><img src="img/icons/whatsapp.svg" alt="" width="20" height="20"> Notificar por WhatsApp</a>' +
           '<button type="button" class="btn-new-ticket" id="btn-reset-ticket">Enviar otra consulta</button>' +
         '</div>';
       feedbackContainer.style.display = 'block';
