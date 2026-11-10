@@ -78,14 +78,24 @@
                     </form>
                 </div>
                 <div class="header-actions">
-                    <a href="login.html" class="header-account" title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta"><img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span></a>
-                    <a href="mensajes.html" class="icon-link header-notif" aria-label="Notificaciones y mensajes" title="Notificaciones (1 nueva)"><img src="img/111.svg" alt="" width="38" height="38"><span class="header-badge-dot" aria-hidden="true"></span></a>
-                    <a href="carrito.html" class="icon-link icon-cart" aria-label="Mi Carrito: 2 productos" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"><span class="header-cart-count" aria-hidden="true">2</span></a>
+                    <div class="header-account-wrap" id="header-account-wrap">
+                        <a href="login.html" class="header-account" id="header-account-btn" aria-haspopup="menu" aria-expanded="false" title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta"><img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span></a>
+                        <div class="header-account-menu" id="header-account-menu" role="menu" aria-label="Menú de usuario" hidden>
+                            <div class="menu-user-info"><span class="menu-user-name" id="menu-user-name">Usuario</span><span class="menu-user-email" id="menu-user-email">usuario@chapatutecnico.pe</span></div>
+                            <hr class="menu-divider">
+                            <a href="cuenta.html" class="menu-item" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Mi Cuenta</a>
+                            <a href="mensajes.html" class="menu-item" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Notificaciones</a>
+                            <button type="button" class="menu-item menu-item-logout" id="btn-header-logout" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg> Cerrar Sesión</button>
+                        </div>
+                    </div>
+                    <a href="mensajes.html" class="icon-link header-notif" aria-label="Notificaciones y mensajes" title="Notificaciones"><img src="img/111.svg" alt="" width="38" height="38"></a>
+                    <a href="carrito.html" class="icon-link icon-cart" aria-label="Mi Carrito" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"></a>
                     <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbar"><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span></button>
                 </div>
             </div>
         </header>
         <script src="layout.js" data-part="header" defer></script>
+        <script src="auth.js" defer></script>
         <div class="hero-static-content">
             <div class="container hero-title-container">
                 <h1>SERVICIO TÉCNICO DE<br><span class="highlight">CONFIANZA<br>PARA TU HOGAR</span></h1>

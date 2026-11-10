@@ -78,9 +78,20 @@
           '</form>') +
         '</div>' +
         '<div class="header-actions">' +
-          '<a href="login.html" class="header-account' + (page === 'login' || page === 'cuenta' || page === 'perfil' ? ' active' : '') + '"' + (page === 'login' ? ' aria-current="page"' : '') + ' title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta"><img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span></a>' +
-          '<a href="mensajes.html" class="icon-link header-notif' + (page === 'mensajes' ? ' active' : '') + '" aria-label="Notificaciones y mensajes" title="Notificaciones (1 nueva)"><img src="img/111.svg" alt="" width="38" height="38"><span class="header-badge-dot" aria-hidden="true"></span></a>' +
-          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito: 2 productos" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"><span class="header-cart-count" aria-hidden="true">2</span></a>' +
+          '<div class="header-account-wrap" id="header-account-wrap">' +
+            '<a href="login.html" class="header-account' + (page === 'login' || page === 'cuenta' || page === 'perfil' ? ' active' : '') + '" id="header-account-btn" aria-haspopup="menu" aria-expanded="false" title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta">' +
+              '<img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span>' +
+            '</a>' +
+            '<div class="header-account-menu" id="header-account-menu" role="menu" aria-label="Menú de usuario" hidden>' +
+              '<div class="menu-user-info"><span class="menu-user-name" id="menu-user-name">Usuario</span><span class="menu-user-email" id="menu-user-email">usuario@chapatutecnico.pe</span></div>' +
+              '<hr class="menu-divider">' +
+              '<a href="cuenta.html" class="menu-item" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Mi Cuenta</a>' +
+              '<a href="mensajes.html" class="menu-item" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Notificaciones</a>' +
+              '<button type="button" class="menu-item menu-item-logout" id="btn-header-logout" role="menuitem"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg> Cerrar Sesión</button>' +
+            '</div>' +
+          '</div>' +
+          '<a href="mensajes.html" class="icon-link header-notif' + (page === 'mensajes' ? ' active' : '') + '" aria-label="Notificaciones y mensajes" title="Notificaciones"><img src="img/111.svg" alt="" width="38" height="38"></a>' +
+          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"></a>' +
           '<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbar"><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span></button>' +
         '</div>' +
       '</div>' +
@@ -144,6 +155,12 @@
     if (!document.querySelector('.header') && s) {
       s.insertAdjacentHTML('beforebegin', header);
     }
+    if (!document.querySelector('script[src*="auth.js"]')) {
+      var authScript = document.createElement('script');
+      authScript.src = 'auth.js';
+      authScript.defer = true;
+      document.head.appendChild(authScript);
+    }
   } else if (part === 'footer') {
     // FASE 2: Inyección Below-the-fold diferida
     if (s && !document.querySelector('.footer')) {
@@ -151,61 +168,20 @@
     }
   }
 
-  // FASE 3: Hidratación en Idle sin provocar Layout Thrashing
+  // FASE 3: Delegación a auth.js para sincronización de estados
   if (part === 'header') {
-    var updateHeaderState = function () {
-      yieldToMain().then(function () {
-        var isAuth = false;
-        var profile = null;
-        var cartCount = 0;
-        try {
-          isAuth = localStorage.getItem('ctt_is_authenticated') === 'true';
-          var rawProfile = localStorage.getItem('ctt_profile');
-          profile = rawProfile ? JSON.parse(rawProfile) : null;
-          var rawCart = localStorage.getItem('chapa_cart');
-          var cart = rawCart ? JSON.parse(rawCart) : null;
-          cartCount = Array.isArray(cart) ? cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0) : 2;
-        } catch (e) {}
-
-        var badge = document.querySelector('.header-cart-count');
-        var cartLink = document.querySelector('.icon-cart');
-        if (badge) {
-          badge.textContent = cartCount;
-          badge.style.display = cartCount > 0 ? 'inline-flex' : 'none';
-          if (cartLink) {
-            cartLink.setAttribute('aria-label', 'Mi Carrito: ' + cartCount + (cartCount === 1 ? ' producto' : ' productos'));
-          }
-        }
-
-        var accountLink = document.querySelector('.header-account');
-        if (accountLink && isAuth && profile) {
-          accountLink.href = 'cuenta.html';
-          var name = (profile.firstname || 'Mi Cuenta').trim();
-          accountLink.title = 'Mi Cuenta (' + name + ')';
-          accountLink.setAttribute('aria-label', 'Acceder a mi cuenta: ' + name);
-
-          var textSpan = accountLink.querySelector('.account-text');
-          if (textSpan) {
-            textSpan.textContent = name.length > 12 ? name.substring(0, 10).toUpperCase() + '..' : name.toUpperCase();
-          }
-
-          var iconImg = accountLink.querySelector('.account-icon');
-          if (iconImg && profile.picture) {
-            iconImg.src = profile.picture;
-            iconImg.style.borderRadius = '50%';
-            iconImg.style.objectFit = 'cover';
-          }
-        }
-      });
+    var triggerAuthSync = function () {
+      if (window.ChapaAuth && typeof window.ChapaAuth.initHeaderAuth === 'function') {
+        window.ChapaAuth.initHeaderAuth();
+      }
     };
-
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', updateHeaderState);
+      document.addEventListener('DOMContentLoaded', triggerAuthSync);
     } else {
-      updateHeaderState();
+      triggerAuthSync();
     }
-    window.addEventListener('chapa-cart-updated', updateHeaderState);
-    window.addEventListener('chapa-auth-updated', updateHeaderState);
-    window.addEventListener('storage', updateHeaderState);
+    window.addEventListener('chapa-cart-updated', triggerAuthSync);
+    window.addEventListener('chapa-auth-updated', triggerAuthSync);
+    window.addEventListener('storage', triggerAuthSync);
   }
 })();
