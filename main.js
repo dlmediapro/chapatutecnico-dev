@@ -145,3 +145,21 @@
     });
   }
 })();
+
+(function initHeroSkeleton() {
+  const skeleton = document.getElementById('hero-carousel-skeleton');
+  const container = document.querySelector('.hero-carousel-container');
+  if (!skeleton) return;
+  function dismiss() {
+    skeleton.classList.add('is-loaded');
+    if (container) container.removeAttribute('aria-busy');
+    setTimeout(() => {
+      if (skeleton.parentNode) skeleton.remove();
+    }, 300);
+  }
+  if (document.readyState === 'complete') {
+    dismiss();
+  } else {
+    window.addEventListener('load', dismiss, { once: true });
+  }
+})();
