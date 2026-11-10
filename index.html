@@ -70,15 +70,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/oswald/v57/TK3iWkUHHAIjg752GT8Gl-1PKw.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/raleway/v37/1Ptug8zYS_SKggPNyC0IT4ttDfA.woff2" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap">
     <link
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    </noscript>
     <link rel="help" type="text/markdown" href="llms.txt">
 
     <!-- ===================================================================
          8. HOJA DE ESTILOS PRINCIPAL & PRELOADS LCP
          =================================================================== -->
     <link rel="preload" as="image" href="img/banner_principal.webp" fetchpriority="high">
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css">
 
     <!-- ===================================================================
@@ -165,6 +170,10 @@
 <body data-page="inicio">
 
     <div class="hero-wrap">
+        <!-- Elemento LCP Canónico (CLS = 0) -->
+        <img src="img/banner_principal.webp" alt="Servicio técnico profesional de confianza para el hogar en Lima" class="hero-bg-img" width="1920" height="1080" fetchpriority="high" decoding="async">
+        <div class="hero-overlay" aria-hidden="true"></div>
+
         <!-- Barra superior canónica (Pre-renderizada para CLS = 0) -->
         <div class="topbar">
             <div class="container topbar-container">

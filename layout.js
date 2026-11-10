@@ -1,9 +1,7 @@
 /* Cabecera y pie compartidos: Chapa Tu Técnico (Figma System)
-   Uso en el HTML:  <script src="layout.js" data-part="header" defer></script>
-                    <script src="layout.js" data-part="footer" defer></script>
-   Y en <body data-page="inicio | nosotros | servicios | cobertura | soporte | tienda | producto | tecnicos | login | cuenta | perfil | solicitud | carrito | compra | mensajes | 404"> */
+   Uso en HTML: <script src="layout.js" data-part="header" defer></script>
+                <script src="layout.js" data-part="footer" defer></script> */
 (function () {
-  // Helper de modern-web-guidance (break-up-long-tasks) para no bloquear el hilo principal
   function yieldToMain() {
     if (typeof scheduler !== 'undefined' && typeof scheduler.yield === 'function') {
       return scheduler.yield();
@@ -43,80 +41,47 @@
   var navDot = '<span class="nav-dot" aria-hidden="true">•</span>';
 
   var header =
-    '<div class="topbar">' +
-      '<div class="container topbar-container">' +
-        '<div class="topbar-left" aria-hidden="true"></div>' +
-        '<p class="topbar-text">***Atención 24/7. Cobertura solo en Lima Metropolitana***</p>' +
-        '<div class="topbar-right">' +
-          '<div class="topbar-location">' +
-            '<svg class="topbar-pin-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
-            '<span>Lima, Lima, Perú</span>' +
-          '</div>' +
-          '<div class="topbar-flags" aria-label="Idiomas disponibles">' +
-            '<img src="img/flag-pe.svg" alt="Español (Perú)" class="flag" width="28" height="19">' +
-            '<img src="img/flag-us.svg" alt="English (United States)" class="flag" width="28" height="19">' +
-          '</div>' +
+    '<div class="topbar"><div class="container topbar-container">' +
+      '<div class="topbar-left" aria-hidden="true"></div>' +
+      '<p class="topbar-text">***Atención 24/7. Cobertura solo en Lima Metropolitana***</p>' +
+      '<div class="topbar-right">' +
+        '<div class="topbar-location">' +
+          '<svg class="topbar-pin-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>' +
+          '<span>Lima, Lima, Perú</span>' +
         '</div>' +
-      '</div>' +
-    '</div>' +
+        '<div class="topbar-flags" aria-label="Idiomas disponibles">' +
+          '<img src="img/flag-pe.svg" alt="Español (Perú)" class="flag" width="28" height="19">' +
+          '<img src="img/flag-us.svg" alt="English (United States)" class="flag" width="28" height="19">' +
+        '</div>' +
+      '</div></div></div>' +
     '<header class="header' + (hideSearch ? ' header-compact' : '') + '">' +
-    '  <div class="container header-container">' +
-        '<!-- 1. Identidad: Logo Figma con retorno a inicio -->' +
+      '<div class="container header-container">' +
         '<a href="index.html" class="logo" aria-label="Chapa Tu Técnico - Ir a inicio">' +
           '<img src="img/logo.webp" alt="Chapa Tu Técnico - Servicios profesionales a domicilio" class="logo-img" width="118" height="101" fetchpriority="high" decoding="async">' +
         '</a>' +
-        '<!-- 2. Centro: Menú de Navegación Principal + Buscador Global -->' +
         '<div class="header-main">' +
           '<nav class="navbar" id="navbar" aria-label="Navegación principal">' +
-            '<div class="mobile-nav-header">' +
-              '<span class="mobile-nav-title">MENÚ</span>' +
-              '<button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="Cerrar menú">&times;</button>' +
-            '</div>' +
-            navLink('inicio', 'index.html', 'INICIO') +
-            navDot +
-            navLink('nosotros', 'nosotros.html', 'NOSOTROS') +
-            navDot +
-            navLink('servicios', 'servicios.html', 'SERVICIOS') +
-            navDot +
-            navLink('cobertura', 'cobertura.html', 'COBERTURA') +
-            navDot +
-            navLink('soporte', 'soporte.html', 'SOPORTE') +
-            navDot +
+            '<div class="mobile-nav-header"><span class="mobile-nav-title">MENÚ</span><button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="Cerrar menú">&times;</button></div>' +
+            navLink('inicio', 'index.html', 'INICIO') + navDot +
+            navLink('nosotros', 'nosotros.html', 'NOSOTROS') + navDot +
+            navLink('servicios', 'servicios.html', 'SERVICIOS') + navDot +
+            navLink('cobertura', 'cobertura.html', 'COBERTURA') + navDot +
+            navLink('soporte', 'soporte.html', 'SOPORTE') + navDot +
             navLink('tienda', 'tienda.html', 'TIENDA CHAPA') +
-            '<div class="mobile-nav-footer">' +
-              '<a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20atenci%C3%B3n%20de%20emergencia" target="_blank" rel="noopener noreferrer" class="btn-emergency-mobile">' +
-                '<img src="img/icons/whatsapp.svg" alt="" width="20" height="20"> EMERGENCIA 24/7' +
-              '</a>' +
-            '</div>' +
+            '<div class="mobile-nav-footer"><a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20atenci%C3%B3n%20de%20emergencia" target="_blank" rel="noopener noreferrer" class="btn-emergency-mobile"><img src="img/icons/whatsapp.svg" alt="" width="20" height="20"> EMERGENCIA 24/7</a></div>' +
           '</nav>' +
           (hideSearch ? '' :
           '<form class="search-bar" role="search" action="servicios.html" method="get">' +
-            '<button type="submit" class="search-btn search-btn-submit" aria-label="Buscar">' +
-              '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>' +
-            '</button>' +
+            '<button type="submit" class="search-btn search-btn-submit" aria-label="Buscar"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>' +
             '<input type="search" name="q" placeholder="Ejemplo: gasfitero, electricista, etc..." aria-label="Buscar servicio">' +
-            '<button type="button" class="search-btn search-btn-voice" aria-label="Buscar por voz">' +
-              '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>' +
-            '</button>' +
+            '<button type="button" class="search-btn search-btn-voice" aria-label="Buscar por voz"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg></button>' +
           '</form>') +
         '</div>' +
-        '<!-- 3. Acciones Derecha: Cuenta/Login, Notificaciones, Carrito, Hamburguesa -->' +
         '<div class="header-actions">' +
-          '<a href="login.html" class="header-account' + (page === 'login' || page === 'cuenta' || page === 'perfil' ? ' active' : '') + '"' + (page === 'login' ? ' aria-current="page"' : '') + ' title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta">' +
-            '<img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon">' +
-            '<span class="account-text">INICIAR SESIÓN</span>' +
-          '</a>' +
-          '<a href="mensajes.html" class="icon-link header-notif' + (page === 'mensajes' ? ' active' : '') + '" aria-label="Notificaciones y mensajes" title="Notificaciones (1 nueva)">' +
-            '<img src="img/111.svg" alt="" width="38" height="38">' +
-            '<span class="header-badge-dot" aria-hidden="true"></span>' +
-          '</a>' +
-          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito: 2 productos" title="Mi Carrito">' +
-            '<img src="img/222.svg" alt="" width="38" height="38">' +
-            '<span class="header-cart-count" aria-hidden="true">2</span>' +
-          '</a>' +
-          '<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbar">' +
-            '<span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span>' +
-          '</button>' +
+          '<a href="login.html" class="header-account' + (page === 'login' || page === 'cuenta' || page === 'perfil' ? ' active' : '') + '"' + (page === 'login' ? ' aria-current="page"' : '') + ' title="Iniciar sesión" aria-label="Iniciar sesión o acceder a mi cuenta"><img src="img/icon-cuenta.svg" alt="" width="36" height="36" class="account-icon"><span class="account-text">INICIAR SESIÓN</span></a>' +
+          '<a href="mensajes.html" class="icon-link header-notif' + (page === 'mensajes' ? ' active' : '') + '" aria-label="Notificaciones y mensajes" title="Notificaciones (1 nueva)"><img src="img/111.svg" alt="" width="38" height="38"><span class="header-badge-dot" aria-hidden="true"></span></a>' +
+          '<a href="carrito.html" class="icon-link icon-cart' + (page === 'carrito' || page === 'compra' ? ' active' : '') + '" aria-label="Mi Carrito: 2 productos" title="Mi Carrito"><img src="img/222.svg" alt="" width="38" height="38"><span class="header-cart-count" aria-hidden="true">2</span></a>' +
+          '<button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navbar"><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span><span class="menu-toggle-bar"></span></button>' +
         '</div>' +
       '</div>' +
     '</header>';
@@ -137,21 +102,12 @@
   var footer =
     '<footer class="footer"><h2 class="sr-only">Navegación del pie de página</h2><div class="container footer-container">' +
     '<div class="footer-col"><h3 class="footer-col-title">Inicio:</h3><ul>' +
-    '<li><a href="login.html">Iniciar Sesión</a></li>' +
-    '<li><a href="nosotros.html">Nosotros</a></li>' +
-    '<li><a href="servicios.html">Servicios Generales</a></li>' +
-    '<li><a href="cobertura.html">Cobertura Lima</a></li>' +
-    '<li><a href="tecnicos.html">Nuestros Técnicos</a></li>' +
-    '<li><a href="soporte.html">Centro de Soporte</a></li>' +
-    '<li><a href="perfil.html">Perfil Técnico</a></li>' +
-    '<li><a href="solicitud.html">Detalle Solicitud</a></li>' +
-    '<li><a href="mensajes.html">Bandeja de Mensajes</a></li></ul></div>' +
+    '<li><a href="login.html">Iniciar Sesión</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="servicios.html">Servicios Generales</a></li>' +
+    '<li><a href="cobertura.html">Cobertura Lima</a></li><li><a href="tecnicos.html">Nuestros Técnicos</a></li><li><a href="soporte.html">Centro de Soporte</a></li>' +
+    '<li><a href="perfil.html">Perfil Técnico</a></li><li><a href="solicitud.html">Detalle Solicitud</a></li><li><a href="mensajes.html">Bandeja de Mensajes</a></li></ul></div>' +
     '<div class="footer-col"><h3 class="footer-col-title">Categoría:</h3><ul>' +
-    '<li><a href="servicios.html">Gasfitero</a></li>' +
-    '<li><a href="electricidad.html">Electricista</a></li>' +
-    '<li><a href="servicios.html">Línea Blanca</a></li>' +
-    '<li><a href="servicios.html">Carpintería</a></li>' +
-    '<li><a href="electricidad.html">Otros Servicios</a></li></ul></div>' +
+    '<li><a href="servicios.html">Gasfitero</a></li><li><a href="electricidad.html">Electricista</a></li><li><a href="servicios.html">Línea Blanca</a></li>' +
+    '<li><a href="servicios.html">Carpintería</a></li><li><a href="electricidad.html">Otros Servicios</a></li></ul></div>' +
     '<div class="footer-col support-col"><h3 class="footer-col-title">Soporte</h3><p>Atención 24/7.</p><p>Consulta a los siguientes datos</p>' +
     '<p><a href="tel:+51998204667" class="support-contact-link" aria-label="Llamar o escribir a soporte por WhatsApp: 998 204 667">' + svgWaSupport + ' <strong>998 204 667</strong></a></p>' +
     '<p><a href="mailto:chapatutecnico@gmail.com" class="support-contact-link" aria-label="Enviar correo electrónico a chapatutecnico@gmail.com">' + svgMailSupport + ' <strong>chapatutecnico@gmail.com</strong></a></p></div>' +
@@ -168,8 +124,7 @@
     '<a href="https://www.facebook.com/chapatutecnico" class="footer-social-link social-facebook" target="_blank" rel="noopener noreferrer" aria-label="Página oficial de Facebook de Chapa Tu Técnico (abre en nueva pestaña)">' + svgFb + '</a>' +
     '<a href="https://www.instagram.com/chapatutecnico" class="footer-social-link social-instagram" target="_blank" rel="noopener noreferrer" aria-label="Cuenta oficial de Instagram de Chapa Tu Técnico (abre en nueva pestaña)">' + svgIg + '</a>' +
     '<a href="https://www.tiktok.com/@chapatutecnico" class="footer-social-link social-tiktok" target="_blank" rel="noopener noreferrer" aria-label="Cuenta oficial de TikTok de Chapa Tu Técnico (abre en nueva pestaña)">' + svgTk + '</a>' +
-    '</div></div>' +
-    '</div><p class="footer-bottom">© 2026 | Empresa peruana innovadora</p></footer>';
+    '</div></div></div><p class="footer-bottom">© 2026 | Empresa peruana innovadora</p></footer>';
 
   var fabWhatsApp = '';
   var isFabPage = (page === 'inicio' || page === 'nosotros' || page === 'servicios' || page === 'cobertura');
@@ -177,30 +132,20 @@
     fabWhatsApp =
       '<aside class="fab-whatsapp-container" aria-label="Canal de asistencia de emergencia 24/7">' +
         '<a href="https://wa.me/51998204667?text=Hola%20Chapa%20Tu%20T%C3%A9cnico,%20necesito%20un%20t%C3%A9cnico%20de%20emergencia%2024/7" ' +
-           'class="fab-whatsapp-btn" ' +
-           'target="_blank" ' +
-           'rel="noopener noreferrer" ' +
-           'aria-label="Contactar a técnico de emergencia por WhatsApp 24/7" ' +
-           'title="Emergencia 24/7 - Contactar por WhatsApp">' +
-          '<span class="fab-whatsapp-icon" aria-hidden="true">' +
-            '<svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">' +
-              '<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>' +
-            '</svg>' +
-          '</span>' +
-          '<span class="fab-whatsapp-label">Emergencia 24/7</span>' +
-          '<span class="fab-whatsapp-badge" aria-hidden="true">24/7</span>' +
-          '<span class="fab-whatsapp-pulse" aria-hidden="true"></span>' +
+           'class="fab-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar a técnico de emergencia por WhatsApp 24/7" title="Emergencia 24/7 - Contactar por WhatsApp">' +
+          '<span class="fab-whatsapp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg></span>' +
+          '<span class="fab-whatsapp-label">Emergencia 24/7</span><span class="fab-whatsapp-badge" aria-hidden="true">24/7</span><span class="fab-whatsapp-pulse" aria-hidden="true"></span>' +
         '</a>' +
       '</aside>';
   }
 
-  // FASE 1: Inyección Above-the-fold sincrónica y limpia
+  // FASE 1: Inyección Above-the-fold
   if (part === 'header') {
     if (!document.querySelector('.header') && s) {
       s.insertAdjacentHTML('beforebegin', header);
     }
   } else if (part === 'footer') {
-    // FASE 2: Inyección Below-the-fold diferida para no competir con el Main Thread durante el inicio
+    // FASE 2: Inyección Below-the-fold diferida
     if (s && !document.querySelector('.footer')) {
       s.insertAdjacentHTML('beforebegin', footer + fabWhatsApp);
     }
@@ -213,22 +158,15 @@
         var isAuth = false;
         var profile = null;
         var cartCount = 0;
-
-        // Batch reads de localStorage
         try {
           isAuth = localStorage.getItem('ctt_is_authenticated') === 'true';
           var rawProfile = localStorage.getItem('ctt_profile');
           profile = rawProfile ? JSON.parse(rawProfile) : null;
           var rawCart = localStorage.getItem('chapa_cart');
           var cart = rawCart ? JSON.parse(rawCart) : null;
-          if (Array.isArray(cart)) {
-            cartCount = cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0);
-          } else {
-            cartCount = 2;
-          }
+          cartCount = Array.isArray(cart) ? cart.reduce(function (sum, item) { return sum + (item.cantidad || 1); }, 0) : 2;
         } catch (e) {}
 
-        // Batch writes al DOM
         var badge = document.querySelector('.header-cart-count');
         var cartLink = document.querySelector('.icon-cart');
         if (badge) {
