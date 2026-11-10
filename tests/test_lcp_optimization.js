@@ -40,6 +40,26 @@ test('Hero Section contiene etiqueta <img> semántica con src="img/banner_princi
   assert(imgTagMatch, 'Debe existir una etiqueta <img> completa para banner_principal.webp');
 });
 
+test('Hero Section implementa srcset y sizes responsivos con variantes 640w y 1133w', () => {
+  const imgTagMatch = indexHtml.match(/<img[^>]*src=["']img\/banner_principal\.webp["'][^>]*>/i);
+  assert(imgTagMatch, 'Etiqueta <img> no encontrada');
+  const tag = imgTagMatch[0];
+  assert(tag.includes('banner_principal-640.webp 640w'), 'Debe incluir variante 640w en srcset');
+  assert(tag.includes('banner_principal-1133.webp 1133w'), 'Debe incluir variante 1133w en srcset');
+  assert(tag.includes('sizes='), 'Debe incluir atributo sizes');
+});
+
+test('Archivos de imagen WebP responsivos existen en disco con tamaños optimizados', () => {
+  const img1133 = path.join(rootDir, 'img/banner_principal-1133.webp');
+  const img640 = path.join(rootDir, 'img/banner_principal-640.webp');
+  assert(fs.existsSync(img1133), 'Debe existir banner_principal-1133.webp');
+  assert(fs.existsSync(img640), 'Debe existir banner_principal-640.webp');
+  const stat1133 = fs.statSync(img1133);
+  const stat640 = fs.statSync(img640);
+  assert(stat1133.size < 70000, `Tamaño 1133w (${stat1133.size}) debe ser < 70KB`);
+  assert(stat640.size < 35000, `Tamaño 640w (${stat640.size}) debe ser < 35KB`);
+});
+
 test('Imagen principal Hero NO tiene loading="lazy"', () => {
   const imgTagMatch = indexHtml.match(/<img[^>]*src=["']img\/banner_principal\.webp["'][^>]*>/i);
   assert(imgTagMatch, 'Etiqueta <img> no encontrada');
@@ -70,18 +90,32 @@ test('Imagen principal Hero cumple accesibilidad WCAG 2.1 AA con alt semántico'
 });
 
 // 2. Preloads y Desbloqueo de Renderizado en <head>
-test('<head> contiene preload de banner_principal.webp con fetchpriority="high"', () => {
-  assert(indexHtml.includes('<link rel="preload" as="image" href="img/banner_principal.webp" fetchpriority="high">'), 'Falta preload LCP de banner_principal.webp');
+test('<head> contiene preload responsivo del banner Hero con fetchpriority="high"', () => {
+  assert(indexHtml.includes('rel="preload" as="image"'), 'Falta preload de imagen');
+  assert(indexHtml.includes('imagesrcset="img/banner_principal-640.webp 640w'), 'Falta imagesrcset en preload');
+  assert(indexHtml.includes('fetchpriority="high"'), 'Falta fetchpriority="high" en preload');
 });
 
 test('<head> contiene preload de hoja de estilos crítica styles.css', () => {
   assert(indexHtml.includes('<link rel="preload" href="styles.css" as="style">'), 'Falta preload as="style" para styles.css');
 });
 
+test('<head> contiene inyección de CSS Crítico en <style id="critical-css">', () => {
+  assert(indexHtml.includes('<style id="critical-css">'), 'Falta etiqueta <style id="critical-css"> en <head>');
+  assert(indexHtml.includes('.hero-wrap{'), 'Critical CSS debe contener estilos del hero');
+  assert(indexHtml.includes('.topbar{'), 'Critical CSS debe contener estilos de la topbar');
+  assert(indexHtml.includes('.header{'), 'Critical CSS debe contener estilos del header');
+});
+
+test('styles.css se carga de forma no bloqueante (media="print" onload con noscript)', () => {
+  assert(indexHtml.includes('href="styles.css" media="print" onload="this.media=\'all\'"'), 'styles.css debe cargarse de forma no bloqueante');
+  assert(indexHtml.includes('<noscript><link rel="stylesheet" href="styles.css"></noscript>'), 'Debe existir fallback noscript para styles.css');
+});
+
 test('Google Fonts se carga de manera no bloqueante (media="print" onload con preload y noscript)', () => {
   assert(indexHtml.includes('as="style" href="https://fonts.googleapis.com/css2?family=Oswald'), 'Falta preload de Google Fonts');
   assert(indexHtml.includes("media=\"print\" onload=\"this.media='all'\""), 'Falta patrón asíncrono para stylesheet de Google Fonts');
-  assert(indexHtml.includes('<noscript>'), 'Falta bloque <noscript> de respaldo para Google Fonts');
+  assert(indexHtml.includes('<noscript><link href="https://fonts.googleapis.com/css2'), 'Falta bloque <noscript> de respaldo para Google Fonts');
 });
 
 test('Todos los scripts en index.html tienen atributo defer', () => {
@@ -105,7 +139,12 @@ test('styles.css no duplica la descarga del banner como background en .hero-wrap
   assert(!stylesCss.includes("url('img/banner_principal.webp')"), 'styles.css no debe cargar duplicadamente banner_principal.webp como CSS background');
 });
 
-// 4. Estándar de Líneas y Calidad de Código (Máximo 250 líneas)
+// 4. Estándar de Líneas y Calidad de Código (Máximo 250 líneas por archivo)
+test('index.html cumple estrictamente el límite de máximo 250 líneas', () => {
+  const lines = indexHtml.split('\n').length;
+  assert(lines <= 250, `index.html tiene ${lines} líneas (debe ser <= 250)`);
+});
+
 test('layout.js cumple estrictamente el límite de máximo 250 líneas', () => {
   const lines = layoutJs.split('\n').length;
   assert(lines <= 250, `layout.js tiene ${lines} líneas (debe ser <= 250)`);
@@ -114,6 +153,11 @@ test('layout.js cumple estrictamente el límite de máximo 250 líneas', () => {
 test('main.js cumple estrictamente el límite de máximo 250 líneas', () => {
   const lines = mainJs.split('\n').length;
   assert(lines <= 250, `main.js tiene ${lines} líneas (debe ser <= 250)`);
+});
+
+test('styles.css cumple estrictamente el límite de máximo 250 líneas', () => {
+  const lines = stylesCss.split('\n').length;
+  assert(lines <= 250, `styles.css tiene ${lines} líneas (debe ser <= 250)`);
 });
 
 test('Cero console.log en layout.js y main.js', () => {
@@ -128,6 +172,5 @@ console.log('----------------------------------------------------');
 if (passed !== total) {
   process.exit(1);
 } else {
-  console.log('\n🎉 TODAS LAS VERIFICACIONES DE LCP Y RENDIMIENTO PASARON AL 100%.\n');
+  console.log('\n🎉 TODAS LAS VERIFICACIONES DE LCP, CRITICAL CSS Y RENDIMIENTO PASARON AL 100%.\n');
 }
-
