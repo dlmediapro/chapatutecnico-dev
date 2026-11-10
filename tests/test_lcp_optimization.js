@@ -107,15 +107,20 @@ test('<head> contiene inyección de CSS Crítico en <style id="critical-css">', 
   assert(indexHtml.includes('.header{'), 'Critical CSS debe contener estilos del header');
 });
 
-test('styles.css se carga de forma no bloqueante (media="print" onload con noscript)', () => {
-  assert(indexHtml.includes('href="styles.css" media="print" onload="this.media=\'all\'"'), 'styles.css debe cargarse de forma no bloqueante');
-  assert(indexHtml.includes('<noscript><link rel="stylesheet" href="styles.css"></noscript>'), 'Debe existir fallback noscript para styles.css');
+test('styles.css se carga con preload y enlace directo para renderizado estable', () => {
+  assert(indexHtml.includes('<link rel="preload" href="styles.css" as="style">'), 'styles.css debe incluir preload');
+  assert(indexHtml.includes('<link rel="stylesheet" href="styles.css">'), 'styles.css debe incluir link rel="stylesheet"');
 });
 
-test('Google Fonts se carga de manera no bloqueante (media="print" onload con preload y noscript)', () => {
-  assert(indexHtml.includes('as="style" href="https://fonts.googleapis.com/css2?family=Oswald'), 'Falta preload de Google Fonts');
-  assert(indexHtml.includes("media=\"print\" onload=\"this.media='all'\""), 'Falta patrón asíncrono para stylesheet de Google Fonts');
-  assert(indexHtml.includes('<noscript><link href="https://fonts.googleapis.com/css2'), 'Falta bloque <noscript> de respaldo para Google Fonts');
+test('Google Fonts se carga de manera óptima con display=swap y preconnect sin invalidación de trace', () => {
+  assert(indexHtml.includes('fonts.googleapis.com'), 'Debe incluir preconnect o link a Google Fonts');
+  assert(indexHtml.includes('display=swap'), 'Google Fonts debe incluir display=swap para renderizado inmediato');
+  assert(!indexHtml.includes('media="print" onload='), 'No debe usar el hack inestable media="print" que invalida el LCP');
+});
+
+test('Animaciones above-the-fold incluyen will-change y retardo para no interferir con la medición de LCP', () => {
+  assert(stylesCss.includes('will-change:transform,opacity'), 'styles.css debe aislar animaciones en capa propia');
+  assert(stylesCss.includes('animation:pulse-dot 2s infinite ease-in-out 2s'), 'pulse-dot debe incluir retardo de 2s');
 });
 
 test('Todos los scripts en index.html tienen atributo defer', () => {
